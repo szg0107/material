@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function tanchuang() {
+        var chuangkou = window.open("cs.html", "new", "width=500,height=350");
+        chuangkou.moveTo((screen.width - 500) / 2, (screen.height - 350) / 2);
+    }
+    /**setTimeout()方法在在超时时间后只调用一次函数，而setInterval()方法是按一定时间重复调用指定的函数。
+     * 1000ms等于1s*/
+//        setTimeout("tanchuang()",1000);
+//        setInterval("tanchuang()",1000);
+    //弹出网页对话框
+    function opendialog() {
+        var someValue = window.showModalDialog("biaodan.html", 'new', "dialogwidth=500px;dialogheight=500px;status=no;resizable=0");
+        someValue.moveTo((screen.width - 500) / 2, (screen.height - 500) / 2);
+    }
+</script>
+
+<div align="center">
+    <input type="button" onclick="tanchuang()" value="弹窗"/>
+    <input type="button" onclick="opendialog()" value="对话框"/>
+</div>
+</body>
+</html>

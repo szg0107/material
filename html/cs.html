@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <script type="text/javascript">
+        function Myopen(divID) {
+            divID.style.display = 'block';
+            divID.style.left(document.body.clientWidth - 240) / 2;
+            divID.style.top = (document.body.clientHeight - 139) / 2;
+        }
+    </script>
+</head>
+
+<body>
+<table border="1" align="center">
+    <tr>
+        <td>用户名：</td>
+        <td><input type="text"/></td>
+    </tr>
+    <!--通过控制密码域的oncopy、oncut、onpaste事件来实现密码域的内容禁止复制的功能，并通过改变其style样式属性来实现改变密码域中掩码的样式。
+    注意：在修改掩码的样式时一定要选择Windows系统自带的字体样式，如果设置的字体样式不存在，密码将会以原形显示。-->
+    <tr>
+        <td>密码：</td>
+        <td><input type="password" size="12" maxlength="50" oncopy="return False" oncut="return False"
+                   onpaste="return False"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="确定"/></td>
+        <td><input type="button" value="取消" onclick="window.close()"/></td>
+    </tr>
+    <!--设计用户登录表单页面-->
+    <div id="User" style="position: absolute;width: 240px;height: 139px;">
+        <table height="139" width="240" border="0" align="center" cellpadding="2" cellspacing="2">
+            <tr>
+                <td height="139" align="center">
+                    <form name="form_U" method="post" action="#">
+                        <table width="220" height="115" bgcolor="#ffffff" border="0" align="center" cellspacing="-2"
+                               cellpadding="-2">
+                            <tr align="center" valign="midddle">
+                                <td height="24" colspan="2"><font color="#505875">===用户登录===</font></td>
+                            </tr>
+                            <tr>
+                                <td width="61" height="27" align="right" valign="middle">用户名：</td>
+                                <td width="157" valign="middle"><input name="UID" type="text" maxlength="20"/></td>
+                            </tr>
+                            <tr>
+                                <td height="27" align="right" valign="middle">密&nbsp;码：</td>
+                                <td valign="middle"><input name="PWD" type="password" maxlength="20"
+                                                           onkeydown="if(event.keyCode==13)mycheck(form_U,'用户名')"/></td>
+                            </tr>
+                            <tr align="center" valign="middle">
+                                <td height="27" colspan="2">
+                                    <input name="Submit" type="button" value="登录" onclick="mycheck(form_U,'用户名')"/>&nbsp;
+                                    <input name="Submit2" type="button" value="关闭"
+                                           onclick="javascript:User.style.display='none';window.close()"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</table>
+</body>
+</html>

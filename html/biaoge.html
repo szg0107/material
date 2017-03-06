@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表格JS</title>
+    <script type="text/javascript">
+        <!-- 选中行变色-->
+        function over(trname){
+            eval(trname).style.backgroundColor="#0000FF";
+            eval(trname).style.color="FFFFFF"
+        }
+        function out(trname){
+            eval(trname).style.backgroundColor="#FFFFFF";
+            eval(trname).style.color="#000000"
+        }
+    </script>
+</head>
+<body>
+    <table id="table1" border="5" align="center">
+        <tr id="tr1" onmousemove="over(this.id)" onmouseout="out(this.id)"><td align="center">明日科技</td></tr>
+        <tr id="tr2" onmousemove="over(this.id)" onmouseout="out(this.id)"><td align="center">明日科技图书</td></tr>
+    </table>
+</body>
+</html>

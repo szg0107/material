@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <!-- 雷达图 -->
+    <script type="text/javascript" src="../js/Chart.min.js"></script>
+    <!-- End -->
+</head>
+<body>
+<canvas id="canvas" style="background: #029ae5"></canvas>
+<button onclick="lines2('canvas',150,10,150,150)">画线</button>
+<button onclick="circle('canvas',150,10,10,0,360,'red')">画实心圆</button>
+<button onclick="Text('canvas','测试',120,120)">画字</button>
+<button onclick="cssz(4,2,'canvas',120,10,120,140,120,130,10,0,360,'purple')">画线并画实心圆</button>
+<button onclick="drawRadarMap2('canvas',6,2)">画雷达图</button>
+<button onclick="drawRadarMap('canvas',200,200,100,4,8,500,500);">自己写的雷达图</button>
+<canvas id="myChart"></canvas>
+<script type="text/javascript">
+    var max = Math.max(5, 4, 3, 2, 1, 5);
+    var radarChartData = {
+        labels: ["能力位置", "动力位置", "行为位置", "能力指数", "动力指数", "行为指数"],
+        datasets: [
+            {
+                label: "",
+                fillColor: "rgba(0,0,0,0)",
+                strokeColor: "rgba(0,0,0,0)",
+                pointColor: "rgba(0,0,0,0)",
+                pointStrokeColor: "rgba(0,0,0,0)",
+                pointHighlightFill: "rgba(0,0,0,0)",
+                pointHighlightStroke: "rgba(0,0,0,0)",
+                data: [5, 4, 3, 2, 1, 5]
+            },
+            {
+                label: "",
+                fillColor: "rgba(0,0,0,0)",
+                strokeColor: "rgba(0,0,0,0)",
+                pointColor: "rgba(0,0,0,0)",
+                pointStrokeColor: "rgba(0,0,0,0)",
+                pointHighlightFill: "rgba(0,0,0,0)",
+                pointHighlightStroke: "rgba(0,0,0,0)",
+                data: [null, null, null, null, true, null]
+            },
+            {
+                label: "",
+                fillColor: "rgba(255,239,229,0.6)",
+                strokeColor: "rgba(227,211,201,0.6)",
+                pointColor: "rgba(255,95,1,1)",
+                pointStrokeColor: "#ff5f01",
+                pointHighlightFill: "#ff5f01",
+                pointHighlightStroke: "rgba(200,76,4,0.8)",
+                data: [max / 5 * 1, max / 4 * 2, max / 3 * 3, max / 2 * 4, max / 1 * 5, max / 5 * 5]
+            }
+        ]
+    };
+    window.onload = function () {
+        window.myRadar = new Chart(document.getElementById("myChart").getContext("2d")).Radar(radarChartData, {
+            responsive: true,
+            scaleShowGridLines: false,
+        });
+    };
+
+</script>
+<script>
+    /*画线*/
+    function lines2(canid, starx, stary, endx, endy) {
+        var can = document.getElementById(canid).getContext("2d");
+        can.moveTo(starx, stary);
+        can.lineTo(endx, endy);
+        can.stroke();
+    }
+    <!--画圆-->
+    function circle(canid, starx, stary, r, kaishihudu, jieshuhudu, yanse) {
+        var dc = document.getElementById(canid).getContext("2d");
+        dc.beginPath();
+        dc.arc(starx, stary, r, kaishihudu, jieshuhudu, false);
+        dc.fillStyle = yanse;
+        dc.fill();
+        dc.closePath();
+    }
+    /*画线和圆*/
+    function cssz(zuidaweizhi, wodeweizhi, canid, starx, stary, endx, endy, circlex, circley, r, kaishihudu, jieshuhudu, yanse) {
+        var bili = 1 - wodeweizhi / (zuidaweizhi + 0.000000001);
+        lines2(canid, starx, stary, endx, endy);
+        lines2(canid, starx - 10, stary, starx + 10, stary);
+        lines2(canid, endx - 10, endy, endx + 10, endy);
+        circle(canid, circlex, circley * bili + 10, r, kaishihudu, jieshuhudu, yanse)
+    }
+    function Text(canid, strings, x, y) {
+
+        var ctx = document.getElementById(canid).getContext('2d');
+        ctx.font = "Bold 20px Arial";
+
+        ctx.textAlign = "left";
+
+        ctx.fillStyle = "#ff00000";
+        ctx.fillText(strings, x, y);
+
+
+    }
+</script>
+
+<script type="text/javascript">
+    /*画雷达图*/
+    var mW = 400;
+    var mH = 400;
+    var mData = [['速度', 70],
+        ['力量', 100],
+        ['防守', 65],
+        ['射门', 50],
+        ['传球', 40],
+        ['耐力', 30]];
+    var mCenter = mW / 2;
+    /*中心点*/
+    var mRadius = mCenter - 50;
+    /*半径(减去的值用于给绘制的文本留空间)*/
+    var mColorPolygon = '#B8B8B8';
+    /*多边形颜色*/
+    var mColorLines = '#B8B8B8';
+    /*顶点连线颜色*/
+    var mColorText = '#000000';
+    function drawRadarMap2(canid, bianshu, kedu) {
+        var mCount = bianshu;
+        /*边数 */
+        var mAngle = Math.PI * 2 / mCount;
+        /*角度*/
+        var canvas = document.getElementById(canid);
+        canvas.height = mH;
+        canvas.width = mW;
+        var mCtx = canvas.getContext('2d');
+        drawPolygon(mCtx, mCount, mAngle, kedu);
+        drawLines(mCtx, mCount, mAngle, kedu);
+        drawRegion2(mCtx, mCount, mAngle, kedu);
+        drawCircle2(mCtx, mCount, mAngle, kedu);
+        drawText2(mCtx, mCount, mAngle, kedu);
+    }
+    /*绘制mCount边形边*/
+    function drawPolygon(ctx, mCount, mAngle, kedu) {
+        ctx.save();
+
+        ctx.strokeStyle = mColorPolygon;
+        var r = mRadius / mCount;
+        /*单位半径*/
+        /*画kedu个圈*/
+        for (var i = 0; i < kedu; i++) {
+            ctx.beginPath();
+            var currR = r * ( i + 1);
+            /*当前半径*/
+            /*画mCount条边*/
+            for (var j = 0; j < mCount; j++) {
+                var x = mCenter + currR * Math.cos(mAngle * j);
+                var y = mCenter + currR * Math.sin(mAngle * j);
+
+                ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        ctx.restore();
+    }
+    /*顶点连线*/
+    function drawLines(ctx, mCount, mAngle, kedu) {
+        ctx.save();
+
+        ctx.beginPath();
+        ctx.strokeStyle = mColorLines;
+
+        for (var i = 0; i < mCount; i++) {
+            var x = mCenter + mRadius / mCount * kedu * Math.cos(mAngle * i);
+            var y = mCenter + mRadius / mCount * kedu * Math.sin(mAngle * i);
+
+            ctx.moveTo(mCenter, mCenter);
+            ctx.lineTo(x, y);
+        }
+
+        ctx.stroke();
+
+        ctx.restore();
+    }
+    //绘制数据区域
+    function drawRegion2(ctx, mCount, mAngle, kedu) {
+        ctx.save();
+
+        ctx.beginPath();
+        for (var i = 0; i < mCount; i++) {
+            var x = mCenter + mRadius / mCount * kedu * Math.cos(mAngle * i) * mData[i][1] / 100;
+            var y = mCenter + mRadius / mCount * kedu * Math.sin(mAngle * i) * mData[i][1] / 100;
+
+            ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+        ctx.fill();
+
+        ctx.restore();
+    }
+    //画点
+    function drawCircle2(ctx, mCount, mAngle, kedu) {
+        ctx.save();
+
+        var r = mCenter /30;
+        for (var i = 0; i < mCount; i++) {
+            var x = mCenter + mRadius / mCount * kedu * Math.cos(mAngle * i) * mData[i][1] / 100;
+            var y = mCenter + mRadius / mCount * kedu * Math.sin(mAngle * i) * mData[i][1] / 100;
+
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+            ctx.fill();
+        }
+
+        ctx.restore();
+    }
+    //绘制文本
+    function drawText2(ctx,mCount,mAngle,kedu){
+        ctx.save();
+
+        var fontSize = mCenter / 12;
+        ctx.font = fontSize + 'px Microsoft Yahei';
+        ctx.fillStyle = mColorText;
+
+        for(var i = 0; i < mCount; i ++){
+            var x = mCenter +mRadius / mCount * kedu * Math.cos(mAngle * i);
+            var y = mCenter + mRadius / mCount * kedu * Math.sin(mAngle * i);
+
+            if( mAngle * i >= 0 && mAngle * i <= Math.PI / 2 ){
+                ctx.fillText(mData[i][0], x, y + fontSize);
+            }else if(mAngle * i > Math.PI / 2 && mAngle * i <= Math.PI){
+                ctx.fillText(mData[i][0], x - ctx.measureText(mData[i][0]).width, y + fontSize);
+            }else if(mAngle * i > Math.PI && mAngle * i <= Math.PI * 3 / 2){
+                ctx.fillText(mData[i][0], x - ctx.measureText(mData[i][0]).width, y);
+            }else{
+                ctx.fillText(mData[i][0], x, y);
+            }
+
+        }
+
+        ctx.restore();
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    /*自己写的雷达图*/
+    function drawRadarMap(canid, yuanx, yuany, r, kedu, weidu, canw, canh) {
+        /*原点坐标X,Y*/
+        var xX = yuanx;
+        var yY = yuany;
+        /*半径长度*/
+        var mM = r;
+        /*刻度*/
+        var nN = kedu;
+        /*维度*/
+        var wW = weidu;
+        var mW2 = canw;
+        var mH2 = canh;
+        var jiaodu = 360 / wW;
+        var leijijiaodu = 360 / wW;
+        var arrbegin;
+        /*划线坐标位置开始数组，2维数组*/
+        var arrend;
+        /*划线坐标位置结束数组，2维数组*/
+        var Linshix;
+        /*临时相对X坐标*/
+        var linshiy;
+        /*临时相对Y坐标*/
+        var mData = [['动力指数', 3, 5],
+            ['能力指数', 15, 20],
+            ['行为指数', 8, 10],
+            ['动力位置', 2, 5],
+            ['能力位置', 1, 1],
+            ['能力位置2', 3, 3],
+            ['能力位置2', 3, 3],
+            ['行为位置', 5, 5]];
+        var canvas = document.getElementById(canid);
+        canvas.height = mH2;
+        canvas.width = mW2;
+        var mCtx = canvas.getContext('2d');
+
+        /*lines("canvas", xX, yY, xX + mM, yY);*/
+        /*画一条线*/
+        arrbegin = [[xX, yY]];
+
+        for (var i = 0; i <= parseInt(wW); i++) {
+
+            arrend = [[xX, yY]];
+            for (var j = 0; j <= nN; j++) {
+
+                Linshix = j * mM / nN * Math.cos(leijijiaodu * Math.PI / 180);
+
+                linshiy = j * mM / nN * Math.sin(leijijiaodu * Math.PI / 180);
+
+                var temp = [[xX + Linshix, yY - linshiy]];
+                arrend = arrend.concat(temp);
+            }
+
+            allline(arrbegin, arrend, xX, yY);
+            leijijiaodu = leijijiaodu + jiaodu;
+            arrbegin = arrend;
+        }
+        mCtx.stroke();
+        /*绘制数据区域*/
+        drawRegion(canid, wW, xX, yY, mM, mData);
+        /*画点*/
+        drawCircle(canid, wW, xX, yY, mM, mData);
+        drawText(canid, wW, xX, yY, mM, mData);
+
+    }
+    function allline(arrb, arre, xxX, yyY) {
+        var arrlengh1 = arrb.length;
+        var arrlengh2 = arre.length;
+        if (arrlengh1 != arrlengh2) {
+            return "数组长度不对";
+        }
+        lines("canvas", xxX, yyY, arre[arrlengh2 - 1][0], arre[arrlengh2 - 1][1]);
+        for (var k = 0; k < arrlengh1; k++) {
+            lines("canvas", arrb[k][0], arrb[k][1], arre[k][0], arre[k][1]);
+        }
+    }
+    function lines(canid, starx, stary, endx, endy) {
+        var canvas = document.getElementById(canid).getContext('2d');
+        canvas.lineWidth = 0.2;
+        canvas.moveTo(starx, stary);
+        canvas.lineTo(endx, endy);
+        /*canvas.stroke();
+         alert(1);*/
+    }
+
+    /*绘制数据区域*/
+    function drawRegion(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        /*保存当前环境的状态*/
+        ctx.save();
+        /*新建一条路径*/
+        ctx.beginPath();
+        var xweizhi1 = xX + mDataSS[0][1] / mDataSS[0][2] * Math.cos(jiaodu * 0 * Math.PI / 180) * r;
+        var yweizhi1 = yY;
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            var y = yY - r * Math.sin(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            /*lines(canid,xweizhi1,yweizhi1,x,y);
+             xweizhi1=x;
+             yweizhi1=y;*/
+            /* 	添加一个新点，然后在画布中创建从该点到最后指定点的线条*/
+            ctx.lineTo(x, y);
+        }
+        /*lines("canvas",xweizhi1, yweizhi1,xX+mDataSS[0][1]/mDataSS[0][2]*r,yY);*/
+        /*创建从当前点回到起始点的路径*/
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+        /*填充当前绘图（路径）*/
+        ctx.fill();
+        /*返回之前保存过的路径状态和属性*/
+        ctx.restore();
+    }
+    /*画点*/
+    function drawCircle(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        ctx.save();
+
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            var y = yY - r * Math.sin(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+
+            ctx.beginPath();
+            ctx.arc(x, y, xX / 60, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+            ctx.fill();
+        }
+
+        ctx.restore();
+    }
+    /*绘制文本*/
+    function drawText(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        var pianyix = 55;
+        var pianyiy = 8;
+        ctx.save();
+        ctx.font = 12 + 'px Microsoft Yahei';
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i*Math.PI / 180);
+            var y = yY - r  * Math.sin(jiaodu * i*Math.PI / 180);
+            if (jiaodu*i<=90){
+                x=x+pianyiy;
+                y=y+pianyiy;
+            }
+            else if (jiaodu*i<=180){
+                x=x-pianyix;
+                y=y+pianyiy;
+            }
+            else if (jiaodu * i <= 270){
+                x=x-pianyix;
+                y=y+pianyiy;
+            }
+            else{
+                x=x+pianyiy;
+                y=y+pianyiy;
+            }
+
+            ctx.fillText(mDataSS[i][0], x, y);
+        }
+
+        ctx.restore();
+    }
+</script>
+</body>
+</html>

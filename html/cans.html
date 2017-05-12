@@ -18,6 +18,7 @@
 <button onclick="drawRadarMap('canvas',200,200,100,4,8,500,500);">自己写的雷达图</button>
 <canvas id="myChart"></canvas>
 <script type="text/javascript">
+    /*用char.min第三方插件画雷达图*/
     var max = Math.max(5, 4, 3, 2, 1, 5);
     var radarChartData = {
         labels: ["能力位置", "动力位置", "行为位置", "能力指数", "动力指数", "行为指数"],
@@ -102,7 +103,7 @@
 </script>
 
 <script type="text/javascript">
-    /*画雷达图*/
+    /*网上画雷达图的方法*/
     var mW = 400;
     var mH = 400;
     var mData = [['速度', 70],
@@ -255,18 +256,22 @@
         var nN = kedu;
         /*维度*/
         var wW = weidu;
+        /*画布的宽高*/
         var mW2 = canw;
         var mH2 = canh;
+        /*角度*/
         var jiaodu = 360 / wW;
+        /*累计角度*/
         var leijijiaodu = 360 / wW;
-        var arrbegin;
         /*划线坐标位置开始数组，2维数组*/
-        var arrend;
+        var arrbegin;
         /*划线坐标位置结束数组，2维数组*/
-        var Linshix;
+        var arrend;
         /*临时相对X坐标*/
-        var linshiy;
+        var Linshix;
         /*临时相对Y坐标*/
+        var linshiy;
+       /*数据二维数组*/
         var mData = [['动力指数', 3, 5],
             ['能力指数', 15, 20],
             ['行为指数', 8, 10],
@@ -275,28 +280,30 @@
             ['能力位置2', 3, 3],
             ['能力位置2', 3, 3],
             ['行为位置', 5, 5]];
+        /*找到画布并设置宽高*/
         var canvas = document.getElementById(canid);
         canvas.height = mH2;
         canvas.width = mW2;
         var mCtx = canvas.getContext('2d');
-
-        /*lines("canvas", xX, yY, xX + mM, yY);*/
         /*画一条线*/
+        /*lines("canvas", xX, yY, xX + mM, yY);*/
+        /*存入开始坐标*/
         arrbegin = [[xX, yY]];
-
+        /*根据维度循环画线*/
         for (var i = 0; i <= parseInt(wW); i++) {
 
             arrend = [[xX, yY]];
+            /*根据刻度画三角形*/
             for (var j = 0; j <= nN; j++) {
 
                 Linshix = j * mM / nN * Math.cos(leijijiaodu * Math.PI / 180);
 
                 linshiy = j * mM / nN * Math.sin(leijijiaodu * Math.PI / 180);
-
+                /*定义变量接收结束坐标并存入结束坐标数组*/
                 var temp = [[xX + Linshix, yY - linshiy]];
                 arrend = arrend.concat(temp);
             }
-
+            /*调用画全部线的方法*/
             allline(arrbegin, arrend, xX, yY);
             leijijiaodu = leijijiaodu + jiaodu;
             arrbegin = arrend;
@@ -306,10 +313,15 @@
         drawRegion(canid, wW, xX, yY, mM, mData);
         /*画点*/
         drawCircle(canid, wW, xX, yY, mM, mData);
+        /*绘制文本*/
         drawText(canid, wW, xX, yY, mM, mData);
 
     }
     function allline(arrb, arre, xxX, yyY) {
+        /*1.开始坐标数组
+        2.结束坐标数组
+        3.原点坐标X
+        4原点坐标y*/
         var arrlengh1 = arrb.length;
         var arrlengh2 = arre.length;
         if (arrlengh1 != arrlengh2) {
@@ -337,8 +349,8 @@
         ctx.save();
         /*新建一条路径*/
         ctx.beginPath();
-        var xweizhi1 = xX + mDataSS[0][1] / mDataSS[0][2] * Math.cos(jiaodu * 0 * Math.PI / 180) * r;
-        var yweizhi1 = yY;
+     /*   var xweizhi1 = xX + mDataSS[0][1] / mDataSS[0][2] * Math.cos(jiaodu * 0 * Math.PI / 180) * r;
+        var yweizhi1 = yY;*/
 
         for (var i = 0; i < weidu; i++) {
             var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <title>统计任务</title>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/PC_public_JS.js'></script>
+    <style type="text/css">
+        .divStyle{
+            background: #FFFFFF;
+            text-align: center;
+            overflow:hidden;
+            margin-top: 4px;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+        }
+        input{
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius:10px;
+            border: 1px solid #efeef4;
+            outline:none;
+            height: 20px;
+        }
+    </style>
+</head>
+<body style="margin: 0 auto;padding: 0;background:#efeef4;font-size: 25px;">
+<div style="text-align: center;">
+    <!--任务描述-->
+    <div style="background: #FFFFFF;" id="descriptions"></div>
+
+    <!--统计任务行-->
+    <div style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 4px;vertical-align: bottom;">
+        <img src="" style="display: none;width: 50px;height: 50px;"id="png">
+        <span id="task_line"></span>
+    </div>
+
+    <!--统计任务列-->
+    <div id="task_list" style="background:#FFFFFF;padding-bottom: 10px;font-size: 20px;">
+        <ylt.for dataId="1504075277860">
+            <div name="lie" class="divStyle">$value:<input type="text" oninput="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" oninput="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div name="lie" class="divStyle">$value:<input type="text" onchange="isRoundNumber(this)" name="lie_value" placeholder="请输入评价!"/></div>
+            <div id="min" style="display: none;">$value</div>
+            <div id="max" style="display: none;">$value</div>
+        </ylt.for>
+    </div>
+
+
+    <!--提交按钮-->
+    <div style="text-align: center;margin: 0 auto; width: 95%;">
+        <button onclick="saveData();"
+                style="background-color: #029ae5;color: #FFFFFF;width: 225px;font-size:25px;border-radius:10px;height: 50px;margin-top: 50px;margin-bottom: 30px;"
+                id="submitButton">
+            下一个
+        </button>
+    </div>
+    <!--未打分任务数和打分区间-->
+    <div id="gradingRange"></div>
+</div>
+</body>
+<script type="text/javascript">
+    /*得到地址栏的参数的值*/
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    /*得到地址栏的参数的中文的值*/
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    /*给任务描述赋值*/
+    document.getElementById("descriptions").innerText=getQueryString1("taskDescription");
+    /*document.getElementById("descriptions").innerText="测试统计打分任务";*/
+</script>
+<script type="text/javascript">
+    /*记录当前是第几行*/
+    var count = 0;
+    /*用户*/
+    var user="";
+    <ylt.v message="user">
+            $value
+    user="$value";
+    </ylt.v>
+    /*创建任务行的相关数组并赋值*/
+    var TaskLineID=new Array();
+    var TaskLineName=new Array();
+    var TaskLineImg=new Array();
+    <ylt.for dataId="1504075257619">
+            TaskLineID.push('$value');
+    TaskLineName.push('$value');
+    TaskLineImg.push('$value');
+    </ylt.for>
+    /*评分的值*/
+    var  scoring=document.getElementsByName('lie_value');
+    /*切换任务行名称*/
+    function qieHuanBiaoTi() {
+        /*判断行数组的长度*/
+        if (TaskLineName.length > 1) {
+            if(count<=TaskLineName.length-1){
+                task_line.innerHTML=TaskLineName[count];
+                /*如果图片数组长度不为零并且不为空给图片设置src*/
+                if(TaskLineImg.length!=0&&TaskLineImg[count]!=""&&TaskLineImg[count]!=null){
+                    png.src="upload/"+TaskLineImg[count];
+                    png.style.display="inline";
+                }
+                /*如果图片是隐藏状态清除任务行所有样式*/
+                gradingRange.innerText="未执行任务:"+(TaskLineName.length-count)+",\n评价区间:["+min.innerText+"~"+max.innerText+"]。";
+                if(count==TaskLineName.length-1){
+                    submitButton.innerText="完成任务";
+                }
+                count++;
+            }
+        }else{
+            /*只有一个时的处理*/
+            if(TaskLineImg.length!=0&&TaskLineImg[count]!=""&&TaskLineImg[count]!=null){
+                png.src="upload/"+TaskLineImg[count];
+                png.style.display="inline";
+            }
+            task_line.innerHTML=TaskLineName[count];
+            gradingRange.innerText="未执行任务:"+(TaskLineName.length-count)+",\n评价区间:["+min.innerText+"~"+max.innerText+"]。";
+            submitButton.innerText="完成任务";
+            count=1;
+        }
+
+    }
+    qieHuanBiaoTi();
+
+    var second = 0;
+    var t1;
+    /*将数据存到统计任务记录表*/
+    function saveData(){
+        /*alert(TaskLineID[count-1]);*/
+        /*如果second等于零进入下一任务并启动倒计时5秒之后才能再提交*/
+        if(second==0){
+            /*将用户打分的情况存入统计任务记录表中*/
+            var timestamp = new Date().getTime();
+            var Searchrecords = sys_doComMandReturn("101",
+                    "S_HANG_ID="+ TaskLineID[count-1]
+                    +"&S_ID="+timestamp
+                    +"&S_USER="+user
+                    +"&S_LEI_ONE="+scoring[0].value
+                    +"&S_LEI_TWO="+scoring[1].value
+                    +"&S_LEI_THREE="+scoring[2].value
+                    +"&S_LEI_FOUR="+scoring[3].value
+                    +"&S_LEI_FIVE="+scoring[4].value
+                    +"&S_LEI_SIX="+scoring[5].value
+                    +"&S_LEI_SEVEN="+scoring[6].value
+                    +"&S_LEI_EIGHT="+scoring[7].value
+                    +"&S_LEI_NINE="+scoring[8].value
+                    +"&S_LEI_TEN="+scoring[9].value
+                    +"&S_TASK_ID="+getQueryString("taskID"));
+            /*清空评分的值*/
+            clearTheScore();
+            second = 3;
+            t1 = window.setInterval(countdown,1000);
+            /*如果是最后一个给原生发消息关闭页面*/
+            if(count==TaskLineName.length){
+                var Searchrecord = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + user);
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.closeTask.postMessage("task");
+                }else{
+                    window.callByJs.setValue("complete_the_task");
+                }
+            }
+            qieHuanBiaoTi();
+        }
+    }
+
+    /*计时器*/
+    function countdown(){
+        /*倒计时当second=0移除定时器*/
+        second--;
+        if(second <= 0){
+            window.clearInterval(t1);
+        }
+    }
+
+
+    /*隐藏空的列*/
+    function hiddenColumn(){
+        var lies=document.getElementsByName('lie');
+        for(var i=0;i<lies.length;i++){
+            if(lies[i].innerText==":"){
+                lies[i].style.display="none";
+            }
+        }
+    }
+    hiddenColumn();
+
+    /*清空评分的值*/
+    function clearTheScore(){
+        for(var i=0;i<scoring.length;i++){
+            scoring[i].value="";
+        }
+    }
+
+
+    /*输入的是否是正整数*/
+    function isRoundNumber(obj) {
+        var num=obj.value;
+        /*if (num=="") {
+         alert("请输入内容");
+         return false;
+         }
+         if (!(/(^[1-9]\d*$)/.test(num))) {
+         alert("输入的不是正整数");
+         return false;
+         }else {
+         if(parseInt(min.innerText)<=parseInt(num)&&parseInt(num)<=parseInt(max.innerText)){
+         alert("输入正确");
+         }else{
+         alert("请输入打分区间之内的整数");
+         }
+         }*/
+        if (!(/^-?\d+\.?\d{0,2}$/.test(num))) {
+            alert("请输入小数（最多两位）或者正整数");
+            return false;
+        }else {
+            if(parseInt(min.innerText)<=parseInt(num)&&parseInt(num)<=parseInt(max.innerText)){
+                /*alert("输入正确");*/
+            }else{
+                alert("请输入打分区间之内的整数");
+            }
+        }
+    }
+
+</script>
+</html>

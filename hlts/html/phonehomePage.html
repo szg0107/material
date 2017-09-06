@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html> <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js' ></script>
+    <script type='text/javascript' src='js/checkform.js'  ></script>
+<script language="javascript" src="js/check.js" ></script>
+<head>
+	<meta charset="UTF-8">
+	<meta name=viewport content="user-scalable=no">
+	<title></title>
+	<style>
+		.mian {
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			margin: auto;
+		. width: 10px;
+			height: 500px;
+
+		}
+
+		.plogin_tb {
+			width: 80%;
+		}
+
+		.plogin_tb tr td input {
+			width: 98%;
+			height: 100px;
+		}
+
+		.plogin_tb tr td button {
+			width: 40%;
+			height: 100px;
+			font-size: 26px;
+		}
+	</style>
+
+</head>
+
+<body style="font-family: Heiti SC;">
+<div class="mian" align="center">
+	<table class="plogin_tb" cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td>
+				<br />
+				<button type="button" style="width: 98%;">圈子列表</button><br />
+			</td>
+		</tr>
+		
+		<ylt.for dataId="1489977256203">
+		<tr>
+			<td><a href="http://123.56.187.157/hlts/test.view?id=$value">》》》》》</a>
+			$value $value 
+			
+			</td>
+		</tr>
+		</ylt.for>
+		
+		<!--<img src="/upload/$value">-->
+	</table>
+	
+	<div style="background-color: rosybrown;">
+		sdfdsfdsfsdf</br>
+		<input style="" id="pwd" type="text"/>旧密码</br>
+		<input style="" type="text"/>新密码</br>
+		<input style="" id="newUserPwd" type="text"/>新密码</br>
+		<button onclick="updateUserPwd()"></button>
+	</div>
+</div>
+<div>
+	
+<!--这是搜索结果为空时，创建圈子，并且关注圈子form-->
+<form id="add" method="post" style="width:100%;height:100%;">
+<input type="hidden" id="urlAA" name="NO_DOSCRIPT" value="window.location='test.view';"/>
+<input type='hidden' name='NO_charset' value='utf-8'/>
+    <ylt.form page="1489976178290">  
+        $value $value $value  $value $value $value $value  $value $value $value $value $value 
+    <input  type="submit" value="提交"   onclick="return test()" />
+      
+  </ylt.form>
+
+</form>
+
+</div>
+
+<button onclick="testsss()">025</button>
+
+<button onclick="testdddd()">026</button>
+</body>
+
+</html>
+
+
+<script>
+	function testsss(){
+		alert(1);
+		var strVResult=sys_doComMandReturn("025","S_ID=id&S_KSPC=考试批次&S_KSQZ=考试圈子&S_KSR=考试人&S_KSSJ=考试时间&S_KSZF=考试总分&S_KSZQL=考试正确率&S_KSZY=考试专业");
+		var strVResult=sys_doComMandReturn("025","S_ID=1&S_KSPC=1&S_KSQZ=1&S_KSR=1&S_KSSJ=1&S_KSZF=1&S_KSZQL=考1&S_KSZY=1");
+		var strVResult=sys_doComMandReturn("032","id=1");
+	alert(strVResult);
+	}
+	function testdddd(){
+		var strVResult=sys_doComMandReturn("026","S_ID=id&S_KSPC=考试批次&S_KSR=考试人&S_KSSJ=考试时间&S_KSTH=考试题号&S_XZDDA=选中的答案");
+	alert(strVResult);
+	}
+</script>
+
+
+
+
+<script>
+	/**这是获取session用户名**/
+	var user="";
+	 <ylt.v message="user">
+		        $value
+		    user="$value";
+		    </ylt.v>  
+	/**alert(user);**/
+	
+	function test(){
+		var name=document.getElementsByName("T_P_QZB$S_QZM")[0].value;
+		alert(name);
+		var returnResults=seekName(name);
+		alert(returnResults);
+		alert(returnResults[0]);
+		if(returnResults[0]!=""&&returnResults[0]!=null&&returnResults[0]!=undefined&&returnResults[0]!='null'){
+			      
+			      var newResult=getTx("attentionCircleId="+returnResults[0],"phoneJump.view");
+			       var  attentionCircleId=incision(newResult,"attentionCircle=",";");
+			       
+			       var timestamp=new Date().getTime();
+			       
+			       if(attentionCircleId==""||attentionCircleId==null||attentionCircleId==undefined||attentionCircleId=='null'){
+			       	   
+				alert(timestamp+"时间");
+						
+						var strVResult=sys_doComMandReturn("005","S_QZBID="+returnResults[0]+"&S_ID="+timestamp+"&S_YHM="+user);
+						alert(name);
+	var strVResult=sys_doComMandReturn("019","S_QZBID="+returnResults[0]+"&S_ID="+timestamp+"&S_QZM="+name+"&S_SSR="+user+"&S_SSSJ="+timestamp);
+						
+						
+						
+						
+						window.location.href="test.view?id="+returnResults[0]+"&circleAdmin="+returnResults[1]+"";
+						return false;
+			       }else{
+			       	alert(name);
+			       	var strVResult=sys_doComMandReturn("019","S_QZBID="+returnResults[0]+"&S_ID="+timestamp+"&S_QZM="+name+"&S_SSR="+user+"&S_SSSJ="+timestamp);
+			       	window.location.href="test.view?id="+returnResults[0]+"&circleAdmin="+returnResults[1]+"";
+			       	return false;
+			       }
+			            
+			
+			
+		}
+		if(returnResults[0]==""||returnResults[0]==null||returnResults[0]==undefined||returnResults[0]=='null'){
+			
+	
+			return true;
+		}
+		
+		
+		
+	}
+	
+	
+	/**搜索圈子名**/
+	function seekName(name){
+		var Result=getTx("seekName="+name,"phoneJump.view");
+		var indexOfNumber="circleNumber=";
+		var over=";";
+		var Results = new Array();    
+		A=incision(Result,indexOfNumber,over);
+		B=incision(Result,"circleAdmin=",over);
+		Results[0]=A;
+		Results[1]=B;
+		
+		return Results;
+		
+
+		
+		/*var Result=getTx("seekName="+name,"phoneJump.view");
+		alert(Result);
+		nameResult=Result.substr(Result.indexOf(circleName+"="));
+		alert(nameResult);
+		nameResult=nameResult.substr(0,nameResult.indexOf(";"));
+			/**alert("后"+strResult);
+		alert(nameResult);	
+		nameResult=nameResult.split(circleName+"=")[1];
+		alert(nameResult+"nameResult");
+		
+		
+		var Results = new Array(); 
+		Results[0]=nameResult;
+		if(nameResult!=undefined){
+			Result=Result.substr(Result.indexOf(circleNumber+"="));
+			
+		    Result=Result.substr(0,Result.indexOf(";"));
+			/**alert("后"+strResult);
+		    numberResult=Result.split(circleNumber+"=")[1];
+			alert(numberResult+"numberResult");
+			Results[1]=numberResult;
+		}
+	
+		
+		return Results;**/
+	}
+	
+	
+	/**切割字符串方法  incision(切割) Result结果，从哪里切，切割到哪**/
+	function incision(Result,start,over){
+		    Result=Result.substr(Result.indexOf(start));
+		    Result=Result.substr(0,Result.indexOf(over));
+			/**alert("后"+strResult);**/
+		    Result=Result.split(start)[1];
+		return Result;
+	}
+	
+</script>
+
+
+
+<script>
+	/**修改密码Js
+	alert(document.getElementById("pwd").value);**/
+	function updateUserPwd(){
+		var oldUserPwd=document.getElementById("pwd").value;
+		var newUserPwd=document.getElementById("newUserPwd").value;
+		var Result=getTx("userPwd="+oldUserPwd,"phoneJump.view");
+		var indexOfNumber="userPwd=";
+		var over=";"; 
+		Results=incision(Result,indexOfNumber,over);
+		alert(Results);
+		if(Results!=""&&Results!=null&&Results!=undefined&&Results!='null'){
+			
+			var strVResult=sys_doComMandReturn("016","S_MM="+newUserPwd+"&S_ID="+Results);
+			alert("修改成功");
+		}
+		if(Results==""||Results!=null||Results==undefined||Results=='null'){
+			alert("旧密码输入不对");
+		}
+		
+	}
+	
+</script>

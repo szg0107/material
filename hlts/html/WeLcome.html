@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='js/check.js'></script>
+    <title></title>
+    <style>
+        #warp tr td button {
+            font-size: 36px;
+            border-radius: 10px;
+            border: 0px solid #FFFFFF;
+            height: 100px;
+            width: 450px;
+            font-weight: bold;
+        }
+
+        #warp {
+            position: absolute;
+            width: 100%;
+            height: 830px;
+            top: 40%;
+            margin-top: -300px;
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0;background-color:#029ae5;font-family: Heiti SC;">
+<table border="0" id="warp" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="13%">
+            <div style="width: 100px; border: 0px;"></div>
+        </td>
+        <td align="center">
+            <!--border: none;outline:none;-->
+            <img width="120px" height="120px" src="images/pages/logo.png" id="logo"/> <br/>
+
+            <div align="left" style="margin-left:10%;margin-top: 100px;">
+                <span style="font-size: 72px;font-weight: lighter;color: #FFFFFF;font-weight: bold;" id="shiYong">欢迎使用 KMoon</span>
+                <br/><span
+                    style="font-size: 36px;font-weight: lighter;color: #FFFFFF;  margin-top: 35px;font-weight: bold;">实时感知 不断成长</span>
+            </div>
+            <!--<button onclick="registered();" style="color: #029ae5;background-color: #FFFFFF;margin-top: 200px;">注册</button>-->
+            <!--<br/>-->
+            <button onclick="login();"
+                    style="color: #FFFFFF;background-color: #029ae5; margin-top: 250px; border: 1px solid #FFFFFF;"
+                    id="dl">进入
+            </button>
+        </td>
+        <td width="13%">
+            <div style="width: 100px;  border: 0px;"></div>
+        </td>
+    </tr>
+</table>
+
+<div id="searchStatus" hidden="true">
+    <ylt.for dataId="1503901829320">
+        $value
+    </ylt.for>
+</div>
+<script>
+    /*判断移动端类型*/
+    var ua = navigator.userAgent.toLowerCase();
+    /*设置或获取 URL 的主机部分*/
+    var address = window.location.host;
+    /*登录，自动登录时给原生发消息*/
+    var message = "login";
+    /*phone_session的地址*/
+    var phone_session = "";
+    /*初始化*/
+    function init() {
+        /*if (/iphone|ipad|ipod/.test(ua)) {
+         dl.style.width = "100%";
+         dl.style.height = "130px";
+         } else if (/android/.test(ua)) {
+         dl.style.width = "100%";
+         dl.style.height = "100px";
+         }*/
+        /*如果是天智服务器logo和文字隐藏*/
+        if (address == "106.74.152.59") {
+            logo.style.display = "none";
+            shiYong.style.display = "none";
+        }
+        /*如果测试服务器资源地址前加/hlts*/
+        if (address == "123.56.187.157") {
+            phone_session = "/hlts/res/java/phone_session.jsp";
+        } else {
+            phone_session = "/res/java/phone_session.jsp";
+        }
+    }
+    init();
+</script>
+<script>
+    /*注册*/
+    function registered() {
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.registered.postMessage(null);
+        } else {
+            window.callByJs.setValue("registered");
+        }
+    }
+    /*登录*/
+    function login() {
+        var userAgent = navigator.userAgent;
+        var message_array = {"message": message};
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.login.postMessage(message_array);
+        } else {
+            window.callByJs.setValue(message);
+        }
+    }
+    /*自动登录*/
+    function AutoLogin(userName, passWord) {
+        var strResult = getTx("user=" + userName + "&pwd=" + passWord, "jump.view");
+        var isTrue = incision(strResult, "isTrue=", ";");
+        var nickName = incision(strResult, "nickName=", ";");
+        if (isTrue == null || isTrue == "null" || isTrue == undefined) {
+            message = "fail";
+        } else {
+            if (isTrue == "sc") {
+                var strResult = getTx("jueseA=sc&request=true&equipment=phone&nickName=" + nickName + "&user=" + userName, phone_session);
+                if (/android/.test(ua)) {
+                    alert(strResult);
+                }
+                message = "succeed";
+            }
+        }
+    }
+    /**切割字符串方法  incision(切割) Result结果，从哪里切，切割到哪**/
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+    /*搜索框是否开启*/
+    function searchStatus() {
+        var status = document.getElementById('searchStatus').innerHTML;
+
+        if (status.indexOf('关闭') > -1) {
+            status = '关闭';
+        } else {
+            status = '开启';
+        }
+
+        var userAgent = navigator.userAgent;
+        var data = {"status": status};
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.searchStatus.postMessage(data);
+        } else {
+            window.callByJs.getSearch(status);
+        }
+    }
+    searchStatus();
+</script>
+
+</body>
+
+</html>
+
+
+

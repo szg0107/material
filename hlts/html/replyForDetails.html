@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script language="javascript" src="js/check.js"></script>
+    <title></title>
+</head>
+<body style="font-family: Heiti SC;">
+<ylt.for dataId="1491013614525">
+    <table width="100%" style="padding-left: 48px;padding-right: 48px;word-wrap:break-word;word-break:break-all;">
+        <tr>
+            <td style="font-size: 50px;word-wrap:break-word;word-break:break-all;"colspan="2">
+                回答者：<span style="color: gray">$value</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 50px" align="left">
+                <img src="res/images/grayPraise.png" onclick="praise(this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;"/>
+                <span style="color: gray">$value 点赞数:</span>
+                <span name="zanCount" style="color: gray"></span>
+                <hr/>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 50px;" align="left">
+                回复详情：<span style="color: gray;">$value</span>
+            </td>
+        </tr>
+    </table>
+    <img src="res/images/shanchu.png" style="position: fixed;z-index: 999;right: 0;bottom:0;float: right;margin-bottom: 160px;display: none;width: 100px;height: 100px;" onclick="clickDelete_Question();" id='deleteQuestion' alt="$value"/>
+</ylt.for>
+</body>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    function updateZan() {
+
+        var zans = document.getElementsByName('zan');
+        /**如果name=null将已赞隐藏**/
+        for (var i = 0; i < zans.length; i++) {
+            if(isPraised(zans[i].id)){
+                zans[i].src =  "res/images/bluePraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('QuestionID'),zans[i].id);
+            }else{
+                zans[i].src =  "res/images/grayPraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('QuestionID'),zans[i].id);
+            };
+        }
+    }
+    updateZan();
+    /**点击小手**/
+    function praise(zan) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=answer&wzid=" + zan.id, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+
+            var strVResult = sys_doComMandReturn("033", "S_DZWZ=" + zan.id + "&S_ID=" + timestamp + "&S_LB=answer");
+            var dianzanshu=  contributeCountTest(getQueryString('QuestionID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)+1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("039", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id +"&S_TWBID="+getQueryString('QuestionID'));
+            zan.src = "res/images/bluePraise.png";
+            updateZan();
+        }else{
+            /*
+             * 已赞
+             * */
+
+            var strVResult = sys_doComMandReturn("034", "S_ID=" + dianzanID);
+            var dianzanshu=  contributeCountTest(getQueryString('QuestionID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)-1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("039", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id + "&S_TWBID="+getQueryString('QuestionID'));
+            zan.src = "res/images/grayPraise.png";
+
+            updateZan();
+        }
+
+    }
+    /*
+     * 当前用户是否赞过
+     *
+     * */
+
+    function isPraised(fileID) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=answer&wzid=" + fileID, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    /**回复的被赞数**/
+    function contributeCountTest(questionID,ResponseID){
+
+        var newResultdfdfd=getTx("QuestionId="+questionID+"&ResponseId="+ResponseID,"phonejumpA.view");
+        var likeResponseCount=incision(newResultdfdfd,"likeResponseCount=",";");
+        var count;
+        if(likeResponseCount == ""||likeResponseCount==null||likeResponseCount=="null"){
+            return count=0;
+        }else{
+            return count=parseInt(likeResponseCount);
+        }
+    }
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+
+    function clickDelete_Question() {
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.deleteAnswer.postMessage(null);
+        } else {
+            window.callByJs.setValue("deleteQuestion");
+        }
+    }
+    /**这是获取session用户名**/
+    var user="";
+    <ylt.v message="user">
+            $value
+    user="$value";
+    </ylt.v>
+    if(deleteQuestion.alt==user){
+        deleteQuestion.style.display="inline";
+    }
+
+    function delete_Answer(QuestionID){
+        var Searchrecords = sys_doComMandReturn("096","id="+QuestionID);
+    }
+</script>
+</html>

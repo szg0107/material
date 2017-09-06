@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+
+    <meta name=viewport content="user-scalable=no">
+
+    <style>
+        .gps_font {
+            font-size: 45px;
+            color: black;
+        }
+
+        .limitlength {
+            table-layout: fixed;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body bgcolor="#efeef4" style="font-family: Heiti SC;">
+<ylt.for dataId="1491812870656">
+    <div style="margin-top: 40px;margin-left: 40px;margin-right: 40px;clear: both;" class="limitlength">
+        <div  name="png" style="border-radius: 20px; border: 1px solid gray;">
+            <img src="upload/$value"  onclick="clickPicture(this);recordLrecord('$value');" name="picture" width="100%" style="border: 1px solid gray;border-radius: 20px;$value">
+        </div>
+
+        <div class="gps_font" style="background-color: #efeef4;clear: both;height: 60px;margin-top: 30px;">
+            <div style="float: left;width: 15%;"class="gps_font">主题：</div>
+            <div class="limitlength gps_font" style="float: left;width: 83%;margin-left: 10px;">
+                <div class="limitlength" name="title" style="width: 50%;float: left">$value</div>
+                <span style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;margin-left: 10%">
+                    点赞数:
+                    <span name="zanCount"></span>
+                </span>
+                <img src="res/images/bluePraise.png" onclick="praise(this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;margin-left: 10%"/>
+            </div>
+        </div>
+
+        <div class="gps_font" style="background-color: #efeef4;clear: both;height: 300px;">
+            <div style="float: left;width: 15%;height:260px; "class="gps_font"><div>简介：</div><img name="contentButton" src="res/images/blueBook1.png" onclick="PopupWindow(this)"  style="margin-top: 120px;width: 100px;height: 100px;"/></div>
+            <div name="content" style="float: left;width: 83%;height: 260px;white-space:normal;border-radius: 10px;margin-left: 10px;"class="limitlength gps_font">
+                $value
+            </div>
+        </div>
+
+        <div style="background-color: white;clear: both;">
+            <hr size="10" style="background: #666;border: 0;">
+        </div>
+    </div>
+</ylt.for>
+
+
+
+<div id="tishi" class="gps_font" align="center"></div>
+
+<form id="searchForm" action="searchPicture.view" method="post">
+    <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
+    <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
+</form>
+</body>
+
+
+<script>
+    var imgs = document.getElementsByName('picture');
+    for(var i=0;i<imgs.length;i++){
+        var index = imgs[i].src.indexOf('upload/');
+        var newStr = imgs[i].src.substring(index+7,imgs[i].length);
+
+        if(newStr.indexOf('http') == 0){
+            imgs[i].src = newStr;
+        }
+
+    }
+</script>
+
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    var id = getQueryString('id');
+
+    function updateZan() {
+
+        var zans = document.getElementsByName('zan');
+        /**如果name=null将已赞隐藏**/
+        for (var i = 0; i < zans.length; i++) {
+            if(isPraised(zans[i].id)){
+                zans[i].src =  "res/images/bluePraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(id,zans[i].id);
+
+            }else{
+                zans[i].src =  "res/images/grayPraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(id,zans[i].id);
+            };
+        }
+    }
+    updateZan();
+
+    /**贡献的被赞数**/
+    function contributeCountTest(circleID,fileID){
+
+        var newResultdfdfd=getTx("circleID="+circleID+"&fileID="+fileID,"phonejumpA.view");
+        var likeileFileCount=incision(newResultdfdfd,"likeileFileCount=",";");
+        var count;
+        if(likeileFileCount == "" ||likeileFileCount==null||likeileFileCount=="null"||likeileFileCount=="NaN"){
+            return   count=0;
+        }else{
+            return   count=parseInt(likeileFileCount);
+        }
+    }
+
+
+    /**点击小手**/
+    function praise(zan) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=avi&wzid=" + zan.id, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+
+            var strVResult = sys_doComMandReturn("033", "S_DZWZ=" + zan.id + "&S_ID=" + timestamp + "&S_LB=avi");
+            var dianzanshu=  contributeCountTest(id,zan.id);
+
+            var newdianzanshu=parseInt(dianzanshu)+1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("045", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id + "&S_QZBID="+id);
+            zan.src = "res/images/bluePraise.png";
+            updateZan();
+        }else{
+            /*
+             * 已赞
+             * */
+            var strVResult = sys_doComMandReturn("034", "S_ID=" + dianzanID);
+            var dianzanshu=  contributeCountTest(id,zan.id);
+            var newdianzanshu=parseInt(dianzanshu)-1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("045", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id + "&S_QZBID="+id);
+            zan.src = "res/images/grayPraise.png";
+
+            updateZan();
+        }
+
+    }
+    /*
+     * 当前用户是否赞过
+     *
+     * */
+
+    function isPraised(fileID) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=avi&wzid=" + fileID, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
+
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+</script>
+
+
+<script type="text/javascript">
+    var picture = document.getElementsByName('picture');
+    if(picture.length == 0){
+        tishi.innerText="很抱歉，没有您想要的资源！";
+    }
+
+    function PopupWindow(content) {
+        var contentbuttons = document.getElementsByName('contentButton');
+        var neirong="";
+        for(var i = 0;i<contentbuttons.length;i++){
+            if(contentbuttons[i] == content){
+                neirong=document.getElementsByName('content')[i].innerHTML;
+                neirong = neirong.replace(/(^\s*)/g,"");
+                var title=document.getElementsByName('title')[i].innerHTML;
+                var data = {"title": title,"content":neirong};
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.details.postMessage(data);
+                } else {
+                    alert("主题:\n\t\t"+title.replace(/(^\s*)/g,"")+"\n"+"简介:\n\t\t"+neirong);
+                }
+            }
+        }
+    }
+    var id="";
+    <ylt.v message="id">
+            $value
+    id="$value";
+    </ylt.v>
+    function clickPicture(picture) {
+
+        var isVIP = Can_the_content_be_viewed(getQueryString('id'));
+        if(!isVIP){
+            /*alert('您不是本圈子会员！请进行充值！');*/
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.needPay.postMessage(null);
+            } else {
+                window.callByJs.isVIP();
+            }
+
+            return;
+        }
+
+        var content = {"picture": picture.src};
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.pictureClick.postMessage(content);
+        } else {
+            window.callByJs.setValue(picture.src);
+        }
+    }
+    function recordLrecord(ID){
+        /*记录学习情况*/
+        var timestamp = new Date().getTime();
+        var record_Learning = sys_doComMandReturn("030", "S_QZID=" +id+ "&S_WAID=" +ID + "&S_XXLX=png" + "&S_XXSJ=" +timestamp+ "&S_ID=" + timestamp);
+    }
+</script>
+<script>
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+</script>
+<script>
+    if(getQueryString('content') != null) {
+        var contentInput = document.getElementById('contentInput');
+        contentInput.value = getQueryString1('content');
+        var circleID = document.getElementById('circleID');
+        circleID.value = getQueryString('id');
+        var searchForm =  document.getElementById('searchForm');
+        searchForm.action="searchPicture.view?id="+circleID.value;
+        /*if(contentInput.value!=''&&contentInput.value!=null){
+         var timestamp = new Date().getTime();
+         var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + circleID.value + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=png");
+         }*/
+        searchForm.submit();
+    }
+</script>
+</html>

@@ -1,0 +1,114 @@
+<style>
+    .gps_font {
+        font-size: 50px;
+        color: black;
+    }
+    /*设置单元格内容的数量超出用省略号代替*/
+    .limitlength {
+        table-layout: fixed;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+</style>
+<meta name=viewport content="user-scalable=no">
+<script type='text/javascript' src='res/js/KMoonPub.js'></script>
+<script type='text/javascript' src='js/checkform.js'></script>
+
+<body bgcolor="#efeef4" style="margin: 0 auto;">
+<ylt.for dataId="1491790080366">
+    <div class="gps_font"  style="background: #FFFFFF;width: 100%;position: fixed; z-index: 999;height: 100px;line-height: 100px;border-bottom: 5px solid #efeef4;">我的提问数：$value</div>
+</ylt.for>
+<div style="height:90px"></div>
+<ylt.for dataId="1490068515035">
+    <table width="100%" style="padding-left: 48px;background: #FFFFFF;" onclick="clickQuestion('$value')" class="limitlength">
+        <tr style="height: 100px;">
+            <td style="font-size: 50px"  class="limitlength">
+                $value
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 40px;color: gray;text-indent: 2em;"  class="limitlength">
+                $value
+            </td>
+        </tr>
+        <tr >
+            <td style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4">
+                $value 被赞数:<span name="beizanshu">$value</span>
+            </td>
+            <td style="font-size: 35px;color: gray; border-bottom: 2px solid #efeef4" align="right">
+                回答人数:$value
+            </td>
+        </tr>
+
+    </table>
+</ylt.for>
+<form id="searchForm" action="myQuestion.view" method="post">
+    <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
+    <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
+</form>
+</body>
+<script>
+    function beiZanShuChuShiHua(){
+        var bzs=document.getElementsByName("beizanshu");
+        for(var i=0;i<bzs.length;i++){
+            if(bzs[i].innerText==''||bzs[i].innerText==null||bzs[i].innerText == undefined || bzs[i].innerText == 'null'){
+                bzs[i].innerText=0;
+            }
+        }
+    }
+    beiZanShuChuShiHua();
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    if(getQueryString('content') != null) {
+        var contentInput = document.getElementById('contentInput');
+        contentInput.value = getQueryString1('content');
+        var circleID = document.getElementById('circleID');
+        circleID.value = getQueryString('id');
+        var searchForm =  document.getElementById('searchForm');
+        searchForm.submit();
+    }
+    function clickQuestion(questionID) {
+
+        var isVIP = Can_the_content_be_viewed(getQueryString('id'));
+        if(!isVIP){
+            /*alert('您不是本圈子会员！请进行充值！');*/
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.needPay.postMessage(null);
+            } else {
+                window.callByJs.isVIP();
+            }
+
+            return;
+        }
+
+
+        addWatchCount(getQueryString('id'),questionID,'question');
+
+
+        var dict = {"questionID": questionID};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoQuestionDetails.postMessage(dict);
+        } else {
+            window.callByJs.setValue(questionID);
+        }
+    }
+    /*搜索记录方法*/
+    function SearchRecords(circleID,content){
+        var timestamp = new Date().getTime();
+        var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + circleID + "&S_SSSJ=" + timestamp + "&S_SSNR=" + content+ "&S_ID=" + timestamp+"&S_SSLX=question");
+    }
+</script>
+

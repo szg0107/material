@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <title>Chart.js折线图DEMO演示</title>
+    <script src="js/Chart.js"></script>
+    <meta name="viewport" content="initial-scale = 1, user-scalable = no">
+    <meta charset="UTF-8">
+    <style type="text/css">
+        input {
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align:center;clear:both;">
+    <canvas id="canvas" height="450" width="80"></canvas>
+</div>
+<span style="color: #ff0000">●</span>最高位置
+<span style="color: #0000ff">●</span>我的位置
+<ylt.for dataId="1493710594161">
+    <div style="display: none;">$value$value$value</div>
+    <div>我的动力位置：<input type="text" value="$value" id="myDongLiWeiZhi" readonly/></div>
+    <div>我的能力位置：<input type="text" value="$value" id="myNengLiWeiZhi" readonly/></div>
+    <div>我的行为位置：<input type="text" value="$value" id="myXingWeiWeiZhi" readonly/></div>
+</ylt.for>
+<ylt.for dataId="1493706534971">
+    <div style="display: none">
+        最大动力指数<input type="text" value="$value" id="maximumDongLiZhiShu"/>
+        最大能力指数<input type="text" value="$value" id="maximumNengLiZhiShu"/>
+        最大行为指数<input type="text" value="$value" id="maximumXingWeiZhiShu"/>
+    </div>
+    <div>最大动力位置<input type="text" value="$value" id="maximumDongLiWeiZhi" readonly/></div>
+    <div>最大能力位置<input type="text" value="$value" id="maximumNengLiWeiZhi" readonly/></div>
+    <div>最大行为位置<input type="text" value="$value" id="maximumXingWeiWeiZhi" readonly/></div>
+</ylt.for>
+    <div id="ts"></div>
+<script>
+    var maximumDongLiWeiZhi = document.getElementById("maximumDongLiWeiZhi").value;
+    var Aa = document.getElementById("myDongLiWeiZhi").value;
+    alert(maximumDongLiWeiZhi);
+    alert(Aa);
+    var lineChartData = {
+        labels: ["位置", ""],
+        datasets: [
+            {
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                data: [maximumDongLiWeiZhi]
+            },
+            {
+                fillColor: "rgba(151,187,205,0.5)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                data: [Aa]
+            }
+        ]
+
+    };
+
+    var defaults = {
+        scaleStartValue: null,
+        scaleLineColor: "#029ae5",
+        scaleLineWidth: 1,
+        scaleShowLabels: false,
+        scaleFontFamily: "'Arial'",
+        scaleFontSize: 20,
+        scaleFontStyle: "normal",
+        scaleFontColor: "#666",
+        scaleShowGridLines: true,
+        pointDot: true,
+        pointDotRadius: 8,
+        pointDotStrokeWidth: 1,
+        datasetFill: false,
+        animation: true,
+        animationSteps: 60,
+        animationEasing: "easeOutQuart",
+        onAnimationComplete: null,
+        responsive: true,
+        scaleGridLineColor: "rgba(0,0,0,0)",
+    };
+
+    window.onload = function () {
+        window.myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData, defaults);
+    };
+    if(Aa<=maximumDongLiWeiZhi){
+        document.getElementById('ts').innerText=Aa+maximumDongLiWeiZhi;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>缴费记录</title>
+</head>
+<style>
+    body{
+        padding:0;  /*去除内边距*/
+        border:0;   /*去除边框*/
+        margin:0;   /*去除外边距*/
+    }
+    .divstyle{
+        float: left;
+        width: 50%;
+        font-size: 45px;
+        height: 60px;
+        background-color: white;
+        margin-top: 3px;
+
+    }
+    .titleDiv{
+        font-size: 55px;
+        margin-top: 60px;
+        padding-left: 4%;
+    }
+    .contentDiv{
+        width: 100%;
+    }
+</style>
+<body bgcolor="#efeef4"  >
+
+<div class="titleDiv" >
+    会员圈子：
+</div>
+
+<div class="contentDiv"  align="center">
+    <div class="divstyle" style="width: 25%" align="center">圈子名称</div>
+    <div class="divstyle" style="width: 25%" align="center"></div>
+    <div class="divstyle" style="width: 50%" align="center">到期时间</div>
+</div>
+
+<ylt.for dataId="1498131156062">
+    <div class="contentDiv">
+        <div class="divstyle" style="width: 25%" align="center">$value</div>
+        <div class="divstyle" style="width: 25%" align="center"></div>
+        <div class="divstyle" style="width: 50%" align="center">$value</div>
+    </div>
+</ylt.for>
+
+<div style="width: 100%;height: 40px;clear: both" ></div>
+
+
+
+<div class="titleDiv" >
+    历史缴费记录：
+</div>
+
+
+<div class="contentDiv">
+    <div class="divstyle" style="width: 50%" align="center">缴费内容</div>
+    <div class="divstyle" style="width: 25%" align="center">金额</div>
+    <div class="divstyle" style="width: 25%" align="center">付款时间</div>
+</div>
+<ylt.for dataId="1498132404691">
+    <div class="contentDiv">
+        <div name="time" class="divstyle" style="width: 50%" align="center">$value</div>
+        <div name="time" class="divstyle" style="width: 25%" align="center">$value</div>
+        <div name="time" class="divstyle" style="width: 25%" align="center">$value</div>
+    </div>
+</ylt.for>
+
+<script>
+    var times = document.getElementsByName('time');
+    for(var i=0;i<times.length;i++){
+        times[i].innerHTML = times[i].innerHTML.substr(0,10);
+    }
+</script>
+</body>
+</html>

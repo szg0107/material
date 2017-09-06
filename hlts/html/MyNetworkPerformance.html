@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js'></script>
+<script type='text/javascript' src='js/checkform.js'></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title></title>
+    <style type="text/css">
+        input{
+            border: none;
+            outline: none;
+            font-size: 48px;
+        }
+    </style>
+</head>
+
+
+<body>
+<div id="last" style="font-size: 48px;text-indent: 2em;margin-top: 20px;border-radius: 10px;color:#029ae5;font-weight: bolder;">
+    我
+
+</div>
+<br/>
+
+<div id="lasttwo" style="font-size: 48px;">
+
+</div>
+<div id="lastthree" style="font-size: 48px;">
+
+</div>
+
+</form>
+<div style="display: none;">
+    <ylt.for dataId="1493112762837">
+        每单<input type="text" value="$value" id="everySingleOneMoney"/>
+        下级给上级<input type="text" value="$value" id="twoMoney"/>
+        下下级给上级<input type="text" value="$value" id="threeMoney"/>
+    </ylt.for>
+
+
+    我
+    <ylt.for dataId="1493015108681">单数<input type="text" value="$value" id="oneCount"/></ylt.for>
+
+    我的下级 <br/>
+    -----------------<br/>
+    <ylt.for dataId="1493020350131">
+        二级人<input type="text" name="twoPeple" value="$value"/>
+        单数<input type="text" name="twoCount" value="$value"/>
+        我的邀请码<input type="text" name="twoYaoqingma" value="$value"/>
+    </ylt.for>
+
+    我的下下级<br/>
+    ------------------<br/>
+    <ylt.for dataId="1493025127440">
+        三级人<input type="text" name="threePeple" value="$value"/>
+        单数<input type="text" name="threeCount" value="$value"/>
+        邀请码<input type="text" name="threeYaoqingma" value="$value"/>
+    </ylt.for>
+
+    <div id="divwodexiaji">
+        我的下级的钱数
+    </div>
+
+    <div id="divwodexiaxiaji">
+        我的xia下级的钱数
+    </div>
+</div>
+
+
+<script>
+    var everySingleOneMoney = document.getElementById("everySingleOneMoney").value;
+    var twoMoney = document.getElementById("twoMoney").value;
+    var threeMoney = document.getElementById("threeMoney").value;
+</script>
+<script>
+    /**最后的计算 我***/
+    function lastCalcul(everySingleOneMoney, twoMoney, threeMoney) {
+        var div = document.getElementById("last");
+        /*var input = document.createElement("input");
+         input.setAttribute("type", "text");*/
+        /**我的单数**/
+        /*input.setAttribute("value",document.getElementById("oneCount").value);
+         div.appendChild(input);*/
+        /*div.appendChild(document.createElement("br"));*/
+        /**得到二级的单数**/
+        var lastTwoCountValue = 0;
+        for (var i = 0; i < document.getElementsByName("twoPeple").length; i++) {
+            lastTwoCountValue += parseInt(document.getElementsByName("twoCount")[i].value);
+        }
+        /**  alert(lastTwoCountValue*3);
+         三级的单数**/
+        var lastThreeCountValue = 0;
+        for (var i = 0; i < document.getElementsByName("threePeple").length; i++) {
+            lastThreeCountValue += parseInt(document.getElementsByName("threeCount")[i].value);
+        }
+        /**alert(lastThreeCountValue*2);三级的单数**/
+        var ziji = document.getElementById("oneCount").value * everySingleOneMoney;
+        /**自己单数的钱**/
+        var erji = lastTwoCountValue * twoMoney;
+        /**二级给一级的钱**/
+        var sanji = lastThreeCountValue * threeMoney;
+        /**三级给一级的钱**/
+        /*  alert(parseInt(ziji+erji+sanji));*/
+        /*var inpute = document.createElement("input");
+         inpute.setAttribute("type", "text");
+         inpute.setAttribute("value",parseInt(ziji+erji+sanji));*/
+        /**我的单数**/
+        /*div.appendChild(inpute);*/
+        var shouyi=parseInt(ziji + erji + sanji);
+        if(!shouyi){
+            shouyi=0;
+        }
+        div.innerHTML = "我:(" + document.getElementById("oneCount").value + "," + shouyi + ")";
+    }
+    lastCalcul(everySingleOneMoney, twoMoney, threeMoney);
+
+</script>
+<script>
+    /**最后的计算下级**/
+    function lastTwoCalcul(everySingleOneMoney, twoMoney) {
+        var div = document.getElementById("lasttwo");
+        for (var i = 0; i < document.getElementsByName("twoPeple").length; i++) {
+            /*var input = document.createElement("input");
+             input.setAttribute("type", "text");
+             input.setAttribute("value",document.getElementsByName("twoPeple")[i].value);*/
+            /**二级人**/
+            /*div.appendChild(input);*/
+            /**得到三级的值**/
+            var sanjicount = 0;
+            for (var j = 0; j < document.getElementsByName("threePeple").length; j++) {
+                if (document.getElementsByName("twoYaoqingma")[i].value == document.getElementsByName("threeYaoqingma")[j].value) {
+                    sanjicount += parseInt(document.getElementsByName("threeCount")[j].value);
+                }
+            }
+            /**单数**/
+            /*var input = document.createElement("input");
+             input.setAttribute("type", "text");
+             input.setAttribute("value",document.getElementsByName("twoCount")[i].value);*/
+            /**二级人单数**/
+            /*div.appendChild(input);*/
+            /**单数**/
+            var sanji = sanjicount * twoMoney;
+            /*alert(sanji);*/
+            var ziji = document.getElementsByName("twoCount")[i].value * everySingleOneMoney;
+            var he = parseInt(sanji + ziji);
+            /*var input = document.createElement("input");
+             input.setAttribute("type", "text");
+             input.setAttribute("value",he);*/
+            /**二级人的钱**/
+            /*div.appendChild(input);
+             div.appendChild(document.createElement("br"));*/
+            var diver=document.createElement("div");
+            diver.setAttribute("style","background:#EFEEF4;border-radius: 10px;margin-left: 155px;");
+            diver.innerHTML +=document.getElementsByName("twoPeple")[i].value + ":(" + document.getElementsByName("twoCount")[i].value + "," + he + ")" ;
+            div.appendChild(diver);
+            if (document.getElementsByName("twoYaoqingma")[i].value == document.getElementsByName("threeYaoqingma")[i].value) {
+                /*div.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + document.getElementsByName("threePeple")[i].value + ":(" + document.getElementsByName("threeCount")[i].value + "," + document.getElementsByName("threeCount")[i].value * everySingleOneMoney + ")" + "<br>";*/
+                var divs = document.createElement("div");
+                divs.setAttribute("style","background:#ffffff;text-indent: 2em;padding-top: 20px;");
+                diver.appendChild(divs);
+                divs.innerHTML +=document.getElementsByName("threePeple")[i].value + ":(" + document.getElementsByName("threeCount")[i].value + "," + document.getElementsByName("threeCount")[i].value * everySingleOneMoney + ")" + "<br>";
+            }
+        }
+    }
+    lastTwoCalcul(everySingleOneMoney, twoMoney);
+</script>
+<script>
+    /**最后   计算我的下下级**/
+    function lastThreeCalcul(everySingleOneMoney) {
+        var div = document.getElementById("lastthree");
+        for (var i = 0; i < document.getElementsByName("threePeple").length; i++) {
+            /*var input = document.createElement("input");
+             input.setAttribute("type", "text");
+             input.setAttribute("value",document.getElementsByName("threePeple")[i].value);*/
+            /**下下级人**/
+            /*div.appendChild(input);
+             var input = document.createElement("input");
+             input.setAttribute("type", "text");
+             input.setAttribute("value",document.getElementsByName("threeCount")[i].value);*/
+            /**下下级单数**/
+            /*div.appendChild(input);
+             var input = document.createElement("input");
+             input.setAttribute("type", "text");
+             input.setAttribute("value",document.getElementsByName("threeCount")[i].value*everySingleOneMoney);*/
+            /**下下级钱**/
+            /*div.appendChild(input);
+             div.appendChild(document.createElement("br"));*/
+            div.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + document.getElementsByName("threePeple")[i].value + ":(" + document.getElementsByName("threeCount")[i].value + "," + document.getElementsByName("threeCount")[i].value * everySingleOneMoney + ")";
+        }
+    }
+    /*lastThreeCalcul(everySingleOneMoney);*/
+</script>
+
+
+</body>
+</html>

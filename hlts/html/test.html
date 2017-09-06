@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name=viewport content="user-scalable=no">
+	<title>Title</title>
+	<script type='text/javascript' src='js/pub.js'></script>
+	<script type='text/javascript' src='js/check.js'></script>
+	<script type='text/javascript' src='js/checkform.js'></script>
+	<script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
+</head>
+
+<style>
+	.Fruit {
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		margin: 30px 20px 30px 10px;
+	}
+
+	span {
+		width: 80%;
+	}
+</style>
+
+<body bgcolor="#efeef4" style="font-size: 48px;font-family: Heiti SC;">
+
+
+
+<ylt.for dataId="1499854763087">
+<div name="circleInfo" onclick="addItem('$value','$value','$value')" style="display: none;"></div>
+</ylt.for>
+<button onclick="startAddItem()">增加我的任务，收藏，缴费记录</button>
+<br>
+<script>
+	function addItem(circleId,shunxu,xianshi) {
+
+		var shunxuArray = shunxu.split("_");
+		var xianshiArray = xianshi.split("_");
+
+		if(shunxuArray.length==0){
+			shunxu+=0;
+			shunxuArray = shunxu.split("_");
+		}
+		while(shunxuArray.length<19){
+			shunxu +="_"+shunxuArray.length;
+			shunxuArray = shunxu.split("_");
+		}
+		if(xianshiArray.length==0){
+			xianshi+=A;
+			xianshiArray = shunxu.split("_");
+		}
+		while(xianshiArray.length<19){
+			xianshi +="_A";
+			xianshiArray = xianshi.split("_");
+		}
+
+
+		var strVResultss=sys_doComMandReturn("071","sx="+shunxu+"&sfxs="+xianshi+"&S_ID="+circleId);
+	}
+
+	function startAddItem() {
+		alert('开始增加三个选项');
+		var circleInfos = document.getElementsByName('circleInfo');
+		for(var i=0;i<circleInfos.length;i++){
+			circleInfos[i].click();
+		}
+		var strVResultss=sys_doComMandReturn("062","");
+		alert(strVResultss);
+	}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<input id="table_name" name="MC" style="" type="text" placeholder="表名" />
+<input id="line_name" name="MC" style="" type="text" placeholder="列名" />
+<input id="type_name" name="MC" style="" type="text" placeholder="类型"  value="varchar"/>
+<input id="num" name="MC" style="" type="text" placeholder="长度" />
+<input type="button" value="点击" onclick="sqltest()"/>
+<br/>
+<br/>
+<br/>
+
+增加表字段
+<input id="tbName" name="MC" style="" type="text" placeholder="表名" />
+<input id="hangName" name="MC" style="" type="text" placeholder="列名" />
+<!-- <input id="type_name" name="MC" style="" type="text" placeholder="类型"  value="varchar"/>-->
+<input id="changdu" name="MC" style="" type="text" placeholder="长度" />
+<input type="button" value="点击" onclick="sqltestA()"/>
+<br/>
+<br/>
+<br/>
+
+给某一列字段赋值
+<input id="tbNameu" name="MC" style="" type="text" placeholder="表名" />
+<input id="hangNameu" name="MC" style="" type="text" placeholder="列名" value="S_CFSY"/>
+<!-- <input id="type_name" name="MC" style="" type="text" placeholder="类型"  value="varchar"/>-->
+<input id="zhi" name="MC" style="" type="text" placeholder="zhi" />
+<input type="button" value="点击" onclick="geizidunfuzhi()"/>
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+增加表
+<input id="tableNameA" name="MC" style="" type="text" placeholder="表名" />
+<input id="lineName" name="MC" style="" type="text" placeholder="列名" />
+<!-- <input id="type_name" name="MC" style="" type="text" placeholder="类型"  value="varchar"/>-->
+<input id="lineLength" name="MC" style="" type="text" placeholder="长度" />
+<input type="button" value="点击" onclick="sqltestB()"/>
+<br/>
+<br/>
+<br/>
+
+字典修改
+<input id="oldValue" name="MC" style="" type="text" placeholder="老值" />
+<input id="newValue" name="MC" style="" type="text" placeholder="新值" />
+<!-- <input id="type_name" name="MC" style="" type="text" placeholder="类型"  value="varchar"/>-->
+
+<input type="button" value="点击" onclick="sqltestc()"/>
+<br/>
+<br/>
+<br/>
+
+字符集修改
+<input id="table_name_v" name="MC" style="" type="text" placeholder="老值" />
+
+<!-- <input id="type_name" name="MC" style="" type="text" placeholder="类型"  value="varchar"/>-->
+
+<input type="button" value="点击" onclick="zifuji()"/>
+<br/>
+<br/>
+<br/>
+<ylt.for dataId="1498098903921">
+  $value
+
+</ylt.for>
+<br/>
+<br/>
+<br/>
+
+
+
+<ylt.for dataId="1498789850562">
+
+	<table name="tableName" sk="s">
+		<tr>
+			<td>
+				<input type="text" name="one" value="$value"/>
+				<input type="text" name="two" value="$value"/>
+				<input type="text" name="three" value="$value"/>
+				<input type="text" name="four" value="$value"/>
+				<input type="text" name="five" value="$value"/>
+				<input type="text" name="six" value="$value"/>
+				<input type="text" name="seven" value="$value"/>
+				<input type="text" name="eight" value="$value"/>
+				<input type="text" name="nine" value="$value"/>
+				<input type="text" name="ten" value="$value"/>
+				<input type="text" name="quanzi" value="$value"/>
+
+			</td>
+		</tr>
+	</table>
+	<br />
+</ylt.for>
+<input type="button" value="转换存储"  onclick="transitionMethod()"/>
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+<ylt.for dataId="1499241030063">
+	<input type="text" name="cricleId" value="$value"/><br />
+</ylt.for>
+<!--就是初始化圈子内文案视频等-->
+<input type="button" value="初始化所有圈子的资源定义"  onclick="cricleIdMethod()"/>
+
+
+<input type="button" value="初始化所有圈子的申请类型为未定义"  onclick="shenqingleixing()"/>
+
+
+</body>
+</html>
+
+<script>
+
+
+
+	function zifuji(){
+		var table_name_v=document.getElementById('table_name_v').value;
+
+		var strVResultss=sys_doComMandReturn("061","table_name_v="+table_name_v);
+
+		alert(strVResultss);
+
+	}
+
+
+
+
+	function sqltestc(){
+
+
+		var oldValue=document.getElementById('oldValue').value;
+		var  newValue=document.getElementById('newValue').value;
+		var strVResultss=sys_doComMandReturn("060","SDICTYPEID="+oldValue+"&SDICTYPEIDs="+newValue);
+
+		alert(strVResultss);
+
+	}
+
+	function sqltestB(){
+
+		var tableNameA=document.getElementById('tableNameA').value;
+		var  lineName=document.getElementById('lineName').value;
+		var lineLength=document.getElementById('lineLength').value;
+
+		var strVResultss=sys_doComMandReturn("057","tableNameA="+tableNameA+"&lineName="+lineName+"&lineLength="+lineLength);
+
+		alert(strVResultss);
+
+	}
+	function sqltestA(){
+		var tbName=document.getElementById('tbName').value;
+		var  hangName=document.getElementById('hangName').value;
+		var changdu=document.getElementById('changdu').value;
+
+		var strVResultss=sys_doComMandReturn("058","tbName="+tbName+"&hangName="+hangName+"&changdu="+changdu);
+
+		alert(strVResultss);
+
+	}
+	function  sqltest(){
+
+		var table_name=document.getElementById('table_name').value;
+		var  line_name=document.getElementById('line_name').value;
+		var type_name=document.getElementById('type_name').value;
+		var num= document.getElementById('num').value;
+
+
+		if(table_name!=""&&line_name!=""&&type_name!=""&&num!=""){
+			var strVResultss=sys_doComMandReturn("004","table_name="+table_name+"&line_name="+line_name+"&type_name="+type_name+"&num="+num);
+
+			alert(strVResultss);
+		}
+
+	}
+
+	/**把菜单的显示和怕列顺序都转换存储到一个字段中**/
+	function transitionMethod(){
+		alert(document.getElementsByName("tableName").length);
+		alert("准备开始");
+
+		var tableArr = document.getElementsByName("tableName");
+		for(var i = 0; i < tableArr.length; i++) {
+			var values="";
+			var quanzi="";
+			var inputArr = tableArr[i].getElementsByTagName("input");
+			for(var j = 0; j < inputArr.length; j++) {
+				if(inputArr[j].value === "" || inputArr[j].value === "null") {
+					inputArr[j].value = "A";
+				}
+				if(j< inputArr.length-2){
+
+					values+=inputArr[j].value+"_";
+				}else if(j< inputArr.length-1){
+
+					values+=inputArr[j].value;
+				}
+				else{
+					quanzi+=inputArr[j].value;
+				}
+
+
+			}
+
+			/*alert(quanzi);
+			 alert(values);*/
+			var strVResultssxdffd=sys_doComMandReturn("066","S_SFXS="+values+"&S_PLSX=0_1_2_3_4_5_6_7_8&S_QZID="+quanzi);
+			/*alert(strVResultssxdffd);*/
+		}
+		alert("完毕");
+
+	}
+
+	function cricleIdMethod(){
+
+
+		for(k=0;k<document.getElementsByName("cricleId").length;k++){
+			var timestamp=new Date().getTime();
+			/*alert(timestamp);
+			var strVResult=sys_doComMandReturn("067","S_ID="+timestamp+"&S_QZID="+document.getElementsByName("cricleId")[k].value+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频&S_TP=图片&S_YP=音频&S_WA=文案");*/
+
+			var strVResult=sys_doComMandReturn("067","S_ID="+(timestamp+random3Code())+"&S_QZID="+document.getElementsByName("cricleId")[k].value+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频&S_TP=图片&S_YP=音频&S_WA=文案&S_CFSY=zero");
+			var strVResults=sys_doComMandReturn("067","S_ID="+(timestamp+1+random3Code())+"&S_QZID="+document.getElementsByName("cricleId")[k].value+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频1&S_TP=图片1&S_YP=音频1&S_WA=文案1&S_CFSY=one");
+
+		}
+
+	}
+
+
+	/**初始化之前所有圈子的申请类型为未定义**/
+	function shenqingleixing(){
+		for(k=0;k<document.getElementsByName("cricleId").length;k++){
+			var timestamp=new Date().getTime();
+
+			var strVResult=sys_doComMandReturn("068","S_SQLXID=1499586596612&S_ID="+document.getElementsByName("cricleId")[k].value);
+		}
+	}
+	/**给表的某一列字段赋值**/
+	function geizidunfuzhi(){
+		var table_name=document.getElementById('tbNameu').value;
+		var lie_name=document.getElementById('hangNameu').value;
+		var zhi_name=document.getElementById('zhi').value;
+		var strVResult=sys_doComMandReturn("081","tbName="+table_name+"&lieName="+lie_name+"&zhi="+zhi_name);
+		alert(strVResult);
+	}
+</script>

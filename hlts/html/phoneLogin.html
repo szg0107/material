@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='js/check.js'></script>
+    <title>登录</title>
+    <style>
+        #warp tr td input {
+            /*width: 90%;*/
+            width: 60%;
+            height: 120px;
+            font-size: 45px;
+            /*background: #029ae5;*/
+            /*color: #FFFFFF;*/
+            /*border: 1px solid #029ae5;*/
+            outline: none;
+        }
+
+        /*修改input提示字颜色*/
+        input::-webkit-input-placeholder {
+            color: #BFBFBF;
+        }
+
+        #warp tr td button {
+            font-size: 60px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        .Rounded_corners {
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            /*border: 3px solid #FFFFFF;*/
+            border: 0px;
+        }
+
+        #warp {
+            position: absolute;
+            width: 100%;
+            height: 830px;
+            top: 40%;
+            margin-top: -600px;
+
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0;background-color:#efeef4;font-family: Heiti SC;">
+
+<table border="0" id="warp" cellspacing="0" cellpadding="0">
+    <tr>
+        <!--<td width="6%"><div style="width: 50px; border: 0px;"></div></td>-->
+        <td align="center">
+
+            <img width="400px" height="150px" src="res/images/logo.png" id="logo"/>
+
+            <div style="margin-top: 200px;margin-bottom: 3px;font-size:45px; background: #ffffff;"
+                 class="Rounded_corners" id="usernames">
+                账号:<input type="text" id="username" name="username" placeholder="请输入账号" value=""
+                          style="margin-left: 20px;" class="Rounded_corners"/>
+            </div>
+            <div style="margin-bottom: 50px;font-size: 45px;background: #ffffff;" class="Rounded_corners"
+                 id="passwords">
+                密码:<input type="password" id="pwd" name="pwd" placeholder="请输入密码" value="" style="margin-left: 20px;"
+                          class="Rounded_corners"/>
+            </div>
+            <button id="dl" type="button" onclick="login();"
+                    style="background-color: #029ae5;color: #FFFFFF;width: 95%;">登录
+            </button>
+            <br/>
+
+            <div style="margin-top: 60px;"><a onclick="Retrievepassword();" style="font-size: 48px;color: #029ae5;">忘记密码？</a>
+                <a onclick="registered();" style="font-size: 48px;margin-top: 94px;color:#029ae5;">| 立即注册</a>
+            </div>
+        </td>
+        <!--<td width="6%"><div style="width: 50px;  border: 0px;"></div></td>-->
+    </tr>
+</table>
+<script>
+    var ua = navigator.userAgent.toLowerCase();
+    function init() {
+        if (/iphone|ipad|ipod/.test(ua)) {
+            /*dl.style.width="450px";*/
+            dl.style.height = "120px";
+        } else if (/android/.test(ua)) {
+            /*dl.style.width="450px";*/
+            dl.style.height = "120px";
+        }
+        /*设置或获取 URL 的主机部分*/
+        var address = window.location.host;
+        /*如果是天智服务器logo和文字隐藏*/
+        if (address == "106.74.152.59") {
+            logo.style.display = "none";
+        }
+    }
+    init();
+</script>
+<script>
+    function registered() {
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.registered.postMessage(null);
+        } else {
+            window.callByJs.setValue("hello android!!");
+        }
+    }
+    function Retrievepassword() {
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.Retrievepassword.postMessage(null);
+        } else {
+            window.callByJs.setValue("Retrieve password");
+        }
+    }
+</script>
+
+
+<form id="formValue" action="session.jsp" method="post">
+    <input type="hidden" style="width:350px;height: 30px " id="search_name" name="search_name"/>
+
+    <input type="hidden" style="width:350px;height: 30px " id="search_pw" name="search_pw"/>
+</form>
+
+
+</body>
+
+</html>
+<script>
+    function login() {
+
+        /** var use=user.value.toUpperCase();
+         login(use,pwd.value,'jump.view'); **/
+        var user = document.getElementById("username").value;
+
+        var pwd = document.getElementById("pwd").value;
+        /** alert(user+pwd); **/
+        var strResult = getTx("user=" + user + "&pwd=" + pwd, "jump.view");
+
+        var isTrue = incision(strResult, "isTrue=", ";");
+
+
+        /**alert("nihao"+isTrue);**/
+        var nickName = incision(strResult, "nickName=", ";");
+        if (isTrue == null || isTrue == "null" || isTrue == undefined) {
+            alert("用户名或密码不对");
+
+        } else {
+            if (isTrue == "sc") {
+
+                document.getElementById("search_name").value = user;
+                document.getElementById("search_pw").value = pwd;
+                document.getElementById("formValue").action = "res/java/session.jsp?user=" + user + "&jueseA=sc&request=true&equipment=phone&nickName=" + nickName;
+
+                formValue.submit();
+                var user_array = {"user": user, "pwd": pwd};
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.rememberThePassword.postMessage(user_array);
+                } else {
+                    window.callByJs.rememberThePassword(user, pwd);
+                }
+
+                /**alert(document.getElementById("formValue").action);**/
+                /** window.location.href="http://123.56.187.157/hlts/wysc.view";**/
+
+
+            } else {
+                alert("账号密码不对");
+            }
+        }
+
+    }
+</script>
+
+
+<script>
+    /**切割字符串方法  incision(切割) Result结果，从哪里切，切割到哪**/
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+</script>

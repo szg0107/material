@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div hidden>
+    <ylt.for dataId="1496742096770">
+        <span id="version">$value</span>
+        <span id="apk">$value</span>
+    </ylt.for>
+</div>
+<script type="text/javascript">
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    function cs(){
+        apks=apk.innerText;
+        versions=version.innerHTML;
+        /*alert(apks);
+         alert(versions);*/
+        switch (getQueryString('AddressType')){
+            /*0：测试，1：正式，2：天智*/
+            case '0':
+                window.location="http://123.56.187.157/hlts/upload/"+apks;
+                break;
+            case '1':
+                window.location="http://www.extop.cn/upload/"+apks;
+                break;
+            case '2':
+                window.location="http://106.74.152.59/upload/"+apks;
+                break;
+        }
+
+        /*window.location="http://123.56.187.157/hlts/upload/"+apks;*/
+
+    }
+    cs();
+</script>
+</body>
+</html>

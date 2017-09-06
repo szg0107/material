@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+
+    <title>投票任务</title>
+    <style type="text/css">
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
+
+        .divstyle {
+            height: 100px;
+            /*margin-top: 10px;*/
+            background: #FFFFFF;
+            line-height: 100px;
+            text-indent: 2em;
+            width: 100%;
+            margin: 0 auto;
+            border-bottom: 5px #efeef4 solid;
+        }
+    </style>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+    <style type="text/css">
+
+
+        #alertM, #alertT, #alertR, #alertP, #alertBtns {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            line-height: 24px;
+            font-family: arial, sans-serif;
+            text-align: left
+        }
+
+        #alertR, #alertBtns a {
+            text-decoration: none;
+        }
+
+        #hbg {
+            width: 100%;
+            position: absolute;
+            background: #000;
+            z-index: 998; /* 设置层级，主要是为了遮住页面内的其他内容 */
+            top: 0;
+            left: 0;
+            height: 150%; /* 随便填，超过整屏高度就行，后面由js控制 */
+            opacity: 0.6 /* ie8及以下浏览器看不到效果，我也懒的给你写filter，换其他的现代浏览器吧 */
+        }
+
+        #alertM {
+            position: absolute; /* 绝对定位，为了以后控制方便 */
+            top: 150px;
+            background: #fff;
+            z-index: 999; /* 层级，当然要比背景高1啦，要不你怎么看见 */
+            width: 100%;
+            height: auto;
+            border: 1px #ccc solid;
+        }
+
+        #alertT {
+            margin: 4px;
+            padding: 0 16px;
+            background: #029ae5;
+            color: #fff;
+
+        }
+
+        #alertP {
+            padding: 12px;
+        }
+
+        #alertR {
+            font-size: 24px;
+            float: right; /* 右浮动 */
+            margin: -32px 8px 0 0; /* 使用负值margin 调高 */
+            padding: 4px;
+            color: #72d5fb;
+            font-weight: bold;
+        }
+
+        #alertR:hover {
+            color: #fff;
+        }
+
+        #alertBtns {
+            text-align: right;
+        }
+
+        #alertBtns a {
+            margin: 8px;
+            padding: 0 24px;
+            color: #000;
+            background: #EEE;
+            border: 1px #E6E6E6 solid;
+            display: inline-block;
+        }
+
+        #alertBtns a:hover {
+            background: #ccc;
+            border: 1px #ddd solid;
+        }
+
+        #alertBtns a:active {
+            background: #bbb;
+            border: 1px #aaa solid;
+        }
+
+        #alertM {
+            box-shadow: 0px 0px 24px #000; /* 阴影 */
+            border-radius: 12px; /* 圆角 */
+        }
+
+        #alertT {
+            text-shadow: 0px 1px 1px #000; /* 文字阴影 */
+            background-image: -moz-linear-gradient(top, #03b3f6, #0374c6); /* 火狐下的渐变 */
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #03b3f6), color-stop(1, #0374c6)); /* webkit内核下的渐变 */
+            border-radius: 8px;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        #alertBtns a {
+            text-shadow: 0px 1px 1px white;
+            background-image: -moz-linear-gradient(top, #fff, #ccc);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #ccc));
+            border-radius: 4px;
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        #alertBtns a:hover {
+            background: #ccc;
+            background-image: -moz-linear-gradient(top, #f6f6f6, #c6c6c6);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6f6f6), color-stop(1, #c6c6c6));
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+            border: 1px #ddd solid;
+        }
+
+        #alertBtns a:active {
+            background: #bbb;
+            background-image: -moz-linear-gradient(top, #f3f3f3, #bbb);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(1, #bbb));
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+            border: 1px #aaa solid;
+        }
+
+        #alertR {
+            text-shadow: 0px 1px 1px #000;
+            -webkit-transform: rotate(-360deg); /* 一开始时候先设定旋转-360度，这样鼠标悬浮的时候转的圈数多一些 */
+            -moz-transform: rotate(-360deg);
+            -o-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+            -webkit-transition: -webkit-transform 0.6s ease-out; /* 设定动画部分，时间以及效果 */
+            -moz-transition: -moz-transform 0.6s ease-out;
+            -o-transition: -o-transform 0.6s ease-out;
+            transition: transform 0.6s ease-out;
+        }
+
+        #alertR:hover {
+            color: #fff;
+            -webkit-transform: rotate(360deg); /* 就是在0.6s 内从-360度转到360度的意思 */
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+
+        #alertR:active {
+            text-shadow: 0px 0px 1px #000;
+        }
+    </style>
+</head>
+
+
+
+<body id="body1" style="margin: 0 auto;padding: 0;background:#efeef4;font-size: 25px;">
+
+<div id="timu" style="display:none;width: 100%;height: 45px;background: #029ae5;line-height: 45px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="title" style="color: #FFFFFF;font-size: 20px;margin-left:30%;font-family: 微软雅黑;margin-top:10%">投票任务</span>
+</div>
+
+<div style="text-align: center;">
+    <!--任务描述-->
+    <div  style="background: #FFFFFF;" id="descriptions"></div>
+
+
+    <!--任务选项-->
+    <ylt.for dataId="1499854541265">
+        <div onclick="selectOption(this)" style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 4px;padding-left: 20px;"name="options">
+
+
+            <img width="20px" alt="0" height="20px" src="res/images/weixuanzhong.png" style="float: left;margin-top: 5px;" name="isSelected" id="$value"/>
+
+            <div style="float: left;text-align:left;">
+                <span  name="theOption">$value</span><br/>
+                <img width="150px" height="150px" src="upload/$value" name="option_pictures" style="display: block;"/>
+                <span>$value</span>
+            </div>
+
+        </div>
+    </ylt.for>
+
+
+
+    <div style="text-align: center;margin: 0 auto; width: 95%;clear: both;">
+        <button onclick="completeTask()"
+                style="background-color: #029ae5;color: #FFFFFF;width: 225px;font-size:25px;border-radius:10px;height: 50px;margin-top: 50px;margin-bottom: 30px;" id="submitButton">
+            确认
+        </button>
+    </div>
+</div>
+
+
+<div id="tanchuang2" style="display: none;">
+    <div id="hbg"></div>
+    <!-- 半透明背景遮罩 -->
+    <div id="alertM">                 <!-- 提示框的容器 -->
+        <h5 id="alertT">投票结果</h5> <!-- 标题 -->
+        <a id="alertR" title="关闭" href="javascript:void(0)" onclick="closeDivFun()">×</a> <!-- 关闭按钮 -->
+        <div style="text-align:center;clear:both;margin: 0 auto;" id="alertP">
+
+        </div>
+        <!-- 内容 -->
+        <div id="alertBtns" style="text-align:right;">          <!-- 按钮区域 -->
+            <button id="alertY" href="javascript:void(0)" onclick="closeDivFun()"
+                    style="background-color: #029ae5;color: #FFFFFF;border-radius:10px;margin-bottom: 10px;margin-right:20px;width:100px;font-size: 24px;">
+                确认
+            </button>
+            <!-- 确认和取消按钮 -->
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+<script type="text/javascript">
+
+    var selectNumber = getQueryString('selectNumber');
+    var selectCount = 0 ;
+
+    function selectOption(div) {
+
+
+        var optionDivs = document.getElementsByName('options');
+        var isSelecteds = document.getElementsByName('isSelected');
+
+        var index;
+        for(var i=0;i<optionDivs.length;i++){
+            if(optionDivs[i]==div)index = i;
+        }
+
+        if(isSelecteds[index].alt == "0"){
+            if(selectCount>=selectNumber){
+                alert('最多选择'+selectNumber+"项");
+                return;
+            }
+            isSelecteds[index].alt = "1";
+            isSelecteds[index].src = "res/images/xuanzhong.png";
+            selectCount++;
+        }else{
+            isSelecteds[index].alt = "0";
+            isSelecteds[index].src = "res/images/weixuanzhong.png";
+            selectCount--;
+        }
+
+    }
+
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+
+
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    /*给任务描述赋值*/
+    document.getElementById("descriptions").innerText=getQueryString1("taskDescription")+"(最多选择"+selectNumber+"项)";
+    /*得到所有图片地址为0时img隐藏*/
+    var option_pictures=document.getElementsByName("option_pictures");
+    for(var i=0;i<option_pictures.length;i++){
+        var img=option_pictures[i].src;
+        if(img.substring((img.indexOf("u")+7)).length==0){
+            option_pictures[i].style.display="none";
+        };
+    }
+</script>
+
+<script type="text/javascript">
+    /*给时间戳后面加一位随机数*/
+    function randomCode() {
+
+        return Math.ceil(Math.random()*10-1);
+
+    }
+    /*给时间戳后面加三位随机数*/
+    function random3Code() {
+        var code = "";
+        for(var i = 0;i<3;i++){
+            code +=randomCode();
+        }
+        return code;
+    }
+    var user="";
+    <ylt.v message="user">
+            $value
+    user="$value";
+    </ylt.v>
+    function completeTask(){
+        /*完成任务*/
+        var timestamp = new Date().getTime();
+        /*得到所有选中图片数组*/
+        var isSelecteds = document.getElementsByName('isSelected');
+        /*得到所有选择项的数组*/
+        var theOption=document.getElementsByName('theOption');
+        /*得到所有选择次数的数组*/
+        var strResult=selectCountMethod(getQueryString('taskId')).split(';');
+        /*得到显示的div*/
+        var csdiv=document.getElementById('alertP');
+        var count=0;
+        for(var i=0;i<isSelecteds.length;i++){
+            if(isSelecteds[i].alt=="1"){
+                count++;
+            }
+        }
+        /*根据选中图片数组的长度进行循环处理*/
+        if(count==0){
+            alert("请至少选择一项!!");
+        }else{
+            var Searchrecords = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + user);
+            for(var i=0;i<isSelecteds.length;i++){
+                /*创建一个span标签*/
+                var spans=document.createElement("span");
+                /*给span添加样式*/
+                /*spans.setAttribute("class","gps_font");*/
+                /*初始化选择次数*/
+                if(strResult[i].length==32||strResult[i]==""||strResult[i]=="null"||strResult[i]==null||strResult[i]=="NaN"||strResult[i] == undefined){
+                    strResult[i]="0";
+                }
+                /*如果选中选中次数加一并记录，否则记录原始的选择次数*/
+                if(isSelecteds[i].alt=="1"){
+
+                    spans.innerHTML=theOption[i].innerHTML+(parseInt(strResult[i])+1);
+                    csdiv.appendChild(spans);
+                    csdiv.appendChild(document.createElement("br"));
+                    var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])+1));
+                }else{
+                    spans.innerHTML=theOption[i].innerHTML+(parseInt(strResult[i]));
+                    csdiv.appendChild(spans);
+                    csdiv.appendChild(document.createElement("br"));
+                    var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])));
+                }
+            }
+            /*让提交按钮不可用*/
+            document.getElementById("submitButton").disabled = true;
+            openDiv();
+        }
+
+    }
+</script>
+<script type="text/javascript">
+    function closeDivFun() {
+        document.getElementById('tanchuang2').style.display = 'none';
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.closeTask.postMessage("task");
+        } else {
+            window.callByJs.setValue("关闭窗口");
+        }
+    }
+    function openDiv() {
+        document.getElementById('tanchuang2').style.display = 'inline';
+    }
+</script>
+<script>
+    if (getQueryString('kind') != null) {
+        var tm = getQueryString('kind');
+        if (tm == "xzl") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("body1").style.margin="0px";
+            /*document.title="北京互联探索有限公司";*/
+        }
+    }
+</script>
+
+
+</html>

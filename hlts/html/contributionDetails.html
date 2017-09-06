@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>Title</title>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+</head>
+<style>
+    .uploadImgDiv {
+        width: 20%;
+        background: #ccc;
+        float: left;
+        margin-left: 4%;
+        margin-top: 20px;
+        border-radius: 20px;
+        border: 1px solid gray;
+    }
+</style>
+<body style="font-family: Heiti SC;">
+<ylt.for dataId="1491898403602">
+    <div style="margin-right: 48px;margin-left: 48px;">
+        <div style="font-size: 60px;margin-bottom: 30px;">$value</div>
+
+
+
+        <div style="font-size: 40px;">
+            $value $value 点赞数:<span name="zanCount" style="color: gray"></span>
+            <img src="res/images/grayPraise.png" onclick="praise(this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;"/>
+        </div>
+        <hr/>
+
+
+        <div class="uploadImgDiv" name="set_height">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;" >
+        </div>
+        <div class="uploadImgDiv" name="set_height">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%"  height="100%" style="border-radius: 20px;">
+        </div>
+        <div class="uploadImgDiv" name="set_height">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+        <div class="uploadImgDiv" name="set_height">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+        <div style="height: 30px;clear: both;"></div>
+        <div style="font-size: 50px;text-indent: 2em;clear: both;">$value</div>
+    </div>
+</ylt.for>
+
+
+<script>
+    /*
+     * 多余空图片隐藏
+     * */
+    var uploadImgs =  document.getElementsByName('uploadImg');
+    var uploadImgDivs = document.getElementsByClassName('uploadImgDiv');
+    for (var i = 0;i<uploadImgs.length;i++){
+        var strIndex =  uploadImgs[i].src.indexOf('upload');
+        var imgName = uploadImgs[i].src.substring(strIndex+7,uploadImgs[i].src.length);
+        if(imgName == ""){
+            uploadImgDivs[i].style.display='none';
+        }else{
+            uploadImgDivs[i].style.height=uploadImgDivs[i].clientWidth+"px";
+        }
+    }
+
+    /*
+     * 图片点击进详情
+     * */
+    function clickPicture(picture) {
+        var content = {"picture": picture.src};
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.pictureClick.postMessage(content);
+        } else {
+            window.callByJs.setValue(picture.src);
+        }
+
+    }
+
+    /*使包含图片的div高等于宽*/
+</script>
+
+<!--点赞-->
+<script>
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    function updateZan() {
+
+        var zans = document.getElementsByName('zan');
+        /**如果name=null将已赞隐藏**/
+        for (var i = 0; i < zans.length; i++) {
+            if(isPraised(zans[i].id)){
+                zans[i].src =  "res/images/bluePraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('circleID'),zans[i].id);
+            }else{
+                zans[i].src =  "res/images/grayPraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('circleID'),zans[i].id);
+            };
+        }
+    }
+    updateZan();
+    /**点击小手**/
+    function praise(zan) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=contribute&wzid=" + zan.id, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+
+            var strVResult = sys_doComMandReturn("033", "S_DZWZ=" + zan.id + "&S_ID=" + timestamp + "&S_LB=contribute");
+            var dianzanshu=  contributeCountTest(getQueryString('circleID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)+1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("037", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id +"&S_QZBID="+getQueryString('circleID'));
+            zan.src = "res/images/bluePraise.png";
+            updateZan();
+        }else{
+            /*
+             * 已赞
+             * */
+
+            var strVResult = sys_doComMandReturn("034", "S_ID=" + dianzanID);
+            var dianzanshu=  contributeCountTest(getQueryString('circleID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)-1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("037", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id + "&S_QZBID="+getQueryString('circleID'));
+            zan.src = "res/images/grayPraise.png";
+            updateZan();
+        }
+
+    }
+    /** 当前用户是否赞过* */
+
+    function isPraised(fileID) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=contribute&wzid=" + fileID, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    /**贡献的被赞数**/
+    function contributeCountTest(circleID,contributionID){
+
+        var newResultdfdfd=getTx("GcircleID="+circleID+"&contributeID="+contributionID,"phonejumpA.view");
+        var likeResponseCount=incision(newResultdfdfd,"likeContributeCount=",";");
+        var count;
+        if(likeResponseCount == ""||likeResponseCount==null||likeResponseCount=="null"){
+            return count=0;
+        }else{
+            return count=parseInt(likeResponseCount);
+        }
+    }
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+</script>
+</body>
+</html>

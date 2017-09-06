@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <title>图文任务详细情况</title>
+    <style type="text/css">
+        .divStyle{
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            color: #FFFFFF;
+            font-size: 20px;
+            background-color:#029ae5;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div style="overflow:auto;margin-bottom: 10px;">
+        <button class="divStyle" name="buttonName" style="width: 80px;height:30px;line-height:30px;background:#CFCFCF;font-size: 15px;color: #000000; " onclick="allStatus();buttonEffects(this);">全部</button>
+        <button class="divStyle" name="buttonName" style="width: 80px;height:30px;line-height:30px;background:#CFCFCF;font-size: 15px; " onclick="completionStatus('已完成');buttonEffects(this);">已完成</button>
+        <button class="divStyle" name="buttonName" style="width: 80px;height:30px;line-height:30px;background:#CFCFCF;font-size: 15px; " onclick="completionStatus('未完成');buttonEffects(this);">未完成</button>
+    </div>
+    <div style="overflow:auto;">
+        <span class="divStyle" style="width: 10%;text-align: center;">人员</span>
+        <span class="divStyle" style="width: 40%;text-align: center;">详情</span>
+        <span class="divStyle" style="width: 10%;text-align: center;">完成时间</span>
+        <span class="divStyle" style="width: 10%;text-align: center;">状态</span>
+    </div>
+    <ylt.for dataId="1504248604746">
+        <div name="content" style="overflow:auto;">
+            <span class="divStyle" style="background: #FFFFFF;color: #000000;text-align: left;width: 10%;" id="$value" name="phoneNumber">$value</span>
+            <span class="divStyle" style="background: #FFFFFF;color: #000000;text-align: right;width: 40%;" name="answerResults"></span>
+            <span class="divStyle" style="background: #FFFFFF;color: #000000;width: 10%;text-align: center;" name="answerTime"></span>
+            <span class="divStyle" style="background: #FFFFFF;color: #000000;width: 10%;text-align: center;" name="answerType">未完成</span>
+        </div>
+    </ylt.for>
+</div>
+
+<script type="text/javascript">
+    var PhoneNumberOne=new Array();
+    var answerResults=new Array();
+    var answerTime=new Array();
+    <ylt.for dataId="1504132882976">
+            PhoneNumberOne.push('$value');
+    answerResults.push('$value');
+    answerTime.push('$value');
+    </ylt.for>
+    var phoneNumberArray=document.getElementsByName('phoneNumber');
+    var answerResultsArray=document.getElementsByName('answerResults');
+    var answerTimeArray=document.getElementsByName('answerTime');
+    var answerTypeArray=document.getElementsByName('answerType');
+    var contents=document.getElementsByName('content');
+    /*初始数据*/
+    function allJiLv(){
+        for(var i=0;i<PhoneNumberOne.length;i++){
+            for(var u=0;u<phoneNumberArray.length;u++){
+                if(PhoneNumberOne[i]==phoneNumberArray[u].id){
+                        answerResultsArray[u].innerText=answerResults[i];
+                        answerTimeArray[u].innerText=answerTime[i];
+                        answerTypeArray[u].innerText="已完成";
+                }
+            }
+        }
+    }
+    allJiLv();
+    /*根据状态显示数据*/
+    function completionStatus(status){
+        for(var i=0;i<answerTypeArray.length;i++){
+            if(!(answerTypeArray[i].innerText==status)){
+                contents[i].style.display='none';
+            }else{
+                contents[i].style.display='block';
+            }
+        }
+    }
+    /*显示全部*/
+    function allStatus(){
+        for(var i=0;i<answerTypeArray.length;i++){
+            contents[i].style.display='block';
+        }
+    }
+    /*button效果*/
+    function buttonEffects(oneself){
+
+        for(var i=0;i<document.getElementsByName("buttonName").length;i++){
+            if(document.getElementsByName("buttonName")[i]==oneself){
+                /*oneself.style.backgroundColor="#dff4ff";*/
+                document.getElementsByName("buttonName")[i].style.color="#000000";
+            }else{
+                document.getElementsByName("buttonName")[i].style.color="#ffffff";
+            }
+        }
+
+    }
+</script>
+
+</body>
+</html>

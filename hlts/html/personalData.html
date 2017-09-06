@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js' ></script>
+<script type='text/javascript' src='js/checkform.js'  ></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>个人信息</title>
+
+
+</head>
+
+
+<style>
+    .mian {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        margin: auto;
+    }
+    .plogin_tb tr{
+        height: 150px;
+    }
+    .plogin_tb td{
+        border-bottom: 2px solid #efeef4;
+        color: gray;
+        font-size: 50px;
+    }
+    .plogin_tb tr td input {
+        font-size: 45px;
+        margin-top:60px;
+        margin-left: 40px;
+        border: none;
+        outline:none;
+        color: #029ae5;
+    }
+
+    .plogin_tb tr td button {
+        width: 40%;
+        font-size: 60px;
+    }
+    .fileDiv {
+        display: none;
+    }
+    .uploadImgDiv {
+        width: 36%;
+        background: #ccc;
+        float: left;
+        margin-left: 32%;
+        margin-top: 20px;
+        border-radius: 50%;
+        display: none;
+    }
+</style>
+
+
+<body style="font-family: Heiti SC;">
+
+<div class="mian" align="center" >
+    <form id="add" method="post" style="width:100%;height:100%;">
+        <input type="hidden" id="urlAA" name="NO_DOSCRIPT" value="" />
+        <input type='hidden' name='NO_charset' value='utf-8'/>
+        <ylt.form page="1491551949977">
+            <div class="fileDiv">
+                $value
+            </div>
+            <div class="uploadImgDiv" >
+                <img name="uploadImg" width="100%" height="100%"  onclick="tpdj()" style="border-radius: 50%;border: 1px solid gray;">
+            </div>
+
+            <table class="plogin_tb" style="margin-left: 8%" cellspacing="0" cellpadding="0" border="0" width="100%">
+
+                <tr>
+                    <td >
+                        <div id="zhanghao" style="margin-top: 60px;">个人账号</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <span>用户昵称:</span>$value
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        个人邮箱:$value
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        公司名称:$value
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        所在部门:$value
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        从事专业:$value
+                    </td>
+                </tr>
+
+            </table>
+            <button type="submit" style="background-color: #029ae5;width: 450px;height: 100px;margin-top: 100px;color: white;border-radius: 10px;font-size: 50px;"  onclick="changeNickName();">完成</button>
+        </ylt.form>
+    </form>
+</div>
+
+</body>
+
+<script>
+    var t1;
+    var uploadButtons = document.getElementsByClassName("toupload");
+    var count = 0;
+    function tpdj() {
+        /*
+         *
+         *
+         *
+
+         uploadButtons[0].click();
+         t1 = window.setInterval("updatePicture()", 300);
+         * */
+        var className = 'upload-input uploader1';
+
+        uploadButtons[0].click();
+
+        document.getElementsByClassName(className)[0].childNodes[0].onchange=function (event) {
+            var files = event.target.files;
+            if (files && files.length > 0) {
+                count++;
+
+
+                var file = files[0];
+                var URL = window.URL || window.webkitURL;
+                var imgURL = URL.createObjectURL(file);
+                document.getElementsByName('uploadImg')[0].src =  imgURL;
+
+                t1 = window.setInterval("updateProgress()", 300);
+
+            }
+        };
+
+    }
+    function updateProgress() {
+        var progressSpan = 'divptext'+count.toString();
+        var progressStr =document.getElementById(progressSpan).innerHTML;
+
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.progress.postMessage(progressStr);
+        }else{
+            window.callByJs.setValues(progressStr);
+
+
+        }
+        if(progressStr == "100%"){
+            clearTimeout(t1);
+            return;
+        }
+    }
+
+    function getFileName() {
+        var uploadButtons1 = document.getElementsByClassName("toupload");
+        var uploadButton = uploadButtons1[0];
+        var ID = uploadButton.id.substring(3, uploadButton.id.length);
+        var fileDivID = "view" + ID;
+        var fileDiv = document.getElementById(fileDivID);
+        var fileName = fileDiv.parentNode.childNodes[1].value;
+        return fileName;
+    }
+
+
+    var imageStr = getFileName();
+    function updatePicture() {
+        if (getFileName() != imageStr) {
+            document.getElementsByName('uploadImg')[0].src = 'upload/' + getFileName();
+            document.getElementsByClassName('uploadImgDiv')[0].style.display="block";
+            window.clearInterval(t1);
+        }
+    }
+    document.getElementsByName('uploadImg')[0].src = 'upload/' + getFileName();
+    document.getElementsByClassName('uploadImgDiv')[0].style.display="block";
+    document.getElementsByClassName('uploadImgDiv')[0].style.height= document.getElementsByClassName('uploadImgDiv')[0].clientWidth+"px";
+
+</script>
+
+<script>
+    var user="";
+    <ylt.v message="user">
+            $value
+    user="$value";
+    </ylt.v>
+    var ua = navigator.userAgent.toLowerCase();
+    if (/iphone|ipad|ipod/.test(ua)) {
+        document.getElementById('zhanghao').innerHTML = '个人账号    '+user;
+    } else if (/android/.test(ua)) {
+        document.getElementById('zhanghao').innerHTML = '个人账号:   '+user;
+
+        document.getElementById("T_YHBA$S_NC").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+        document.getElementById("T_YHBA$S_GRYX").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+        document.getElementById("T_YHBA$S_GSMC").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+        document.getElementById("T_YHBA$S_SZBM").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+        document.getElementById("T_YHBA$S_CSZY").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+    }
+    document.getElementById("T_YHBA$S_NC").setAttribute("placeholder","请输入用户名昵称");
+    document.getElementById("T_YHBA$S_GRYX").setAttribute("placeholder","请输入个人邮箱");
+    document.getElementById("T_YHBA$S_GSMC").setAttribute("placeholder","请输入公司名称");
+    document.getElementById("T_YHBA$S_SZBM").setAttribute("placeholder","请输入所在部门");
+    document.getElementById("T_YHBA$S_CSZY").setAttribute("placeholder","请输入从事专业");
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.search).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+
+    /*var valueStr = getQueryString('nickName');
+     document.getElementById('nickName').value=valueStr;*/
+    T_YHBA$S_NC.style.width="65%";
+    T_YHBA$S_GRYX.style.width="65%";
+    T_YHBA$S_SZBM.style.width="65%";
+    T_YHBA$S_GSMC.style.width="65%";
+    T_YHBA$S_CSZY.style.width="65%";
+    function changeNickName() {
+        var nickName = document.getElementById('T_YHBA$S_NC').value;
+        /*var strVResult = sys_doComMandReturn("017", "&S_NC=" + nickName);*/
+        alert('修改成功');
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.changeSuccess.postMessage(nickName);
+        }else{
+            window.callByJs.setValue(nickName);
+        }
+    }
+</script>
+<script>
+    function original_hair_message(tishi,id, zhi){
+        window.callByJs.setValue(tishi,id,zhi);
+    }
+
+    function fuzhi(id,zhi){
+        var obj=document.getElementById(id);
+        obj.value=zhi;
+    }
+
+
+</script>
+
+
+</html>

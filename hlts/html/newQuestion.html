@@ -1,0 +1,199 @@
+<style>
+    .gps_font {
+        font-size: 50px;
+        color: black;
+    }
+
+    /*设置单元格内容的数量超出用省略号代替*/
+    .limitlength {
+        table-layout: fixed;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+</style>
+<script type='text/javascript' src='res/js/KMoonPub.js'></script>
+<meta name=viewport content="user-scalable=no">
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js'></script>
+<script type='text/javascript' src='js/checkform.js'></script>
+<script language="javascript" src="js/check.js"></script>
+<body bgcolor="#efeef4" style="font-family: Heiti SC;">
+
+
+<ylt.for dataId="1490064252808">
+    <table width="100%" style="padding-left: 48px;background-color: white;" onclick="clickQuestion('$value')" class="limitlength" name="question">
+        <tr style="height: 100px;">
+            <td style="font-size: 50px"  class="limitlength">
+                $value
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 40px;color: gray;text-indent: 2em;"  class="limitlength">
+                $value
+            </td>
+        </tr>
+    </table>
+    <div style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;background-color: white;padding-left: 50px;">
+        <span>$value</span>
+        <span>$value</span>
+        点赞数:<span name="beizanshu">$value</span>
+        <span style="float: right;">回答人数:$value</span>
+    </div>
+</ylt.for>
+<div id="tishi" class="gps_font" align="center"></div>
+
+<form id="searchForm" action="newQuestion.view" method="post">
+    <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
+    <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
+</form>
+</body>
+
+<script>
+    var question = document.getElementsByName('question');
+    if(question.length == 0){
+        tishi.innerText="很抱歉，没有您想要的资源！";
+    }
+    function beiZanShuChuShiHua(){
+        var bzs=document.getElementsByName("beizanshu");
+        for(var i=0;i<bzs.length;i++){
+            if(bzs[i].innerText==''||bzs[i].innerText==null||bzs[i].innerText == undefined || bzs[i].innerText == 'null'){
+                bzs[i].innerText=0;
+            }
+        }
+    }
+
+    beiZanShuChuShiHua();
+    function clickQuestion(questionID) {
+
+        var isVIP = Can_the_content_be_viewed(getQueryString('id'));
+        if(!isVIP){
+            /*alert('您不是本圈子会员！请进行充值！');*/
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.needPay.postMessage(null);
+            } else {
+                window.callByJs.isVIP();
+            }
+
+            return;
+        }
+
+
+        addWatchCount(getQueryString('id'),questionID,'question');
+
+
+        var dict = {"questionID":questionID};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoQuestionDetails.postMessage(dict);
+        }else{
+            window.callByJs.setValue(questionID);
+        }
+    }
+
+    /**表单提交之前拿到id和输入内容**/
+    /*var id="";
+     var content="";
+     <ylt.v message="id">
+     $value
+     id="$value";
+     </ylt.v>
+     <ylt.v message="content">
+     $value
+     content="$value";
+     </ylt.v>
+     var tempVar="id="+id+"&content="+content;
+     function not_praise(index) {*/
+    /**如果name=null将已赞隐藏**/
+
+    /*for (var i = 0; i < index; i++) {
+     if (document.getElementsByName("weizan")[i].getAttribute("zt")=="null") {
+     document.getElementsByName("yizan")[i].style.display = "none";
+     } else {
+     document.getElementsByName("weizan")[i].style.display = "none";
+     }
+
+     }
+     }*/
+    /**获取数据的条数，调取方法**/
+    /*var indexValue = document.getElementsByName("weizan").length;
+     not_praise(indexValue);*/
+
+    /**问题的被赞数**/
+    /*function contributeCountTest(circleID,contributionID){
+
+     var newResultdfdfd=getTx("TcircleID="+circleID+"&questionID="+contributionID,"phonejumpA.view");
+     var likeQuestionCount=incision(newResultdfdfd,"likeQuestionCount=",";");
+     var count;
+     if(likeQuestionCount == ""||likeQuestionCount==null||likeQuestionCount=="null"){
+     return count=0;
+     }else{
+     return count=parseInt(likeQuestionCount);
+     }
+     }*/
+    /**点赞**/
+    /*function praise(ContributionID) {
+     var timestamp = new Date().getTime();*/
+    /**时间戳**/
+    /*var newResult = getTx("lebie=tiwen&wzid=" + ContributionID, "phoneJump.view");
+     var dianzanID = incision(newResult, "dianZan=", ";");
+     if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+     var strVResult = sys_doComMandReturn("033", "S_DZWZ=" + ContributionID + "&S_ID=" + timestamp + "&S_LB=tiwen");
+     var dianzanshu=  contributeCountTest(id,ContributionID);
+     var newdianzanshu=parseInt(dianzanshu)+1;
+     var strVResultbbb = sys_doComMandReturn("038", "S_BDZS=" + newdianzanshu + "&S_ID=" + ContributionID + "&S_QZID="+id);
+     window.location = "newQuestion.view?"+tempVar;
+     }
+
+     }*/
+    /**取消赞**/
+    /*function unpraise(ContributionID) {
+     var newResult = getTx("lebie=tiwen&wzid=" + ContributionID, "phoneJump.view");
+     var dianzanID = incision(newResult, "dianZan=", ";");
+     if (dianzanID != "" || dianzanID != null || dianzanID != undefined || dianzanID != 'null') {
+     var strVResult = sys_doComMandReturn("034", "S_ID=" + dianzanID);
+     var dianzanshu=  contributeCountTest(id,ContributionID);
+     var newdianzanshu=parseInt(dianzanshu)-1;
+     var strVResultbbb = sys_doComMandReturn("038", "S_BDZS=" + newdianzanshu + "&S_ID=" + ContributionID + "&S_QZID="+id);
+     window.location = "newQuestion.view?"+tempVar;
+     }
+
+     }
+     function incision(Result, start, over) {
+     Result = Result.substr(Result.indexOf(start));
+     Result = Result.substr(0, Result.indexOf(over));*/
+    /**alert("后"+strResult);**/
+    /* Result = Result.split(start)[1];
+     return Result;
+     }*/
+
+
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    if(getQueryString('content') != "" && getQueryString('content') != null) {
+        var contentInput = document.getElementById('contentInput');
+        contentInput.value = getQueryString1('content');
+        var circleID = document.getElementById('circleID');
+        circleID.value = getQueryString('id');
+        var searchForm =  document.getElementById('searchForm');
+        searchForm.action = "newQuestion.view" +"?id="+ getQueryString('id');
+        if(contentInput.value!=''&&contentInput.value!=null){
+            var timestamp = new Date().getTime();
+            var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" +getQueryString('id')  + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=question");
+        }
+        searchForm.submit();
+    }
+</script>
+

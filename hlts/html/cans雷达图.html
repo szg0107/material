@@ -1,0 +1,312 @@
+<script type='text/javascript' src='res/js/KMoonPub.js'></script>
+<link rel="stylesheet" href="res/css/prompt_dialog_box(A).css" />
+<script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
+<style>
+
+
+    .node {
+        margin-left: 30px;
+        word-break:keep-all;/* 不换行，二选一*/
+        white-space:nowrap;/* 不换行 ，二选一*/
+    }
+
+    #tishikuangA{
+        position:fixed;
+        margin:auto;
+        left:0;
+        right:0; top:0;
+        bottom:0;
+        width: 500px;
+        height: 100px;
+        border-radius: 4px;
+        background-color: #fff;
+        z-index: 1008; /* 设置层级，主要是为了遮住页面内的其他内容 */
+    }
+    .Exceltop{
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #eee;
+        border-radius: 2px 2px 0 0;
+        color: #333;
+        font-size: 14px;
+        height: 42px;
+        line-height: 42px;
+        overflow: hidden;
+        padding: 0 80px 0 20px;
+    }
+    .Excelbuttom{
+        font-size: 14px;
+        line-height: 24px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px;
+        position: relative;
+        word-break: break-all;
+    }
+    .container{
+        width:450px;
+        border:1px solid #6C9C2C;
+        height:25px;
+    }
+    #bar{
+        background:#95CA0D;
+        float:left;
+        height:100%;
+        text-align:center;
+        line-height:150%;
+    }
+</style>
+
+<style>
+    ul{
+        margin: 0px;
+        /*padding: 30px 0px 0px;*/
+        padding-top: 30px;
+        padding-left: 0px;
+        list-style: none;
+    }
+    li{
+        height: 45px;
+    }
+    button{
+
+        background-color: #2885D5;
+        border: medium none;
+        border-radius: 5px;
+        height: 30px;
+        width: 150px;
+        cursor: pointer;
+        color: #FFF;
+
+    }
+    button:hover{
+        /*background-color:red;   */
+        border:1px solid #c2e1ef;
+        /*  color:#336699;  */
+        color: black;
+        position: relative;
+        top:-5px;
+        height: 40px;
+        width: 160px;
+
+    }
+</style>
+<ylt.imp url="headA"/>
+<body>
+
+<div style="width: 100%;height:58px;background: #2885d5;text-align: center;line-height: 58px;"  >
+    <span style="color: #FFFFFF;font-size: 25PX;font-family: 微软雅黑;">任务统计</span>
+</div>
+
+<div id="tree" style="border-right:1px solid #000;width: 12%;text-align: center;float: left;height: 85%;">
+    <ul>
+        <li>
+            <button name="buttonName" onclick="qkhz(this)">情况汇总</button>
+        </li>
+        <li>
+            <button name="buttonName" onclick="xxqk(this)">详细情况</button>
+        </li>
+        <li>
+            <button name="buttonName" onclick="xmtjxq(this)" style="display: none;" id="xm">项目统计详情</button>
+        </li>
+    </ul>
+
+</div>
+<div id="divID"  style="width: 87%;float: right;height: 85%;">
+
+</div>
+
+<form id="formValue"  action="sessionV.jsp" method="post" style="display: none;">
+</form>
+<!-- <ylt.for dataId="1502469584782">
+    <input type="text" value="$value" id="blocBigId" />
+   </ylt.for>-->
+<!--<div id="hbg" class="silhouette" style="display: none" name="hbg"></div>-->
+<div id="tishikuangA" style="display: none"  class="outerDiv">
+    <div class="shang" id="tooltip" style="cursor: move;text-align: center;">修改成功</div>
+
+    <div id="" class="xia" style="text-align: right; border-top: 1px solid #2885d5;">
+
+        <input type="button" class="anniu" value="确定" style="color:#FFF" onclick="clickAbolish()"/>
+
+    </div>
+</div>
+
+<style>
+
+    #tishikuangB{
+        position:fixed;
+        margin:auto;
+        left:0;
+        right:0; top:0;
+        bottom:0;
+        width: 300px;
+        height: 168px;
+        border-radius: 4px;
+        background-color: #fff;
+        z-index: 10088; /* 设置层级，主要是为了遮住页面内的其他内容 */
+    }
+    .shang{
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #eee;
+        border-radius: 2px 2px 0 0;
+        color: #333;
+        font-size: 14px;
+        height: 42px;
+        line-height: 42px;
+        overflow: hidden;
+        padding: 0 80px 0 20px;
+    }
+    .zhong{
+        font-size: 14px;
+        line-height: 24px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px;
+        position: relative;
+        word-break: break-all;
+    }
+
+
+</style>
+
+
+
+
+</body>
+</html>
+
+<style>
+    input {
+        star : expression(
+    onmouseover=function(){this.style.backgroundColor="#D5E9F6"},  
+    onmouseout=function(){this.style.backgroundColor="#ffffff"})
+    }
+
+</style>
+<script>
+    function getQueryString(name) {/*???*/
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    /*关闭提示框*/
+    function clickAbolish(){
+        /*window.parent.document.getElementById('hbg').style.display='none';*/
+        document.getElementById('hbg').style.display='none';
+        document.getElementById('tishikuangA').style.display='none';
+        /*document.getElementById('tishikuang').style.display='none';*/
+    }
+
+
+    /*删除iframe*/
+    function deleteIframe(){
+        var frames = document.getElementById("divID").childNodes;
+        while(frames.length>0){
+            document.getElementById("divID").removeChild(frames[0]);
+        }
+
+    }
+    /*创建afrime*/
+    function addiframe(src){
+        var iframe = document.createElement('iframe');
+        iframe.src=src;
+        iframe.setAttribute("frameborder","0");
+        iframe.name="iframeName";
+        iframe.scrolling="no";
+        iframe.width="98%";
+        iframe.frameborder="0";
+        iframe.height="100%";
+        document.getElementById("divID").appendChild(iframe);
+    }
+    var id = getQueryString('id');
+    var kind = getQueryString('kind');
+
+    /*根据圈子id得到集团ID*/
+    <ylt.for  dataId="1504103471724">
+    var bloc = '$value';
+    </ylt.for>
+
+
+        /*情况汇总*/
+        /*qkhz(oneself);*/
+    function qkhz(oneself){
+        deleteIframe();
+        buttonEffects(oneself);
+        addiframe("qkhz.view?id="+id+"&groupID="+bloc);
+    }
+
+    if(kind=="24"){
+        xm.style.display='inline';
+    }
+
+    /*详细情况*/
+    function xxqk(oneself){
+        deleteIframe();
+        buttonEffects(oneself);
+        /*xxqk*/
+        switch (kind){
+            case "15":
+                /*选择类*/
+                addiframe("xzrwetj.view?taskId="+id+"&kind="+kind+"&groupID="+bloc);
+                break;
+            case "16":
+                /*缴费类*/
+                addiframe("jfrwxxqk.view?id="+id+"&kind="+kind+"&groupID="+bloc);
+                break;
+            case "17":
+                /*图文类*/
+                addiframe("twrwxxqk.view?id="+id+"&kind="+kind+"&groupID="+bloc);
+                break;
+            case "23":
+                /*考试类*/
+                addiframe("ksrwtj.view?taskId="+id+"&kind="+kind+"&groupID="+bloc);
+                break;
+            case "24":
+                /*统计类*/
+                addiframe("tjrwxxqk.view?id="+id+"&kind="+kind+"&groupID="+bloc);
+                break;
+            case "25":
+                /*问卷类*/
+                addiframe("wjrwtj.view?taskId="+id+"&kind="+kind+"&groupID="+bloc);
+                break;
+            case "26":
+                /*审核类*/
+                addiframe("shrwtj.view?taskId="+id+"&kind="+kind+"&groupID="+bloc);
+                break;
+        }
+    }
+    function xmtjxq(oneself){
+        deleteIframe();
+        buttonEffects(oneself);
+        addiframe("xmtjxq.view?taskId="+id);
+    }
+    document.getElementsByName("buttonName")[0].click();
+    /*function pzcd1() {
+     document.getElementById("formValue").action="res/java/sessionV.jsp";
+     formValue.submit();
+     }
+     alert("kind:"+getQueryString('kind'));
+     if(getQueryString('kind') != undefined && getQueryString('kind') != null) {
+     alert(1);
+     pzcd2();
+     }
+     function pzcd2(){
+     alert(2);
+     addiframe("pzcd.view?sys_bed=t&w=b");
+     }*/
+    /*button效果*/
+    function buttonEffects(oneself){
+
+        for(var i=0;i<document.getElementsByName("buttonName").length;i++){
+            if(document.getElementsByName("buttonName")[i]==oneself){
+                /*oneself.style.backgroundColor="#dff4ff";*/
+                document.getElementsByName("buttonName")[i].style.background="#CFCFCF";
+            }else{
+                document.getElementsByName("buttonName")[i].style.background="#2885D5";
+            }
+        }
+
+    }
+
+</script>
+

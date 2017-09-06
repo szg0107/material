@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>通知详情</title>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+</head>
+<style>
+    .uploadImgDiv {
+        width: 20%;
+        background: #ccc;
+        float: left;
+        margin-left: 4%;
+        margin-top: 20px;
+        border-radius: 20px;
+        border: 1px solid gray;
+    }
+</style>
+<body style="font-family: Heiti SC;">
+<ylt.for dataId="1501051766655">
+    <div style="margin-right: 48px;margin-left: 48px;">
+        <div style="font-size: 60px;margin-bottom: 30px;">$value</div>
+
+        <div style="font-size: 40px;">
+            $value $value
+        </div>
+        <hr/>
+        <div style="height: 30px;clear: both;"></div>
+        <div style="font-size: 50px;text-indent: 2em;clear: both;">$value</div>
+        <hr/>
+        <div style="float: right;background-color: #029ae5;color: #FFFFFF;width: 260px;height:80px;font-size: 45px; border-radius:10px;margin: 0 auto;line-height: 80px;text-align: center;"
+             onclick="checkTheAttachment(this.id)" id="$value">查看附件
+        </div>
+    </div>
+</ylt.for>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    function checkTheAttachment(file) {
+        var type = file.substring((file.length - 3));
+        var content = {"file": file, "type": type};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.checkTheAttachment.postMessage(content);
+        } else {
+            window.callByJs.setValue(file, type);
+        }
+    }
+</script>
+</body>
+</html>

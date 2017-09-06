@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/PC_public_JS.js'></script>
+</head>
+<body>
+
+<div id="cs1"></div>
+<script type="text/javascript">
+    function cs() {
+        var array_one = ["1", "2"];
+        var array_two = ["1", "2", "3", "4"];
+        var array_three = new Array();
+        var chongfu = false;
+        for (var i = 0; i < array_two.length; i++) {
+            for (var u = 0; u < array_one.length; u++) {
+                if (array_two[i] == array_one[u]) {
+                    chongfu = true;
+                }
+            }
+            if (!chongfu) {
+                array_three.push(array_two[i]);
+            }
+            chongfu = false;
+        }
+        document.getElementById('cs1').innerHTML = array_three.toString();
+    }
+    cs();
+</script>
+<div id="cs2"></div>
+<div>
+    5<br/>
+    5<br/>
+    5<br/>
+    5<br/>
+</div>
+<input id="buttons" onclick="qieHuanBiaoTi()" type="button" value="下一个"/>
+<script type="text/javascript">
+    var count = 0;
+    var biaoti = ["标题0","标题1"];
+
+    function qieHuanBiaoTi() {
+        if (biaoti.length > 1) {
+            if(count<=biaoti.length-1){
+                cs2.innerHTML=biaoti[count];
+
+                if(count==biaoti.length-1){
+                    buttons.value="完成任务"
+                }
+                count++;
+            }else{
+                //最后一个处理
+                alert(3);
+            }
+
+        }else{
+            //只有一个时的处理
+            buttons.value="完成任务"
+            alert(2);
+        }
+
+    }
+    qieHuanBiaoTi();
+</script>
+</body>
+</html>

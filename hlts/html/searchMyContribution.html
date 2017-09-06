@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>Title</title>
+    <style>
+        /*设置单元格内容的数量超出用省略号代替*/
+        .limitlength {
+            table-layout: fixed;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
+    </style>
+
+</head>
+<script type='text/javascript' src='js/checkform.js'></script>
+<script language="javascript" src="js/check.js"></script>
+<script type='text/javascript' src='res/js/KMoonPub.js'></script>
+<body bgcolor="#efeef4"style="font-family: Heiti SC;">
+<ylt.for dataId="1493088860741">
+    <table width="100%" style="padding-left: 48px;background-color: white;" onclick="clickContribution('$value')" class="limitlength" name="contribution">
+        <tr style="height: 100px;">
+            <td style="font-size: 50px"  class="limitlength">
+                $value
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 40px;color: gray;"  class="limitlength">
+                $value
+            </td>
+        </tr>
+    </table>
+    <div style="padding-left: 48px;background-color: white;font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;">
+        $value点赞数:<span name="beizanshu">$value</span>
+    </div>
+</ylt.for>
+<div id="tishi" class="gps_font" align="center"></div>
+
+<form id="searchForm" action="searchMyContribution.view" method="post">
+    <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
+    <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
+</form>
+</body>
+
+<script>
+    var contribution = document.getElementsByName('contribution');
+    if(contribution.length == 0){
+        tishi.innerText="很抱歉，没有您想要的资源！";
+    }
+    function beiZanShuChuShiHua(){
+        var bzs=document.getElementsByName("beizanshu");
+        for(var i=0;i<bzs.length;i++){
+            if(bzs[i].innerText==''||bzs[i].innerText==null||bzs[i].innerText == undefined || bzs[i].innerText == 'null'){
+                bzs[i].innerText=0;
+            }
+        }
+    }
+    beiZanShuChuShiHua();
+    function clickContribution(contributionID) {
+
+        var isVIP = Can_the_content_be_viewed(getQueryString('id'));
+        if(!isVIP){
+            /*alert('您不是本圈子会员！请进行充值！');*/
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.needPay.postMessage(null);
+            } else {
+                window.callByJs.isVIP();
+            }
+
+            return;
+        }
+
+        var dict = {"contributionID": contributionID};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoContributionIDDetails.postMessage(dict);
+        } else {
+            window.callByJs.setValue(contributionID);
+        }
+    }
+
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    if(getQueryString('content') != null && getQueryString('content') != "") {
+        var contentInput = document.getElementById('contentInput');
+        contentInput.value = getQueryString1('content');
+        var circleID = document.getElementById('circleID');
+        circleID.value = getQueryString('id');
+        var searchForm =  document.getElementById('searchForm');
+        searchForm.action = "searchMyContribution.view" +"?id="+ getQueryString('id');
+
+        searchForm.submit();
+    }
+</script>
+</html>

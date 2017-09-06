@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type='text/javascript' src='js/check.js' ></script>
+<script type='text/javascript' src='js/checkform.js'  ></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="font-family: Heiti SC;">
+<form id="add" method="post" style="width:100%;height:100%;">
+    <input type="hidden" id="urlAA" name="NO_DOSCRIPT" value="window.location='test.view?id=1490863524207';" />
+    <input type='hidden' name='NO_charset' value='utf-8'/>
+    <ylt.form page="1491530217113">
+        $value </br>
+        $value </br>
+        $value </br>
+        $value </br>
+        $value </br>
+        <input type="submit" value="搜索" id="tijiao" style="" hidden="true"/> $value
+    </ylt.form>
+</form>
+
+<script>
+
+    var String  = window.location.href.substring(44,window.location.href.length);
+    var urlAA = document.getElementById('urlAA');
+    urlAA.value = "window.location='circleInsideSearch.view"+String+"';";
+</script>
+<script>
+    setTimeout("document.getElementById('tijiao').click();",50);//延时3秒
+</script>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<style>
+    .gps_font {
+        font-size: 48px;
+        color: black;
+    }
+</style>
+<script type='text/javascript' src='res/js/KMoonPub.js'></script>
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js' ></script>
+<script type='text/javascript' src='js/checkform.js'  ></script>
+<script language="javascript" src="js/check.js" ></script>
+<script language="javascript" src="js/check.js" charset='gbk' ></script>
+<script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
+<meta name=viewport content="user-scalable=no">
+<title>圈子列表</title>
+<body style="margin: 0 auto;font-family: Heiti SC; " bgcolor="#efeef4">
+
+<ylt.for dataId="1489977256203">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" name="pagingDiv" style="margin-top: 4px;" >
+        <tr style="height: 133px;" onclick="clickCircle('$value','$value','$value','$value','$value','$value','$value','');" bgcolor="white">
+            <td class="gps_td" style="width: 163px;height: 133px;">
+                <img src="" alt="upload/$value" name="pagingImg" style="margin-left: 30px;height: 120px;width: 133px;border: 1px solid gray;line-height: 200px;border-radius: 20px;"/>
+            </td>
+            <td align="left"><span style="margin-left: 30px;" class="gps_font" name="circleName">$value</span></td>
+            <td align="right"><img src="images/pages/into_lan.png" style="margin-right: 30px;"/></td>
+        </tr>
+    </table>
+</ylt.for>
+
+
+
+
+<script>
+    /*
+     *
+     * 上拉加载更多
+     *
+     * */
+    var pagingDivs = document.getElementsByName('pagingDiv');
+    for(var i=0;i<pagingDivs.length;i++){
+        pagingDivs[i].style.display="none";
+    }
+    var pagingImgs = document.getElementsByName('pagingImg');
+    var count = pagingDivs.length;
+    var index = 0;
+
+    function loadMore(x) {
+        var toIndex = index+x>count ? count :index+x;
+        for(var i=index;i<toIndex;i++){
+            pagingDivs[i].style.display = "";
+            pagingImgs[i].src = pagingImgs[i].alt;
+        }
+        index = toIndex;
+        if(index == count){
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.noMoreData.postMessage("没有更多数据了");
+            }else{
+                /*window.callByJs.setValue("noMoreData");*/
+
+            }
+        }
+    }
+    loadMore(14);
+</script>
+
+
+
+
+
+
+<!--这是搜索结果为空时，创建圈子，并且关注圈子form-->
+<form id="add" method="post" style="width:100%;height:100%;">
+    <input type="hidden" id="urlAA" name="NO_DOSCRIPT" value=""/>
+    <input type='hidden' name='NO_charset' value='utf-8'/>
+    <ylt.form page="1489976178290">
+        $value $value $value $value $value $value $value $value $value $value
+        $value $value $value $value $value $value $value $value $value $value
+        $value $value $value $value $value $value $value $value $value $value
+        $value $value $value $value $value $value $value $value $value $value
+        $value $value $value $value $value $value $value $value $value $value
+        $value $value $value
+        <input  type="submit" value="提交"  id="tijiao" onclick="return test()" hidden="true" />
+
+    </ylt.form>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    document.getElementById('T_P_QZB$S_QZM').hidden=true;
+    /**这是获取session用户名**/
+    var user="";
+    <ylt.v message="user">
+            $value
+    user="$value";
+    </ylt.v>
+    /**alert(user);**/
+
+            function test(){
+        var name=document.getElementById("T_P_QZB$S_QZM").value;
+        var returnResults=seekName(name);
+        var circleID = document.getElementById('T_P_QZB$S_ID').value;
+        var circleName = name;
+        var timestamp=new Date().getTime();
+        /**
+         *
+         * 圈子已存在，不提交表单。
+         *
+         *
+         * **/
+        if(check_to_bloc(name) == 'true'){
+            return false;
+        }
+
+
+        if(returnResults[0]!= undefined){
+
+            /**
+             *
+             * 圈子未关注的话，关注。
+             *
+             * **/
+
+            var newResult=getTx("attentionCircleId="+returnResults[0],"phoneJump.view");
+
+
+
+            var  attentionCircleId=incision(newResult,"attentionCircle=",";");
+            if(attentionCircleId==""||attentionCircleId==null||attentionCircleId==undefined||attentionCircleId=='null'){
+
+                var strVResulddt=sys_doComMandReturn("035","S_ID="+timestamp+"&S_QZBID="+returnResults[0]);
+
+                /*var strVResult=sys_doComMandReturn("005","S_QZBID="+returnResults[0]+"&S_ID="+timestamp+'1234'+"&S_YHM="+user+"&S_SFRZ=03");*/
+                var strVResult=sys_doComMandReturn("005","S_QZBID="+returnResults[0]+"&S_ID="+timestamp+"&S_YHM="+user+"&S_SFRZ=03"+"&S_SZBM=&S_ZW=");
+                var strVResults=sys_doComMandReturn("019","S_QZBID="+returnResults[0]+"&S_ID="+timestamp+"&S_QZM="+name+"&S_SSR="+user+"&S_SSSJ="+timestamp);
+
+                var strVResultss=sys_doComMandReturn("041","S_QZID="+returnResults[0]+"&S_ID="+timestamp);
+
+            }else{
+                var strVResultss=sys_doComMandReturn("041","S_QZID="+returnResults[0]+"&S_ID="+timestamp);
+
+                var strVResults=sys_doComMandReturn("019","S_QZBID="+returnResults[0]+"&S_ID="+timestamp+"&S_QZM="+name+"&S_SSR="+user+"&S_SSSJ="+timestamp);
+                /* var strVResult=sys_doComMandReturn("056","S_QZBID="+returnResults[0]);*/
+                var strVResult=sys_doComMandReturn("056","S_SZBM=''&S_ZW=''&S_QZBID="+returnResults[0]);
+            }
+            /*ceshi(); */
+            var kongzhi;
+            if(playControl(returnResults[0])==0){
+                kongzhi = "05";
+            }else{
+                kongzhi = "06";
+            }
+            if(name_Nuthentication(returnResults[0]) == 0){
+                clickCircle(returnResults[0],searchContent,returnResults[1],"01","03","",kongzhi,"");
+            }else{
+                clickCircle(returnResults[0],searchContent,returnResults[1],"","","",kongzhi,"");
+            }
+
+
+            return false;
+        }
+
+        /**
+         *
+         * 圈子不存在
+         *
+         *
+         * **/
+
+        else{
+            var timestampsds=new Date().getTime();
+            /* var strVResult=sys_doComMandReturn("067","S_ID="+(timestamp+random3Code())+"&S_QZID="+circleID+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频&S_TP=图片&S_YP=音频&S_WA=文案&S_CFSY=zero");
+             var strVResult=sys_doComMandReturn("067","S_ID="+(timestampsds+3+random3Code())+"&S_QZID="+circleID+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频1&S_TP=图片1&S_YP=音频1&S_WA=文案1&S_CFSY=one");
+             var strVResultss=sys_doComMandReturn("041","S_QZID="+circleID+"&S_ID="+(timestamp+random3Code()));*/
+
+
+            for(i=0;i<7;i++){
+                var timestampsds=new Date().getTime();
+                if(i==0){
+                    var strVResult=sys_doComMandReturn("067","S_ID="+(timestampsds+i+random3Code())+"&S_QZID="+circleID+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频&S_TP=图片&S_YP=音频&S_WA=文案&S_CFSY=zero");
+                }
+                if(i==1){
+                    var strVResult=sys_doComMandReturn("067","S_ID="+(timestampsds+i+random3Code())+"&S_QZID="+circleID+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频1&S_TP=图片1&S_YP=音频1&S_WA=文案1&S_CFSY=one");
+                }
+                if(i==2){
+                    var strVResultss=sys_doComMandReturn("041","S_QZID="+circleID+"&S_ID="+(timestampsds+i+random3Code()));
+                }
+                if(i==3){
+                    var strVResult=sys_doComMandReturn("099","S_FL=gx1&S_ID="+(timestampsds+i+random3Code())+"&S_ONE=所有&S_QZID="+circleID+"&S_TWO=个人贡献");
+                }
+                if(i==4){
+                    var strVResult=sys_doComMandReturn("099","S_FL=hd1&S_ID="+(timestampsds+i+random3Code())+"&S_ONE=最新问题&S_QZID="+circleID+"&S_TWO=历史回答");
+                }
+                if(i==5){
+                    var strVResult=sys_doComMandReturn("099","S_FL=gx2&S_ID="+(timestampsds+i+random3Code())+"&S_ONE=所有&S_QZID="+circleID+"&S_TWO=个人贡献");
+                }
+                if(i==6){
+                    var strVResult=sys_doComMandReturn("099","S_FL=hd2&S_ID="+(timestampsds+i+random3Code())+"&S_ONE=最新问题&S_QZID="+circleID+"&S_TWO=历史回答");
+                }
+
+
+            }
+            /*var strVResult=sys_doComMandReturn("099","S_FL=gx1&S_ID="+(timestampsds+i)+"&S_ONE=所有&S_QZID="+circleID+"&S_TWO=个人贡献");
+             var strVResult=sys_doComMandReturn("099","S_FL=hd1&S_ID="+(timestampsds+i)+"&S_ONE=最新问题&S_QZID="+circleID+"&S_TWO=历史回答");
+             var strVResult=sys_doComMandReturn("099","S_FL=gx2&S_ID="+(timestampsds+i)+"&S_ONE=所有&S_QZID="+circleID+"&S_TWO=个人贡献");
+             var strVResult=sys_doComMandReturn("099","S_FL=hd2&S_ID="+(timestampsds+i)+"&S_ONE=最新问题&S_QZID="+circleID+"&S_TWO=历史回答");*/
+
+            var valueStr = "var circle = {'circleID':'" + circleID + "','circleName':'" + circleName + "'};var userAgent = navigator.userAgent;if (userAgent.indexOf('iPhone') >= 0) {window.webkit.messageHandlers.searchintoCircle.postMessage(circle);}else{window.callByJs.certification('02','04','06');window.callByJs.setValue('" + circleID + "','" + '' + "','" + '' +"','"+circleName +"');};";            document.getElementById('urlAA').value = valueStr;
+            return true;
+        }
+    }
+
+    /**搜索圈子名**/
+    function seekName(name){
+        var ResultStr=getTx("seekName="+name,"phoneJump.view");
+        var over=";";
+        var cID=incision(ResultStr,"circleNumber=",over);
+        Admin=incision(ResultStr,"circleAdmin=",over);
+        var Results = new Array();
+        Results[0]=cID;
+        Results[1]=Admin;
+        return Results;
+    }
+
+
+    /**切割字符串方法  incision(切割) Result结果，从哪里切，切割到哪**/
+    function incision(Result,start,over){
+        Result=Result.substr(Result.indexOf(start));
+        Result=Result.substr(0,Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result=Result.split(start)[1];
+        return Result;
+    }
+
+
+
+</script>
+
+<script>
+    var searchContent;
+    function search(content) {
+        searchContent = content;
+        document.getElementById('T_P_QZB$S_QZM').value = content;
+        var re =document.getElementById('tijiao').click();
+
+    }
+
+    /**取消关注**/
+    function deleteAttention(ids){
+        var strVResult=sys_doComMandReturn("020","S_QZBID="+ids);
+        var strVResults=sys_doComMandReturn("043","S_QZBID="+ids);
+        var strVResultss=sys_doComMandReturn("044","S_QZBID="+ids);
+    }
+</script>
+
+<script>
+    function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2) {
+        if(name_Nuthentication(circleID) == 0){
+            circleRZ = "01";
+            userRZ = "03";
+        }else{
+            userRZ = "04";
+        }
+
+        var circle = {"circleID":circleID,"circleName":circleName,'circleAdmin':circleAdmin,'circleRZ':circleRZ,'userRZ':userRZ,'videoYZ':videoYZ,'isSF':isSF};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoCircle.postMessage(circle);
+        }else{
+            window.callByJs.certification(circleRZ,userRZ,videoYZ);
+            window.callByJs.setValue(circleID,circleName,circleAdmin,circleName2);
+
+        }
+    }
+
+
+</script>

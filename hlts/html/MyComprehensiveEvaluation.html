@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="js/Chart.js"></script>
+    <meta name="viewport" content="initial-scale = 1, user-scalable = no">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <!-- 雷达图 -->
+    <script type="text/javascript" src="js/Chart.min.js"></script>
+    <!-- End -->
+
+
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <style type="text/css">
+        img {
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+    </style>
+
+
+    <style type="text/css">
+
+
+        #alertM, #alertT, #alertR, #alertP, #alertBtns {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            line-height: 24px;
+            font-family: arial, sans-serif;
+            text-align: left
+        }
+
+        #alertR, #alertBtns a {
+            text-decoration: none;
+        }
+
+        #hbg {
+            width: 100%;
+            position: absolute;
+            background: #000;
+            z-index: 998; /* 设置层级，主要是为了遮住页面内的其他内容 */
+            top: 0;
+            left: 0;
+            height: 100%; /* 随便填，超过整屏高度就行，后面由js控制 */
+            opacity: 0.6 /* ie8及以下浏览器看不到效果，我也懒的给你写filter，换其他的现代浏览器吧 */
+        }
+
+        #alertM {
+            position: absolute; /* 绝对定位，为了以后控制方便 */
+            top: 150px;
+            background: #fff;
+            z-index: 999; /* 层级，当然要比背景高1啦，要不你怎么看见 */
+            width: 100%;
+            height: auto;
+            border: 1px #ccc solid;
+        }
+
+        #alertT {
+            margin: 4px;
+            padding: 0 16px;
+            background: #029ae5;
+            color: #fff;
+
+        }
+
+        #alertP {
+            padding: 12px;
+        }
+
+        #alertR {
+            font-size: 24px;
+            float: right; /* 右浮动 */
+            margin: -32px 8px 0 0; /* 使用负值margin 调高 */
+            padding: 4px;
+            color: #72d5fb;
+            font-weight: bold;
+        }
+
+        #alertR:hover {
+            color: #fff;
+        }
+
+        #alertBtns {
+            text-align: right;
+        }
+
+        #alertBtns a {
+            margin: 8px;
+            padding: 0 24px;
+            color: #000;
+            background: #EEE;
+            border: 1px #E6E6E6 solid;
+            display: inline-block;
+        }
+
+        #alertBtns a:hover {
+            background: #ccc;
+            border: 1px #ddd solid;
+        }
+
+        #alertBtns a:active {
+            background: #bbb;
+            border: 1px #aaa solid;
+        }
+
+        #alertM {
+            box-shadow: 0px 0px 24px #000; /* 阴影 */
+            border-radius: 12px; /* 圆角 */
+        }
+
+        #alertT {
+            text-shadow: 0px 1px 1px #000; /* 文字阴影 */
+            background-image: -moz-linear-gradient(top, #03b3f6, #0374c6); /* 火狐下的渐变 */
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #03b3f6), color-stop(1, #0374c6)); /* webkit内核下的渐变 */
+            border-radius: 8px;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        #alertBtns a {
+            text-shadow: 0px 1px 1px white;
+            background-image: -moz-linear-gradient(top, #fff, #ccc);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #ccc));
+            border-radius: 4px;
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        #alertBtns a:hover {
+            background: #ccc;
+            background-image: -moz-linear-gradient(top, #f6f6f6, #c6c6c6);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6f6f6), color-stop(1, #c6c6c6));
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+            border: 1px #ddd solid;
+        }
+
+        #alertBtns a:active {
+            background: #bbb;
+            background-image: -moz-linear-gradient(top, #f3f3f3, #bbb);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(1, #bbb));
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+            border: 1px #aaa solid;
+        }
+
+        #alertR {
+            text-shadow: 0px 1px 1px #000;
+            -webkit-transform: rotate(-360deg); /* 一开始时候先设定旋转-360度，这样鼠标悬浮的时候转的圈数多一些 */
+            -moz-transform: rotate(-360deg);
+            -o-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+            -webkit-transition: -webkit-transform 0.6s ease-out; /* 设定动画部分，时间以及效果 */
+            -moz-transition: -moz-transform 0.6s ease-out;
+            -o-transition: -o-transform 0.6s ease-out;
+            transition: transform 0.6s ease-out;
+        }
+
+        #alertR:hover {
+            color: #fff;
+            -webkit-transform: rotate(360deg); /* 就是在0.6s 内从-360度转到360度的意思 */
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+
+        #alertR:active {
+            text-shadow: 0px 0px 1px #000;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0;font-family: Heiti SC;background: #EFEEF4;font-size: 18px;">
+<div name="不要动" style="display: none;">
+    <div style="background-color: royalblue;">
+        动力层<br/>
+        <ylt.for dataId="1493277782014">
+            动力层贡献数<input type="text" value="$value" id="donglicenggongxianNamber"/>
+        </ylt.for>
+        <ylt.for dataId="1493286474866">
+            学习项<input type="text" value="$value" id="xuexixiang"/>
+        </ylt.for>
+        <br/>
+
+        </ylt.for>
+        <ylt.for dataId="1493278542182">
+            回答项<input type="text" value="$value" id="huidaxiang"/>
+
+        </ylt.for>
+        <ylt.for dataId="1493279040765">
+            提问项<input type="text" value="$value" id="tiwenxiang"/>
+
+        </ylt.for>
+    </div>
+    <div>
+        权重查询
+        <ylt.for dataId="1493352930021">
+            学习<input type="text" value="$value" id="S_XXX"/>
+            贡献<input type="text" value="$value" id="S_GXX"/>
+            回答<input type="text" value="$value" id="S_HDX"/>
+            提问<input type="text" value="$value" id="S_TWX"/>
+            被点赞<input type="text" value="$value" id="S_BDZX"/>
+        </ylt.for>
+
+
+    </div>
+    <div style="background-color: red;">
+        动力指数<input id="donglizhishu"/>
+        动力位置<input id="dongliweizhi"/>
+    </div>
+    <div style="background-color: rosybrown;">
+        能力层<br/>
+        <ylt.for dataId="1493281835847">
+            能力层贡献数（审核过的贡献）<input type="text" value="$value" id="nengLigongxianNumber"/>
+            <br/>
+        </ylt.for>
+        <br/>
+        <ylt.for dataId="1493284800411">
+            贡献被点赞数<input type="text" value="$value" name="gongxiandianzan"/>
+
+        </ylt.for>
+        <br/>
+        <ylt.for dataId="1493285466990">
+            提问被点赞数<input type="text" value="$value" name="tiwendianzan"/>
+
+        </ylt.for>
+        <br/>
+        <ylt.for dataId="1493285518169">
+            回答被点赞数<input type="text" value="$value" name="huidadianzan"/>
+
+        </ylt.for>
+        <br/>
+        <ylt.for dataId="1493696282618">
+            考试分数查询<input type="text" value="$value" name="kaoshifenshu"/>
+
+        </ylt.for>
+    </div>
+    <div style="background-color: red;">
+        能力指数<input id="nenglizhishu"/>
+        能力位置<input id="nengliweizhi"/>
+    </div>
+    <div style="background-color: burlywood;">
+        行为层
+    </div>
+    <div style="background-color: red;">
+        行为指数<input id="xingweizhishu"/>
+        行为位置<input id="xingweiweizhi"/>
+    </div>
+    <div>
+        <ylt.for dataId="1493706534971">
+            最大动力指数<input type="text" value="$value" id="maximumDongLiZhiShu"/>
+            最大能力指数<input type="text" value="$value" id="maximumNengLiZhiShu"/>
+            最大行为指数<input type="text" value="$value" id="maximumXingWeiZhiShu"/>
+            最大动力位置<input type="text" value="$value" id="maximumDongLiWeiZhi"/>
+            最大能力位置<input type="text" value="$value" id="maximumNengLiWeiZhi"/>
+            最大行为位置<input type="text" value="$value" id="maximumXingWeiWeiZhi"/>
+        </ylt.for>
+    </div>
+    <div>
+        <ylt.for dataId="1493710594161">
+            我的动力指数<input type="text" value="$value" id="myDongLiZhiShu"/>
+            我的能力指数<input type="text" value="$value" id="myNengLiZhiShu"/>
+            我的行为指数<input type="text" value="$value" id="myXingWeiZhiShu"/>
+            我的动力位置<input type="text" value="$value" id="myDongLiWeiZhi"/>
+            我的能力位置<input type="text" value="$value" id="myNengLiWeiZhi"/>
+            我的行为位置<input type="text" value="$value" id="myXingWeiWeiZhi"/>
+        </ylt.for>
+    </div>
+</div>
+
+<div id="wrap">
+    <div>
+
+        <div style="background: white;padding-top: 20px;text-indent: 1em;">
+            我的指数：
+            <div>
+                <div id="dlzs" style="text-indent: 3em;"></div>
+                <div id="zddlzs" style="text-indent: 5em;"></div>
+            </div>
+            <div>
+                <div id="nlzs" style="text-indent: 3em;"></div>
+                <div id="zdnlzs" style="text-indent: 5em;"></div>
+            </div>
+            <div>
+                <div id="xwzs" style="text-indent: 3em;"></div>
+                <div id="zdxwzs" style="text-indent: 5em;"></div>
+            </div>
+        </div>
+
+        <div style="background: white; margin-top:20px;text-indent: 1em;padding-top: 20px;">
+            我的位置：
+            <div>
+                <div style="height: 35px;line-height: 35px;color: #029ae5;"
+                     onclick="openDiv(document.getElementById('maximumDongLiWeiZhi').value,document.getElementById('dongliweizhi').value);">
+                    <div id="dlwz" style="text-indent: 3em; float: left;"></div>
+                    <img src="images/pages/into_lan.png" height="20px" style="float: right;"/>
+                </div>
+
+                <div id="zddlwz" style="text-indent: 5em;"></div>
+
+            </div>
+            <div>
+                <div style="height: 35px;line-height: 35px;color: #029ae5;"
+                     onclick="openDiv(document.getElementById('maximumNengLiWeiZhi').value,document.getElementById('nengliweizhi').value);">
+                    <div id="nlwz" style="text-indent: 3em; float: left;"></div>
+                    <img src="images/pages/into_lan.png" align="right" height="20px" style="float: right;"/>
+                </div>
+                <div id="zdnlwz" style="text-indent: 5em;"></div>
+            </div>
+            <div>
+                <div style="height: 35px;line-height: 35px;color: #029ae5;"
+                     onclick="openDiv(document.getElementById('maximumXingWeiWeiZhi').value,document.getElementById('xingweiweizhi').value);">
+                    <div id="xwwz" style="text-indent: 3em; float: left;"></div>
+                    <img src="images/pages/into_lan.png" align="right" height="20px" style="float: right;"/>
+                </div>
+                <div id="zdxwwz" style="text-indent: 5em;"></div>
+            </div>
+        </div>
+    </div>
+    <div style="width:100%; display:block; margin-top:20px;background: white;text-indent: 1em;padding-top: 20px;">
+        综合评价:
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+
+<div id="tishi" class="gps_font" align="center"></div>
+<div id="tanchuang2" style="display: none;">
+    <div id="hbg"></div>
+    <!-- 半透明背景遮罩 -->
+    <div id="alertM">                 <!-- 提示框的容器 -->
+        <h5 id="alertT">提示</h5> <!-- 标题 -->
+        <a id="alertR" title="关闭" href="javascript:void(0)" onclick="closeDivFun()">×</a> <!-- 关闭按钮 -->
+        <div style="text-align:center;clear:both;margin: 0 auto;" id="alertP">
+            <canvas id="canva2" style="height: 200px;align-content: center;"></canvas>
+        </div>
+        <!-- 内容 -->
+        <div id="alertBtns" style="text-align:right;">          <!-- 按钮区域 -->
+            <button id="alertY" href="javascript:void(0)" onclick="closeDivFun()"
+                    style="background-color: #029ae5;color: #FFFFFF;border-radius:10px;margin-bottom: 10px;margin-right:20px;width:100px;font-size: 24px;">
+                确认
+            </button>
+            <!-- 确认和取消按钮 -->
+        </div>
+    </div>
+</div>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+</script>
+<!--计算值JS不要动-->
+<script>
+    /**加法**/
+    function numAdd(num1, num2) {
+        var baseNum, baseNum1, baseNum2;
+        try {
+            baseNum1 = num1.toString().split(".")[1].length;
+        } catch (e) {
+            baseNum1 = 0;
+        }
+        try {
+            baseNum2 = num2.toString().split(".")[1].length;
+        } catch (e) {
+            baseNum2 = 0;
+        }
+        baseNum = Math.pow(10, Math.max(baseNum1, baseNum2));
+        return (num1 * baseNum + num2 * baseNum) / baseNum;
+    }
+    ;
+    /**乘法**/
+    function numMulti(num1, num2) {
+        var baseNum = 0;
+        try {
+            baseNum += num1.toString().split(".")[1].length;
+        } catch (e) {
+        }
+        try {
+            baseNum += num2.toString().split(".")[1].length;
+        } catch (e) {
+        }
+        return Number(num1.toString().replace(".", "")) * Number(num2.toString().replace(".", "")) / Math.pow(10, baseNum);
+    }
+    ;
+    /**除法**/
+    function numDiv(num1, num2) {
+        var baseNum1 = 0, baseNum2 = 0;
+        var baseNum3, baseNum4;
+        try {
+            baseNum1 = num1.toString().split(".")[1].length;
+        } catch (e) {
+            baseNum1 = 0;
+        }
+        try {
+            baseNum2 = num2.toString().split(".")[1].length;
+        } catch (e) {
+            baseNum2 = 0;
+        }
+        with (Math) {
+            baseNum3 = Number(num1.toString().replace(".", ""));
+            baseNum4 = Number(num2.toString().replace(".", ""));
+            return (baseNum3 / baseNum4) * pow(10, baseNum2 - baseNum1);
+        }
+    }
+    ;
+
+
+</script>
+<script>
+    var S_XXX = document.getElementById("S_XXX").value;
+    /**学习项权重**/
+    var S_GXX = document.getElementById("S_GXX").value;
+    /**贡献项权重**/
+    var S_HDX = document.getElementById("S_HDX").value;
+    /**回答项权重**/
+    var S_TWX = document.getElementById("S_TWX").value;
+    /**提问项权重**/
+    var S_BDZX = document.getElementById("S_BDZX").value;
+    /**被点赞权重**/
+    var quanZhongZongHe = numAdd(numAdd(numAdd(S_XXX, S_GXX), numAdd(S_HDX, S_TWX)), S_BDZX);
+    /**权重总和**/
+    var donglicenggongxianNamber = document.getElementById("donglicenggongxianNamber").value;
+    /**动力层贡献数**/
+    var xuexixiang = document.getElementById("xuexixiang").value;
+    /**动力层学习数**/
+    var huidaxiang = document.getElementById("huidaxiang").value;
+    /**回答数**/
+    var tiwenxiang = document.getElementById("tiwenxiang").value;
+    /**提问数**/
+
+    /**计算动力指数**/
+    function donglizhishu() {
+
+        var sum_xxx = parseInt(xuexixiang) * parseInt(S_XXX);
+        var sum_gxx = parseInt(donglicenggongxianNamber) * parseInt(S_GXX);
+        var sum_hdx = parseInt(huidaxiang) * parseInt(S_HDX);
+        var sum_twx = parseInt(tiwenxiang) * parseInt(S_TWX);
+
+        /**项目乘以权重最后总和**/
+
+        /**权重总和**/
+        document.getElementById("donglizhishu").value = numDiv(numAdd(numAdd(sum_xxx, sum_gxx), numAdd(sum_hdx, sum_twx)), numAdd(numMulti(quanZhongZongHe, 2), 77)).toFixed(2);
+        /**动力指数赋值**/
+
+        /**学习。提问，回答，贡献总和**/
+
+        document.getElementById("dongliweizhi").value = numDiv(numAdd(numAdd(xuexixiang, donglicenggongxianNamber), numAdd(huidaxiang, tiwenxiang)), numAdd(quanZhongZongHe, 77)).toFixed(2);
+        /**动力位置赋值**/
+
+    }
+    donglizhishu();
+
+    function nenglizhishu() {
+
+        var gongXianDianZanValue = 0;
+        for (var i = 0; i < document.getElementsByName("gongxiandianzan").length; i++) {
+            if (document.getElementsByName("gongxiandianzan")[i].value != false&&document.getElementsByName("gongxiandianzan")[i].value !="null") {
+                gongXianDianZanValue += parseInt(document.getElementsByName("gongxiandianzan")[i].value);
+            }
+
+        }
+        var tiWenDianZanValue = 0;
+        for (var f = 0; f < document.getElementsByName("tiwendianzan").length; f++) {
+
+
+            if (document.getElementsByName("tiwendianzan")[f].value != false&&document.getElementsByName("tiwendianzan")[f].value!='null') {
+
+                tiWenDianZanValue += parseInt(document.getElementsByName("tiwendianzan")[f].value);
+            }
+
+        }
+
+
+        var huiDaDianZanValue = 0;
+        for (var g = 0; g < document.getElementsByName("huidadianzan").length; g++) {
+
+
+            if (document.getElementsByName("huidadianzan")[g].value != false&&document.getElementsByName("huidadianzan")[g].value != 'null') {
+                huiDaDianZanValue += parseInt(document.getElementsByName("huidadianzan")[g].value);
+            }
+
+        }
+
+
+        var dianzanCount = gongXianDianZanValue + tiWenDianZanValue + huiDaDianZanValue;
+        /**点赞数总和**/
+
+
+
+
+        var nengligongxianNumberValue = document.getElementById("nengLigongxianNumber").value;
+        /**能力层贡献数**/
+
+
+        var gongxianjieguo = numMulti(S_GXX, nengligongxianNumberValue);
+        /**贡献数*贡献权重**/
+
+        var huidajieguo = numMulti(S_HDX, huidaxiang);
+        /**回答数*回答权重**/
+
+        var tiwenjieguo = numMulti(S_TWX, tiwenxiang);
+        /**提问数*提问权重**/
+
+        var dianzanjieguo = numMulti(S_BDZX, dianzanCount);
+        /**点赞数*点赞权重**/
+
+
+        document.getElementById("nenglizhishu").value =
+                numDiv(numAdd(numAdd(gongxianjieguo, huidajieguo), numAdd(tiwenjieguo, dianzanjieguo)), numAdd(numMulti(quanZhongZongHe, 2), 79)).toFixed(2);
+        /**能力指数赋值**/
+
+        var kaoshifenshuValue = 0;
+        for (var q = 0; q < document.getElementsByName("kaoshifenshu").length; q++) {
+
+
+            if (document.getElementsByName("kaoshifenshu")[q].value != false) {
+                kaoshifenshuValue += parseInt(document.getElementsByName("kaoshifenshu")[q].value);
+            }
+
+        }
+        document.getElementById("nengliweizhi").value =
+                numDiv(kaoshifenshuValue, numAdd(quanZhongZongHe, 79)).toFixed(2);
+        /**能力位置赋值**/
+    }
+    nenglizhishu();
+
+
+    /**行为指数**/
+    function xingweizhishu() {
+
+
+        document.getElementById("xingweizhishu").value =
+                numDiv(numAdd(numMulti(S_HDX, huidaxiang), numMulti(donglicenggongxianNamber, S_GXX)), numAdd(numMulti(quanZhongZongHe, 2), 75)).toFixed(2);
+        /**行为指数赋值**/
+
+        document.getElementById("xingweiweizhi").value =
+                numDiv(numAdd(donglicenggongxianNamber, huidaxiang), numAdd(quanZhongZongHe, 75)).toFixed(2);
+        /**行为位置赋值**/
+
+
+    }
+    xingweizhishu();
+
+    var maximumDongLiZhiShu = document.getElementById("maximumDongLiZhiShu").value;
+    var maximumDongLiWeiZhi = document.getElementById("maximumDongLiWeiZhi").value;
+    var maximumNengLiZhiShu = document.getElementById("maximumNengLiZhiShu").value;
+    var maximumNengLiWeiZhi = document.getElementById("maximumNengLiWeiZhi").value;
+    var maximumXingWeiZhiShu = document.getElementById("maximumXingWeiZhiShu").value;
+    var maximumXingWeiWeiZhi = document.getElementById("maximumXingWeiWeiZhi").value;
+
+
+    /**现在的值**/
+    var A = document.getElementById("donglizhishu").value;
+    var Aa = document.getElementById("dongliweizhi").value;
+    var B = document.getElementById("nenglizhishu").value;
+    var Bb = document.getElementById("nengliweizhi").value;
+    var C = document.getElementById("xingweizhishu").value;
+    var Cc = document.getElementById("xingweiweizhi").value;
+
+    function updateZongHePingJia() {
+
+        var myDongLiZhiShu = document.getElementById("myDongLiZhiShu").value;
+        var myDongLiWeiZhi = document.getElementById("myDongLiWeiZhi").value;
+        var myNengLiZhiShu = document.getElementById("myNengLiZhiShu").value;
+        var myNengLiWeiZhi = document.getElementById("myNengLiWeiZhi").value;
+        var myXingWeiZhiShu = document.getElementById("myXingWeiZhiShu").value;
+        var myXingWeiWeiZhi = document.getElementById("myXingWeiWeiZhi").value;
+
+        /**，如果最大也为空，自己的值肯定为空，更新自己数据，刷新页面**/
+        if (maximumDongLiZhiShu == "" && maximumDongLiWeiZhi == "" && maximumNengLiZhiShu == "" && maximumNengLiWeiZhi == "" && maximumXingWeiZhiShu == "" && maximumXingWeiWeiZhi == "") {
+
+            var strVResult = sys_doComMandReturn("042", "S_DLZS=" + A + "&S_DLWZ=" + Aa +
+                    "&S_NLZS=" + B + "&S_NLWZ=" + Bb +
+                    "&S_XWZS=" + C + "&S_XWWZ=" + Cc + "&S_QZID=" + getQueryString('id'));
+            maximumDongLiZhiShu = A;
+            maximumDongLiWeiZhi = Aa;
+            maximumNengLiZhiShu = B;
+            maximumNengLiWeiZhi = Bb;
+            maximumXingWeiZhiShu = C;
+            maximumXingWeiWeiZhi = Cc;
+        }
+        if (maximumDongLiZhiShu == "null" && maximumDongLiWeiZhi == "null" && maximumNengLiZhiShu == "null" && maximumNengLiWeiZhi == "null" && maximumXingWeiZhiShu == "null" && maximumXingWeiWeiZhi == "null") {
+
+            var strVResult = sys_doComMandReturn("042", "S_DLZS=" + A + "&S_DLWZ=" + Aa +
+                    "&S_NLZS=" + B + "&S_NLWZ=" + Bb +
+                    "&S_XWZS=" + C + "&S_XWWZ=" + Cc + "&S_QZID=" + getQueryString('id'));
+            maximumDongLiZhiShu = A;
+            maximumDongLiWeiZhi = Aa;
+            maximumNengLiZhiShu = B;
+            maximumNengLiWeiZhi = Bb;
+            maximumXingWeiZhiShu = C;
+            maximumXingWeiWeiZhi = Cc;
+        }
+        /*判断自己数据库中的值是否为空，如果为空，将计算的数据更新到数据库*/
+
+        if (myDongLiZhiShu == "" && myDongLiWeiZhi == "" && myNengLiZhiShu == "" && myNengLiWeiZhi == "" && myXingWeiZhiShu == "" && myXingWeiWeiZhi == "") {
+
+            var strVResult = sys_doComMandReturn("042", "S_DLZS=" + A + "&S_DLWZ=" + Aa +
+                    "&S_NLZS=" + B + "&S_NLWZ=" + Bb +
+                    "&S_XWZS=" + C + "&S_XWWZ=" + Cc + "&S_QZID=" + getQueryString('id'));
+        }
+
+
+        /*判断自己现在的值，比不比数据中自己的值大，如果大，更新自己的数据*/
+
+        if (parseFloat(A) > parseFloat(myDongLiZhiShu) ||
+                parseFloat(Aa) > parseFloat(myDongLiWeiZhi) ||
+                parseFloat(B) > parseFloat(myNengLiZhiShu) ||
+                parseFloat(Bb) > parseFloat(myNengLiWeiZhi) ||
+                parseFloat(C) > parseFloat(myXingWeiZhiShu) ||
+                parseFloat(Cc) > parseFloat(myXingWeiWeiZhi)) {
+            var strVResult = sys_doComMandReturn("042", "S_DLZS=" + A + "&S_DLWZ=" + Aa +
+                    "&S_NLZS=" + B + "&S_NLWZ=" + Bb +
+                    "&S_XWZS=" + C + "&S_XWWZ=" + Cc + "&S_QZID=" + getQueryString('id'));
+
+        }
+
+
+        /**判断自己的值是不是比最大的值大，如果大，用自己的值当最大值**/
+        if (parseFloat(A) > parseFloat(maximumDongLiZhiShu)) {
+            maximumDongLiZhiShu = A;
+
+        }
+        if (parseFloat(Aa) > parseFloat(maximumDongLiWeiZhi)) {
+            maximumDongLiWeiZhi = Aa;
+        }
+        if (parseFloat(B) > parseFloat(maximumNengLiZhiShu)) {
+            maximumNengLiZhiShu = B;
+        }
+        if (parseFloat(Bb) > parseFloat(maximumNengLiWeiZhi)) {
+            maximumNengLiWeiZhi = Bb;
+        }
+        if (parseFloat(C) > parseFloat(maximumXingWeiZhiShu)) {
+            maximumXingWeiZhiShu = C;
+        }
+        if (parseFloat(Cc) > parseFloat(maximumXingWeiWeiZhi)) {
+            maximumXingWeiWeiZhi = Cc;
+
+        }
+
+
+    }
+    updateZongHePingJia();
+</script>
+<!--给页面赋值-->
+<script type="text/javascript">
+    var zs =document.getElementById("S_XXX");
+    if(zs==null){
+        wrap.style.display="none";
+        tishi.innerText="很抱歉，管理员没有设置权重比例，无法显示，请联系管理员！";
+    }
+    function The_assignment() {
+        var maxzuida = Math.max(maximumDongLiZhiShu, maximumDongLiWeiZhi, maximumNengLiZhiShu, maximumNengLiWeiZhi, maximumXingWeiZhiShu, maximumXingWeiWeiZhi);
+        var maxwode = Math.max(A, Aa, B, Bb, C, Cc);
+        var zuida = "" + maxzuida;
+        var wode = "" + maxwode;
+        dlzs.innerHTML = "动力指数:" + geshihua(A, wode.length);
+        zddlzs.innerHTML = "最高:" + geshihua(maximumDongLiZhiShu, zuida.length);
+        nlzs.innerHTML = "能力指数:" + geshihua(B, wode.length);
+        zdnlzs.innerHTML = "最高:" + geshihua(maximumNengLiZhiShu, zuida.length);
+        xwzs.innerHTML = "行为指数:" + geshihua(C, wode.length);
+        zdxwzs.innerHTML = "最高:" + geshihua(maximumXingWeiZhiShu, zuida.length);
+
+        dlwz.innerHTML = "动力位置:" + geshihua(Aa, wode.length);
+        zddlwz.innerHTML = "最高:" + geshihua(maximumDongLiWeiZhi, zuida.length);
+        nlwz.innerHTML = "能力位置:" + geshihua(Bb, wode.length);
+        zdnlwz.innerHTML = "最高:" + geshihua(maximumNengLiWeiZhi, zuida.length);
+        xwwz.innerHTML = "行为位置:" + geshihua(Cc, wode.length);
+        zdxwwz.innerHTML = "最高:" + geshihua(maximumXingWeiWeiZhi, zuida.length);
+    }
+    The_assignment();
+    function geshihua(number, length) {
+        var kongge = "";
+        for (var i = 0; i < (length - number.length); i++) {
+            kongge += "  ";
+        }
+        return kongge.concat(number);
+    }
+</script>
+<!--弹窗画图-->
+<script type="text/javascript">
+    function lines2(canid, starx, stary, endx, endy) {
+        var can = document.getElementById(canid).getContext("2d");
+        can.moveTo(starx, stary);
+        can.lineTo(endx, endy);
+        can.stroke();
+    }
+
+    function circle(canid, starx, stary, r, kaishihudu, jieshuhudu, yanse) {
+        var dc = document.getElementById(canid).getContext("2d");
+        dc.beginPath();
+        dc.arc(starx, stary, r, kaishihudu, jieshuhudu, false);
+        dc.fillStyle = yanse;
+        dc.fill();
+        dc.closePath();
+    }
+    function cssz(zuidaweizhi, wodeweizhi, canid, starx, stary, endx, endy, circlex, circley, r, kaishihudu, jieshuhudu, yanse) {
+        var zdwz = parseFloat(zuidaweizhi) + 0.00000001;
+        var bili = 1 - wodeweizhi / zdwz;
+        lines2(canid, starx, stary, endx, endy);
+        lines2(canid, starx - 10, stary, starx + 10, stary);
+        lines2(canid, endx - 10, endy, endx + 10, endy);
+        circle(canid, circlex, circley * bili + 10, r, kaishihudu, jieshuhudu, yanse);
+    }
+</script>
+<!--弹窗事件-->
+<script type="text/javascript">
+    function closeDivFun() {
+        document.getElementById('tanchuang2').style.display = 'none';
+    }
+    function openDiv(MaxPos, MyPos) {
+        document.getElementById('tanchuang2').style.display = 'inline';
+        var maxPos = parseFloat(MaxPos) + 0.00000001;
+        var bl = MyPos / maxPos;
+        /*比例*/
+
+        if (bl < 0.25) {
+            document.getElementById('alertT').innerText = "您的专业位置目前特别差，请加倍努力！"
+        } else if (bl < 0.5) {
+            document.getElementById('alertT').innerText = "您的专业位置目前较差，提升空间很大！"
+        } else if (bl < 0.75) {
+            document.getElementById('alertT').innerText = "您的专业位置目前处于中等水平，提升空间很大！"
+        } else if (MaxPos == MyPos) {
+            document.getElementById('alertT').innerText = "您的专业位置目前领先，请继续保持！"
+        } else {
+            document.getElementById('alertT').innerText = "您的专业位置目前处于良好水平，还有提升空间！"
+        }
+        document.getElementById("canva2").getContext("2d").beginPath();
+        document.getElementById("canva2").getContext("2d").clearRect(0, 0, document.getElementById("canva2").width, document.getElementById("canva2").height);
+        /*line(MaxPos,MyPos);*/
+        cssz(MaxPos, MyPos, 'canva2', 120, 10, 120, 140, 120, 130, 5, 0, 360, 'blue');
+    }
+</script>
+<!--画雷达图-->
+<script type="text/javascript">
+    drawRadarMap('myChart', 150, 150, 90, 3, 6, 300, 300);
+    function drawRadarMap(canid, yuanx, yuany, r, kedu, weidu, canw, canh) {
+        /*原点坐标X,Y*/
+        var xX = yuanx;
+        var yY = yuany;
+        /*半径长度*/
+        var mM = r;
+        /*刻度*/
+        var nN = kedu;
+        /*维度*/
+        var wW = weidu;
+        var mW2 = canw;
+        var mH2 = canh;
+        var jiaodu = 360 / wW;
+        var leijijiaodu = 360 / wW;
+        var arrbegin;
+        /*划线坐标位置开始数组，2维数组*/
+        var arrend;
+        /*划线坐标位置结束数组，2维数组*/
+        var Linshix;
+        /*临时相对X坐标*/
+        var linshiy;
+        /*临时相对Y坐标*/
+        var mData = [['动力指数', A, maximumDongLiZhiShu],
+            ['能力指数', B, maximumNengLiZhiShu],
+            ['行为指数', C, maximumXingWeiZhiShu],
+            ['动力位置', Aa, maximumDongLiWeiZhi],
+            ['能力位置', Bb, maximumNengLiWeiZhi],
+            ['行为位置', Cc, maximumXingWeiWeiZhi]];
+        var canvas = document.getElementById(canid);
+        canvas.height = mH2;
+        canvas.width = mW2;
+        var mCtx = canvas.getContext('2d');
+
+        /*lines("canvas", xX, yY, xX + mM, yY);*/
+        /*画一条线*/
+        arrbegin = [[xX, yY]];
+
+        for (var i = 0; i <= parseInt(wW); i++) {
+
+            arrend = [[xX, yY]];
+            for (var j = 0; j <= nN; j++) {
+
+                Linshix = j * mM / nN * Math.cos(leijijiaodu * Math.PI / 180);
+
+                linshiy = j * mM / nN * Math.sin(leijijiaodu * Math.PI / 180);
+
+                var temp = [[xX + Linshix, yY - linshiy]];
+                arrend = arrend.concat(temp);
+            }
+
+            allline(arrbegin, arrend, xX, yY);
+            leijijiaodu = leijijiaodu + jiaodu;
+            arrbegin = arrend;
+        }
+        mCtx.stroke();
+        /*绘制数据区域*/
+        drawRegion(canid, wW, xX, yY, mM, mData);
+        /*画点*/
+        drawCircle(canid, wW, xX, yY, mM, mData);
+        drawText(canid, wW, xX, yY, mM, mData);
+
+    }
+    function allline(arrb, arre, xxX, yyY) {
+        var arrlengh1 = arrb.length;
+        var arrlengh2 = arre.length;
+        if (arrlengh1 != arrlengh2) {
+            return "数组长度不对";
+        }
+        lines("myChart", xxX, yyY, arre[arrlengh2 - 1][0], arre[arrlengh2 - 1][1]);
+        for (var k = 0; k < arrlengh1; k++) {
+            lines("myChart", arrb[k][0], arrb[k][1], arre[k][0], arre[k][1]);
+        }
+    }
+    function lines(canid, starx, stary, endx, endy) {
+        var canvas = document.getElementById(canid).getContext('2d');
+        canvas.lineWidth = 0.2;
+        canvas.moveTo(starx, stary);
+        canvas.lineTo(endx, endy);
+        /*canvas.stroke();
+         alert(1);*/
+    }
+
+    /*绘制数据区域*/
+    function drawRegion(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        /*保存当前环境的状态*/
+        ctx.save();
+        /*新建一条路径*/
+        ctx.beginPath();
+        var xweizhi1 = xX + mDataSS[0][1] / mDataSS[0][2] * Math.cos(jiaodu * 0 * Math.PI / 180) * r;
+        var yweizhi1 = yY;
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            var y = yY - r * Math.sin(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            /*lines(canid,xweizhi1,yweizhi1,x,y);
+             xweizhi1=x;
+             yweizhi1=y;*/
+            /* 	添加一个新点，然后在画布中创建从该点到最后指定点的线条*/
+            ctx.lineTo(x, y);
+        }
+        /*lines("canvas",xweizhi1, yweizhi1,xX+mDataSS[0][1]/mDataSS[0][2]*r,yY);*/
+        /*创建从当前点回到起始点的路径*/
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(2, 154, 229, 0.5)';
+        /*填充当前绘图（路径）*/
+        ctx.fill();
+        /*返回之前保存过的路径状态和属性*/
+        ctx.restore();
+    }
+    /*画点*/
+    function drawCircle(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        ctx.save();
+
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            var y = yY - r * Math.sin(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+
+            ctx.beginPath();
+            ctx.arc(x, y, xX / 60, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(2, 154, 229, 0.8)';
+            ctx.fill();
+        }
+
+        ctx.restore();
+    }
+    /*绘制文本*/
+    function drawText(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        var pianyix = 55;
+        var pianyiy = 8;
+        ctx.save();
+        ctx.font = 12 + 'px Microsoft Yahei';
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180);
+            var y = yY - r * Math.sin(jiaodu * i * Math.PI / 180);
+            if (jiaodu * i <= 90) {
+                x = x + pianyiy;
+                y = y + pianyiy;
+            }
+            else if (jiaodu * i <= 180) {
+                x = x - pianyix;
+                y = y + pianyiy;
+            }
+            else if (jiaodu * i <= 270) {
+                x = x - pianyix;
+                y = y + pianyiy;
+            }
+            else {
+                x = x + pianyiy;
+                y = y + pianyiy;
+            }
+
+            ctx.fillText(mDataSS[i][0], x, y);
+        }
+
+        ctx.restore();
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+

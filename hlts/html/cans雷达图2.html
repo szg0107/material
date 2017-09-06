@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" style="background: #029ae5"></canvas>
+<button onclick="drawRadarMap('canvas',200,200,100,4,8,500,500);">画线并画实心圆</button>
+</body>
+<script type="text/javascript">
+    function drawRadarMap(canid, yuanx, yuany, r, kedu, weidu, canw, canh) {
+        /*原点坐标X,Y*/
+        var xX = yuanx;
+        var yY = yuany;
+        /*半径长度*/
+        var mM = r;
+        /*刻度*/
+        var nN = kedu;
+        /*维度*/
+        var wW = weidu;
+        var mW2 = canw;
+        var mH2 = canh;
+        var jiaodu = 360 / wW;
+        var leijijiaodu = 360 / wW;
+        var arrbegin;
+        /*划线坐标位置开始数组，2维数组*/
+        var arrend;
+        /*划线坐标位置结束数组，2维数组*/
+        var Linshix;
+        /*临时相对X坐标*/
+        var linshiy;
+        /*临时相对Y坐标*/
+        var mData = [['动力指数', 3, 5],
+            ['能力指数', 15, 20],
+            ['行为指数', 8, 10],
+            ['动力位置', 2, 5],
+            ['能力位置', 1, 1],
+            ['能力位置2', 3, 3],
+            ['能力位置2', 3, 3],
+            ['行为位置', 5, 5]];
+        var canvas = document.getElementById(canid);
+        canvas.height = mH2;
+        canvas.width = mW2;
+        var mCtx = canvas.getContext('2d');
+
+        /*lines("canvas", xX, yY, xX + mM, yY);*/
+        /*画一条线*/
+        arrbegin = [[xX, yY]];
+
+        for (var i = 0; i <= parseInt(wW); i++) {
+
+            arrend = [[xX, yY]];
+            for (var j = 0; j <= nN; j++) {
+
+                Linshix = j * mM / nN * Math.cos(leijijiaodu * Math.PI / 180);
+
+                linshiy = j * mM / nN * Math.sin(leijijiaodu * Math.PI / 180);
+
+                var temp = [[xX + Linshix, yY - linshiy]];
+                arrend = arrend.concat(temp);
+            }
+
+            allline(arrbegin, arrend, xX, yY);
+            leijijiaodu = leijijiaodu + jiaodu;
+            arrbegin = arrend;
+        }
+        mCtx.stroke();
+        /*绘制数据区域*/
+        drawRegion(canid, wW, xX, yY, mM, mData);
+        /*画点*/
+        drawCircle(canid, wW, xX, yY, mM, mData);
+        drawText(canid, wW, xX, yY, mM, mData);
+
+    }
+    function allline(arrb, arre, xxX, yyY) {
+        var arrlengh1 = arrb.length;
+        var arrlengh2 = arre.length;
+        if (arrlengh1 != arrlengh2) {
+            return "数组长度不对";
+        }
+        lines("canvas", xxX, yyY, arre[arrlengh2 - 1][0], arre[arrlengh2 - 1][1]);
+        for (var k = 0; k < arrlengh1; k++) {
+            lines("canvas", arrb[k][0], arrb[k][1], arre[k][0], arre[k][1]);
+        }
+    }
+    function lines(canid, starx, stary, endx, endy) {
+        var canvas = document.getElementById(canid).getContext('2d');
+        canvas.lineWidth = 0.2;
+        canvas.moveTo(starx, stary);
+        canvas.lineTo(endx, endy);
+        /*canvas.stroke();
+        alert(1);*/
+    }
+
+    /*绘制数据区域*/
+    function drawRegion(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        /*保存当前环境的状态*/
+        ctx.save();
+        /*新建一条路径*/
+        ctx.beginPath();
+        var xweizhi1 = xX + mDataSS[0][1] / mDataSS[0][2] * Math.cos(jiaodu * 0 * Math.PI / 180) * r;
+        var yweizhi1 = yY;
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            var y = yY - r * Math.sin(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            /*lines(canid,xweizhi1,yweizhi1,x,y);
+             xweizhi1=x;
+             yweizhi1=y;*/
+            /* 	添加一个新点，然后在画布中创建从该点到最后指定点的线条*/
+            ctx.lineTo(x, y);
+        }
+        /*lines("canvas",xweizhi1, yweizhi1,xX+mDataSS[0][1]/mDataSS[0][2]*r,yY);*/
+        /*创建从当前点回到起始点的路径*/
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+        /*填充当前绘图（路径）*/
+        ctx.fill();
+        /*返回之前保存过的路径状态和属性*/
+        ctx.restore();
+    }
+    /*画点*/
+    function drawCircle(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        ctx.save();
+
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+            var y = yY - r * Math.sin(jiaodu * i * Math.PI / 180) * mDataSS[i][1] / mDataSS[i][2];
+
+            ctx.beginPath();
+            ctx.arc(x, y, xX / 60, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+            ctx.fill();
+        }
+
+        ctx.restore();
+    }
+    /*绘制文本*/
+    function drawText(canid, weidu, xX, yY, r, mDataSS) {
+        var ctx = document.getElementById(canid).getContext('2d');
+        var jiaodu = 360 / weidu;
+        var pianyix = 55;
+        var pianyiy = 8;
+        ctx.save();
+        ctx.font = 12 + 'px Microsoft Yahei';
+
+        for (var i = 0; i < weidu; i++) {
+            var x = xX + r * Math.cos(jiaodu * i*Math.PI / 180);
+            var y = yY - r  * Math.sin(jiaodu * i*Math.PI / 180);
+            if (jiaodu*i<=90){
+                x=x+pianyiy;
+                y=y+pianyiy;
+            }
+            else if (jiaodu*i<=180){
+                x=x-pianyix;
+                y=y+pianyiy;
+            }
+            else if (jiaodu * i <= 270){
+                x=x-pianyix;
+                y=y+pianyiy;
+            }
+            else{
+                x=x+pianyiy;
+                y=y+pianyiy;
+            }
+
+            ctx.fillText(mDataSS[i][0], x, y);
+        }
+
+        ctx.restore();
+    }
+</script>
+</html>

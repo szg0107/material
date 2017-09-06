@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="font-family: Heiti SC;">
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <ylt.for dataId="1491812687051">
+        <tr style="height: 120px" onclick="clickVideo('$value');">
+            <td><img src="upload/$value" height="120px" width="120px"></td>
+            <td align="left"><span class="gps_font" name="circleName">$value</span></td>
+            <td style="width: 120px" align="center"><span class="gps_font">&gt;</span></td>
+        </tr>
+    </ylt.for>
+</table>
+
+<script type="text/javascript">
+    function clickVideo(Video) {
+        var video = {"video": Video};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoVideo.postMessage(video);
+        } else {
+            window.callByJs.setValue(Video);
+        }
+    }
+</script>
+
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <ylt.for dataId="1491812807999">
+        <tr onclick="clickCourseware('$value');"  style="height: 120px;$value" >
+            <td align="left"><span class="gps_font" name="circleName">$value</span></td>
+            <td style="width: 120px" align="center"><span class="gps_font">&gt;</span></td>
+        </tr>
+    </ylt.for>
+</table>
+<script type="text/javascript">
+    function clickCourseware(Courseware) {
+        var courseware = {"Courseware":Courseware};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoCourseware.postMessage(courseware);
+        }else{
+            window.callByJs.setValue(Courseware);
+        }
+    }
+</script>
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <ylt.for dataId="1491812511891">
+        <tr onclick="clickAudio('$value');"  style="height: 120px;$value" >
+            <td align="left"><span class="gps_font" name="circleName">$value</span></td>
+            <td style="width: 120px" align="center"><span class="gps_font">&gt;</span></td>
+        </tr>
+    </ylt.for>
+</table>
+<script type="text/javascript">
+    function clickAudio(audioStr) {
+        var audio = {"audio":audioStr};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoAudio.postMessage(audio);
+        }else{
+            window.callByJs.setValue(audioStr);
+        }
+    }
+</script>
+
+
+<ylt.for dataId="1491812870656">
+    <div align="center">
+        <img src="upload/$value" onclick="clickPicture(this);" width="80%" >
+        $value
+        <br>
+        <br>
+        <br>
+    </div>
+</ylt.for>
+<script type="text/javascript">
+    function clickPicture(picture) {
+        var content = {"picture": picture.src};
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.pictureClick.postMessage(content);
+        } else {
+            window.callByJs.setValue(picture.src);
+        }
+    }
+</script>
+
+</body>
+</html>

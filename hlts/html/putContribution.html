@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title></title>
+    <style>
+        .gps_font {
+            font-size: 45px;
+            color: black;
+            width: 92%;
+        }
+
+        .plogin_tb input {
+            width: 98%;
+            height: 100px;
+            font-size: 40px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+        }
+
+        .plogin_tb textarea {
+            width: 98%;
+            height: 100px;
+            font-size: 40px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            resize: none;
+        }
+
+        .toupload {
+            display: none;
+        }
+
+        .fileDiv {
+            display: none;
+        }
+        .uploadImgDiv {
+            width: 20%;
+            background: #efeef4;
+            float: left;
+            margin-left: 4%;
+            margin-top: 20px;
+            border-radius: 20px;
+            display: none;
+            position: relative;
+        }
+        #uploadImg{
+        }
+        #closeImg{
+
+        }
+    </style>
+</head>
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js'></script>
+<script type='text/javascript' src='js/checkform.js'></script>
+<body bgcolor="#efeef4" style="font-family: Heiti SC;">
+
+
+<form id="add" method="post" style="width:100%;height:100%;">
+    <div width="100%" align="center" style="height: 100%;margin-top: 40px" class="plogin_tb">
+        <input type="hidden" id="urlAA" name="NO_DOSCRIPT" value=""/>
+        <input type='hidden' name='NO_charset' value='utf-8'/>
+        <ylt.form page="1491813987819">
+
+            <div class="gps_font">$value</div>
+
+            <div style="height: 30px;background-color: #efeef4"></div>
+
+            <div class="gps_font">$value</div>
+
+
+            <div class="fileDiv">
+                $value
+            </div>
+            <div class="fileDiv">
+                $value
+            </div>
+            <div class="fileDiv">
+                $value
+            </div>
+            <div class="fileDiv">
+                $value
+            </div>
+
+            <div class="uploadImgDiv" >
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(0)">
+                <img name="uploadImg" width="100%" height="100%" style="border-radius: 20px;">
+            </div>
+            <div class="uploadImgDiv">
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(1)">
+                <img name="uploadImg" width="100%" height="100%" style="border-radius: 20px;">
+            </div>
+            <div class="uploadImgDiv">
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(2)">
+                <img name="uploadImg" width="100%" height="100%" style="border-radius: 20px;">
+            </div>
+            <div class="uploadImgDiv">
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(3)">
+                <img name="uploadImg" width="100%" height="100%" style="border-radius: 20px;">
+            </div>
+
+            <div id="scbt" class="uploadImgDiv" style="display: block;">
+                <img src="images/pages/sctp.png" onclick="sctp()" width="100%" height="100%" style="border-radius: 20px;">
+            </div>
+
+
+            $value$value$value$value$value
+
+            <div align="center" style="width: 100%;clear: both;">
+                <button type="submit"
+                        style="background-color: #029ae5;width: 450px;height: 100px;margin-top: 100px;color: white;border-radius: 10px;font-size: 60px;"
+                        onclick="clickButton()">提交
+                </button>
+            </div>
+        </ylt.form>
+    </div>
+</form>
+<script>
+    var t1;
+
+
+
+    function sctp() {
+
+        for (var i = 0; i < uploadButtons.length; i++) {
+            var className = 'upload-input uploader'+(i+1).toString();
+
+            var fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+            if(!fileInput1){
+                uploadButtons[i].click();
+                fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+                document.getElementsByClassName(className)[0].childNodes[0].onchange=function (event) {
+                    var files = event.target.files;
+                    if (files && files.length > 0) {
+                        var file = files[0];
+                        var URL = window.URL || window.webkitURL;
+                        var imgURL = URL.createObjectURL(file);
+                        document.getElementsByName('uploadImg')[i].src =  imgURL;
+                        document.getElementsByClassName('uploadImgDiv')[i].style.display="block";
+                        document.getElementsByClassName('uploadImgDiv')[i].style.height=document.getElementsByClassName('uploadImgDiv')[i].clientWidth+"px";
+
+                        if(isHave4()){
+                            document.getElementById('scbt').style.display="none";
+                        }
+                    }
+                };
+
+                return;
+            }
+            if (fileInput1.files.length<=0) {
+                uploadButtons[i].click();
+
+                document.getElementsByClassName(className)[0].childNodes[0].onchange=function (event) {
+                    var files = event.target.files;
+                    if (files && files.length > 0) {
+                        var file = files[0];
+                        var URL = window.URL || window.webkitURL;
+                        var imgURL = URL.createObjectURL(file);
+                        document.getElementsByName('uploadImg')[i].src =  imgURL;
+                        document.getElementsByClassName('uploadImgDiv')[i].style.display="block";
+                        document.getElementsByClassName('uploadImgDiv')[i].style.height=document.getElementsByClassName('uploadImgDiv')[i].clientWidth+"px";
+                        if(isHave4()){
+                            document.getElementById('scbt').style.display="none";
+                        }
+                    }
+                };
+
+                return;
+            }
+        }
+
+    }
+    function isHave4() {
+        for(var i=0 ;i<4;i++){
+            var className = 'upload-input uploader'+(i+1).toString();
+            var fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+            if(!fileInput1){
+                return false;
+            }
+            if(fileInput1.files.length<=0){
+                return false;
+            }
+        }
+        return true;
+
+    }
+    function getFileName(i) {
+        var uploadButtons1 = document.getElementsByClassName("toupload");
+        var uploadButton = uploadButtons1[i];
+        var ID = uploadButton.id.substring(3, uploadButton.id.length);
+        var fileDivID = "view" + ID;
+        var fileDiv = document.getElementById(fileDivID);
+        var fileName = fileDiv.parentNode.childNodes[1].value;
+        return fileName;
+    }
+    function setFileName(i,name) {
+        var uploadButtons1 = document.getElementsByClassName("toupload");
+        var uploadButton = uploadButtons1[i];
+        var ID = uploadButton.id.substring(3, uploadButton.id.length);
+        var fileDivID = "view" + ID;
+        var fileDiv = document.getElementById(fileDivID);
+        fileDiv.parentNode.childNodes[1].value = name;
+    }
+
+
+    function updatePicture(i) {
+        if (getFileName(i) != "") {
+            document.getElementsByName('uploadImg')[i].src = 'upload/' + getFileName(i);
+            document.getElementsByClassName('uploadImgDiv')[i].style.display="block";
+            document.getElementsByClassName('uploadImgDiv')[i].style.height= document.getElementsByClassName('uploadImgDiv')[i].clientWidth+"px";
+            if(i == 3){
+                document.getElementById('scbt').style.display="none";
+            }
+            window.clearInterval(t1);
+        }
+    }
+
+
+    function cancelImg(i) {
+        setFileName(i,"");
+        document.getElementsByClassName('uploadImgDiv')[i].style.display = "none";
+        document.getElementsByClassName('uploadImgDiv')[i].src = "";
+        document.getElementById('scbt').style.display= "block";
+
+        var className = 'upload-input uploader'+(i+1).toString();
+        var fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+        fileInput1.outerHTML=fileInput1.outerHTML;
+    }
+
+</script>
+<script type="text/javascript">
+    T_P_SJDGXB$S_GXBT.style.width = "100%";
+    T_P_SJDGXB$S_GXBT.placeholder = "标题";
+    T_P_SJDGXB$S_GXBT.autocomplete="off";
+    T_P_SJDGXB$S_GXRR.style.width = "100%";
+    T_P_SJDGXB$S_GXRR.style.height = "500px";
+    T_P_SJDGXB$S_GXRR.placeholder = "内容";
+    T_P_SJDGXB$S_GXRR.autocomplete="off";
+    var userAgent = navigator.userAgent;
+    if (userAgent.indexOf("iPhone") >= 0) {
+        T_P_SJDGXB$S_GXBT.style.width = "96%";
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    T_P_SJDGXB$S_QZBID.value = getQueryString('id');
+    function clickButton() {
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.back.postMessage(null);
+        } else {
+            window.callByJs.setValue("hello android!!");
+        }
+    }
+</script>
+<script>
+
+
+    /**
+     * 限制单文件上传格式
+     *
+     * **/
+    var uploadButtons = document.getElementsByClassName("toupload");
+    function checkFile(index, fileTypt) {
+
+        if (index >= uploadButtons.length)return;
+
+        var uploadButton = uploadButtons[index];
+        var ID = uploadButton.id.substring(3, uploadButton.id.length);
+        var fileDivID = "view" + ID;
+        var fileDiv = document.getElementById(fileDivID);
+        var fileName = fileDiv.parentNode.childNodes[1].value;
+        var houzhui = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
+        var right = false;
+        var start = 0;
+        var end = 0;
+        if (fileName != "") {
+            for (var i = 0; i < fileTypt.length; i++) {
+                var char = fileTypt[i];
+                if (char == ',') {
+                    end = i;
+                    var type = fileTypt.substring(start, end);
+                    if (houzhui == type) {
+                        right = true;
+                        return;
+                    }
+                    start = i + 1;
+                }
+                if (i == fileTypt.length - 1) {
+
+                    var type = fileTypt.substring(start, fileTypt.length);
+                    if (houzhui == type) {
+                        right = true;
+                        return;
+                    }
+                }
+            }
+            if (!right) {
+                alert("格式只能为:" + fileTypt);
+                fileDiv.innerHTML = "";
+                fileDiv.parentNode.childNodes[1].value = "";
+            }
+
+        }
+
+    }
+</script>
+
+
+</body>
+</html>

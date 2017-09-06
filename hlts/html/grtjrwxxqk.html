@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>个人统计任务详细情况</title>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <style type="text/css">
+        .divStyle {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            color: #FFFFFF;
+            font-size: 20px;
+            background-color: #029ae5;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div style="overflow:auto;">
+    <span class="divStyle" style="width: 10%;text-align: center;">统计标题</span>
+    <ylt.for dataId="1504075277860">
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+        <span class="divStyle" name="lie_name" style="width: 6%;text-align: center;">$value</span>
+    </ylt.for>
+    <span class="divStyle" style="width: 5%;text-align: center;">汇总</span>
+</div>
+<ylt.for dataId="1504238719359">
+    <div name="content" style="overflow:auto;">
+        <span class="divStyle" style="background: #FFFFFF;color: #000000;text-align: left;width: 10%;"
+              name="phoneNumber">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" name="lie_value"
+              style="width: 6%;text-align: center;background: #FFFFFF;color: #000000;">$value</span>
+        <span class="divStyle" style="background: #FFFFFF;color: #000000;width: 5%;text-align: center;"
+              name="summation">111</span>
+    </div>
+</ylt.for>
+<div id="tiShi"></div>
+<script type="text/javascript">
+    var lie_nameArray = document.getElementsByName('lie_name');
+    var lie_valueArray = document.getElementsByName('lie_value');
+    var summationArray = document.getElementsByName('summation');
+
+    function Init() {
+        for (var i = 0; i < lie_nameArray.length; i++) {
+            if (lie_nameArray[i].innerText == "" || lie_nameArray[i].innerText == null) {
+                lie_nameArray[i].style.display = 'none';
+            }
+        }
+        var totle = 0;
+        var totleArray = new Array();
+        for (var u = 0; u < lie_valueArray.length; u++) {
+            if (lie_valueArray[u].innerText == "" || lie_valueArray[u].innerText == null) {
+                lie_valueArray[u].style.display = 'none';
+            }
+
+            if (checkRate(lie_valueArray[u].innerText)) {
+                var x = parseFloat(lie_valueArray[u].innerText);
+                totle += x;
+                /*alert('i = '+u+'     x = ' +x + '    totle = '+ totle);*/
+            }
+
+            if (u % 10 == 9) {
+                totleArray.push(totle);
+                /*alert(totle);*/
+                totle = 0;
+            }
+        }
+        for (var i = 0; i < totleArray.length; i++) {
+            summationArray[i].innerText = totleArray[i];
+        }
+    }
+    Init();
+    if(summationArray.length==0){
+        tiShi.innerText="对不起，该用户还没有执行此任务！";
+    }
+    function checkRate(number) {
+        /*var re = /^[0-9]+.?[0-9]*$/;*/
+        var re = /^-?\d+\.?\d{0,2}$/;
+        if (!re.test(number)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+</body>
+</html>

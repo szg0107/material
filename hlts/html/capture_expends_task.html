@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>缴费任务</title>
+    <meta name=viewport content="user-scalable=no">
+    <style type="text/css">
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
+
+        .divstyle {
+            height: 100px;
+            /*margin-top: 10px;*/
+            background: #FFFFFF;
+            line-height: 100px;
+            text-indent: 2em;
+            width: 100%;
+            margin: 0 auto;
+            border-bottom: 5px #efeef4 solid;
+        }
+    </style>
+</head>
+<body id="body1" style="margin: 0 auto;padding: 0;background:#efeef4;">
+
+<div id="timu"
+     style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;">
+    <!--微信公众号使用-->
+    <img src="http://www.6xy8.com:8888/hlts/res/images/arrow_left_d.png" style="width: 9%;height: 40%;margin-top:3%"
+         onclick="window.history.go(-1);"/>
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;margin-top:10%">缴费任务</span>
+</div>
+
+
+
+<div>
+    <div class="divstyle gps_font" style="border-top:50px #efeef4 solid; ">
+        <span>缴费理由：</span>
+        <span id="pay_cost_reason"></span>
+    </div>
+    <div class="divstyle gps_font">
+        <span>缴费金额：</span>
+        <input type="text" id="payment_amount" value="" placeholder="请输入缴费金额"
+               style="width: 50%;height: 70px;font-size: 50px;outline:none;border: 0px;background: #FFFFFF; color:black;"/>
+    </div>
+
+    <div style="padding-top:50px; text-indent: 1em;padding-bottom: 50px;width: 95%; margin: 0 auto;" class="gps_font">
+        支付方式:
+    </div>
+
+    <div style="background: #FFFFFF;width: 100%;border-bottom: 200px #efeef4 solid ;margin: 0 auto;">
+        <form action="" method="get">
+            <div style="border-bottom: 10px #efeef4 solid;height: 130px;line-height: 100px;"
+                 onclick="document.getElementsByName('Fruit')[0].checked='checked'">
+                <div style="float: left;text-indent: 6em;">
+                    <img style="margin-top: 15px" src="res/images/zhifubao.png"/>
+                </div>
+                <div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">
+                    支付宝
+                </div>
+                <input name="Fruit" type="radio" value="支付宝" checked
+                       style="width:30px;height:30px;float: right;margin-top: 50px;margin-right: 20px;"/>
+            </div>
+            <div style="height: 130px;line-height: 100px;"
+                 onclick="document.getElementsByName('Fruit')[1].checked='checked'">
+                <div style="float: left;text-indent: 6em;">
+                    <img style="margin-top: 15px;width: 100px;height: 100px;" src="res/images/WePay.png"/>
+                </div>
+                <div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">
+                    微信
+                </div>
+                <input name="Fruit" type="radio" value="微信"
+                       style="width:30px;height:30px;float: right;margin-top: 50px;margin-right: 20px;"/>
+            </div>
+        </form>
+    </div>
+    <div style="text-align: center;margin: 0 auto; width: 95%">
+        <button onclick="get()"
+                style="background-color: #029ae5;color: #FFFFFF;width: 450px;font-size:50px;border-radius:10px;height: 100px; ">
+            确认付款
+        </button>
+    </div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    /*给缴费理由赋值*/
+    document.getElementById("pay_cost_reason").innerText = getQueryString1("taskDescription");
+    /*如果缴费金额不等于空将缴费金额设置为只读并给缴费金额赋值*/
+    if (getQueryString('paymentAmount') != "null") {
+        /*document.getElementById("payment_amount").disabled = "";*/
+        /*document.getElementById("payment_amount").setAttribute("onfocus","this.blur()");*/
+        document.getElementById("payment_amount").readOnly = true;
+        document.getElementById("payment_amount").value = getQueryString('paymentAmount');
+    }
+    /*得到单选按钮的值*/
+    function get() {
+        var amount = "";
+        if (getQueryString('paymentAmount') == "null") {
+            amount = document.getElementById("payment_amount").value;
+        } else {
+            amount = "null";
+        }
+
+        var value = '';
+        var radio = document.getElementsByName("Fruit");
+        for (var i = 0; i < radio.length; i++) {
+            if (radio[i].checked == true) {
+                value = radio[i].value;
+                break;
+            }
+        }
+        var dict = {"payWay": value, "amount": amount};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.payWay.postMessage(dict);
+        } else {
+            window.callByJs.setValue(value, amount);
+        }
+
+
+        if (getQueryString('kind') != null) {
+            alert("amount:" + amount);
+            /*调用支付方式插件，目前是支付宝*/
+        }
+
+    }
+</script>
+<script>
+    if (getQueryString('kind') != null) {
+        var tm = getQueryString('kind');
+        if (tm != "") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("body1").style.margin = "0px";
+        }
+    }
+</script>
+</html>

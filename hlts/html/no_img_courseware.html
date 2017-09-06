@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title></title>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js' ></script>
+    <script type='text/javascript' src='js/checkform.js'  ></script>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+    <script type='text/javascript' src='res/js/resource.js'></script>
+
+    <style>
+        .gps_font {
+            font-size: 45px;
+            color: black;
+        }
+        .limitlength {
+            table-layout: fixed;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .divFrame {
+
+            background-color: #FFFFFF;
+            margin: 20px auto 0;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-color:#C0C0C0;
+            border-style: solid;
+            border-width: 15px;
+            display:none;
+            position:fixed;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            height: 140px;
+            width: 97%;
+            /*background: border-width: 2px;;
+            border-style: solid;
+            border-color:black;
+            border-width: 2px;*/
+        }
+
+        .inputPsorText {
+            background-color: transparent;
+            border: 0 none;
+            float: left;
+            margin-left: 12px;
+            font-size: 55px;
+            font-family: 微软雅黑;
+            margin-top:2px;
+            width: 64%;
+            height: 120px;
+            line-height: 120px;
+            margin-top:15px;
+            margin-left:3%
+        }
+    </style>
+</head>
+<body id="body1" bgcolor="#efeef4" style="font-family: Heiti SC;">
+
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;margin-top:10%">公司必修</span>
+    <span id="A" style="color: #FFFFFF;font-size: 35px;margin-left:15%;font-family: 微软雅黑;" onclick="moshi1()">开启</span>
+    <span id="B" style="color: #FFFFFF;font-size: 35px;margin-left:-2px;font-family: 微软雅黑;"onclick="moshi1()">无图模式</span>
+
+</div>
+
+<div id="menu" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
+    <input id="shipin" type="button" onclick="play('shipin');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:4px;width: 24.4%;height:90px;" value="视频">
+    <input id="tupian" type="button" onclick="play('tupian');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:1px;width: 24.4%;height:90px;" value="图片">
+    <input id="yinpin" type="button" onclick="play('yinpin');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:1px;width: 24.4%;height:90px;" value="音频">
+    <input id="wenan" type="button" onclick="play('wenan');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:1px;width: 24.4%;height:90px;" value="文案">
+</div>
+
+<ylt.for dataId="1499136872517">
+    <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;" class="limitlength" name="pagingDiv">
+        <div onclick="clickCourseware('$value');recordLrecord('$value');" name="pdf">
+            <div class="gps_font" style="background-color: #efeef4;clear: both;height: 60px;margin-top: 30px;">
+                <div style="float: left;width: 15%;" class="gps_font">主题：</div>
+                <div class="limitlength gps_font" style="float: left;width: 83%;margin-left: 10px;">
+                    <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:50px;height:50px;display: none;">
+                    <div class="limitlength" name="title" style="float: left">$value</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 100px;" align="center">
+            <div  style="font-size: 35px;color: gray;float: left;margin-top: 30px">
+                $value
+            </div>
+
+
+            <div style="float: left;margin-top: 30px;margin-left: 80px;width: 200px">
+                   <span style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;margin-left: 10%">
+                    点赞数:
+                    <span name="zanCount"></span>
+                   </span>
+            </div>
+
+
+            <div style="float: left;margin-top: 20px;margin-left: 80px;">
+                <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'pdf',this)" id="$value"
+                     name="zan" align="right" style="width: 60px;height: 60px;margin-left: 10%"/>
+            </div>
+
+
+            <div class="gps_font" style="background-color: #efeef4;float: left;margin-left: 40px">
+                <img name="shoucang" src="res/images/weishoucang.png" alt="$value"
+                     onclick="collect(this,this.alt,'pdf',getQueryString('id'))"
+                     style="margin-top: 20px;width: 60px;height: 60px;"/>
+            </div>
+        </div>
+
+
+        <div style="background-color: white;clear: both;" name="juli">
+            <hr size="3" style="background: #666;border: 0;">
+        </div>
+        <div id="sousu" class="divFrame">
+            <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
+            <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
+            <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
+        </div>
+    </div>
+</ylt.for>
+
+<div id="tishi" class="gps_font" align="center"></div>
+
+
+
+<form id="searchForm" action="Courseware.view" method="post">
+    <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
+    <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
+</form>
+
+</body>
+
+
+
+
+<script>
+
+    updateZan('pdf',getQueryString('id'));
+
+
+    function updateShouCang() {
+
+        var shoucangs = document.getElementsByName('shoucang');
+        for (var i = 0; i < shoucangs.length; i++) {
+            if(collectStatus(shoucangs[i].alt,'pdf')){
+                shoucangs[i].src =  "res/images/shoucang.png";
+            }else{
+                shoucangs[i].src =  "res/images/weishoucang.png";
+            };
+        }
+    }
+    updateShouCang();
+</script>
+
+
+
+
+
+</body>
+<script type="text/javascript">
+    var pdf = document.getElementsByName('pdf');
+    if(pdf.length == 0){
+        tishi.innerText="很抱歉，没有您想要的资源！";
+    }
+    function clickCourseware(Courseware) {
+
+        var isVIP = Can_the_content_be_viewed(getQueryString('id'));
+        if(!isVIP){
+            if (getQueryString('kind') != null) {
+                alert('您不是本圈子会员！请进行充值！');
+            } else {
+                /*alert('您不是本圈子会员！请进行充值！');*/
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.needPay.postMessage(null);
+                } else {
+                    window.callByJs.isVIP();
+                }
+                return;
+            }
+        } else {
+            if (getQueryString('kind') != null) {
+                this.location.href="http://www.6xy8.com:8888/hlts/upload/"+Courseware;
+            }
+        }
+
+        var courseware = {"Courseware":Courseware};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoCourseware.postMessage(courseware);
+        }else{
+            window.callByJs.setValue(Courseware);
+        }
+
+    }
+    function PopupWindow(content) {
+        var contentbuttons = document.getElementsByName('contentButton');
+        var neirong="";
+        for(var i = 0;i<contentbuttons.length;i++){
+            if(contentbuttons[i] == content){
+                neirong=document.getElementsByName('content')[i].innerHTML;
+                neirong = neirong.replace(/(^\s*)/g,"");
+                var title=document.getElementsByName('title')[i].innerHTML;
+                var data = {"title": title,"content":neirong};
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.details.postMessage(data);
+                } else {
+                    alert("主题:\n\t\t"+title.replace(/(^\s*)/g,"")+"\n"+"简介:\n\t\t"+neirong);
+                }
+            }
+        }
+    }
+    function recordLrecord(ID){
+
+        addWatchCount(getQueryString('id'),ID,'pdf');
+
+        /*记录学习情况*/
+        var timestamp = new Date().getTime();
+        var record_Learning = sys_doComMandReturn("030", "S_QZID=" +getQueryString('id') + "&S_WAID=" +ID + "&S_XXLX=pdf" + "&S_XXSJ=" +timestamp+ "&S_ID=" + timestamp);
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    /*搜索记录方法*/
+    function SearchRecords(circleID,content){
+        var timestamp = new Date().getTime();
+        var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + circleID + "&S_SSSJ=" + timestamp + "&S_SSNR=" + content+ "&S_ID=" + timestamp+"&S_SSLX=pdf");
+    }
+
+
+
+    function xianShiYuanDian(){
+        var imgs=document.getElementsByName('dian');
+        var imgs2=document.getElementsByName('zan');
+        var gongSiBiXiuID=new Array();
+        var gongSiBiXiuCongFU=new Array();
+        var gongSiBiXiuCongType=new Array();
+    <ylt.for dataId="1503383626200">
+                gongSiBiXiuID.push('$value');
+        gongSiBiXiuCongFU.push('$value');
+        gongSiBiXiuCongType.push('$value');
+    </ylt.for>
+        var xinBiXiuID=array_assignment(gongSiBiXiuCongType,gongSiBiXiuID,getQueryString('type'));
+        if(gongSiBiXiuCongFU.length!=0){
+            if(array_contain(gongSiBiXiuCongFU,'zero')&&array_contain(gongSiBiXiuCongType,getQueryString('type'))){
+                for(var i=0;i<xinBiXiuID.length;i++){
+                    for(var u=0;u<imgs2.length;u++){
+                        if(xinBiXiuID[i]==imgs2[u].id){
+                            imgs[u].style.display="inline";
+                        }
+                    }
+                }
+            }
+            if(array_contain(gongSiBiXiuCongFU,'one')&&array_contain(gongSiBiXiuCongType,getQueryString('type'))){
+                for(var i=0;i<xinBiXiuID.length;i++){
+                    for(var u=0;u<imgs2.length;u++){
+                        if(xinBiXiuID[i]==imgs2[u].id){
+                            imgs[u].style.display="inline";
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    xianShiYuanDian();
+    /*判断数组是否包含某个值*/
+    function array_contain(array, obj){
+        for (var i = 0; i < array.length; i++){
+            if (array[i] == obj)/*如果要求数据类型也一致，这里可使用恒等号===*/
+                return true;
+        }
+        return false;
+    }
+    /*根据必修类别与传进的类别进行对比，然后将相同类型的必修ID赋值到新数组*/
+    function array_assignment(gongSiBiXiuCongType,gongSiBiXiuID,obj){
+        var file_array=new Array();
+        for(var i=0;i<gongSiBiXiuCongType.length;i++){
+            if(gongSiBiXiuCongType[i]==obj){
+                file_array.push(gongSiBiXiuID[i]);
+            }
+        }
+        return file_array;
+    }
+</script>
+
+
+<script>
+    if(getQueryString('content') != null) {
+        var contentInput = document.getElementById('contentInput');
+        contentInput.value = getQueryString1('content');
+        var circleID = document.getElementById('circleID');
+        circleID.value = getQueryString('id');
+        var searchForm =  document.getElementById('searchForm');
+        searchForm.action="no_img_courseware.view?w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse');
+        /*if(contentInput.value!=''&&contentInput.value!=null){
+         var timestamp = new Date().getTime();
+         var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + circleID.value + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=pdf");
+         }*/
+        searchForm.submit();
+    }
+</script>
+
+<script>
+    var yinc = getQueryString('w');
+    if (getQueryString('kind') != null) {/*微信公众号使用*/
+        var tm = getQueryString('kind');
+        var cc = getQueryString('con');
+        if (tm == "33") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("menu").style.display = "block";
+            document.getElementById("wenan").style.background = "white";
+            document.getElementById("wenan").style.color = "#029ae5";
+            document.getElementById("shipin").style.background = "#029ae5";
+            document.getElementById("shipin").style.color = "white";
+            document.getElementById("yinpin").style.background = "#029ae5";
+            document.getElementById("yinpin").style.color = "white";
+            document.getElementById("tupian").style.background = "#029ae5";
+            document.getElementById("tupian").style.color = "white";
+            document.getElementById("A").innerText = "关闭";
+            document.getElementById("body1").style.margin="0px";
+            document.getElementById("sousu").style.display = "block";
+            if (yinc !="a" &&　cc != null) {
+                document.getElementById("body1").style.display = "none";
+                show();
+            }
+        }
+    }
+
+    if (getQueryString('kind') != null) {
+        var pagingDivs = document.getElementsByName('pagingDiv');
+        var count = pagingDivs.length;
+        document.getElementsByName('juli')[count-1].style.marginBottom="220px";
+    }
+    function sous() {
+        var c = document.getElementById("con").value;
+        if (c=="") {
+            alert("搜索内容为空！");
+        } else {
+            var circleID = getQueryString('id');
+            var reuse = getQueryString('reuse');
+            var contentInput = document.getElementById('contentInput');
+            contentInput.value = c;
+            var circleID = document.getElementById('circleID');
+            circleID.value = getQueryString('id');
+            var searchForm =  document.getElementById('searchForm');
+            searchForm.action="no_img_courseware.view?kind=33&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&con="+contentInput.value;
+            searchForm.submit();
+        }
+    }
+
+    if (yinc=='a') {
+        /*if (document.getElementById("yin") != null) {
+         document.getElementById("yin").style.display = "none";
+         }*/
+        if ( document.getElementById("sousu")!=null) {
+            document.getElementById("sousu").style.display = "none";
+        }
+    }
+    function show() {
+        if (getQueryString('con') != null) {
+            var contentInput = document.getElementById('contentInput');
+            contentInput.value = getQueryString1('con');
+            var circleID = document.getElementById('circleID');
+            circleID.value = getQueryString('id');
+            var searchForm =  document.getElementById('searchForm');
+            searchForm.action="no_img_courseware.view?kind=33&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&con="+contentInput.value;
+            searchForm.submit();
+        }
+    }
+</script>
+<script>/*微信公众号使用*/
+var moshi = 1;
+function moshi1() {
+    var w = document.getElementById("A").innerText;
+    if (w=="开启") {
+        moshi = 1;
+        document.getElementById("A").innerText = "关闭";
+    } else if (w=="关闭") {
+        moshi = 0;
+        document.getElementById("A").innerText = "开启";
+        var circleID = getQueryString('id');
+        var reuse = getQueryString('reuse');
+        var c = getQueryString1('con');
+        if (c != null) {
+            this.location.href="coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse+"&con="+c;
+        } else {
+            this.location.href="coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse;
+        }
+    }
+}
+function play(obj){
+    var type = obj;
+    var page = "";
+    var circleID = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    if (yinc != "a") {
+        if (moshi==1) {
+            switch (type) {
+                case "shipin":
+                    page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse;
+                    break;
+                case "yinpin":
+                    page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse;
+                    break;
+                case "wenan":
+                    page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse;
+                    break;
+                case "tupian":
+                    page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&reuse="+reuse;
+                    break;
+            }
+        } else {
+            switch (type) {
+                case "shipin":
+                    page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse;
+                    break;
+                case "yinpin":
+                    page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse;
+                    break;
+                case "wenan":
+                    page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse;
+                    break;
+                case "tupian":
+                    page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&reuse="+reuse;
+                    break;
+            }
+        }
+    }else {
+        var c = getQueryString1('con');
+        if (moshi==1) {
+            switch (type) {
+                case "shipin":
+                    page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+                case "yinpin":
+                    page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+                case "wenan":
+                    page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+                case "tupian":
+                    page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+            }
+        } else {
+            switch (type) {
+                case "shipin":
+                    page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+                case "yinpin":
+                    page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+                case "wenan":
+                    page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+                case "tupian":
+                    page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&reuse="+reuse+"&con="+c;
+                    break;
+            }
+        }
+    }
+
+    this.location.href=page;
+}
+
+</script>
+
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title></title>
+    <style>
+        .gps_font {
+            font-size: 45px;
+            color: black;
+            width: 92%;
+        }
+
+        .plogin_tb input {
+            width: 98%;
+            height: 100px;
+            font-size: 40px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+        }
+
+        .plogin_tb textarea {
+            width: 98%;
+            height: 100px;
+            font-size: 40px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            resize: none;
+        }
+
+        .toupload {
+            display: none;
+        }
+
+        .fileDiv {
+            display: none;
+        }
+        .uploadImgDiv {
+            width: 20%;
+            background: #efeef4;
+            float: left;
+            margin-left: 4%;
+            margin-top: 20px;
+            border-radius: 20px;
+            display: none;
+            position: relative;
+        }
+        #uploadImg{
+        }
+    </style>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+</head>
+
+<body id="body1" bgcolor="#efeef4" style="font-family: Heiti SC;">
+
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="http://www.6xy8.com:8888/hlts/res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">提出问题</span>
+
+</div>
+
+<form id="add" method="post" style="width:100%;height:100%;">
+    <div width="100%" align="center" style="height: 100%;margin-top: 40px" class="plogin_tb">
+        <input type="hidden" id="urlAA" name="NO_DOSCRIPT" value=""/>
+        <input type='hidden' name='NO_charset' value='utf-8'/>
+        <ylt.form page="1490063360181">
+            $value$value$value
+            <div class="gps_font">$value</div>
+
+            <div style="height: 30px;background-color: #efeef4"></div>
+
+            <div class="gps_font">$value</div>
+
+
+            <div class="fileDiv">
+                $value
+            </div>
+            <div class="fileDiv">
+                $value
+            </div>
+            <div class="fileDiv">
+                $value
+            </div>
+            <div class="fileDiv">
+                $value
+            </div>
+
+            <div class="uploadImgDiv" >
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(0)">
+                <img name="uploadImg" width="100%" height="100%" style="border-radius: 20px;">
+            </div>
+            <div class="uploadImgDiv">
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(1)">
+                <img name="uploadImg" width="100%" height="100%"style="border-radius: 20px;">
+            </div>
+            <div class="uploadImgDiv">
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(2)">
+                <img name="uploadImg" width="100%" height="100%"style="border-radius: 20px;">
+            </div>
+            <div class="uploadImgDiv">
+                <img name="closeImg" src="res/images/cuohao1.png" style="position: absolute;z-index: 999;right: 0;top: 0;float: right;width: 20%;background-color: grey"  onclick="cancelImg(3)">
+                <img name="uploadImg" width="100%" height="100%"style="border-radius: 20px;">
+            </div>
+
+            <div id="scbt" class="uploadImgDiv" style="display: block;">
+                <img src="images/pages/sctp.png" onclick="sctp()" width="100%" height="100%" style="border-radius: 20px;">
+            </div>
+
+
+            $value$value$value$value$value$value$value
+
+            <div align="center" style="width: 100%;clear: both;">
+                <button type="submit"
+                        style="background-color: #029ae5;width: 450px;height: 100px;margin-top: 100px;color: white;border-radius: 10px;font-size: 60px;"
+                        onclick="clickButton()">提交
+                </button>
+            </div>
+        </ylt.form>
+    </div>
+</form>
+<script>
+    var t1;
+    var count = 0;
+
+
+    function sctp() {
+
+        for (var i = 0; i < uploadButtons.length; i++) {
+            var className = 'upload-input uploader'+(i+1).toString();
+
+            var fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+            if(!fileInput1){
+                uploadButtons[i].click();
+                fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+                document.getElementsByClassName(className)[0].childNodes[0].onchange=function (event) {
+                    var files = event.target.files;
+                    if (files && files.length > 0) {
+                        var file = files[0];
+                        var URL = window.URL || window.webkitURL;
+                        var imgURL = URL.createObjectURL(file);
+                        document.getElementsByName('uploadImg')[i].src =  imgURL;
+                        document.getElementsByClassName('uploadImgDiv')[i].style.display="block";
+                        document.getElementsByClassName('uploadImgDiv')[i].style.height=document.getElementsByClassName('uploadImgDiv')[i].clientWidth+"px";
+
+                        count++;
+                        t1 = window.setInterval("updateProgress()", 300);
+
+                        if(isHave4()){
+                            document.getElementById('scbt').style.display="none";
+                        }
+                    }
+                };
+
+                return;
+            }
+            if (fileInput1.files.length<=0) {
+                uploadButtons[i].click();
+
+                document.getElementsByClassName(className)[0].childNodes[0].onchange=function (event) {
+                    var files = event.target.files;
+                    if (files && files.length > 0) {
+                        var file = files[0];
+                        var URL = window.URL || window.webkitURL;
+                        var imgURL = URL.createObjectURL(file);
+                        document.getElementsByName('uploadImg')[i].src =  imgURL;
+                        document.getElementsByClassName('uploadImgDiv')[i].style.display="block";
+                        document.getElementsByClassName('uploadImgDiv')[i].style.height=document.getElementsByClassName('uploadImgDiv')[i].clientWidth+"px";
+
+                        count++;
+                        t1 = window.setInterval("updateProgress()", 300);
+
+                        if(isHave4()){
+                            document.getElementById('scbt').style.display="none";
+                        }
+                    }
+                };
+
+                return;
+            }
+        }
+
+    }
+
+    function updateProgress() {
+        var progressSpan = 'divptext'+count.toString();
+        var progressStr =document.getElementById(progressSpan).innerHTML;
+
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.progress.postMessage(progressStr);
+        }else{
+            window.callByJs.setValue(progressStr);
+        }
+        if(progressStr == "100%"){
+            clearTimeout(t1);
+            return;
+        }
+    }
+
+    function isHave4() {
+        for(var i=0 ;i<4;i++){
+            var className = 'upload-input uploader'+(i+1).toString();
+            var fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+            if(!fileInput1){
+                return false;
+            }
+            if(fileInput1.files.length<=0){
+                return false;
+            }
+        }
+        return true;
+
+    }
+    function getFileName(i) {
+        var uploadButtons1 = document.getElementsByClassName("toupload");
+        var uploadButton = uploadButtons1[i];
+        var ID = uploadButton.id.substring(3, uploadButton.id.length);
+        var fileDivID = "view" + ID;
+        var fileDiv = document.getElementById(fileDivID);
+        var fileName = fileDiv.parentNode.childNodes[1].value;
+        return fileName;
+    }
+    function setFileName(i,name) {
+        var uploadButtons1 = document.getElementsByClassName("toupload");
+        var uploadButton = uploadButtons1[i];
+        var ID = uploadButton.id.substring(3, uploadButton.id.length);
+        var fileDivID = "view" + ID;
+        var fileDiv = document.getElementById(fileDivID);
+        fileDiv.parentNode.childNodes[1].value = name;
+    }
+
+
+    function updatePicture(i) {
+        if (getFileName(i) != "") {
+            document.getElementsByName('uploadImg')[i].src = 'upload/' + getFileName(i);
+            document.getElementsByClassName('uploadImgDiv')[i].style.display="block";
+            document.getElementsByClassName('uploadImgDiv')[i].style.height= document.getElementsByClassName('uploadImgDiv')[i].clientWidth+"px";
+            if(i == 3){
+                document.getElementById('scbt').style.display="none";
+            }
+            window.clearInterval(t1);
+        }
+    }
+
+
+    function cancelImg(i) {
+        setFileName(i,"");
+        document.getElementsByClassName('uploadImgDiv')[i].style.display = "none";
+        document.getElementsByClassName('uploadImgDiv')[i].src = "";
+        document.getElementById('scbt').style.display= "block";
+
+        var className = 'upload-input uploader'+(i+1).toString();
+        var fileInput1 = document.getElementsByClassName(className)[0].childNodes[0];
+        fileInput1.outerHTML=fileInput1.outerHTML;
+    }
+
+</script>
+<script type="text/javascript">
+    T_P_SJTWB$S_TWBT.style.width = "100%";
+    T_P_SJTWB$S_TWBT.placeholder = "标题";
+    T_P_SJTWB$S_TWYY.style.width = "100%";
+    T_P_SJTWB$S_TWYY.style.height = "500px";
+    T_P_SJTWB$S_TWYY.placeholder = "内容";
+    var userAgent = navigator.userAgent;
+    if (userAgent.indexOf("iPhone") >= 0) {
+        T_P_SJTWB$S_TWBT.style.width = "96%";
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    T_P_SJDGXB$S_QZBID.value = getQueryString('id');
+    T_P_WASPB$S_CFSY.value=getQueryString('reuse');
+
+    /*给时间戳后面加一位随机数*/
+    /*function randomCode() {
+     var r = Math.ceil(Math.random()*3);
+     if(r == 1){
+     return Math.ceil(Math.random()*10-1);
+     }
+     if(r == 2){
+     var x = Math.ceil(Math.random()*26-1);
+     x = String.fromCharCode('a'.charCodeAt()+x);
+     return x;
+     }
+     if(r == 3){
+     var x = Math.ceil(Math.random()*26-1);
+     x = String.fromCharCode('A'.charCodeAt()+x);
+     return x;
+     }
+     }*/
+    /*给时间戳后面加三位随机数*/
+    /*function random3Code() {
+     var code = "";
+     for(var i = 0;i<3;i++){
+     code +=randomCode();
+     }
+     return code;
+     }*/
+
+
+
+    /*给时间戳后面加一位随机数*/
+    function randomCode() {
+
+        return Math.ceil(Math.random()*10-1);
+
+    }
+    /*给时间戳后面加三位随机数*/
+    function random3Code() {
+        var code = "";
+        for(var i = 0;i<3;i++){
+            code +=randomCode();
+        }
+        return code;
+    }
+
+    function clickButton() {
+
+        var timu = document.getElementById('T_P_SJTWB$S_TWBT');
+        var neirong = document.getElementById('T_P_SJTWB$S_TWYY');
+        if(timu.value == "" | neirong.value == ""){
+            return;
+        }
+
+        /*if(getQueryString('taskId')!="null"){
+         var timestamp = new Date().getTime();
+         var Searchrecords = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + T_P_SJTWB$S_TWR.value);
+         }
+
+         var userAgent = navigator.userAgent;
+         if (userAgent.indexOf("iPhone") >= 0) {
+         window.webkit.messageHandlers.back.postMessage(null);
+         } else {
+         window.callByJs.setValue("hello android!!");
+         }*/
+    }
+</script>
+
+<script>
+
+
+    /**
+     * 限制单文件上传格式
+     *
+     * **/
+    var uploadButtons = document.getElementsByClassName("toupload");
+    function checkFile(index, fileTypt) {
+
+        if (index >= uploadButtons.length)return;
+
+        var uploadButton = uploadButtons[index];
+        var ID = uploadButton.id.substring(3, uploadButton.id.length);
+        var fileDivID = "view" + ID;
+        var fileDiv = document.getElementById(fileDivID);
+        var fileName = fileDiv.parentNode.childNodes[1].value;
+        var houzhui = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
+        var right = false;
+        var start = 0;
+        var end = 0;
+        if (fileName != "") {
+            for (var i = 0; i < fileTypt.length; i++) {
+                var char = fileTypt[i];
+                if (char == ',') {
+                    end = i;
+                    var type = fileTypt.substring(start, end);
+                    if (houzhui == type) {
+                        right = true;
+                        return;
+                    }
+                    start = i + 1;
+                }
+                if (i == fileTypt.length - 1) {
+
+                    var type = fileTypt.substring(start, fileTypt.length);
+                    if (houzhui == type) {
+                        right = true;
+                        return;
+                    }
+                }
+            }
+            if (!right) {
+                alert("格式只能为:" + fileTypt);
+                fileDiv.innerHTML = "";
+                fileDiv.parentNode.childNodes[1].value = "";
+            }
+
+        }
+
+    }
+</script>
+<script>
+    if (getQueryString('kind') != null) {/*微信公众号使用*/
+        document.getElementById("timu").style.display = "block";
+        document.getElementById("body1").style.margin="0px";
+    }
+</script>
+
+
+</body>
+</html>

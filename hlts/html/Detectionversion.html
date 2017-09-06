@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>检测版本</title>
+</head>
+<body>
+<div hidden>
+<!--<ylt.for dataId="1491549841376">-->
+    <!--<span id="version">$value</span>-->
+    <!--<span id="url">$value</span>-->
+    <!--<span id="apk">$value</span>-->
+<!--</ylt.for>-->
+    <ylt.for dataId="1496742096770">
+    <span id="version">$value</span>
+    <span id="apk">$value</span>
+    </ylt.for>
+</div>
+<script>
+    versions=version.innerText;
+    /*urls=url.innerText;*/
+    apks=apk.innerText;
+    var userAgent = navigator.userAgent;
+    if (userAgent.indexOf("iPhone") >= 0) {
+    }else{
+        window.callByJs.setValue(versions,apks);
+    }
+</script>
+</body>
+</html>

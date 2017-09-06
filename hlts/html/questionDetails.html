@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js'></script>
+<script type='text/javascript' src='js/checkform.js'></script>
+<script type='text/javascript' src='res/js/PC_public_JS.js'></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>Title</title>
+</head>
+<style>
+    /*设置单元格内容的数量超出用省略号代替*/
+    .limitlength {
+        table-layout: fixed;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .uploadImgDiv {
+        width: 20%;
+        height: 0px;
+        background: #ccc;
+        float: left;
+        margin-left: 4%;
+        margin-top: 20px;
+        border-radius: 20px;
+        border: 1px solid gray;
+    }
+</style>
+<body id="body1" style="font-family: Heiti SC;">
+
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="http://www.6xy8.com:8888/hlts/res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">问题详情</span>
+</div>
+
+<ylt.for dataId="1490080246497">
+    <div width="100%" style="padding-left: 24px;padding-right: 24px;">
+        <div style="font-size: 60px;clear: both;">
+            <div style="float: left;width: 22%;">主题：</div>
+            <div style="float: left;width: 78%;">$value</div>
+        </div>
+
+
+        <div class="uploadImgDiv" >
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;" >
+        </div>
+        <div class="uploadImgDiv">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+        <div class="uploadImgDiv">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+        <div class="uploadImgDiv">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+
+
+        <div style="height: 30px;clear: both;"></div>
+        <div style="font-size: 50px;color: gray;margin-top: 20px;clear: both;text-indent: 2em;">
+            $value
+        </div>
+        <div  style="font-size: 40px;color: gray;">
+            $value$value 点赞数:<span name="zanCount" style="color: gray"></span>
+            <img src="res/images/grayPraise.png" onclick="praise(this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;"/>
+        </div>
+        <img src="res/images/shanchu.png" style="position: fixed;z-index: 999;right: 0;bottom:0;float: right;margin-bottom: 160px;display: none;width: 100px;height: 100px;" onclick="clickDelete_Question();" id='deleteQuestion' alt="$value" name="$value"/>
+    </div>
+    <hr>
+</ylt.for>
+
+
+
+<script>
+    /*
+     * 多余空图片隐藏
+     * */
+    var uploadImgs =  document.getElementsByName('uploadImg');
+    var uploadImgDivs = document.getElementsByClassName('uploadImgDiv');
+    for (var i = 0;i<uploadImgs.length;i++){
+        var strIndex =  uploadImgs[i].src.indexOf('upload');
+        var imgName = uploadImgs[i].src.substring(strIndex+7,uploadImgs[i].src.length);
+        if(imgName == ""||imgName=="Nan"||imgName=="null"){
+            uploadImgDivs[i].style.display='none';
+        }else{
+            uploadImgDivs[i].style.height=uploadImgDivs[i].clientWidth+"px";
+        }
+    }
+
+    /*
+     * 图片点击进详情
+     * */
+    function clickPicture(picture) {
+        var content = {"picture": picture.src};
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.pictureClick.postMessage(content);
+        } else {
+            window.callByJs.setValue(picture.src);
+        }
+
+    }
+</script>
+
+<ylt.for dataId="1490080764686">
+    <table width="100%" style="" class="limitlength" cellpadding="10">
+        <tr onclick="clickReply('$value')">
+            <td style="font-size: 40px;width: 60%;" class="limitlength">
+                回复：$value
+            </td>
+            <td style="font-size: 40px;width: 40%" align="right" class="limitlength">
+                回答者：$value
+            </td>
+        </tr>
+    </table>
+    <hr>
+</ylt.for>
+
+<form id="add" method="post" style="width:100%;height:100%;">
+    <input type="hidden" id="urlAA" name="NO_DOSCRIPT" value=""/>
+    <input type='hidden' name='NO_charset' value='utf-8'/>
+    <ylt.form page="1490080551601">
+
+        $value $value $value
+        <input type="submit" value="提交" id="tiJiao" hidden="true"/>
+        $value$value$value
+    </ylt.form>
+
+</form>
+
+
+<script>
+    document.getElementById('T_P_SJHDB$S_HDJG').hidden = true;
+
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+
+    var valueStr = "window.location='questionDetails.view?id=" + getQueryString('id') +"&reuse="+getQueryString('reuse') +"&isTask="+getQueryString('isTask')+"';";
+    document.getElementById('urlAA').value = valueStr;
+
+</script>
+<!--点赞-->
+<script>
+    function updateZan() {
+
+        var zans = document.getElementsByName('zan');
+        /**如果name=null将已赞隐藏**/
+        for (var i = 0; i < zans.length; i++) {
+            if(isPraised(zans[i].id)){
+                zans[i].src =  "res/images/bluePraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('circleID'),zans[i].id);
+            }else{
+                zans[i].src =  "res/images/grayPraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('circleID'),zans[i].id);
+            };
+        }
+    }
+    updateZan();
+    /**点击小手**/
+    function praise(zan) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=question&wzid=" + zan.id, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+
+            var strVResult = sys_doComMandReturn("033", "S_DZWZ=" + zan.id + "&S_ID=" + timestamp + "&S_LB=question");
+            var dianzanshu=  contributeCountTest(getQueryString('circleID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)+1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("038", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id +"&S_QZID="+getQueryString('circleID'));
+            zan.src = "res/images/bluePraise.png";
+            updateZan();
+        }else{
+            /*
+             * 已赞
+             * */
+
+            var strVResult = sys_doComMandReturn("034", "S_ID=" + dianzanID);
+            var dianzanshu=  contributeCountTest(getQueryString('circleID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)-1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("038", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id + "&S_QZID="+getQueryString('circleID'));
+            zan.src = "res/images/grayPraise.png";
+            updateZan();
+        }
+
+    }
+    /** 当前用户是否赞过* */
+
+    function isPraised(fileID) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=question&wzid=" + fileID, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    /**提问的被赞数**/
+    function contributeCountTest(circleID,questionID){
+
+        var newResultdfdfd=getTx("TcircleID="+circleID+"&questionID="+questionID,"phonejumpA.view");
+        var likeResponseCount=incision(newResultdfdfd,"likeQuestionCount=",";");
+        var count;
+        if(likeResponseCount == ""||likeResponseCount==null||likeResponseCount=="null"){
+            return count=0;
+        }else{
+            return count=parseInt(likeResponseCount);
+        }
+    }
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+</script>
+
+<script type="text/javascript">
+    /*给时间戳后面加一位随机数*/
+    /*function randomCode() {
+
+     return Math.ceil(Math.random()*10-1);
+
+     }*/
+    /*给时间戳后面加三位随机数*/
+    /*function random3Code() {
+     var code = "";
+     for(var i = 0;i<3;i++){
+     code +=randomCode();
+     }
+     return code;
+     }*/
+
+    /*回复的方法*/
+    function sendAnswer(answer) {
+        var user=T_P_SJHDB$S_HDR.value;
+        document.getElementById('T_P_SJHDB$S_HDJG').value = answer;
+        document.getElementById('tiJiao').click();
+
+
+        if(getQueryString('isTask')=="true"){
+            var timestamp = new Date().getTime();
+            var Searchrecords = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('id') + "&user=" + user);
+
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.back.postMessage(null);
+            } else {
+                window.callByJs.getValue("hello android!!");
+            }
+        }
+    }
+    function clickReply(replyID) {
+        var reply = {"replyID": replyID};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoAnswer.postMessage(reply);
+        } else {
+            window.callByJs.setValue(replyID);
+        }
+    }
+    function clickDelete_Question() {
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.deleteQuestion.postMessage(null);
+        } else {
+            window.callByJs.getValue("deleteQuestion");
+        }
+    }
+    /**这是获取session用户名**/
+    var user="";
+    <ylt.v message="user">
+            $value
+    user="$value";
+    </ylt.v>
+    if(deleteQuestion.alt==user&&deleteQuestion.name=='A'&&getQueryString('isTask')=="false"){
+        deleteQuestion.style.display="inline";
+    }
+
+    function delete_Question(QuestionID){
+        var Searchrecords = sys_doComMandReturn("095","id="+QuestionID);
+    }
+</script>
+<script>
+    if (getQueryString('kind') != null) {
+        var tm = getQueryString('kind');
+        if (tm == "wtxq") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("body1").style.margin="0px";
+        }
+    }
+</script>
+</body>
+</html>

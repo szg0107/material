@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>类目列表</title>
+    <style type="text/css">
+        div {
+            height: 100px;
+            line-height: 100px;
+            width: 100%;
+            border-bottom: 1px solid #e9e9e9;
+            color: #666666;
+            background: #FFFFFF;
+            font-size: 48px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body style="background:#efeef4;">
+<div style="color:#000000;" name="itemName">请选择类目:</div>
+
+<ylt.for dataId="1503993481800">
+    <div onclick="leiMu('$value')" style="text-indent: 4em;">
+        $value
+    </div>
+</ylt.for>
+
+
+
+
+<script>
+    function leiMu(CategoryID) {
+        var userAgent = navigator.userAgent;
+        var data = {"CategoryID":CategoryID};
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.ejcd.postMessage(data);
+        }else{
+            window.callByJs.getCategoryID(CategoryID);
+        }
+    }
+</script>
+</body>
+</html>

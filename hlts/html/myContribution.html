@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>Title</title>
+    <style>
+        /*设置单元格内容的数量超出用省略号代替*/
+        .limitlength {
+            table-layout: fixed;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
+    </style>
+
+</head>
+<body bgcolor="#efeef4" style="margin: 0;padding: 0;">
+<ylt.for dataId="1492504812331">
+    <div class="gps_font" style="background: #FFFFFF;width: 100%;position: fixed; z-index: 999;height: 100px;line-height: 100px;border-bottom: 5px solid #efeef4;">我的贡献数：$value</div>
+</ylt.for>
+<div style="height: 80px"></div>
+<ylt.for dataId="1491880155403">
+    <table width="100%" style="padding-left: 48px;background-color: white;" onclick="clickContribution('$value')" class="limitlength">
+        <tr style="height: 100px;">
+            <td style="font-size: 50px"  class="limitlength">
+                $value
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 40px;color: gray;text-indent: 2em;"  class="limitlength">
+                $value
+            </td>
+        </tr>
+        <tr >
+            <td style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4">
+                $value 点赞数:<span name="beizanshu">$value</span>
+            </td>
+        </tr>
+
+    </table>
+</ylt.for>
+</body>
+
+<script>
+    function clickContribution(contributionID) {
+        var dict = {"contributionID": contributionID};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.intoContributionIDDetails.postMessage(dict);
+        } else {
+            window.callByJs.setValue(contributionID);
+        }
+    }
+    function beiZanShuChuShiHua(){
+        var bzs=document.getElementsByName("beizanshu");
+        for(var i=0;i<bzs.length;i++){
+            if(bzs[i].innerText==''||bzs[i].innerText==null||bzs[i].innerText == undefined || bzs[i].innerText == 'null'){
+                bzs[i].innerText=0;
+            }
+        }
+    }
+    beiZanShuChuShiHua();
+</script>
+</html>

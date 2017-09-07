@@ -8,18 +8,16 @@
     <script type='text/javascript' src='js/check.js'></script>
     <script type='text/javascript' src='js/checkform.js'></script>
 </head>
-<style>
-    .uploadImgDiv {
-        width: 20%;
-        background: #ccc;
-        float: left;
-        margin-left: 4%;
-        margin-top: 20px;
-        border-radius: 20px;
-        border: 1px solid gray;
-    }
-</style>
-<body style="font-family: Heiti SC;">
+<body id="body1">
+
+<div id="timu"
+     style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;">
+    <!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 9%;height: 40%;margin-top:3%" onclick="window.history.go(-1);">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;margin-top:10%">通知详情</span>
+</div>
+
+
 <ylt.for dataId="1501051766655">
     <div style="margin-right: 48px;margin-left: 48px;">
         <div style="font-size: 60px;margin-bottom: 30px;">$value</div>
@@ -32,7 +30,7 @@
         <div style="font-size: 50px;text-indent: 2em;clear: both;">$value</div>
         <hr/>
         <div style="float: right;background-color: #029ae5;color: #FFFFFF;width: 260px;height:80px;font-size: 45px; border-radius:10px;margin: 0 auto;line-height: 80px;text-align: center;"
-             onclick="checkTheAttachment(this.id)" id="$value">查看附件
+             onclick="checkTheAttachment(this.id)" id="$value" name="fj">查看附件
         </div>
     </div>
 </ylt.for>
@@ -43,6 +41,15 @@
         if (r != null) return unescape(r[2]);
         return null;
     }
+    /*如果附件为空,隐藏查看附件按钮*/
+    function setFj() {
+        var fj = document.getElementsByName('fj')[0].id.replace(/(^\s*)|(\s*$)/g, "");
+        if (fj == undefined || fj == "" || fj == null || fj == "NaN"||fj.length==0) {
+            document.getElementsByName('fj')[0].style.display = "none";
+        }
+    }
+    setFj();
+    /*点击查看附件按钮事件*/
     function checkTheAttachment(file) {
         var type = file.substring((file.length - 3));
         var content = {"file": file, "type": type};
@@ -51,6 +58,20 @@
             window.webkit.messageHandlers.checkTheAttachment.postMessage(content);
         } else {
             window.callByJs.setValue(file, type);
+        }
+
+
+        if (getQueryString('kind') != null) {
+            this.location.href = "dynamic_details.view?kind=dtxq&type=dynamic&circleID=" + getQueryString('id') + "&id=" + file;
+        }
+    }
+</script>
+<script>
+    if (getQueryString('kind') != null) {
+        var tm = getQueryString('kind');
+        if (tm == "tzxq") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("body1").style.margin = "0px";
         }
     }
 </script>

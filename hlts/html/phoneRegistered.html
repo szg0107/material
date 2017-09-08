@@ -86,6 +86,7 @@
     var address = window.location.host;
     /*phone_session的地址*/
     var cell_phone_verification_code = "";
+    var phone_verification = "";
     function init() {
         if (/iphone|ipad|ipod/.test(ua)) {
             code.style.width = "60%";
@@ -98,8 +99,10 @@
         }
         if (address == "123.56.187.157") {
             cell_phone_verification_code = "/hlts/res/java/cell_phone_verification_code.jsp";
+            phone_verification = "/hlts/res/java/phone_verification.jsp";
         } else {
             cell_phone_verification_code = "/res/java/cell_phone_verification_code.jsp";
+            phone_verification = "/res/java/phone_verification.jsp";
         }
     }
     init();
@@ -160,7 +163,7 @@
 
         var nowPhoneNumber = document.getElementById("username").value;
         var nowCode = document.getElementById("code").value;
-        var strResult = getTx("mobile=" + nowPhoneNumber + "&number=" + nowCode, "/hlts/res/java/phone_verification.jsp");
+        var strResult = getTx("mobile=" + nowPhoneNumber + "&number=" + nowCode, phone_verification);
 
         strResult = strResult.replace(/\ +/g, "").replace(/[ ]/g, "").replace(/[\r\n]/g, "");
         if (strResult != "true") {
@@ -172,9 +175,12 @@
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.next.postMessage(dict);
-        } else {
+        } else if (userAgent.indexOf("Android") >= 0) {
             window.callByJs.setValue(username.value);
+        } else {
+            this.location.href = "setPassword.view?kind=js&phoneNumber=" + nowPhoneNumber;
         }
+
     }
     function isUsed(phoneNumber) {
         var strResult = getTx("jumpvalue=" + phoneNumber, "phoneJump.view");

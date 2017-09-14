@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name=viewport content="user-scalable=no">
-    <title>圈子详情</title>
+    <title></title>
 </head>
 <style type="text/css">
     div {
@@ -16,22 +16,19 @@
         font-family: Heiti SC;
         font-size: 48px;
     }
-    img{
+    /*img{
         margin-right: 50px;
         margin-top:30px;
     }
-    span{
-        height: 100px;
-        line-height: 100px;
-    }
-    /*
+
+
         [name=itemDiv]{
             display: none;
         }
         */
 </style>
-<body style="margin: 0; padding: 0;font-family: Heiti SC;background: #EFEEF4;">
-<div id="items">
+<body style="margin: 0; padding: 0;background: #EFEEF4;">
+<div id="items" style="overflow:auto;height: 100%;">
 
 </div>
 
@@ -40,7 +37,7 @@
 
 <div id="gly" onclick="shenqing_gly()" style="margin-top: 5px;">
     <span style="margin-left: 50px" name="itemName">申请成为圈子管理员</span>
-    <img src="images/pages/into_lan.png" align="right"/>
+    <img src="images/pages/into_lan.png" align="right" style="margin-right: 50px;margin-top:30px;"/>
 </div>
 
 
@@ -59,65 +56,123 @@
 
 
 <script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
     function creatItem() {
+        var winWidth = document.body.clientWidth;
+        var divheight=(winWidth+0.00000000000001)*0.3;
         var fid = document.getElementById('items');
         /**
          * 生成div
          *
          * **/
 
-        var newdiv = document.createElement('div');
-        newdiv.setAttribute('name', 'itemDiv');
-        newdiv.setAttribute('style', 'margin-top: 5px;');
-        newdiv.setAttribute('onclick', 'clickReply(this)');
+        if(getQueryString('isJGG')!=null){
+            fid.style.background="#EFEEF4";
+            var newdiv = document.createElement('div');
+            newdiv.setAttribute('name', 'itemDiv');
+            newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border:1px solid #029ae5;border-radius: 20px;');
+            newdiv.setAttribute('onclick', 'clickReply(this)');
 
 
-        /**
-         * 生成图片
-         *
-         * **/
+            /**
+             * 生成图片
+             *
+             * **/
 
 
-        var newimg = document.createElement('img');
-        newimg.setAttribute("name", "cdtb");
-        newimg.setAttribute("src","res/images/acquiescenceImg.png");
-        newimg.setAttribute("width", "50px;");
-        newimg.setAttribute("height", "50px;");
-        newimg.setAttribute("style", "margin-left: 50px;");
-        newdiv.appendChild(newimg);
-
-        /**
-         * span
-         */
-
-        var newSpan = document.createElement('span');
-        newSpan.setAttribute("name", "itemName");
-        newdiv.appendChild(newSpan);
-
-        /**
-         * 生成图片
-         *
-         * **/
+            var newimg = document.createElement('img');
+            newimg.setAttribute("name", "cdtb");
+            newimg.setAttribute("src","res/images/acquiescenceImg.png");
+            newimg.setAttribute("width", (divheight*0.8)+"px;");
+            newimg.setAttribute("height", (divheight*0.7)+"px;");
+            newimg.setAttribute('style', 'margin-top: 10px;border-radius: 20px;');
+            newdiv.appendChild(newimg);
 
 
-        var newimg1 = document.createElement('img');
-        newimg1.setAttribute("src","images/pages/into_lan.png");
-        newimg1.setAttribute("align", "right");
-        newdiv.appendChild(newimg1);
-        /**
-         * 生成图片
-         *
-         * **/
+            /**
+             * 生成图片
+             *
+             * **/
 
 
-        var newimg2 = document.createElement('img');
-        newimg2.setAttribute("src","res/images/dianA.png");
-        newimg2.setAttribute("align", "right");
-        newimg2.setAttribute("name", "dian");
-        newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;");
-        newdiv.appendChild(newimg2);
+            var newimg2 = document.createElement('img');
+            newimg2.setAttribute("src","res/images/dianA.png");
+            newimg2.setAttribute("align", "right");
+            newimg2.setAttribute("name", "dian");
+            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;position: relative;z-index: 999;right: 0;top: 0;float: right;");
+            newdiv.appendChild(newimg2);
 
-        fid.appendChild(newdiv);
+
+            /**
+             * span
+             */
+            var newSpan = document.createElement('span');
+            newSpan.setAttribute("name", "itemName");
+            newSpan.setAttribute("style", "display: block;");
+            newdiv.appendChild(newSpan);
+
+            fid.appendChild(newdiv);
+
+        }else{
+            var newdiv = document.createElement('div');
+            newdiv.setAttribute('name', 'itemDiv');
+            newdiv.setAttribute('style', 'margin-top: 5px;');
+            newdiv.setAttribute('onclick', 'clickReply(this)');
+
+
+            /**
+             * 生成图片
+             *
+             * **/
+
+
+            var newimg = document.createElement('img');
+            newimg.setAttribute("name", "cdtb");
+            newimg.setAttribute("src","res/images/acquiescenceImg.png");
+            newimg.setAttribute("width", "70px;");
+            newimg.setAttribute("height", "70px;");
+            newimg.setAttribute("style", "margin-left: 50px;margin-top: 15px;float: left;");
+            newdiv.appendChild(newimg);
+
+            /**
+             * span
+             */
+
+            var newSpan = document.createElement('span');
+            newSpan.setAttribute("name", "itemName");
+            newSpan.setAttribute("style", "float: left;display: block;");
+            newdiv.appendChild(newSpan);
+
+            /**
+             * 生成图片
+             *
+             * **/
+
+
+            var newimg1 = document.createElement('img');
+            newimg1.setAttribute("src","images/pages/into_lan.png");
+            newimg1.setAttribute("align", "right");
+            newimg1.setAttribute("style", "margin-right: 50px;margin-top:30px;");
+            newdiv.appendChild(newimg1);
+            /**
+             * 生成图片
+             *
+             * **/
+
+
+            var newimg2 = document.createElement('img');
+            newimg2.setAttribute("src","res/images/dianA.png");
+            newimg2.setAttribute("align", "right");
+            newimg2.setAttribute("name", "dian");
+            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;");
+            newdiv.appendChild(newimg2);
+
+            fid.appendChild(newdiv);
+        }
     }
     for(var i=0;i<26;i++){
         creatItem();
@@ -342,11 +397,6 @@
 </body>
 <script type="text/javascript">
 
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
     function clickReply(self) {
         var serialNumber;
         var listName;

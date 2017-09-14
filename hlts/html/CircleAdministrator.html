@@ -4,6 +4,9 @@
     <script type='text/javascript' src='js/pub.js'></script>
     <script type='text/javascript' src='js/check.js'></script>
     <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/activation_code.js'></script>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+
     <meta charset="UTF-8">
     <meta name=viewport content="user-scalable=no">
     <title></title>
@@ -85,13 +88,21 @@
                     <td width="75%">$value</td>
                 </tr>
                 <tr>
+                    <td class="gps_font">激活码:</td>
+                    <td width="75%">
+                        <input  id="jhm" value="" placeholder="可为空" style="width: 95%;"/>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2" align="center">
+                        $value
                         <button type="submit"
                                 style="background-color: #029ae5;width: 450px;height: 100px;margin-top: 100px;color: white;border-radius: 10px;font-size: 60px;"
-                                onclick="registered()">提交
+                                onclick="return registered();">提交
                         </button>
                     </td>
                 </tr>
+
             </ylt.form>
         </table>
     </form>
@@ -120,10 +131,15 @@
 
 </body>
 <script type="text/javascript">
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
     T_SJZCSQB$S_QZID.style.width = "95%";
     T_SJZCSQB$S_SQQZM.style.width = "95%";
     T_SJZCSQB$S_YXH.style.width = "95%";
-
+    T_SJZCSQB$S_SQQZM.value=getQueryString1('circleName');
     T_SJZCSQB$S_SQLY.style.height = "300px";
     T_SJZCSQB$S_SQRMZ.style.width = "95%";
     T_SJZCSQB$S_SQRDH.style.width = "95%";
@@ -141,7 +157,48 @@
     }
     function registered() {
 
-        var strValue = "";
+        var name = document.getElementById('T_SJZCSQB$S_SQRMZ');
+        var youxiang = document.getElementById('T_SJZCSQB$S_YXH');
+        var shenfenzheng = document.getElementById('T_SJZCSQB$S_SFZ');
+        if(name.value.length==0|youxiang.value.length==0|shenfenzheng.value.length==0){
+            return true;
+        }
+
+
+
+        var jhm = document.getElementById('jhm');
+        if(jhm.value.length >= 1){
+
+            var an = jiami(jhm.value);
+            var dataArray =  returnKeyArray(an);
+            if(dataArray[0] == undefined || dataArray[1] == '是'){
+                alert('激活码无效');
+                return false;
+            }else{
+
+                var select = document.getElementById('circleType');
+                if(dataArray[0]!=select.value){
+                    alert('激活码类型与所选圈子类型不符！');
+                    return false;
+                }
+
+                var timestamp=new Date().getTime();
+                var circleID = getQueryString('circleID');
+                var strVResult = sys_doComMandReturn("091", "jhsj="+timestamp+"&id="+dataArray[2]+"&circleID="+circleID);
+                document.getElementById('T_SJZCSQB$S_SHR').value = '激活码激活';
+                document.getElementById('T_SJZCSQB$S_SHZT').value = 'B';
+
+                var scr = document.getElementById('T_SJZCSQB$S_SQR').value;
+                var strVResul=sys_doComMandReturn("009","S_SCR="+scr+"&QZB_S_ID="+circleID);
+                alert('圈子激活成功，您已成为本圈子管理员。');
+            }
+
+        }else{
+            alert('申请成功!请等待管理员审核。');
+        }
+
+        return true;
+
 
     }
 </script>

@@ -12,11 +12,13 @@
 <script language="javascript" src="js/check.js" charset='gbk' ></script>
 <script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
 <meta name=viewport content="user-scalable=no">
-<body style="margin: 0 auto; " bgcolor="#efeef4">
-<div id="items">
-    <ylt.for dataId="1489977256203">
+<title>所有圈子</title>
+<body style="margin: 0 auto;" bgcolor="#efeef4">
+<div>
+    <div style="margin-bottom: 160px;">
+    <ylt.for dataId="1505203549619">
         <table border="0" cellpadding="0" cellspacing="0" width="100%" name="pagingDiv" style="margin-top: 4px;" >
-            <tr style="height: 133px;" onclick="clickCircle('$value','$value','$value','$value','$value','$value','$value','');" bgcolor="white" name="hang">
+            <tr style="height: 133px;" onclick="clickCircle('$value','$value','$value','$value','','','$value','','');" bgcolor="white">
                 <td class="gps_td" style="width: 163px;height: 133px;">
                     <img src="" alt="upload/$value" name="pagingImg" style="margin-left: 30px;height: 120px;width: 133px;border: 1px solid gray;line-height: 200px;border-radius: 20px;"/>
                 </td>
@@ -25,10 +27,21 @@
             </tr>
         </table>
     </ylt.for>
-</div>
-<div id="jiuGongGe" style="overflow:auto;height: 100%;">
+    </div>
 
+
+<div style="background:#BFBFBF;text-align: center;padding: 10px;position: fixed;z-index: 999;right: 0;bottom:0;width: 100%;" id="souSuo">
+    <form id="searchForm" action="all_circle.view" method="post">
+        <div style="background: #FFFFFF;overflow:auto;height: 133px;line-height: 133px;">
+            <img src="res/images/ss.png"  style="float:left;height: 133px;">
+            <input id="con" value=""  placeholder="请输入搜索关键字" autocomplete="off" type="text" style="float: left;height: 120px;width: 72%;margin-top: 5px;font-size:48px;outline:none;resize:none;border: 0px;"/>
+            <img src="res/images/jg.png" onclick="sous();" style="float:left;height: 133px;" id="search">
+        </div>
+    </form>
 </div>
+
+
+
 
 
 <script>
@@ -160,9 +173,9 @@
                 kongzhi = "06";
             }
             if(name_Nuthentication(returnResults[0]) == 0){
-                clickCircle(returnResults[0],searchContent,returnResults[1],"01","03","",kongzhi,"");
+                clickCircle(returnResults[0],searchContent,returnResults[1],"01","03","",kongzhi,"","false");
             }else{
-                clickCircle(returnResults[0],searchContent,returnResults[1],"","","",kongzhi,"");
+                clickCircle(returnResults[0],searchContent,returnResults[1],"","","",kongzhi,"","false");
             }
 
 
@@ -260,10 +273,20 @@
         var strVResults=sys_doComMandReturn("043","S_QZBID="+ids);
         var strVResultss=sys_doComMandReturn("044","S_QZBID="+ids);
     }
+    if(getQueryString('content')!=null){
+        souSuo.style.display="none";
+    }
+    function sous(){
+        var neiRon=document.getElementById('con').value;
+        if (neiRon!="") {
+            searchForm.action="all_circle.view?w=a&content="+neiRon;
+            searchForm.submit();
+        }
+    }
 </script>
 
 <script>
-    function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2) {
+    function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2,isAlert) {
         if(name_Nuthentication(circleID) == 0){
             circleRZ = "01";
             userRZ = "03";
@@ -271,96 +294,16 @@
             userRZ = "04";
         }
 
-        var circle = {"circleID":circleID,"circleName":circleName,'circleAdmin':circleAdmin,'circleRZ':circleRZ,'userRZ':userRZ,'videoYZ':videoYZ,'isSF':isSF};
+        var circle = {"circleName":circleName};
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.intoCircle.postMessage(circle);
         }else{
             window.callByJs.certification(circleRZ,userRZ,videoYZ);
-            window.callByJs.setValue(circleID,circleName,circleAdmin,circleName2);
+            window.callByJs.setValue(circleID,circleName,circleAdmin,circleName2,isAlert);
 
         }
     }
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-    function setJiuGongGE(){
-        /*获取当前屏幕宽度*/
-        var winWidth = document.body.clientWidth;
-        /*获取div的高度*/
-        var divheight=(winWidth+0.00000000000001)*0.3;
-        /*获取放九宫格的父容器*/
-        var fid = document.getElementById('jiuGongGe');
-        /*获取关注多少个圈子*/
-        var hang=document.getElementsByName('hang');
-        /*获取关注圈子的图标*/
-        var pagingImg=document.getElementsByName('pagingImg');
-        /*获取关注圈子的名称*/
-        var circleName=document.getElementsByName('circleName');
-        /*获取关注圈子的父容器*/
-        var items=document.getElementById('items');
-        /*设置父级的背景色*/
-        fid.style.background="#EFEEF4";
-        /**
-         * 生成div
-         *
-         * **/
-
-        if(getQueryString('isJGG')!=null){
-            for(var i=0;i<hang.length;i++){
-                var newdiv = document.createElement('div');
-                newdiv.setAttribute('name', 'pagingDivs');
-                newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border:1px solid #029ae5;border-radius: 20px;background: #ffffff;');
-                newdiv.setAttribute('onclick', 'clickReply(this)');
 
 
-                /**
-                 * 生成图片
-                 *
-                 * **/
-
-
-                var newimg = document.createElement('img');
-                newimg.setAttribute("name", "pagingImgs");
-                newimg.setAttribute("src","res/images/acquiescenceImg.png");
-                newimg.setAttribute("width", (divheight*0.8)+"px;");
-                newimg.setAttribute("height", (divheight*0.7)+"px;");
-                newimg.setAttribute('style', 'margin-top: 10px;border-radius: 20px;');
-                newdiv.appendChild(newimg);
-
-                /**
-                 * span
-                 */
-                var newSpan = document.createElement('span');
-                newSpan.setAttribute("name", "circleNames");
-                newSpan.setAttribute("style", "display: block;");
-                newSpan.setAttribute("class","gps_font");
-                newdiv.appendChild(newSpan);
-
-                fid.appendChild(newdiv);
-            }
-            var jGGPagingDiv=document.getElementsByName('pagingDivs');
-            var jGGPagingImg=document.getElementsByName('pagingImgs');
-            var jGGCircleName=document.getElementsByName('circleNames');
-            for(var u=0;u<hang.length;u++){
-                var zhi=hang[u].onclick.toString().slice(25,hang[u].onclick.toString().length-1);
-                jGGPagingDiv[u].setAttribute('onclick',zhi);
-
-                jGGPagingImg[u].src=pagingImg[u].src;
-
-                jGGCircleName[u].innerText=circleName[u].innerText;
-
-            }
-
-            for(var j=0;j<hang.length;j++){
-                jGGPagingDiv[0].setAttribute("name","pagingDiv");
-                jGGPagingImg[0].setAttribute("name","pagingImg");
-                jGGCircleName[0].setAttribute("name","circleName");
-            }
-            items.innerHTML="";
-        }
-    }
-    setJiuGongGE();
 </script>

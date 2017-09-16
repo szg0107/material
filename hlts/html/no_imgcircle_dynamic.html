@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name=viewport content="user-scalable=no">
-    <title></title>
+    <title>圈子动态</title>
     <script type='text/javascript' src='js/pub.js'></script>
     <script type='text/javascript' src='js/check.js' ></script>
     <script type='text/javascript' src='js/checkform.js'  ></script>
@@ -24,30 +24,32 @@
         }
     </style>
 </head>
-<body id="body1" bgcolor="#efeef4" style="font-family: Heiti SC;">
+<body id="body1" bgcolor="#efeef4">
 <div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
     <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
-    <span style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">圈子动态</span>
+    <span id="menu2" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">圈子动态</span>
 
 </div>
 
 <ylt.for dataId="1501228333094">
-    <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;" class="limitlength">
+    <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;">
         <div onclick="clickCourseware('$value');recordLrecord('$value');" name="pdf">
-            <div class="gps_font" style="background-color: #efeef4;clear: both;height: 60px;margin-top: 30px;">
-                <div style="float: left;width: 15%;" class="gps_font">主题：</div>
-                <div class="limitlength gps_font" style="float: left;width: 83%;margin-left: 10px;">
+            <div class="gps_font" style="background-color: #efeef4;clear: both;height:100%;margin-top: 30px;">
+                <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
+                <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
                     <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:50px;height:50px;display: none;">
-                    <div class="limitlength" name="title" style="float: left">$value</div>
+                    <div  name="title" style="float: left;word-break: break-all;word-wrap: break-word;">$value</div>
                 </div>
             </div>
         </div>
 
-        <div style="height: 100px;" align="center">
+        <div style="height: 100px;margin-left: 20px;" align="center">
             <div  style="font-size: 35px;color: gray;float: left;margin-top: 30px">
                 $value
             </div>
-
+            <div  style="font-size: 35px;color: gray;float: left;margin-top: 30px;margin-left: 20px;">
+                $value
+            </div>
 
             <div style="float: left;margin-top: 30px;margin-left: 80px;width: 200px">
                    <span style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;margin-left: 10%">
@@ -158,6 +160,11 @@
         var r =  window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
     /*搜索记录方法*/
     function SearchRecords(circleID,content){
         var timestamp = new Date().getTime();
@@ -173,7 +180,7 @@
         var gongSiBiXiuCongFU=new Array();
         var gongSiBiXiuCongType=new Array();
     <ylt.for dataId="1503383626200">
-                gongSiBiXiuID.push('$value');
+        gongSiBiXiuID.push('$value');
         gongSiBiXiuCongFU.push('$value');
         gongSiBiXiuCongType.push('$value');
     </ylt.for>
@@ -229,7 +236,8 @@
         var circleID = document.getElementById('circleID');
         circleID.value = getQueryString('id');
         var searchForm =  document.getElementById('searchForm');
-        searchForm.action="coursewareList.view?w=a&type="+getQueryString('type')+"&id="+circleID.value;
+        searchForm.action="no_imgcircle_dynamic.view?w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse');
+
         /*if(contentInput.value!=''&&contentInput.value!=null){
          var timestamp = new Date().getTime();
          var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + circleID.value + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=pdf");
@@ -238,9 +246,12 @@
     }
 </script>
 <script>
+
     if (getQueryString('kind') != null) {/*微信公众号使用*/
         var tm = getQueryString('kind');
         if (tm == "qzdt") {
+            var menuname = getQueryString1("menuname");
+            document.getElementById("menu2").innerText = menuname;
             document.getElementById("timu").style.display = "block";
             document.getElementById("body1").style.margin="0px";
         }

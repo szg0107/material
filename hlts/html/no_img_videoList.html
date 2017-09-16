@@ -62,38 +62,54 @@
             margin-top:15px;
             margin-left:3%
         }
+        .menus{
+            text-align: center;
+            color: #FFFFFF;
+            background:#029ae5;
+            border-color:white;
+            border-style: none;
+            border-width: 0px;
+            font-size: 50px;
+            /*margin-left:1px;*/
+            /*width: 24.4%;*/
+            height:90px;
+        }
     </style>
 </head>
-<body id="body1" bgcolor="#efeef4" style="font-family: Heiti SC;">
+<body id="body1" bgcolor="#efeef4">
 
 <div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
     <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
-    <span style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;margin-top:10%">公司必修</span>
+    <span id="menu2" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;margin-top:10%">公司必修</span>
     <span id="A" style="color: #FFFFFF;font-size: 35px;margin-left:15%;font-family: 微软雅黑;" onclick="moshi1()">开启</span>
     <span id="B" style="color: #FFFFFF;font-size: 35px;margin-left:-2px;font-family: 微软雅黑;"onclick="moshi1()">无图模式</span>
 
 </div>
 
 <div id="menu" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
-    <input id="shipin" type="button" onclick="play('shipin');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:4px;width: 24.4%;height:90px;" value="视频">
-    <input id="tupian" type="button" onclick="play('tupian');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:1px;width: 24.4%;height:90px;" value="图片">
-    <input id="yinpin" type="button" onclick="play('yinpin');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:1px;width: 24.4%;height:90px;" value="音频">
-    <input id="wenan" type="button" onclick="play('wenan');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:1px;width: 24.4%;height:90px;" value="文案">
+    <input id="" name="menu" type="button" onclick="play(this);" class="menus" style="display:none" value="">
+    <input id="" name="menu" type="button" onclick="play(this);" class="menus" style="display:none" value="">
+    <input id="" name="menu" type="button" onclick="play(this);" class="menus" style="display:none" value="">
+    <input id="" name="menu" type="button" onclick="play(this);" class="menus" style="display:none" value="">
 </div>
 
+
+
+
+
 <ylt.for dataId="1499136872517">
-    <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;" class="limitlength"  name="pagingDiv">
+    <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;"   name="pagingDiv">
         <div onclick="clickCourseware('$value');recordLrecord('$value');" name="avi">
-            <div class="gps_font" style="background-color: #efeef4;clear: both;height: 60px;margin-top: 30px;">
-                <div style="float: left;width: 15%;" class="gps_font">主题：</div>
-                <div class="limitlength gps_font" style="float: left;width: 83%;margin-left: 10px;">
-                    <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:50px;height:50px;display: none;">
-                    <div class="limitlength" name="title" style="float: left">$value</div>
+            <div class="gps_font" style="background-color: #efeef4;clear: both;height:100%;margin-top: 30px;">
+                <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
+                <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
+                    <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:30px;height:30px;display: none;">
+                    <div name="title" style="float: left;word-break: break-all;word-wrap: break-word;">$value</div>
                 </div>
             </div>
         </div>
 
-        <div style="height: 100px;" align="center">
+        <div style="height: 100px;margin-left: 20px;" align="center">
             <div  style="font-size: 35px;color: gray;float: left;margin-top: 30px">
                 $value
             </div>
@@ -119,19 +135,17 @@
                      style="margin-top: 20px;width: 60px;height: 60px;"/>
             </div>
         </div>
-
-
-        <div style="background-color: white;clear: both;" name="juli">
-            <hr size="3" style="background: #666;border: 0;">
-        </div>
-        <div id="sousu" class="divFrame">
-            <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
-            <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
-            <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
-        </div>
     </div>
 </ylt.for>
 
+<div style="background-color: white;clear: both;" name="juli">
+    <!--<hr size="3" style="background: #666;border: 0;">-->
+</div>
+<div id="sousu" class="divFrame">
+    <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
+    <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
+    <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
+</div>
 
 <div id="tishi" class="gps_font" align="center"></div>
 
@@ -193,7 +207,7 @@
             }
         } else {
             if (getQueryString('kind') != null) {
-                this.location.href="http://www.6xy8.com:8888/hlts/upload/"+audioStr;
+                this.location.href="upload/"+audioStr;
             }
         }
         var video = {"video": audioStr};
@@ -235,6 +249,11 @@
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return null;
+    }
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
     }
     /*搜索记录方法*/
     function SearchRecords(circleID, content) {
@@ -315,22 +334,160 @@
 </script>
 
 
+
+
+
+<!--微信使用JS-->
 <script>
+    <ylt.for dataId="1499223736665">
+    var resources = new Array();
+    var isOpenCategory = new Array();
+    resources[0] = "$value";
+    resources[1] = "$value";
+    resources[2] = "$value";
+    resources[3] = "$value";
+    var resourcesShunXu = "$value".split("_");
+    isOpenCategory[0] = "$value";
+    isOpenCategory[1] = "$value";
+    isOpenCategory[2] = "$value";
+    isOpenCategory[3] = "$value";
+    </ylt.for>
+
+    <ylt.for dataId="1499258859463">
+    var resourcesCount =new Array();
+    resourcesCount[0]="$value";
+    resourcesCount[1]="$value";
+    resourcesCount[2]="$value";
+    resourcesCount[3]="$value";
+    </ylt.for>
+
+    <ylt.for dataId="1501569638831">
+    var resources_one = new Array();
+    var isOpenCategory_one = new Array();
+    resources_one[0] = "$value";
+    resources_one[1] = "$value";
+    resources_one[2] = "$value";
+    resources_one[3] = "$value";
+    var resourcesShunXu_one = "$value".split("_");
+    isOpenCategory_one[0] = "$value";
+    isOpenCategory_one[1] = "$value";
+    isOpenCategory_one[2] = "$value";
+    isOpenCategory_one[3] = "$value";
+    </ylt.for>
+
+    <ylt.for dataId="1501569890801">
+    var resourcesCount_one =new Array();
+    resourcesCount_one[0]="$value";
+    resourcesCount_one[1]="$value";
+    resourcesCount_one[2]="$value";
+    resourcesCount_one[3]="$value";
+    </ylt.for>
+</script>
+<script>
+
+    function showmenu(){
+        var menus = document.getElementsByName("menu");
+        var number = 0;
+        var width = 0;
+        var id = "";
+        for(var i=0;i<4;i++){
+            if(parseInt(resourcesCount[i]) > 0){
+                number = number + 1;
+            }
+        }
+        switch(number){
+            case 1 : width = 98.4;break;
+            case 2 : width = 49.1;break;
+            case 3 : width = 32.6;break;
+            case 4 : width = 24.4;break;
+            default : width = 0;break;
+        }
+
+        var k = 0;
+        for(var i=0;i<4;i++){
+            var shunxu = parseInt(resourcesShunXu[i]);/*字符串转数字*/
+            if(parseInt(resourcesCount[shunxu]) > 0){
+                menus[i].value = resources[shunxu];
+                switch(shunxu){
+                    case 0 : id = "avi";break;
+                    case 1 : id = "png";break;
+                    case 2 : id = "mp3";break;
+                    case 3 : id = "pdf";break;
+                }
+                menus[i].style.width = width+"%";
+                menus[i].id = id;
+                menus[i].style.display = "";
+                menus[i].style.marginLeft = "1px";
+            }
+
+        }
+        for(var i=0;i<4;i++){
+            if (menus[i].style.display == "") {
+                menus[i].style.marginLeft = "14px";
+                break;
+            }
+        }
+    }
+    function showmenu1(){
+        var menus = document.getElementsByName("menu");
+        var number = 0;
+        var width = 0;
+        var id = "";
+        for(var i=0;i<1;i++){
+            if(parseInt(resourcesCount_one[i]) > 0){
+                number = number + 1;
+            }
+        }
+        switch(number){
+            case 1 : width = 98.4;break;
+            case 2 : width = 49.1;break;
+            case 3 : width = 32.6;break;
+            case 4 : width = 24.4;break;
+            default : width = 0;break;
+        }
+
+        for(var i=0;i<1;i++){
+            var shunxu = parseInt(resourcesShunXu_one[i]);/*字符串转数字*/
+            if(parseInt(resourcesCount_one[shunxu]) > 0){
+                menus[i].value = resources_one[shunxu];
+                switch(shunxu){
+                    case 0 : id = "avi";break;
+                    case 1 : id = "png";break;
+                    case 2 : id = "mp3";break;
+                    case 3 : id = "pdf";break;
+                }
+                menus[i].style.width = width+"%";
+                menus[i].id = id;
+                menus[i].style.display = "";
+                menus[i].style.marginLeft = "1px";
+            }
+        }
+        for(var i=0;i<4;i++){
+            if (menus[i].style.display == "") {
+                menus[i].style.marginLeft = "14px";
+                break;
+            }
+        }
+    }
+    if (getQueryString('reuse') == "zero") {
+        showmenu();
+    } else if (getQueryString('reuse') == "one"){
+        showmenu1();
+    }
+</script>
+
+<script>
+    var menuname = getQueryString1("menuname");
     var yinc = getQueryString('w');
     if (getQueryString('kind') != null) {/*微信公众号使用*/
         var tm = getQueryString('kind');
         var cc = getQueryString('con');
         if (tm == "11") {
+            document.getElementById("menu2").innerText = menuname;
             document.getElementById("timu").style.display = "block";
             document.getElementById("menu").style.display = "block";
-            document.getElementById("shipin").style.background = "white";
-            document.getElementById("shipin").style.color = "#029ae5";
-            document.getElementById("yinpin").style.background = "#029ae5";
-            document.getElementById("yinpin").style.color = "white";
-            document.getElementById("wenan").style.background = "#029ae5";
-            document.getElementById("wenan").style.color = "white";
-            document.getElementById("tupian").style.background = "#029ae5";
-            document.getElementById("tupian").style.color = "white";
+            document.getElementById("avi").style.background = "white";
+            document.getElementById("avi").style.color = "#029ae5";
             document.getElementById("A").innerText = "关闭";
             document.getElementById("body1").style.margin="0px";
             document.getElementById("sousu").style.display = "block";
@@ -344,7 +501,9 @@
     if (getQueryString('kind') != null) {
         var pagingDivs = document.getElementsByName('pagingDiv');
         var count = pagingDivs.length;
-        document.getElementsByName('juli')[count-1].style.marginBottom="220px";
+        if (count > 1) {
+            document.getElementsByName('juli')[count-1].style.marginBottom="220px";
+        }
     }
     function sous() {
         var c = document.getElementById("con").value;
@@ -360,7 +519,7 @@
             var circleID = document.getElementById('circleID');
             circleID.value = getQueryString('id');
             var searchForm =  document.getElementById('searchForm');
-            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&con="+contentInput.value;
+            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&menuname="+menuname+"&con="+contentInput.value;
             searchForm.submit();
         }
     }
@@ -377,7 +536,7 @@
             var circleID = document.getElementById('circleID');
             circleID.value = getQueryString('id');
             var searchForm =  document.getElementById('searchForm');
-            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&con="+contentInput.value;
+            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&menuname="+menuname+"&con="+contentInput.value;
             searchForm.submit();
         }
     }
@@ -394,83 +553,105 @@ function moshi1() {
         var circleID = getQueryString('id');
         var reuse = getQueryString('reuse');
         var c = getQueryString1('con');
-        if (c != null) {
-            this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&reuse="+reuse+"&con="+c;
+        var catalogueId = getQueryString('catalogueId');
+        if (catalogueId != undefined && catalogueId != "") {
+            if (getQueryString('reuse') == "zero") {
+                page = "gsbx.view?reuse=zero&type="+type+"&id=";
+            } else if (getQueryString('reuse') == "one"){
+                page = "gsbx.view?reuse=one&type="+type+"&id=";
+            }
+            page = page+circleID+"&menuname="+menuname;
         } else {
-            this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&reuse="+reuse;
+            if (c != null) {
+                this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+            } else {
+                this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+            }
         }
     }
 }
 function play(obj){
-    var type = obj;
+    var type = obj.id;
     var page = "";
     var circleID = getQueryString('id');
     var reuse = getQueryString('reuse');
-    if (yinc != "a") {
-        if (moshi==1) {
-            switch (type) {
-                case "shipin":
-                    page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse;
-                    break;
-                case "yinpin":
-                    page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse;
-                    break;
-                case "wenan":
-                    page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse;
-                    break;
-                case "tupian":
-                    page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&reuse="+reuse;
-                    break;
+    var catalogueId = getQueryString('catalogueId');
+    /*alert("catalogueId:"+catalogueId);*/
+    if (catalogueId != undefined && catalogueId != "") {
+        if (getQueryString('reuse') == "zero") {
+            page = "gsbx.view?reuse=zero&type="+type+"&id=";
+        } else if (getQueryString('reuse') == "one"){
+            page = "gsbx.view?reuse=one&type="+type+"&id=";
+        }
+        page = page+circleID+"&menuname="+menuname;
+    } else {
+        if (yinc != "a") {
+            if (moshi==1) {
+                switch (type) {
+                    case "avi":
+                        page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                    case "mp3":
+                        page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                    case "pdf":
+                        page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                    case "png":
+                        page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                }
+            } else {
+                switch (type) {
+                    case "avi":
+                        page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                    case "mp3":
+                        page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                    case "pdf":
+                        page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                    case "png":
+                        page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        break;
+                }
             }
-        } else {
-            switch (type) {
-                case "shipin":
-                    page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse;
-                    break;
-                case "yinpin":
-                    page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse;
-                    break;
-                case "wenan":
-                    page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse;
-                    break;
-                case "tupian":
-                    page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&reuse="+reuse;
-                    break;
+        }else {
+            var c = getQueryString1('con');
+            if (moshi==1) {
+                switch (type) {
+                    case "avi":
+                        page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                    case "mp3":
+                        page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                    case "pdf":
+                        page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                    case "png":
+                        page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                }
+            } else {
+                switch (type) {
+                    case "avi":
+                        page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                    case "mp3":
+                        page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                    case "pdf":
+                        page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                    case "png":
+                        page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        break;
+                }
             }
         }
-    }else {
-        var c = getQueryString1('con');
-        if (moshi==1) {
-            switch (type) {
-                case "shipin":
-                    page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-                case "yinpin":
-                    page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-                case "wenan":
-                    page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-                case "tupian":
-                    page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-            }
-        } else {
-            switch (type) {
-                case "shipin":
-                    page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-                case "yinpin":
-                    page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-                case "wenan":
-                    page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-                case "tupian":
-                    page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&reuse="+reuse+"&con="+c;
-                    break;
-            }
-        }
+
     }
 
     this.location.href=page;

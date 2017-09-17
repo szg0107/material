@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js'></script>
+<script type='text/javascript' src='js/checkform.js'></script>
+<script type='text/javascript' src='res/js/PC_public_JS.js'></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>已完成-图文任务</title>
+</head>
+<style>
+    /*设置单元格内容的数量超出用省略号代替*/
+    .limitlength {
+        table-layout: fixed;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .uploadImgDiv {
+        width: 20%;
+        height: 0px;
+        background: #ccc;
+        float: left;
+        margin-left: 4%;
+        margin-top: 20px;
+        border-radius: 20px;
+        border: 1px solid gray;
+    }
+</style>
+<body background="#efeef4">
+
+
+<ylt.for dataId="1505651386419">
+    <div width="100%" style="padding-left: 24px;padding-right: 24px;">
+        <div style="font-size: 60px;clear: both;">
+            <div style="float: left;width: 22%;">主题：</div>
+            <div style="float: left;width: 78%;">$value</div>
+        </div>
+
+
+        <div class="uploadImgDiv" >
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;" >
+        </div>
+        <div class="uploadImgDiv">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+        <div class="uploadImgDiv">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+        <div class="uploadImgDiv">
+            <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
+        </div>
+
+
+        <div style="height: 30px;clear: both;"></div>
+        <div style="font-size: 50px;color: gray;margin-top: 20px;clear: both;text-indent: 2em;">
+            $value
+        </div>
+        <div  style="font-size: 40px;color: gray;">
+            $value$value
+        </div>
+    </div>
+    <hr>
+</ylt.for>
+
+
+<ylt.for dataId="1505652127004">
+    <div  style="background-color: white;margin-top: 20px; margin-left: 30px;margin-right: 30px;border-radius: 20px;font-weight: bold;font-size: 50px;text-indent: 2em;">
+        $value
+    </div>
+</ylt.for>
+<script>
+    /*
+     * 多余空图片隐藏
+     * */
+    var uploadImgs =  document.getElementsByName('uploadImg');
+    var uploadImgDivs = document.getElementsByClassName('uploadImgDiv');
+    for (var i = 0;i<uploadImgs.length;i++){
+        var strIndex =  uploadImgs[i].src.indexOf('upload');
+        var imgName = uploadImgs[i].src.substring(strIndex+7,uploadImgs[i].src.length);
+        if(imgName == ""||imgName=="Nan"||imgName=="null"){
+            uploadImgDivs[i].style.display='none';
+        }else{
+            uploadImgDivs[i].style.height=uploadImgDivs[i].clientWidth+"px";
+        }
+    }
+</script>
+
+
+<script>
+    document.getElementById('T_P_SJHDB$S_HDJG').hidden = true;
+
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+
+    var valueStr = "window.location='questionDetails.view?id=" + getQueryString('id') +"&reuse="+getQueryString('reuse') +"&isTask="+getQueryString('isTask')+"';";
+    document.getElementById('urlAA').value = valueStr;
+
+</script>
+<!--点赞-->
+<script>
+    function updateZan() {
+
+        var zans = document.getElementsByName('zan');
+        /**如果name=null将已赞隐藏**/
+        for (var i = 0; i < zans.length; i++) {
+            if(isPraised(zans[i].id)){
+                zans[i].src =  "res/images/bluePraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('circleID'),zans[i].id);
+            }else{
+                zans[i].src =  "res/images/grayPraise.png";
+                document.getElementsByName('zanCount')[i].innerHTML = contributeCountTest(getQueryString('circleID'),zans[i].id);
+            };
+        }
+    }
+    updateZan();
+    /**点击小手**/
+    function praise(zan) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=question&wzid=" + zan.id, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+
+            var strVResult = sys_doComMandReturn("033", "S_DZWZ=" + zan.id + "&S_ID=" + timestamp + "&S_LB=question");
+            var dianzanshu=  contributeCountTest(getQueryString('circleID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)+1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("038", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id +"&S_QZID="+getQueryString('circleID'));
+            zan.src = "res/images/bluePraise.png";
+            updateZan();
+        }else{
+            /*
+             * 已赞
+             * */
+
+            var strVResult = sys_doComMandReturn("034", "S_ID=" + dianzanID);
+            var dianzanshu=  contributeCountTest(getQueryString('circleID'),zan.id);
+            var newdianzanshu=parseInt(dianzanshu)-1;/**新点赞数**/
+            var strVResultbbb = sys_doComMandReturn("038", "S_BDZS=" + newdianzanshu + "&S_ID=" + zan.id + "&S_QZID="+getQueryString('circleID'));
+            zan.src = "res/images/grayPraise.png";
+            updateZan();
+        }
+
+    }
+    /** 当前用户是否赞过* */
+
+    function isPraised(fileID) {
+        var timestamp = new Date().getTime();
+        var newResult = getTx("lebie=question&wzid=" + fileID, "phoneJump.view");
+        var dianzanID = incision(newResult, "dianZan=", ";");
+        /*
+         * 未赞
+         * */
+        if (dianzanID == "" || dianzanID == null || dianzanID == undefined || dianzanID == 'null') {
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    /**提问的被赞数**/
+    function contributeCountTest(circleID,questionID){
+
+        var newResultdfdfd=getTx("TcircleID="+circleID+"&questionID="+questionID,"phonejumpA.view");
+        var likeResponseCount=incision(newResultdfdfd,"likeQuestionCount=",";");
+        var count;
+        if(likeResponseCount == ""||likeResponseCount==null||likeResponseCount=="null"){
+            return count=0;
+        }else{
+            return count=parseInt(likeResponseCount);
+        }
+    }
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+</script>
+
+</body>
+</html>

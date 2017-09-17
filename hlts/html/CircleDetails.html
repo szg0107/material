@@ -44,7 +44,7 @@
 
 
 <div id="gly" onclick="shenqing_gly()" style="margin-top: 5px;">
-    <span style="margin-left: 50px" name="itemName">申请成为圈子管理员</span>
+    <span style="margin-left: 50px" name="itemName">申请成为工作圈管理员</span>
     <img src="images/pages/into_lan.png" align="right" style="margin-right: 50px;margin-top:30px;"/>
 </div>
 
@@ -439,12 +439,12 @@
     }
 
     function shenqing_gly() {
-        var reply = {"serialNumber":999,"listName":"申请成为圈子管理员"};
+        var reply = {"serialNumber":999,"listName":"申请成为工作圈管理员"};
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.clickReply.postMessage(reply);
         }else{
-            window.callByJs.setValue("999","申请成为圈子管理员");
+            window.callByJs.setValue("999","申请成为工作圈管理员");
         }
     }
     function xianShiYuanDian(){

@@ -12,22 +12,27 @@
     <title></title>
     <style>
         .mian {
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
+            /*position: fixed;*/
+            /*top: 0px;*/
+            /*left: 0px;*/
+            /*right: 0px;*/
+            /*bottom: 0px;*/
             margin: auto;
         }
 
         .gps_font {
-            font-size: 55px;
+            font-size: 48px;
             color: black;
-            text-align: left;
+            text-align: right;
+            height: 120px;
+            display: inline-block;
+            line-height: 120px;
+            width: 230px;
+            margin-right: 20px;
         }
 
-        .plogin_tb tr td input {
-            width: 100%;
+        .plogin_tb span input {
+            width: 70%;
             height: 100px;
             font-size: 45px;
             background: #ffffff;
@@ -37,8 +42,8 @@
             autocomplete: "off";
         }
 
-        .plogin_tb tr td textarea {
-            width: 100%;
+        .plogin_tb span textarea {
+            width: 70%;
             height: 100px;
             font-size: 45px;
             background: #ffffff;
@@ -47,8 +52,8 @@
             outline: none;
             autocomplete: "off";
         }
-        .plogin_tb tr td select {
-            width: 100%;
+        .plogin_tb span select {
+            width: 70%;
             height: 100px;
             font-size: 45px;
             background: #ffffff;
@@ -56,55 +61,59 @@
             border: none;
             outline: none;
             autocomplete: "off";
+        }
+        .divStyle{
+            background: #FFFFFF;
+            height: 130px;
+            border-bottom: 2px solid #efeef4;
         }
     </style>
 </head>
-<body style="font-family: Heiti SC;" bgcolor="#efeef4">
-<div class="mian" align="center">
+<body  bgcolor="#efeef4">
+<div class="mian plogin_tb" style="text-align: center;">
     <form id="add" method="post" style="width:100%;height:100%;">
         <input type="hidden" id="urlAA" name="NO_DOSCRIPT"
                value="var userAgent = navigator.userAgent;if (userAgent.indexOf('iPhone') >= 0) {window.webkit.messageHandlers.registered.postMessage(null);} else {window.callByJs.setValue('hello android!!');}"/>
         <input type='hidden' name='NO_charset' value='utf-8'/>
-        <table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="margin-left: 2%"
-               class="plogin_tb">
+        <!--<table border="0" cellpadding="20" cellspacing="0" width="100%" align="center" style="margin-top:30px;" class="plogin_tb">-->
             <ylt.form page="1490170935487">
-                <tr>
+                <div>
                     $value$value$value$value$value$value$value
-                </tr>
-                <tr>
-                    <td class="gps_font">姓      名:</td>
-                    <td width="75%">$value</td>
-                </tr>
-                <tr>
-                    <td class="gps_font">邮      箱:</td>
-                    <td width="75%">$value</td>
-                </tr>
-                <tr>
-                    <td class="gps_font">圈子类型:</td>
-                    <td width="75%">$value<div id="xuanze" style="width: 95%;height:100px;"></div></td>
-                </tr>
-                <tr>
-                    <td class="gps_font">身份证号:</td>
-                    <td width="75%">$value</td>
-                </tr>
-                <tr>
-                    <td class="gps_font">激活码:</td>
-                    <td width="75%">
-                        <input  id="jhm" value="" placeholder="可为空" style="width: 95%;"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
+                </div>
+                <div style="margin-top: 30px;" class="divStyle">
+                    <span class="gps_font" id="xm">姓名</span>
+                    <span>$value</span>
+                </div>
+                <div class="divStyle">
+                    <span class="gps_font" id="yx">邮箱</span>
+                    <span >$value</span>
+                </div>
+                <div class="divStyle">
+                    <span class="gps_font" id="lx">类型</span>
+                    <span >$value<div id="xuanze" style="width: 70%;height:100px;display: inline-block;"></div></span>
+                </div>
+                <div class="divStyle">
+                    <span class="gps_font" id="sfzh">身份证号</span>
+                    <span >$value</span>
+                </div>
+                <div class="divStyle">
+                    <span class="gps_font" id="jhmwz">激活码</span>
+                    <span>
+                        <input  id="jhm" value="" placeholder="可为空" style="width: 70%;"/>
+                    </span>
+                </div>
+                <div style="background:#efeef4;">
+
                         $value
                         <button type="submit"
                                 style="background-color: #029ae5;width: 450px;height: 100px;margin-top: 100px;color: white;border-radius: 10px;font-size: 60px;"
                                 onclick="return registered();">提交
                         </button>
-                    </td>
-                </tr>
+
+                </div>
 
             </ylt.form>
-        </table>
+        <!--</table>-->
     </form>
 </div>
 
@@ -136,14 +145,14 @@
         var r = decodeURI(window.location.href).substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
-    T_SJZCSQB$S_QZID.style.width = "95%";
-    T_SJZCSQB$S_SQQZM.style.width = "95%";
-    T_SJZCSQB$S_YXH.style.width = "95%";
+    T_SJZCSQB$S_QZID.style.width = "70%";
+    T_SJZCSQB$S_SQQZM.style.width = "70%";
+    T_SJZCSQB$S_YXH.style.width = "70%";
     T_SJZCSQB$S_SQQZM.value=getQueryString1('circleName');
     T_SJZCSQB$S_SQLY.style.height = "300px";
-    T_SJZCSQB$S_SQRMZ.style.width = "95%";
-    T_SJZCSQB$S_SQRDH.style.width = "95%";
-    T_SJZCSQB$S_SFZ.style.width = "95%";
+    T_SJZCSQB$S_SQRMZ.style.width = "70%";
+    T_SJZCSQB$S_SQRDH.style.width = "70%";
+    T_SJZCSQB$S_SFZ.style.width = "70%";
 
     T_SJZCSQB$S_SQRMZ.setAttribute("autocomplete", "off");
     T_SJZCSQB$S_YXH.setAttribute("autocomplete", "off");
@@ -151,9 +160,20 @@
     T_SJZCSQB$S_SFZ.setAttribute("autocomplete", "off");
     var ua = navigator.userAgent.toLowerCase();
     if (/iphone|ipad|ipod/.test(ua)) {
-        T_SJZCSQB$S_SQLY.style.width = "102%";
+        T_SJZCSQB$S_QZID.style.width = "55%";
+        T_SJZCSQB$S_SQQZM.style.width = "55%";
+        T_SJZCSQB$S_YXH.style.width = "58%";
+        T_SJZCSQB$S_SQRMZ.style.width = "58%";
+        T_SJZCSQB$S_SQRDH.style.width = "55%";
+        T_SJZCSQB$S_SFZ.style.width = "68%";
+        T_SJZCSQB$S_SQLY.style.width = "55%";
+        jhm.style.width="68%";
+        xuanze.style.width="73%";
+        xm.style.width="145px";
+        yx.style.width="145px";
+        lx.style.width="235px";
     } else if (/android/.test(ua)) {
-        T_SJZCSQB$S_SQLY.style.width = "94%";
+        T_SJZCSQB$S_SQLY.style.width = "70%";
     }
     function registered() {
 

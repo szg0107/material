@@ -301,8 +301,8 @@
         var circleName=document.getElementsByName('circleName');
         /*获取关注圈子的父容器*/
         var items=document.getElementById('items');
-        /*设置父级的背景色*/
-        fid.style.background="#EFEEF4";
+        /*设置父级的背景色EFEEF4  border:1px solid #029ae5;*/
+        fid.style.background="#ffffff";
         /**
          * 生成div
          *
@@ -312,7 +312,7 @@
             for(var i=0;i<hang.length;i++){
                 var newdiv = document.createElement('div');
                 newdiv.setAttribute('name', 'pagingDivs');
-                newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border:1px solid #029ae5;border-radius: 20px;background: #ffffff;');
+                newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border-radius: 20px;background: #ffffff;');
                 newdiv.setAttribute('onclick', 'clickReply(this)');
 
 

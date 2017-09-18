@@ -94,13 +94,10 @@
 </div>
 
 
-
-
-
 <ylt.for dataId="1499136872517">
     <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;"   name="pagingDiv">
         <div onclick="clickCourseware('$value');recordLrecord('$value');" name="avi">
-            <div class="gps_font" style="background-color: #efeef4;clear: both;height:100%;margin-top: 30px;">
+            <div class="gps_font" style="background-color: #efeef4;height:100%;margin-top: 30px;overflow:auto;">
                 <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
                 <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
                     <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:30px;height:30px;display: none;">
@@ -135,12 +132,15 @@
                      style="margin-top: 20px;width: 60px;height: 60px;"/>
             </div>
         </div>
+
+
+        <div style="background-color: white;clear: both;" name="juli">
+            <hr size="3" style="background: #666;border: 0;">
+        </div>
     </div>
 </ylt.for>
 
-<div style="background-color: white;clear: both;" name="juli">
-    <!--<hr size="3" style="background: #666;border: 0;">-->
-</div>
+
 <div id="sousu" class="divFrame">
     <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
     <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
@@ -519,7 +519,7 @@
             var circleID = document.getElementById('circleID');
             circleID.value = getQueryString('id');
             var searchForm =  document.getElementById('searchForm');
-            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&menuname="+menuname+"&con="+contentInput.value;
+            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&menuname="+menuname+"&con="+contentInput.value+"&catalogueId=";
             searchForm.submit();
         }
     }
@@ -536,10 +536,12 @@
             var circleID = document.getElementById('circleID');
             circleID.value = getQueryString('id');
             var searchForm =  document.getElementById('searchForm');
-            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&menuname="+menuname+"&con="+contentInput.value;
+            searchForm.action="no_img_videoList.view?kind=11&ms=1&w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&menuname="+menuname+"&con="+contentInput.value+"&catalogueId=";
             searchForm.submit();
         }
     }
+
+
 </script>
 <script>/*微信公众号使用*/
 var moshi = 1;
@@ -563,9 +565,9 @@ function moshi1() {
             page = page+circleID+"&menuname="+menuname;
         } else {
             if (c != null) {
-                this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
             } else {
-                this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                this.location.href="videoList.view?kind=55&ms=0&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
             }
         }
     }
@@ -589,66 +591,70 @@ function play(obj){
             if (moshi==1) {
                 switch (type) {
                     case "avi":
-                        page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "no_img_videoList.view?kind=11";
                         break;
                     case "mp3":
-                        page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "no_img_audio.view?kind=22";
                         break;
                     case "pdf":
-                        page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "no_img_courseware.view?kind=33";
                         break;
                     case "png":
-                        page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "no_img_picture.view?kind=44";
                         break;
                 }
+                page = page + "&ms="+moshi+"&type="+type+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
             } else {
                 switch (type) {
                     case "avi":
-                        page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "videoList.view?kind=55";
                         break;
                     case "mp3":
-                        page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "audio.view?kind=66";
                         break;
                     case "pdf":
-                        page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "coursewareList.view?kind=77";
                         break;
                     case "png":
-                        page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse;
+                        page = "picture.view?kind=88";
                         break;
                 }
+                page = page + "&ms="+moshi+"&type="+type+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
             }
         }else {
             var c = getQueryString1('con');
             if (moshi==1) {
                 switch (type) {
                     case "avi":
-                        page = "no_img_videoList.view?kind=11&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "no_img_videoList.view?kind=11";
                         break;
                     case "mp3":
-                        page = "no_img_audio.view?kind=22&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "no_img_audio.view?kind=22";
                         break;
                     case "pdf":
-                        page = "no_img_courseware.view?kind=33&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "no_img_courseware.view?kind=33";
                         break;
                     case "png":
-                        page = "no_img_picture.view?kind=44&ms="+moshi+"&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "no_img_picture.view?kind=44";
                         break;
                 }
+                page = page + "&type="+type+"&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
             } else {
                 switch (type) {
                     case "avi":
-                        page = "videoList.view?kind=55&ms="+moshi+"&type=avi&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "videoList.view?kind=55";
                         break;
                     case "mp3":
-                        page = "audio.view?kind=66&ms="+moshi+"&type=mp3&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "audio.view?kind=66";
                         break;
                     case "pdf":
-                        page = "coursewareList.view?kind=77&ms="+moshi+"&type=pdf&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "coursewareList.view?kind=77";
                         break;
                     case "png":
-                        page = "picture.view?kind=88&type=png&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c;
+                        page = "picture.view?kind=88";
                         break;
                 }
+                page = page + "&type="+type+"&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
             }
         }
 

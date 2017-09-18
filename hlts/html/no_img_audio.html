@@ -315,7 +315,7 @@
         var circleID = document.getElementById('circleID');
         circleID.value = getQueryString('id');
         var searchForm =  document.getElementById('searchForm');
-        searchForm.action="no_img_audio.view?w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse');
+        searchForm.action="no_img_audio.view?w=a&type="+getQueryString('type')+"&id="+circleID.value+"&reuse="+getQueryString('reuse')+"&catalogueId=";
         /*if(contentInput.value!=''&&contentInput.value!=null){
          var timestamp = new Date().getTime();
          var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + circleID.value + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=mp3");

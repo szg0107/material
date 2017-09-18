@@ -1,80 +1,14 @@
-<style>
-    .gps_font {
-        font-size: 48px;
-        color: black;
-    }
-</style>
-<script type='text/javascript' src='res/js/KMoonPub.js'></script>
-<script type='text/javascript' src='js/pub.js'></script>
-<script type='text/javascript' src='js/check.js' ></script>
-<script type='text/javascript' src='js/checkform.js'  ></script>
-<script language="javascript" src="js/check.js" ></script>
-<script language="javascript" src="js/check.js" charset='gbk' ></script>
-<script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
-<meta name=viewport content="user-scalable=no">
-<body style="margin: 0 auto; " bgcolor="#efeef4">
-<div id="items">
-    <ylt.for dataId="1489977256203">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" name="pagingDiv" style="margin-top: 2px;" >
-            <tr style="height: 133px;" onclick="clickCircle('$value','$value','$value','$value','$value','$value','$value','');" bgcolor="white" name="hang">
-                <td class="gps_td" style="width: 163px;height: 133px;">
-                    <img src="" alt="upload/$value" name="pagingImg" style="margin-left: 30px;height: 120px;width: 133px;border: 1px solid gray;line-height: 200px;border-radius: 20px;"/>
-                </td>
-                <td align="left"><span style="margin-left: 30px;" class="gps_font" name="circleName">$value</span></td>
-                <td align="right"><img src="images/pages/into_lan.png" style="margin-right: 30px;"/></td>
-            </tr>
-        </table>
-    </ylt.for>
-</div>
-<div id="jiuGongGe" style="overflow:auto;height: 100%;">
-
-</div>
-
-
-<script>
-    /*
-     *
-     * 上拉加载更多
-     *
-     * */
-    var pagingDivs = document.getElementsByName('pagingDiv');
-    for(var i=0;i<pagingDivs.length;i++){
-        pagingDivs[i].style.display="none";
-    }
-    var pagingImgs = document.getElementsByName('pagingImg');
-    var count = pagingDivs.length;
-    var index = 0;
-
-    function loadMore(x) {
-        var toIndex = index+x>count ? count :index+x;
-        for(var i=index;i<toIndex;i++){
-            pagingDivs[i].style.display = "";
-            pagingImgs[i].src = pagingImgs[i].alt;
-        }
-        index = toIndex;
-        if(index == count){
-            var userAgent = navigator.userAgent;
-            if (userAgent.indexOf("iPhone") >= 0) {
-                window.webkit.messageHandlers.noMoreData.postMessage("没有更多数据了");
-            }else{
-                /*window.callByJs.setValue("noMoreData");*/
-
-            }
-        }
-    }
-    if(getQueryString('isJGG')!=null){
-        loadMore(pagingImgs.length);
-    }else{
-        loadMore(14);
-    }
-
-</script>
-
-
-
-
-
-
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>关注圈子接口</title>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/checkform.js'  ></script>
+    <script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
+</head>
+<body>
 <!--这是搜索结果为空时，创建圈子，并且关注圈子form-->
 <form id="add" method="post" style="width:100%;height:100%;">
     <input type="hidden" id="urlAA" name="NO_DOSCRIPT" value=""/>
@@ -91,16 +25,18 @@
     </ylt.form>
 
 </form>
-
-</div>
-
-</body>
-
-</html>
-
-
 <script>
-
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
     document.getElementById('T_P_QZB$S_QZM').hidden=true;
     /**这是获取session用户名**/
     var user="";
@@ -251,19 +187,13 @@
 </script>
 
 <script>
+    /*手机调用搜索方法*/
     var searchContent;
     function search(content) {
         searchContent = content;
         document.getElementById('T_P_QZB$S_QZM').value = content;
         var re =document.getElementById('tijiao').click();
 
-    }
-
-    /**取消关注**/
-    function deleteAttention(ids){
-        var strVResult=sys_doComMandReturn("020","S_QZBID="+ids);
-        var strVResults=sys_doComMandReturn("043","S_QZBID="+ids);
-        var strVResultss=sys_doComMandReturn("044","S_QZBID="+ids);
     }
 </script>
 
@@ -286,86 +216,19 @@
 
         }
     }
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-    function setJiuGongGE(){
-        /*获取当前屏幕宽度*/
-        var winWidth = document.body.clientWidth;
-        /*获取div的高度*/
-        var divheight=(winWidth+0.00000000000001)*0.3;
-        /*获取放九宫格的父容器*/
-        var fid = document.getElementById('jiuGongGe');
-        /*获取关注多少个圈子*/
-        var hang=document.getElementsByName('hang');
-        /*获取关注圈子的图标*/
-        var pagingImg=document.getElementsByName('pagingImg');
-        /*获取关注圈子的名称*/
-        var circleName=document.getElementsByName('circleName');
-        /*获取关注圈子的父容器*/
-        var items=document.getElementById('items');
-        /*设置父级的背景色EFEEF4  border:1px solid #029ae5;*/
-        fid.style.background="#ffffff";
-        /**
-         * 生成div
-         *
-         * **/
-
-        if(getQueryString('isJGG')!=null){
-            for(var i=0;i<hang.length;i++){
-                var newdiv = document.createElement('div');
-                newdiv.setAttribute('name', 'pagingDivs');
-                newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border-radius: 20px;background: #ffffff;');
-                newdiv.setAttribute('onclick', 'clickReply(this)');
-
-
-                /**
-                 * 生成图片
-                 *
-                 * **/
-
-
-                var newimg = document.createElement('img');
-                newimg.setAttribute("name", "pagingImgs");
-                newimg.setAttribute("src","res/images/acquiescenceImg.png");
-                newimg.setAttribute("width", (divheight*0.8)+"px;");
-                newimg.setAttribute("height", (divheight*0.7)+"px;");
-                newimg.setAttribute('style', 'margin-top: 10px;border-radius: 20px;');
-                newdiv.appendChild(newimg);
-
-                /**
-                 * span
-                 */
-                var newSpan = document.createElement('span');
-                newSpan.setAttribute("name", "circleNames");
-                newSpan.setAttribute("style", "display: block;");
-                newSpan.setAttribute("class","gps_font");
-                newdiv.appendChild(newSpan);
-
-                fid.appendChild(newdiv);
-            }
-            var jGGPagingDiv=document.getElementsByName('pagingDivs');
-            var jGGPagingImg=document.getElementsByName('pagingImgs');
-            var jGGCircleName=document.getElementsByName('circleNames');
-            for(var u=0;u<hang.length;u++){
-                var zhi=hang[u].onclick.toString().slice(25,hang[u].onclick.toString().length-1);
-                jGGPagingDiv[u].setAttribute('onclick',zhi);
-
-                jGGPagingImg[u].src=pagingImg[u].src;
-
-                jGGCircleName[u].innerText=circleName[u].innerText;
-
-            }
-
-            for(var j=0;j<hang.length;j++){
-                jGGPagingDiv[0].setAttribute("name","pagingDiv");
-                jGGPagingImg[0].setAttribute("name","pagingImg");
-                jGGCircleName[0].setAttribute("name","circleName");
-            }
-            items.innerHTML="";
+    function getCircleNames(circleName){
+        var circle = {"circleName":circleName};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.getCircleName.postMessage(circle);
+        }else{
+            window.callByJs.getCircleName(circleName);
         }
     }
-    setJiuGongGE();
+    if(getQueryString1('circleName')){
+        getCircleNames(getQueryString1('circleName'));
+    }
+
 </script>
+</body>
+</html>

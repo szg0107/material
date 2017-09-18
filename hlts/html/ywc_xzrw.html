@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>已完成-选择任务</title>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/PC_public_JS.js'></script>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+    <style>
+        .plogin_tb tr {
+            height: 150px;
+        }
+
+        .plogin_tb td {
+            color: black;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body bgcolor="#efeef4" style="font-size: 48px;">
+
+
+<ylt.for dataId="1504336874881">
+    <div style="background-color: white;margin-top: 20px; margin-left: 30px;margin-right: 30px;border-radius: 20px;padding: 30px 10px 10px 30px;overflow: auto;font-weight: bold;">
+        $value
+    </div>
+</ylt.for>
+<!--任务选项-->
+<ylt.for dataId="1505669425433">
+    <div style="background-color: white;margin-top: 20px; margin-left: 30px;margin-right: 30px;border-radius: 20px;padding: 30px 10px 10px 30px;overflow: auto;font-weight: bold;">
+
+        <div style="float: left;text-align:left;">
+            <div name="theOption">$value</div>
+            <img width="150px" height="150px" src="upload/$value" name="option_pictures" style="display: block;"/>
+            <div>$value</div>
+            <span>选择次数:</span><span name="ciShu">$value</span>
+        </div>
+    </div>
+</ylt.for>
+<script type="text/javascript">
+    /*得到所有图片地址为0时img隐藏*/
+    var option_pictures = document.getElementsByName("option_pictures");
+    for (var i = 0; i < option_pictures.length; i++) {
+        var img = option_pictures[i].src;
+        if (img.substring((img.indexOf("u") + 7)).length == 0) {
+            option_pictures[i].style.display = "none";
+        }
+        ;
+    }
+</script>
+</body>
+</html>

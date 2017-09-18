@@ -29,13 +29,13 @@
         margin-top:30px;
     }
 
-
+EFEEF4
         [name=itemDiv]{
             display: none;
         }
         */
 </style>
-<body style="margin: 0; padding: 0;background: #EFEEF4;">
+<body style="margin: 0; padding: 0;background: #FFFFFF;">
 <div id="items" style="overflow:auto;height: 100%;">
 
 </div>
@@ -79,10 +79,11 @@
          * **/
 
         if(getQueryString('isJGG')!=null){
-            fid.style.background="#EFEEF4";
+            fid.style.background="#ffffff";
             var newdiv = document.createElement('div');
             newdiv.setAttribute('name', 'itemDiv');
-            newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border:1px solid #029ae5;border-radius: 20px;');
+            /*newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border:1px solid #029ae5;border-radius: 20px;');*/
+            newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border-radius: 20px;');
             newdiv.setAttribute('onclick', 'clickReply(this)');
 
 
@@ -177,7 +178,7 @@
             newimg2.setAttribute("src","res/images/dianA.png");
             newimg2.setAttribute("align", "right");
             newimg2.setAttribute("name", "dian");
-            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;margin-top:30px;");
+            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;margin-top:40px;margin-right:50px;");
             newdiv.appendChild(newimg2);
 
             fid.appendChild(newdiv);

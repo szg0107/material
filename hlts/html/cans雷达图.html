@@ -221,12 +221,14 @@
     var id = getQueryString('id');
     var kind = getQueryString('kind');
 
+    var bloc = "";
     /*根据圈子id得到集团ID*/
-    <ylt.for  dataId="1504103471724">
-    var bloc = '$value';
+    <ylt.for dataId="1504103471724">
+    bloc = '$value';
     </ylt.for>
-
-
+     if(bloc.length==0){
+         bloc="\"\"";
+     }
         /*情况汇总*/
         /*qkhz(oneself);*/
     function qkhz(oneself){

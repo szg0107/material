@@ -5,18 +5,19 @@
     }
 </style>
 <meta name=viewport content="user-scalable=no">
+<meta charset="UTF-8">
 <title>所有圈子</title>
 <body style="margin: 0 auto;" bgcolor="#efeef4">
 <div>
-    <div style="margin-bottom: 160px;">
+    <div style="margin-bottom: 160px;align: center;">
         <ylt.for dataId="1505203549619">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" name="pagingDiv" style="margin-top: 4px;" >
-                <tr style="height: 133px;" onclick="getCircleNames('$value')" bgcolor="white">
+            <table border="0" cellpadding="0" cellspacing="0" width="85%" name="pagingDiv" style="margin-top: 4px;border-bottom: 1px solid #000000;" align="center" >
+                <tr style="height: 133px;" onclick="getCircleNames('$value')">
                     <td class="gps_td" style="width: 163px;height: 133px;">
                         <img src="upload/$value" alt="" name="pagingImg" style="margin-left: 30px;height: 120px;width: 133px;border: 1px solid gray;line-height: 200px;border-radius: 20px;"/>
                     </td>
                     <td align="left"><span style="margin-left: 30px;" class="gps_font" name="circleName">$value</span></td>
-                    <td align="right"><img src="images/pages/into_lan.png" style="margin-right: 30px;"/></td>
+                    <td align="right"><img src="res/images/jia_lan.png" style="margin-right: 30px;width: 50px;height: 50px;"/></td>
                 </tr>
             </table>
         </ylt.for>
@@ -25,6 +26,8 @@
 
     <div style="background:#BFBFBF;text-align: center;padding: 10px;position: fixed;z-index: 999;right: 0;bottom:0;width: 100%;" id="souSuo">
         <form id="searchForm" action="all_circle.view" method="post">
+            <input type='hidden' name='NO_charset' value='utf-8'/>
+            <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
             <div style="background: #FFFFFF;overflow:auto;height: 133px;line-height: 133px;">
                 <img src="res/images/ss.png"  style="float:left;height: 80px;margin-left: 20px;margin-top:20px; ">
                 <input id="con" value=""  placeholder="请输入搜索关键字" autocomplete="off" type="text" style="float: left;height: 120px;width: 75%;margin-top: 5px;font-size:48px;outline:none;resize:none;border: 0px;"/>
@@ -36,7 +39,6 @@
 
 
 </div>
-
 </body>
 
 </html>
@@ -44,21 +46,32 @@
 
 
 
-<script>
+<script type="text/javascript" charset="UTF-8">
+    var ua = navigator.userAgent.toLowerCase();
+    if (/iphone|ipad|ipod/.test(ua)) {
+        con.style.width="65%";
+    }
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return null;
     }
-    if(getQueryString('content')!=null){
+    if(getQueryString1('content')!=null){
         souSuo.style.display="none";
     }
     /*根据用户输入的内容查出匹配的圈子*/
     function sous(){
         var neiRon=document.getElementById('con').value;
         if (neiRon!="") {
-            searchForm.action="all_circle.view?w=a&content="+neiRon;
+            /*contentInput.value = getQueryString1('content');*/
+            contentInput.value=neiRon;
+            searchForm.action="all_circle.view?w=a";
             searchForm.submit();
         }
     }
@@ -71,9 +84,9 @@
     var url="";
     if (address == "123.56.187.157") {
         url= "/hlts/phone_gzqz.view?&circleName=" ;
-     }else{
+    }else{
         url= "/phone_gzqz.view?&circleName=";
-     }
+    }
 
     function getCircleNames(circleName){
         window.location= url +circleName;

@@ -3,6 +3,13 @@
         font-size: 48px;
         color: black;
     }
+    .limitlength {
+        table-layout: fixed;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 </style>
 <script type='text/javascript' src='res/js/KMoonPub.js'></script>
 <script type='text/javascript' src='js/pub.js'></script>
@@ -341,7 +348,7 @@
                 var newSpan = document.createElement('span');
                 newSpan.setAttribute("name", "circleNames");
                 newSpan.setAttribute("style", "display: block;");
-                newSpan.setAttribute("class","gps_font");
+                newSpan.setAttribute("class","gps_font limitlength");
                 newdiv.appendChild(newSpan);
 
                 fid.appendChild(newdiv);

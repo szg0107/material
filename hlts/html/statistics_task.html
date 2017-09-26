@@ -29,8 +29,9 @@
 <body style="margin: 0 auto;padding: 0;background:#efeef4;font-size: 25px;">
 <div style="text-align: center;">
     <!--任务描述-->
-    <div style="background: #FFFFFF;" id="descriptions"></div>
-
+    <ylt.for dataId="1504336874881">
+        <div style="background: #FFFFFF;" id="descriptions">$value</div>
+    </ylt.for>
     <!--统计任务行-->
     <div style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 4px;vertical-align: bottom;">
         <img src="" style="display: none;width: 50px;height: 50px;"id="png">
@@ -83,7 +84,7 @@
         if (r != null) return unescape(r[2]); return null;
     }
     /*给任务描述赋值*/
-    document.getElementById("descriptions").innerText=getQueryString1("taskDescription");
+    /*document.getElementById("descriptions").innerText=getQueryString1("taskDescription");*/
     /*document.getElementById("descriptions").innerText="测试统计打分任务";*/
 </script>
 <script type="text/javascript">

@@ -184,8 +184,9 @@
 
 <div style="text-align: center;">
     <!--任务描述-->
-    <div  style="background: #FFFFFF;" id="descriptions"></div>
-
+    <ylt.for dataId="1504336874881">
+    <div  style="background: #FFFFFF;" id="descriptions">$value</div>
+    </ylt.for>
 
     <!--任务选项-->
     <ylt.for dataId="1499854541265">
@@ -284,7 +285,7 @@
         if (r != null) return unescape(r[2]); return null;
     }
     /*给任务描述赋值*/
-    document.getElementById("descriptions").innerText=getQueryString1("taskDescription")+"(最多选择"+selectNumber+"项)";
+    document.getElementById("descriptions").innerText+="(最多选择"+selectNumber+"项)";
     /*得到所有图片地址为0时img隐藏*/
     var option_pictures=document.getElementsByName("option_pictures");
     for(var i=0;i<option_pictures.length;i++){
@@ -384,9 +385,10 @@
 <script>
     if (getQueryString('kind') != null) {
         var tm = getQueryString('kind');
-        if (tm == "xzl") {
+        if (tm == "xzrw") {
             document.getElementById("timu").style.display = "block";
             document.getElementById("body1").style.margin="0px";
+            document.getElementById("title").innerText = "任务详情";
             /*document.title="北京互联探索有限公司";*/
         }
     }

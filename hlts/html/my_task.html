@@ -130,7 +130,7 @@
         }
 
 
-        var taskarray = [taskType, taskID, taskDescription,selectNumber,paymentType,paymentAmount,individualContribution];
+        var taskarray = [taskType, taskID,selectNumber,paymentType,paymentAmount,individualContribution];
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.intoTask.postMessage(task);

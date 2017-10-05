@@ -11,10 +11,13 @@
         height: 100px;
         line-height: 100px;
         width: 100%;
-        border-bottom: 1px solid #e9e9e9;
         color: #666666;
-        background: #FFFFFF;
         font-family: Heiti SC;
+        font-size: 30px;
+    }
+    .lineDiv {
+        border-bottom: 1px solid #e9e9e9;
+        background: #FFFFFF;
         font-size: 48px;
     }
     .limitlength {
@@ -35,7 +38,7 @@ EFEEF4
         }
         */
 </style>
-<body style="margin: 0; padding: 0;background: #EFEEF4;">
+<body style="margin: 0; padding: 0;background: #efeef4;">
 <div id="items" style="overflow:auto;height: 100%;">
 
 </div>
@@ -43,7 +46,7 @@ EFEEF4
 
 
 
-<div id="gly" onclick="shenqing_gly()" style="margin-top: 5px;">
+<div id="gly" onclick="shenqing_gly()" class="lineDiv" style="margin-top: 5px;">
     <span style="margin-left: 50px" name="itemName">申请成为工作圈管理员</span>
     <img src="images/pages/into_lan.png" align="right" style="margin-right: 50px;margin-top:30px;"/>
 </div>
@@ -62,7 +65,13 @@ EFEEF4
     </ylt.for>
 </div>
 
-
+<script>
+    var winWidth = document.body.clientWidth;
+    var lineWidth=3;
+    var divheight=(winWidth-(4*lineWidth)+0.00000000000001)*0.25;
+    var fid = document.getElementById('items');
+    var itemDivs = document.getElementsByName('itemDiv');
+</script>
 <script>
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -70,20 +79,17 @@ EFEEF4
         if (r != null) return unescape(r[2]); return null;
     }
     function creatItem() {
-        var winWidth = document.body.clientWidth;
-        var divheight=(winWidth+0.00000000000001)*0.3;
-        var fid = document.getElementById('items');
+
         /**
          * 生成div
          *
          * **/
 
         if(getQueryString('isJGG')!=null){
-            fid.style.background="#ffffff";
             var newdiv = document.createElement('div');
             newdiv.setAttribute('name', 'itemDiv');
             /*newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border:1px solid #029ae5;border-radius: 20px;');*/
-            newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border-radius: 20px;');
+            newdiv.setAttribute('style', 'margin-top: '+lineWidth+'px;margin-left: '+lineWidth+'px;float: left;width: '+divheight+'px;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;background: white;position: relative;');
             newdiv.setAttribute('onclick', 'clickReply(this)');
 
 
@@ -96,9 +102,9 @@ EFEEF4
             var newimg = document.createElement('img');
             newimg.setAttribute("name", "cdtb");
             newimg.setAttribute("src","res/images/acquiescenceImg.png");
-            newimg.setAttribute("width", (divheight*0.8)+"px;");
-            newimg.setAttribute("height", (divheight*0.7)+"px;");
-            newimg.setAttribute('style', 'margin-top: 10px;border-radius: 20px;');
+            newimg.setAttribute("width", (divheight*0.35)+"px;");
+            newimg.setAttribute("height", (divheight*0.35)+"px;");
+            newimg.setAttribute('style', 'margin-top: 40px;');
             newdiv.appendChild(newimg);
 
 
@@ -112,7 +118,7 @@ EFEEF4
             newimg2.setAttribute("src","res/images/dianA.png");
             newimg2.setAttribute("align", "right");
             newimg2.setAttribute("name", "dian");
-            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;position: relative;z-index: 999;right: 0;top: 0;float: right;");
+            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;position: absolute;z-index: 999;right: 0;top: 0;float: right;");
             newdiv.appendChild(newimg2);
 
 
@@ -121,7 +127,7 @@ EFEEF4
              */
             var newSpan = document.createElement('span');
             newSpan.setAttribute("name", "itemName");
-            newSpan.setAttribute("style", "display: block;");
+            newSpan.setAttribute("style", "display: block;margin-top: 30px;");
             newSpan.setAttribute("class","limitlength");
             newdiv.appendChild(newSpan);
 
@@ -130,9 +136,9 @@ EFEEF4
         }else{
             var newdiv = document.createElement('div');
             newdiv.setAttribute('name', 'itemDiv');
-            newdiv.setAttribute('style', 'margin-top: 5px;');
+            newdiv.setAttribute('style', 'margin-top: 1px;');
             newdiv.setAttribute('onclick', 'clickReply(this)');
-
+            newdiv.setAttribute("class","lineDiv");
 
             /**
              * 生成图片
@@ -292,12 +298,11 @@ EFEEF4
             itemsDiv[parseInt(shunxuArray[i])].style.display = "none";
         }
 
-
-
-
-
-
     }
+
+
+
+
     for(var i=0;i<tbDataArray.length;i++){
         var xh = parseInt(tbDataArray[i][0]);
         var tbSrc = tbDataArray[i][1];
@@ -305,6 +310,19 @@ EFEEF4
     }
 
 
+    for(var i=0;i<items.length;i++){
+
+        if(itemsDiv.style.display=='none'){
+            itemsDiv[i].parentNode.removeChild(itemsDiv[parseInt(shunxuArray[i])]);
+        }
+    }
+    for(var i=0;i<items.length;i++){
+
+        if(count%4 == 0){
+            itemsDiv[i].style.marginLeft='0px';
+        }
+
+    }
 
 </script>
 
@@ -432,7 +450,7 @@ EFEEF4
         }
     }
     var admins=getQueryString("admin");
-    if(admins!="null"){
+    if(admins!="null" ||admins== ""){
         gly.style.display="none";
     }else{
         var items =  document.getElementById('items');

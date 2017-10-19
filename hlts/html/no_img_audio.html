@@ -95,7 +95,7 @@
 
 <ylt.for dataId="1499136872517">
     <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;"  name="pagingDiv">
-        <div onclick="clickCourseware('$value');recordLrecord('$value');" name="mp3">
+        <div onclick="clickCourseware('$value',this);recordLrecord('$value');" name="mp3">
             <div class="gps_font" style="background-color: #efeef4;height: 100%;margin-top: 30px;overflow:auto;">
                 <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
                 <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
@@ -119,7 +119,14 @@
             </div>
 
 
-            <div style="float: left;margin-top: 20px;margin-left: 80px;">
+            <div name="content" hidden="true" style="float: left;width: 83%;height: 260px;white-space:normal;border-radius: 10px;margin-left: 10px;"class="limitlength gps_font">
+                $value
+            </div>
+            <div style="float: left;margin-top: 20px;margin-left: 40px;">
+                <img src="res/images/wx_share.png"  name="share" onclick="wx_share(this,'$value')" />
+            </div>
+
+            <div style="float: left;margin-top: 20px;margin-left: 40px;">
                 <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'mp3',this)" id="$value"
                      name="zan" align="right" style="width: 60px;height: 60px;margin-left: 10%"/>
             </div>
@@ -154,7 +161,31 @@
 
 </body>
 
+<script>
+    function wx_share(element,fileName) {
+        var shareArray = document.getElementsByName('share');
+        var titleArray = document.getElementsByName('title');
+        var contentArray = document.getElementsByName('content');
+        var index;
+        for(var i=0;i<shareArray.length;i++){
+            if(shareArray[i]==element){
+                index = i;
+            }
+        }
 
+        var content = contentArray[index].innerHTML;
+        var title = titleArray[index].innerHTML;
+
+        var data = {"title": title,"content":content,"fileName":fileName};
+        var stringArray = [title,content,fileName];
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.wx_share.postMessage(data);
+        } else {
+            window.callByJs.weChatShare(stringArray);
+        }
+    }
+</script>
 <script>
 
     updateZan('mp3',getQueryString('id'));
@@ -180,7 +211,7 @@
     if(mp3.length == 0){
         tishi.innerText="很抱歉，没有您想要的资源！";
     }
-    function clickCourseware(audioStr) {
+    function clickCourseware(audioStr,element) {
 
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
         if(!isVIP){
@@ -201,7 +232,15 @@
                 this.location.href="upload/"+audioStr;
             }
         }
-
+        var aviDivArray=document.getElementsByName("mp3");
+        var dianArray=document.getElementsByName("dian");
+        for(var i=0;i<aviDivArray.length;i++){
+            if(aviDivArray[i]==element){
+                if(dianArray[i].style.display=="inline"){
+                    dianArray[i].style.display="none";
+                }
+            }
+        }
         var audio = {"audio":audioStr};
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
@@ -413,7 +452,7 @@
         }
         for(var i=0;i<4;i++){
             if (menus[i].style.display == "") {
-                menus[i].style.marginLeft = "14px";
+                menus[i].style.marginLeft = "5px";
                 break;
             }
         }
@@ -454,7 +493,7 @@
         }
         for(var i=0;i<4;i++){
             if (menus[i].style.display == "") {
-                menus[i].style.marginLeft = "14px";
+                menus[i].style.marginLeft = "5px";
                 break;
             }
         }

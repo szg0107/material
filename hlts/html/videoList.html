@@ -78,12 +78,12 @@
             height:1px;
             border:none;
             border-top:1px solid #C1CDCD;
-            margin-left:14px%;
+            margin-left:14px;
             width:98.5%;
         }
     </style>
 </head>
-<body id="body1" bgcolor="#efeef4" style="font-family: Heiti SC;">
+<body id="body1" bgcolor="#efeef4">
 
 <div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;border-style: blue; border-width: 1px;"  >
     <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
@@ -103,7 +103,7 @@
 
 <ylt.for dataId="1489982548131"><!-- 1489982548131 -->
     <div style="margin-top: 40px;margin-left: 40px;margin-right: 40px;clear: both;" class="limitlength" name="pagingDiv">
-        <div onclick="clickCourseware('$value');recordLrecord('$value');" name="avi" style="border-radius: 20px; border: 1px solid gray;">
+        <div onclick="clickCourseware('$value',this);recordLrecord('$value');" name="avi" style="border-radius: 20px; border: 1px solid gray;">
             <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:50px;height:50px;display: none;">
             <img src="" alt="upload/$value" name="pagingImg" width="100%" style="border: 1px solid gray;border-radius: 20px;">
         </div>
@@ -111,15 +111,15 @@
         <div class="gps_font" style="background-color: #efeef4;clear: both;height: 60px;margin-top: 30px;">
             <div style="float: left;width: 15%;"class="gps_font">主题：</div>
             <div class="limitlength gps_font" style="float: left;width: 83%;margin-left: 10px;">
-                <div class="limitlength" name="title" style="width: 50%;float: left">$value</div>
-                <span style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;margin-left: 10%">
+                <div class="limitlength"  name="title" style="width: 50%;float: left">$value</div>
+                <div style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;float: left">
                     点赞数:
                     <span name="zanCount"></span>
-                </span>
-                <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'avi',this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;margin-left: 10%"/>
+                </div>
+                <img src="res/images/wx_share.png" style="margin-left: 40px" name="share" onclick="wx_share(this,'$value')" />
+                <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'avi',this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;"/>
             </div>
         </div>
-
         <div class="gps_font" style="background-color: #efeef4;clear: both;height: 300px;">
             <div style="float: left;width: 15%;height:260px; "class="gps_font">
                 <div>简介：</div>
@@ -147,7 +147,31 @@
     <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
 </div>
 
+<script>
+    function wx_share(element,fileName) {
+        var shareArray = document.getElementsByName('share');
+        var titleArray = document.getElementsByName('title');
+        var contentArray = document.getElementsByName('content');
+        var index;
+        for(var i=0;i<shareArray.length;i++){
+            if(shareArray[i]==element){
+                index = i;
+            }
+        }
 
+        var content = contentArray[index].innerHTML;
+        var title = titleArray[index].innerHTML;
+
+        var data = {"title": title,"content":content,"fileName":fileName};
+        var stringArray = [title,content,fileName];
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.wx_share.postMessage(data);
+        } else {
+            window.callByJs.weChatShare(stringArray);
+        }
+    }
+</script>
 
 
 <script>
@@ -275,7 +299,7 @@
     if(avi.length == 0){
         tishi.innerText="很抱歉，没有您想要的资源！";
     }
-    function clickCourseware(audioStr) {
+    function clickCourseware(audioStr,element) {
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
         if(!isVIP){
             if (getQueryString('kind') != null) {
@@ -302,7 +326,15 @@
              this.location.href="upload/"+audioStr;
              }*/
         }
-
+        var aviDivArray=document.getElementsByName("avi");
+        var dianArray=document.getElementsByName("dian");
+        for(var i=0;i<aviDivArray.length;i++){
+            if(aviDivArray[i]==element){
+                if(dianArray[i].style.display=="inline"){
+                    dianArray[i].style.display="none";
+                }
+            }
+        }
         var video = {"video":audioStr};
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
@@ -500,7 +532,7 @@
         }
         for(var i=0;i<4;i++){
             if (menus[i].style.display == "") {
-                menus[i].style.marginLeft = "14px";
+                menus[i].style.marginLeft = "5px";
                 break;
             }
         }
@@ -541,7 +573,7 @@
         }
         for(var i=0;i<4;i++){
             if (menus[i].style.display == "") {
-                menus[i].style.marginLeft = "14px";
+                menus[i].style.marginLeft = "5px";
                 break;
             }
         }

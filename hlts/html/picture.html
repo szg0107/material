@@ -80,7 +80,7 @@
             height:1px;
             border:none;
             border-top:1px solid #C1CDCD;
-            margin-left:14px%;
+            margin-left:14px;
             width:98.5%;
         }
     </style>
@@ -116,7 +116,7 @@
             $value
         </div>
         <div class="hr1"></div>
-    </ylt.for>			
+    </ylt.for>
 </div>-->
 
 
@@ -133,11 +133,12 @@
             <div style="float: left;width: 15%;"class="gps_font">主题：</div>
             <div class="limitlength gps_font" style="float: left;width: 83%;margin-left: 10px;">
                 <div class="limitlength"  name="title" style="width: 50%;float: left">$value</div>
-                <span style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;margin-left: 10%">
+                <div style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;float: left">
                     点赞数:
                     <span name="zanCount"></span>
-                </span>
-                <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'png',this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;margin-left: 10%"/>
+                </div>
+                <img src="res/images/wx_share.png" style="margin-left: 40px" name="share" onclick="wx_share(this,'$value')" />
+                <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'png',this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;"/>
             </div>
         </div>
 
@@ -168,6 +169,31 @@
     <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
     <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
 </div>
+<script>
+    function wx_share(element,fileName) {
+        var shareArray = document.getElementsByName('share');
+        var titleArray = document.getElementsByName('title');
+        var contentArray = document.getElementsByName('content');
+        var index;
+        for(var i=0;i<shareArray.length;i++){
+            if(shareArray[i]==element){
+                index = i;
+            }
+        }
+
+        var content = contentArray[index].innerHTML;
+        var title = titleArray[index].innerHTML;
+
+        var data = {"title": title,"content":content,"fileName":fileName};
+        var stringArray = [title,content,fileName];
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.wx_share.postMessage(data);
+        } else {
+            window.callByJs.weChatShare(stringArray);
+        }
+    }
+</script>
 <script>
     /*
      *
@@ -349,6 +375,15 @@
              this.location.href=picture.src;
              }*/
         }
+        var aviDivArray=document.getElementsByName("pagingImg");
+        var dianArray=document.getElementsByName("dian");
+        for(var i=0;i<aviDivArray.length;i++){
+            if(aviDivArray[i]==picture){
+                if(dianArray[i].style.display=="inline"){
+                    dianArray[i].style.display="none";
+                }
+            }
+        }
         var content = {"picture": picture.src};
 
         var userAgent = navigator.userAgent;
@@ -461,6 +496,10 @@
     }
 </script>
 
+
+
+
+<!--微信公众号使用-->
 <script>
     <ylt.for dataId="1499223736665">
     var resources = new Array();
@@ -549,7 +588,7 @@
         }
         for(var i=0;i<4;i++){
             if (menus[i].style.display == "") {
-                menus[i].style.marginLeft = "14px";
+                menus[i].style.marginLeft = "5px";
                 break;
             }
         }
@@ -590,7 +629,7 @@
         }
         for(var i=0;i<4;i++){
             if (menus[i].style.display == "") {
-                menus[i].style.marginLeft = "14px";
+                menus[i].style.marginLeft = "5px";
                 break;
             }
         }
@@ -657,7 +696,7 @@
         }
     }
 </script>
-<script>/*微信公众号使用*/
+<script>
 var moshi = 0;
 function moshi1() {
     var w = document.getElementById("A").innerText;

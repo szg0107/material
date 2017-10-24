@@ -17,10 +17,18 @@
 <script type='text/javascript' src='js/checkform.js'  ></script>
 <script language="javascript" src="js/check.js" ></script>
 <script language="javascript" src="js/check.js" charset='gbk' ></script>
-<script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
+<script type='text/javascript' src='res/js/PC_public_JS.js?sk=1'  ></script>
 <meta name=viewport content="user-scalable=no">
-<body style="margin: 0 auto; " bgcolor="#efeef4">
-<div id="items">
+<body style="margin: 0 auto; background: #efeef4;">
+
+
+<ylt.for dataId="1507542350083">
+    <img src="upload/$value" width="100%" id="bannerImg" style="position:fixed;z-index: 999;"/>
+    <div id="bgDiv"></div>
+</ylt.for>
+
+
+<div id="items" style="margin-top: 0px">
     <ylt.for dataId="1489977256203">
         <table border="0" cellpadding="0" cellspacing="0" width="100%" name="pagingDiv" style="margin-top: 2px;" >
             <tr style="height: 133px;" onclick="clickCircle('$value','$value','$value','$value','$value','$value','$value','');" bgcolor="white" name="hang">
@@ -72,13 +80,37 @@
     if(getQueryString('isJGG')!=null){
         loadMore(pagingImgs.length);
     }else{
-        loadMore(14);
+        loadMore(pagingImgs.length);
     }
 
 </script>
 
 
 
+
+
+<script type="text/javascript">
+    /*得到图片的高*/
+    function getImgHeight(){
+        /*定时执行获取宽高*/
+        var check = function(){
+            /*只要任何一方大于0*/
+            /*表示已经服务器已经返回宽高*/
+            if(bannerImg.width>0 || bannerImg.height>0){
+                bgDiv.style.height=bannerImg.height+"px";
+                clearInterval(set);
+            }
+        };
+
+        var set = setInterval(check,40);
+
+    /*加载完成获取宽高*/
+        bannerImg.onload = function(){
+            bgDiv.style.height=bannerImg.height+"px";
+        };
+    }
+    getImgHeight();
+</script>
 
 
 
@@ -135,6 +167,11 @@
 
 
         if(returnResults[0]!= undefined){
+
+
+            if(query_circle_status(returnResults[0],'') == 'shield'){
+                return false;
+            }
 
             /**
              *
@@ -301,8 +338,9 @@
     function setJiuGongGE(){
         /*获取当前屏幕宽度*/
         var winWidth = document.body.clientWidth;
+        var lineWidth=3;
         /*获取div的高度*/
-        var divheight=(winWidth+0.00000000000001)*0.3;
+        var divheight=(winWidth-(3*lineWidth)+0.00000000000001)*0.25;
         /*获取放九宫格的父容器*/
         var fid = document.getElementById('jiuGongGe');
         /*获取关注多少个圈子*/
@@ -314,19 +352,22 @@
         /*获取关注圈子的父容器*/
         var items=document.getElementById('items');
         /*设置父级的背景色EFEEF4  border:1px solid #029ae5;*/
-        fid.style.background="#ffffff";
+
         /**
          * 生成div
          *
          * **/
-
+        var pagingDivs = document.getElementsByName('pagingDivs');
         if(getQueryString('isJGG')!=null){
             for(var i=0;i<hang.length;i++){
                 var newdiv = document.createElement('div');
                 newdiv.setAttribute('name', 'pagingDivs');
-                newdiv.setAttribute('style', 'margin-top: 25px;margin-left: 25px;float: left;width: 30%;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;border-radius: 20px;background: #ffffff;');
+                newdiv.setAttribute('style', 'margin-top: '+lineWidth+'px;margin-left: '+lineWidth+'px;float: left;width: '+divheight+'px;height:'+divheight+'px;line-height:'+(divheight-200)+'px;text-align: center;background: white;');
                 newdiv.setAttribute('onclick', 'clickReply(this)');
 
+                if(pagingDivs.length%4 == 0){
+                    newdiv.style.marginLeft='0px';
+                }
 
                 /**
                  * 生成图片
@@ -337,9 +378,9 @@
                 var newimg = document.createElement('img');
                 newimg.setAttribute("name", "pagingImgs");
                 newimg.setAttribute("src","res/images/acquiescenceImg.png");
-                newimg.setAttribute("width", (divheight*0.8)+"px;");
-                newimg.setAttribute("height", (divheight*0.7)+"px;");
-                newimg.setAttribute('style', 'margin-top: 10px;border-radius: 20px;');
+                newimg.setAttribute("width", (divheight*0.35)+"px;");
+                newimg.setAttribute("height", (divheight*0.35)+"px;");
+                newimg.setAttribute('style', 'margin-top: 40px;');
                 newdiv.appendChild(newimg);
 
                 /**
@@ -347,7 +388,7 @@
                  */
                 var newSpan = document.createElement('span');
                 newSpan.setAttribute("name", "circleNames");
-                newSpan.setAttribute("style", "display: block;");
+                newSpan.setAttribute("style", "display: block;margin-top: 30px;font-size: 30px;");
                 newSpan.setAttribute("class","gps_font limitlength");
                 newdiv.appendChild(newSpan);
 

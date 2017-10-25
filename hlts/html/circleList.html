@@ -104,7 +104,7 @@
 
         var set = setInterval(check,40);
 
-    /*加载完成获取宽高*/
+        /*加载完成获取宽高*/
         bannerImg.onload = function(){
             bgDiv.style.height=bannerImg.height+"px";
         };
@@ -312,6 +312,7 @@
 </script>
 
 <script>
+    var isClick=true;
     function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2) {
         if(name_Nuthentication(circleID) == 0){
             circleRZ = "01";
@@ -322,13 +323,18 @@
 
         var circle = {"circleID":circleID,"circleName":circleName,'circleAdmin':circleAdmin,'circleRZ':circleRZ,'userRZ':userRZ,'videoYZ':videoYZ,'isSF':isSF};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
-            window.webkit.messageHandlers.intoCircle.postMessage(circle);
-        }else{
-            window.callByJs.certification(circleRZ,userRZ,videoYZ);
-            window.callByJs.setValue(circleID,circleName,circleAdmin,circleName2);
+        if(isClick){
+            isClick=false;
+            setTimeout(function(){isClick=true;},2000);
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.intoCircle.postMessage(circle);
+            }else{
+                window.callByJs.certification(circleRZ,userRZ,videoYZ);
+                window.callByJs.setValue(circleID,circleName,circleAdmin,circleName2);
 
+            }
         }
+
     }
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");

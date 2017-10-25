@@ -216,6 +216,7 @@
 
 </body>
 <script type="text/javascript">
+    var isClick=true;
     var avi = document.getElementsByName('avi');
     if (avi.length == 0) {
         tishi.innerText = "很抱歉，没有您想要的资源！";
@@ -251,10 +252,16 @@
         }
         var video = {"video": audioStr};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
-            window.webkit.messageHandlers.intoVideo.postMessage(video);
-        } else {
-            window.callByJs.setValue(audioStr);
+        if(isClick) {
+            isClick = false;
+            setTimeout(function () {
+                isClick = true;
+            }, 2000);
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.intoVideo.postMessage(video);
+            } else {
+                window.callByJs.setValue(audioStr);
+            }
         }
     }
 

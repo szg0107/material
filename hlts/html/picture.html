@@ -287,7 +287,7 @@
                 }
             }
         }
-        loadMore(3);
+        loadMore(pagingImgs.length);
 
     }
 </script>
@@ -349,6 +349,7 @@
     if(picture.length == 0){
         tishi.innerText="很抱歉，没有您想要的资源！";
     }
+    var isClick=true;
     function clickPicture(picture) {
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
         if(!isVIP){
@@ -385,14 +386,18 @@
             }
         }
         var content = {"picture": picture.src};
-
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
-            window.webkit.messageHandlers.pictureClick.postMessage(content);
-        } else {
-            window.callByJs.setValue(picture.src);
+        if(isClick) {
+            isClick = false;
+            setTimeout(function () {
+                isClick = true;
+            }, 2000);
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.pictureClick.postMessage(content);
+            } else {
+                window.callByJs.setValue(picture.src);
+            }
         }
-
     }
     function PopupWindow(content) {
         var contentbuttons = document.getElementsByName('contentButton');
@@ -697,16 +702,43 @@
     }
 </script>
 <script>
-var moshi = 0;
-function moshi1() {
-    var w = document.getElementById("A").innerText;
-    if (w=="开启") {
-        moshi = 1;
+    var moshi = 0;
+    function moshi1() {
+        var w = document.getElementById("A").innerText;
+        if (w=="开启") {
+            moshi = 1;
+            var circleID = getQueryString('id');
+            var reuse = getQueryString('reuse');
+            var c = getQueryString1('con');
+
+            var catalogueId = getQueryString('catalogueId');
+            if (catalogueId != undefined && catalogueId != "") {
+                if (getQueryString('reuse') == "zero") {
+                    page = "gsbx.view?reuse=zero&type="+type+"&id=";
+                } else if (getQueryString('reuse') == "one"){
+                    page = "gsbx.view?reuse=one&type="+type+"&id=";
+                }
+                page = page+circleID+"&menuname="+menuname;
+            } else {
+                if (c != null) {
+                    this.location.href="no_img_picture.view?kind=44&ms=1&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
+                } else {
+                    this.location.href="no_img_picture.view?kind=44&ms=1&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
+                }
+            }
+
+        } else if (w=="关闭") {
+            moshi = 0;
+            document.getElementById("A").innerText = "开启";
+        }
+    }
+    function play(obj){
+        var type = obj.id;
+        var page = "";
         var circleID = getQueryString('id');
         var reuse = getQueryString('reuse');
-        var c = getQueryString1('con');
-
         var catalogueId = getQueryString('catalogueId');
+        /*alert("catalogueId:"+catalogueId);*/
         if (catalogueId != undefined && catalogueId != "") {
             if (getQueryString('reuse') == "zero") {
                 page = "gsbx.view?reuse=zero&type="+type+"&id=";
@@ -715,108 +747,81 @@ function moshi1() {
             }
             page = page+circleID+"&menuname="+menuname;
         } else {
-            if (c != null) {
-                this.location.href="no_img_picture.view?kind=44&ms=1&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
-            } else {
-                this.location.href="no_img_picture.view?kind=44&ms=1&type=png&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
+            if (yinc != "a") {
+                if (moshi==1) {
+                    switch (type) {
+                        case "avi":
+                            page = "no_img_videoList.view?kind=11";
+                            break;
+                        case "mp3":
+                            page = "no_img_audio.view?kind=22";
+                            break;
+                        case "pdf":
+                            page = "no_img_courseware.view?kind=33";
+                            break;
+                        case "png":
+                            page = "no_img_picture.view?kind=44";
+                            break;
+                    }
+                    page = page + "&ms="+moshi+"&type="+type+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
+                } else {
+                    switch (type) {
+                        case "avi":
+                            page = "videoList.view?kind=55";
+                            break;
+                        case "mp3":
+                            page = "audio.view?kind=66";
+                            break;
+                        case "pdf":
+                            page = "coursewareList.view?kind=77";
+                            break;
+                        case "png":
+                            page = "picture.view?kind=88";
+                            break;
+                    }
+                    page = page + "&ms="+moshi+"&type="+type+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
+                }
+            }else {
+                var c = getQueryString1('con');
+                if (moshi==1) {
+                    switch (type) {
+                        case "avi":
+                            page = "no_img_videoList.view?kind=11";
+                            break;
+                        case "mp3":
+                            page = "no_img_audio.view?kind=22";
+                            break;
+                        case "pdf":
+                            page = "no_img_courseware.view?kind=33";
+                            break;
+                        case "png":
+                            page = "no_img_picture.view?kind=44";
+                            break;
+                    }
+                    page = page + "&type="+type+"&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
+                } else {
+                    switch (type) {
+                        case "avi":
+                            page = "videoList.view?kind=55";
+                            break;
+                        case "mp3":
+                            page = "audio.view?kind=66";
+                            break;
+                        case "pdf":
+                            page = "coursewareList.view?kind=77";
+                            break;
+                        case "png":
+                            page = "picture.view?kind=88";
+                            break;
+                    }
+                    page = page + "&type="+type+"&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
+                }
             }
+
         }
 
-    } else if (w=="关闭") {
-        moshi = 0;
-        document.getElementById("A").innerText = "开启";
+        this.location.href=page;
     }
-}
-function play(obj){
-    var type = obj.id;
-    var page = "";
-    var circleID = getQueryString('id');
-    var reuse = getQueryString('reuse');
-    var catalogueId = getQueryString('catalogueId');
-    /*alert("catalogueId:"+catalogueId);*/
-    if (catalogueId != undefined && catalogueId != "") {
-        if (getQueryString('reuse') == "zero") {
-            page = "gsbx.view?reuse=zero&type="+type+"&id=";
-        } else if (getQueryString('reuse') == "one"){
-            page = "gsbx.view?reuse=one&type="+type+"&id=";
-        }
-        page = page+circleID+"&menuname="+menuname;
-    } else {
-        if (yinc != "a") {
-            if (moshi==1) {
-                switch (type) {
-                    case "avi":
-                        page = "no_img_videoList.view?kind=11";
-                        break;
-                    case "mp3":
-                        page = "no_img_audio.view?kind=22";
-                        break;
-                    case "pdf":
-                        page = "no_img_courseware.view?kind=33";
-                        break;
-                    case "png":
-                        page = "no_img_picture.view?kind=44";
-                        break;
-                }
-                page = page + "&ms="+moshi+"&type="+type+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
-            } else {
-                switch (type) {
-                    case "avi":
-                        page = "videoList.view?kind=55";
-                        break;
-                    case "mp3":
-                        page = "audio.view?kind=66";
-                        break;
-                    case "pdf":
-                        page = "coursewareList.view?kind=77";
-                        break;
-                    case "png":
-                        page = "picture.view?kind=88";
-                        break;
-                }
-                page = page + "&ms="+moshi+"&type="+type+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&catalogueId=";
-            }
-        }else {
-            var c = getQueryString1('con');
-            if (moshi==1) {
-                switch (type) {
-                    case "avi":
-                        page = "no_img_videoList.view?kind=11";
-                        break;
-                    case "mp3":
-                        page = "no_img_audio.view?kind=22";
-                        break;
-                    case "pdf":
-                        page = "no_img_courseware.view?kind=33";
-                        break;
-                    case "png":
-                        page = "no_img_picture.view?kind=44";
-                        break;
-                }
-                page = page + "&type="+type+"&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
-            } else {
-                switch (type) {
-                    case "avi":
-                        page = "videoList.view?kind=55";
-                        break;
-                    case "mp3":
-                        page = "audio.view?kind=66";
-                        break;
-                    case "pdf":
-                        page = "coursewareList.view?kind=77";
-                        break;
-                    case "png":
-                        page = "picture.view?kind=88";
-                        break;
-                }
-                page = page + "&type="+type+"&ms="+moshi+"&id=" + circleID+"&menuname="+menuname+"&reuse="+reuse+"&con="+c+"&catalogueId=";
-            }
-        }
-
-    }
-
-    this.location.href=page;
-}
 </script>
 
 </html>

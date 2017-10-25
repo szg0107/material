@@ -163,12 +163,12 @@
         var title = titleArray[index].innerHTML;
 
         var data = {"title": title,"content":content,"fileName":fileName};
-        var stringArray = [title,content,fileName];
+        var shareArray = [title,content,fileName];
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.wx_share.postMessage(data);
         } else {
-            window.callByJs.weChatShare(stringArray);
+            window.callByJs.weChatShare(shareArray);
         }
     }
 </script>
@@ -245,7 +245,7 @@
                 }
             }
         }
-        loadMore(3);
+        loadMore(pagingImgs.length);
     }
 </script>
 
@@ -295,6 +295,7 @@
 
 </body>
 <script type="text/javascript">
+    var isClick=true;
     var avi = document.getElementsByName('avi');
     if(avi.length == 0){
         tishi.innerText="很抱歉，没有您想要的资源！";
@@ -337,10 +338,16 @@
         }
         var video = {"video":audioStr};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
-            window.webkit.messageHandlers.intoVideo.postMessage(video);
-        }else{
-            window.callByJs.setValue(audioStr);
+        if(isClick) {
+            isClick = false;
+            setTimeout(function () {
+                isClick = true;
+            }, 2000);
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.intoVideo.postMessage(video);
+            } else {
+                window.callByJs.setValue(audioStr);
+            }
         }
     }
 

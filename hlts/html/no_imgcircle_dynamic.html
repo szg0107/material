@@ -33,7 +33,7 @@
 
 <ylt.for dataId="1501228333094">
     <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;">
-        <div onclick="clickCourseware('$value');recordLrecord('$value');" name="pdf">
+        <div onclick="clickCourseware('$value',this);recordLrecord('$value');" name="pdf">
             <div class="gps_font" style="background-color: #efeef4;height:100%;margin-top: 30px;overflow:auto;">
                 <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
                 <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
@@ -82,12 +82,41 @@
 <div id="tishi" class="gps_font" align="center"></div>
 
 
-
 <form id="searchForm" action="Courseware.view" method="post">
     <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
     <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
 </form>
 
+<div style="display:none;">
+    <ylt.for dataId="1506062212646">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+    </ylt.for>
+</div>
 </body>
 <!--新JS-->
 <script type="text/javascript">
@@ -96,11 +125,11 @@
     if(pdf.length == 0){
         tishi.innerText="很抱歉，没有您想要的资源！";
     }
-
-    function clickCourseware(Courseware) {
+    var isClick=true;/*是否可以点击*/
+    function clickCourseware(Courseware,element) {
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
-        /*        alert("isVIP:"+isVIP);
-         */        if(!isVIP){
+        /*        alert("isVIP:"+isVIP);*/
+        if(!isVIP){
             if (getQueryString('kind') != null) {
                 alert('您不是本圈子会员！请进行充值！');
             } else {
@@ -114,18 +143,33 @@
                 return;
             }
         }
+
+        var aviDivArray=document.getElementsByName("pdf");
+        var dianArray=document.getElementsByName("dian");
+        for(var i=0;i<aviDivArray.length;i++){
+            if(aviDivArray[i]==element){
+                if(dianArray[i].style.display=="inline"){
+                    dianArray[i].style.display="none";
+                }
+            }
+        }
         var courseware = {"Courseware":Courseware};
         if(isVIP && getQueryString('kind') != null){
             this.location.href="dynamic_details.view?kind=dtxq&type=dynamic&circleID="+getQueryString('id')+"&id="+Courseware;
         }
 
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
-            window.webkit.messageHandlers.intoCourseware.postMessage(courseware);
-        }else{
-            window.callByJs.setValue(Courseware);
+        if(isClick) {
+            isClick = false;
+            setTimeout(function () {
+                isClick = true;
+            }, 2000);
+            if (userAgent.indexOf("iPhone") >= 0) {
+                window.webkit.messageHandlers.intoCourseware.postMessage(courseware);
+            } else {
+                window.callByJs.setValue(Courseware);
+            }
         }
-
     }
 
     function PopupWindow(content) {
@@ -250,7 +294,13 @@
     if (getQueryString('kind') != null) {/*微信公众号使用*/
         var tm = getQueryString('kind');
         if (tm == "qzdt") {
-            var menuname = getQueryString1("menuname");
+            /*var menuname = getQueryString1("menuname");*/
+            var menuname = document.getElementsByName("menunamesss")[8].value;
+            if (getQueryString("reuse") == "zero") {
+
+            } else if(getQueryString("reuse") == "one") {
+                menuname = document.getElementsByName("menunamesss")[24].value;
+            }
             document.getElementById("menu2").innerText = menuname;
             document.getElementById("timu").style.display = "block";
             document.getElementById("body1").style.margin="0px";

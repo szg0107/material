@@ -39,7 +39,14 @@ EFEEF4
         */
 </style>
 <body style="margin: 0; padding: 0;background: #efeef4;">
-<div id="items" style="overflow:auto;height: 100%;">
+
+<ylt.for dataId="1507518229523">
+    <img src="upload/$value" width="100%" id="bannerImg" style="position:fixed;z-index: 999;"/>
+    <div id="bgDiv"></div>
+</ylt.for>
+
+
+<div id="items" style="overflow:auto;height: 100%;margin-top: 0px">
 
 </div>
 
@@ -71,6 +78,28 @@ EFEEF4
     var divheight=(winWidth-(4*lineWidth)+0.00000000000001)*0.25;
     var fid = document.getElementById('items');
     var itemDivs = document.getElementsByName('itemDiv');
+</script>
+<script type="text/javascript">
+    /*得到图片的高*/
+    function getImgHeight(){
+        /*定时执行获取宽高*/
+        var check = function(){
+            /*只要任何一方大于0*/
+            /*表示已经服务器已经返回宽高*/
+            if(bannerImg.width>0 || bannerImg.height>0){
+                bgDiv.style.height=bannerImg.height+"px";
+                clearInterval(set);
+            }
+        };
+
+        var set = setInterval(check,40);
+
+        /*加载完成获取宽高*/
+        bannerImg.onload = function(){
+            bgDiv.style.height=bannerImg.height+"px";
+        };
+    }
+    getImgHeight();
 </script>
 <script>
     function getQueryString(name) {

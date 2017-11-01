@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>圈内缴费记录</title>
+</head>
+<style>
+    body{
+        padding:0;  /*去除内边距*/
+        border:0;   /*去除边框*/
+        margin:0;   /*去除外边距*/
+    }
+    .divstyle{
+        float: left;
+        width: 50%;
+        font-size: 45px;
+        height: 100px;
+        background-color: white;
+        margin-top: 3px;
+        line-height: 100px;
+    }
+    .titleDiv{
+        font-size: 55px;
+        margin-top: 60px;
+        padding-left: 4%;
+    }
+    .contentDiv{
+        width: 100%;
+    }
+</style>
+<body id="body1" bgcolor="#efeef4"  >
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="menu2" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;margin-top:10%">缴费记录</span>
+
+</div>
+
+<div class="titleDiv" >
+    历史缴费记录：
+</div>
+
+
+<div class="contentDiv">
+    <div class="divstyle" style="width: 50%" align="center">缴费内容</div>
+    <div class="divstyle" style="width: 25%" align="center">金额</div>
+    <div class="divstyle" style="width: 25%" align="center">付款时间</div>
+</div>
+<ylt.for dataId="1500377056743">
+    <div class="contentDiv">
+        <div name="time" class="divstyle" style="width: 50%;color: gray;" align="center">$value</div>
+        <div name="time" class="divstyle" style="width: 25%;color: gray;" align="center">$value</div>
+        <div name="time" class="divstyle" style="width: 25%;color: gray;" align="center">$value</div>
+    </div>
+</ylt.for>
+
+<div style="display:none;">
+    <ylt.for dataId="1506062212646">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+    </ylt.for>
+</div>
+<script>
+    var times = document.getElementsByName('time');
+    for(var i=0;i<times.length;i++){
+        times[i].innerHTML = times[i].innerHTML.substr(0,10);
+    }
+</script>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    if (getQueryString('kind') != null) {/*微信公众号使用*/
+        var tm = getQueryString('kind');
+        if (tm == "jfjl") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("body1").style.margin="0px";
+            /*var menuname = getQueryString1("menuname");*/
+            var menuname = document.getElementsByName("menunamesss")[11].value;
+            document.getElementById("menu2").innerText = menuname;
+        }
+    }
+</script>
+</body>
+</html>

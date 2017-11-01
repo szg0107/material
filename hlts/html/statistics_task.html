@@ -27,6 +27,12 @@
     </style>
 </head>
 <body style="margin: 0 auto;padding: 0;background:#efeef4;font-size: 25px;">
+
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="menu2" style="color: #FFFFFF;font-size: 50px;margin-left:34%;font-family: 微软雅黑;">任务详情</span>
+</div>
+
 <div style="text-align: center;">
     <!--任务描述-->
     <ylt.for dataId="1504336874881">
@@ -171,6 +177,13 @@
             /*如果是最后一个给原生发消息关闭页面*/
             if(count==TaskLineName.length){
                 var Searchrecord = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + user);
+
+                if (getQueryString('kind') != null) {
+                    var timestamp1 = Date.parse(new Date());
+                    var cid = getQueryString('id');
+                    this.location.href = "my_task.view?kind=wdrw&id="+cid+"&time="+timestamp1;
+                }
+
                 var userAgent = navigator.userAgent;
                 if (userAgent.indexOf("iPhone") >= 0) {
                     window.webkit.messageHandlers.closeTask.postMessage("task");
@@ -240,5 +253,14 @@
         }
     }
 
+</script>
+
+<script>
+
+    if (getQueryString('kind') != null) {
+        if (getQueryString('kind') == "tjrw") {
+            document.getElementById("timu").style.display = "";
+        }
+    }
 </script>
 </html>

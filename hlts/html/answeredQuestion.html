@@ -2,27 +2,77 @@
 <html>
 
 <head>
-<style>
-    .gps_font {
-        font-size: 50px;
-        color: black;
-    }
+    <style>
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
 
-    /*设置单元格内容的数量超出用省略号代替*/
-    .limitlength {
-        table-layout: fixed;
-        text-overflow: ellipsis;
-        -o-text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-    }
+        /*设置单元格内容的数量超出用省略号代替*/
+        .limitlength {
+            table-layout: fixed;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .divFrame {
 
-</style>
-<meta name=viewport content="user-scalable=no">
+            background-color: #FFFFFF;
+            margin: 20px auto 0;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-color:#C0C0C0;
+            border-style: solid;
+            border-width: 15px;
+            display:none;
+            position:fixed;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            height: 140px;
+            width: 97%;
+            /*background: border-width: 2px;;
+            border-style: solid;
+            border-color:black;
+            border-width: 2px;*/
+        }
+
+        .inputPsorText {
+            background-color: transparent;
+            border: 0 none;
+            float: left;
+            /*height: 40px;
+            width: 208px;*/
+            margin-left: 12px;
+            font-size: 55px;
+            font-family: 微软雅黑;
+            margin-top:2px;
+            width: 64%;
+            height: 120px;
+            line-height: 120px;
+            margin-top:15px;
+            margin-left:3%
+        }
+    </style>
+    <meta name=viewport content="user-scalable=no">
     <script type='text/javascript' src='res/js/KMoonPub.js'></script>
     <script type='text/javascript' src='js/checkform.js'></script>
 </head>
-<body style="background-color:#efeef4;">
+<body id="body1" bgcolor="#efeef4" style="font-family: Heiti SC;">
+
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">我要回答</span>
+
+</div>
+<div id="menu" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
+    <input id="zxwt" type="button" onclick="play('zxwt');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:6px;width: 49%;height:90px;" value="最新问题">
+    <input id="lshd" type="button" onclick="play('lshd');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:5px;width: 49%;height:90px;" value="历史回答">
+</div>
+
 <ylt.for dataId="1491792104491">
     <div class="gps_font" style="background: #FFFFFF;width: 100%;position: fixed; z-index: 999;height: 100px;line-height: 100px;border-bottom: 5px solid #efeef4;">我的回答数：$value</div>
 </ylt.for>
@@ -36,21 +86,31 @@
             </td>
         </tr>
         <tr>
-            <td style="font-size: 40px;color: gray;text-indent: 2em;"  class="limitlength">
+            <td style="font-size: 40px;color: gray;"  class="limitlength">
                 $value
             </td>
         </tr>
         <tr>
             <td style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4">
-                $value$value 点赞数:<span name="beizanshu">$value</span>
+                $value<span style="margin-left: 20px;margin-right: 20px;">$value</span> 点赞数:<span name="beizanshu">$value</span>
             </td>
             <td style="font-size: 35px;color: gray; border-bottom: 2px solid #efeef4" align="right">
-                回答人数:$value
+                <span style="margin-right: 20px;">回答人数:$value</span>
             </td>
         </tr>
 
     </table>
 </ylt.for>
+<div id="sousu" class="divFrame">
+    <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
+    <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
+    <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
+</div>
+<div style="display: none;">
+    <ylt.for dataId="1503649876407">
+        <input name="ejcd" type="text" value="$value,$value,$value,$value,$value"/>
+    </ylt.for>
+</div>
 </body>
 <script>
     function beiZanShuChuShiHua(){
@@ -63,28 +123,33 @@
     }
     beiZanShuChuShiHua();
     function clickQuestion(questionID) {
-
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
         if(!isVIP){
-            /*alert('您不是本圈子会员！请进行充值！');*/
-            var userAgent = navigator.userAgent;
-            if (userAgent.indexOf("iPhone") >= 0) {
-                window.webkit.messageHandlers.needPay.postMessage(null);
+            if (getQueryString('kind') != null) {
+                alert('您不是本圈子会员！请进行充值！');
             } else {
-                window.callByJs.isVIP();
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.needPay.postMessage(null);
+                } else {
+                    window.callByJs.isVIP();
+                }
+
+                return;
             }
-
-            return;
         }
-
         addWatchCount(getQueryString('id'),questionID,'question');
 
+        var dict = {"questionID": questionID};
 
-        var dict = {"questionID":questionID};
+        if(isVIP && getQueryString('kind') != null){
+            this.location.href="questionDetails.view?kind=wtxq&circleID="+getQueryString('id')+"&id="+questionID;
+        }
+
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.intoQuestionDetails.postMessage(dict);
-        }else{
+        } else {
             window.callByJs.setValue(questionID);
         }
     }
@@ -93,5 +158,65 @@
         var timestamp = new Date().getTime();
         var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + circleID + "&S_SSSJ=" + timestamp + "&S_SSNR=" + content+ "&S_ID=" + timestamp+"&S_SSLX=question");
     }
+</script>
+<script>
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    if (getQueryString('kind') != null) {
+        var datas = document.getElementsByName("ejcd");
+        var names = "";
+        if (getQueryString('reuse') == "zero") {
+            names = datas[2].value;
+        } else if (getQueryString('reuse') == "one"){
+            names = datas[3].value;
+        }
+        if (names != "") {
+            document.getElementById("zxwt").value = names.split(",")[3];
+            document.getElementById("lshd").value = names.split(",")[4];
+        }
+    }
+    if (getQueryString('kind') != null) {/*微信公众号使用*/
+        var tm = getQueryString('kind');
+        if (tm == "22") {
+            var menuname = getQueryString1("menuname");
+            document.getElementById("title").innerText = menuname;
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("menu").style.display = "block";
+            document.getElementById("lshd").style.background = "white";
+            document.getElementById("lshd").style.color = "#029ae5";
+            document.getElementById("zxwt").style.background = "#029ae5";
+            document.getElementById("zxwt").style.color = "white";
+            document.getElementById("body1").style.margin="0px";
+            document.getElementById("sousu").style.display = "block";
+        }
+    }
+
+    function sous() {
+        var c = document.getElementById("con").value;
+        if (c=="") {
+            alert("搜索内容为空！");
+        } else {
+            var circleID = getQueryString('id');
+            var reuse = getQueryString('reuse');
+            this.location.href="searchAnsweredQuestion.view?kind=22&w=b&id=" + circleID+"&reuse="+reuse+"&con="+c;
+        }
+    }
+</script>
+<script>/*微信公众号使用*/
+function play(obj){
+    var type = obj;
+    var page = "";
+    var circleID = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    var menuname = getQueryString1("menuname");
+    if (type=="zxwt") {
+        page = "newQuestion.view?kind=11&t=1&w=a&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse')+"&con=";
+    }
+    this.location.href=page;
+}
+
 </script>
 </html>

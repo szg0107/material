@@ -12,7 +12,46 @@
         overflow: hidden;
         white-space: nowrap;
     }
+    .divFrame {
 
+        background-color: #FFFFFF;
+        margin: 20px auto 0;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-color:#C0C0C0;
+        border-style: solid;
+        border-width: 15px;
+        display:none;
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        right:0px;
+        height: 140px;
+        width: 97%;
+        /*background: border-width: 2px;;
+        border-style: solid;
+        border-color:black;
+        border-width: 2px;*/
+    }
+
+    .inputPsorText {
+        background-color: transparent;
+        border: 0 none;
+        float: left;
+        /*height: 40px;
+        width: 208px;*/
+        margin-left: 12px;
+        font-size: 55px;
+        font-family: 微软雅黑;
+        margin-top:2px;
+        width: 64%;
+        height: 120px;
+        line-height: 120px;
+        margin-top:15px;
+        margin-left:3%
+    }
 </style>
 <script type='text/javascript' src='res/js/KMoonPub.js'></script>
 <meta name=viewport content="user-scalable=no">
@@ -20,8 +59,22 @@
 <script type='text/javascript' src='js/check.js'></script>
 <script type='text/javascript' src='js/checkform.js'></script>
 <script language="javascript" src="js/check.js"></script>
-<body bgcolor="#efeef4" style="font-family: Heiti SC;">
+<body id="body1" bgcolor="#efeef4" style="font-family: Heiti SC;">
 
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height:40%;margin-top:0%" onclick="fanhicl()">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">我要回答</span>
+
+</div>
+
+<div id="menu" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
+    <input id="zxwt" type="button" onclick="play('zxwt');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:6px;width: 49%;height:90px;" value="最新问题">
+    <input id="lshd" type="button" onclick="play('lshd');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:5px;width: 49%;height:90px;" value="历史回答">
+</div>
+<div id="menu1" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
+    <input id="zxwt1" type="button" onclick="play1('zxwt1');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:6px;width: 49%;height:90px;" value="最新问题">
+    <input id="lshd1" type="button" onclick="play1('lshd1');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:5px;width: 49%;height:90px;" value="历史回答">
+</div>
 
 <ylt.for dataId="1490064252808">
     <table width="100%" style="padding-left: 48px;background-color: white;" onclick="clickQuestion('$value')" class="limitlength" name="question">
@@ -31,31 +84,100 @@
             </td>
         </tr>
         <tr>
-            <td style="font-size: 40px;color: gray;text-indent: 2em;"  class="limitlength">
+            <td style="font-size: 40px;color: gray;"  class="limitlength">
                 $value
             </td>
         </tr>
     </table>
-    <div style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;background-color: white;padding-left: 50px;">
+    <div name="dzs" style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;background-color: white;padding-left: 50px;">
         <span>$value</span>
-        <span>$value</span>
+        <span style="margin-left: 20px;margin-right: 20px;">$value</span>
         点赞数:<span name="beizanshu">$value</span>
-        <span style="float: right;">回答人数:$value</span>
+        <span style="float: right;margin-right: 20px;">回答人数:$value</span>
     </div>
 </ylt.for>
 <div id="tishi" class="gps_font" align="center"></div>
+
 
 <form id="searchForm" action="newQuestion.view" method="post">
     <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
     <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
 </form>
-</body>
 
+<div id="sousu" class="divFrame">
+    <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
+    <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
+    <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
+</div>
+<div style="display: none;">
+    <ylt.for dataId="1503649876407">
+        <input name="ejcd" type="text" value="$value,$value,$value,$value,$value"/>
+    </ylt.for>
+</div>
+
+<div style="display:none;">
+    <ylt.for dataId="1506062212646">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+    </ylt.for>
+</div>
+</body>
 <script>
-    var question = document.getElementsByName('question');
-    if(question.length == 0){
-        tishi.innerText="很抱歉，没有您想要的资源！";
+    var circleId="";
+    <ylt.v message="circleId">
+            $value
+    circleId="$value";
+    </ylt.v>
+    var admin="";
+    <ylt.v message="admin">
+            $value
+    admin="$value";
+    </ylt.v>
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
     }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    function fanhicl() {
+        var timestampsds=new Date().getTime();
+        this.location.href = "CircleDetails_1.view?id="+circleId+"&circleName="+getQueryString1("circleName")+"&admin="+admin+"&time="+timestampsds;
+    }
+</script>
+<script>
+    /*var question = document.getElementsByName('question');
+     if(question.length == 0){
+     tishi.innerText="很抱歉，没有您想要的资源！";
+     }*/
     function beiZanShuChuShiHua(){
         var bzs=document.getElementsByName("beizanshu");
         for(var i=0;i<bzs.length;i++){
@@ -66,34 +188,64 @@
     }
 
     beiZanShuChuShiHua();
-    function clickQuestion(questionID) {
+    /*function clickQuestion(questionID) {
 
+     var isVIP = Can_the_content_be_viewed(getQueryString('id'));
+     if(!isVIP){
+     var userAgent = navigator.userAgent;
+     if (userAgent.indexOf("iPhone") >= 0) {
+     window.webkit.messageHandlers.needPay.postMessage(null);
+     } else {
+     window.callByJs.isVIP();
+     }
+
+     return;
+     }
+
+
+     addWatchCount(getQueryString('id'),questionID,'question');
+
+
+     var dict = {"questionID":questionID};
+     var userAgent = navigator.userAgent;
+     if (userAgent.indexOf("iPhone") >= 0) {
+     window.webkit.messageHandlers.intoQuestionDetails.postMessage(dict);
+     }else{
+     window.callByJs.setValue(questionID);
+     }
+     }*/
+    function clickQuestion(questionID) {
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
         if(!isVIP){
-            /*alert('您不是本圈子会员！请进行充值！');*/
-            var userAgent = navigator.userAgent;
-            if (userAgent.indexOf("iPhone") >= 0) {
-                window.webkit.messageHandlers.needPay.postMessage(null);
+            if (getQueryString('kind') != null) {
+                alert('您不是本圈子会员！请进行充值！');
             } else {
-                window.callByJs.isVIP();
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.needPay.postMessage(null);
+                } else {
+                    window.callByJs.isVIP();
+                }
+
+                return;
             }
-
-            return;
         }
-
 
         addWatchCount(getQueryString('id'),questionID,'question');
 
+        var dict = {"questionID": questionID};
 
-        var dict = {"questionID":questionID};
+        if(isVIP && getQueryString('kind') != null){
+            this.location.href="questionDetails.view?kind=wtxq&circleID="+getQueryString('id')+"&id="+questionID;
+        }
+
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.intoQuestionDetails.postMessage(dict);
-        }else{
+        } else {
             window.callByJs.setValue(questionID);
         }
     }
-
     /**表单提交之前拿到id和输入内容**/
     /*var id="";
      var content="";
@@ -171,16 +323,6 @@
      }*/
 
 
-    function getQueryString1(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = decodeURI(window.location.href).substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r =  window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
 
     if(getQueryString('content') != "" && getQueryString('content') != null) {
         var contentInput = document.getElementById('contentInput');
@@ -188,7 +330,7 @@
         var circleID = document.getElementById('circleID');
         circleID.value = getQueryString('id');
         var searchForm =  document.getElementById('searchForm');
-        searchForm.action = "newQuestion.view" +"?id="+ getQueryString('id');
+        searchForm.action = "newQuestion.view" +"?id="+ getQueryString('id')+"&reuse="+getQueryString('reuse');
         if(contentInput.value!=''&&contentInput.value!=null){
             var timestamp = new Date().getTime();
             var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" +getQueryString('id')  + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=question");
@@ -196,4 +338,137 @@
         searchForm.submit();
     }
 </script>
+<script>
+    var menuname = document.getElementsByName("menunamesss")[3].value;
+    if (getQueryString('reuse') == "zero") {
 
+    } else if(getQueryString('reuse') == "one") {
+        menuname = document.getElementsByName("menunamesss")[22].value;
+    }
+    if (getQueryString('kind') != null) {
+        var datas = document.getElementsByName("ejcd");
+        var names = "";
+        if (getQueryString('reuse') == "zero") {
+            names = datas[2].value;
+        } else if (getQueryString('reuse') == "one"){
+            names = datas[3].value;
+        }
+        if (names != "") {
+            document.getElementById("zxwt").value = names.split(",")[3];
+            document.getElementById("lshd").value = names.split(",")[4];
+            document.getElementById("zxwt1").value = names.split(",")[3];
+            document.getElementById("lshd1").value = names.split(",")[4];
+        }
+    }
+    if (getQueryString('kind') != null) {/*微信公众号使用*/
+        var tm = getQueryString('kind');
+        var t = getQueryString('t');
+        var w = getQueryString('w');
+        if (tm == "11" && t == "1") {
+            /*var menuname = getQueryString1("menuname");*/
+            document.getElementById("title").innerText = menuname;
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("menu").style.display = "block";
+            document.getElementById("zxwt").style.background = "white";
+            document.getElementById("zxwt").style.color = "#029ae5";
+            document.getElementById("lshd").style.background = "#029ae5";
+            document.getElementById("lshd").style.color = "white";
+            document.getElementById("body1").style.margin="0px";
+            document.getElementById("sousu").style.display = "block";
+            if (w == "a") {
+                show();
+            }
+        } else {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("menu1").style.display = "block";
+            document.getElementById("zxwt1").style.background = "white";
+            document.getElementById("zxwt1").style.color = "#029ae5";
+            document.getElementById("lshd1").style.background = "#029ae5";
+            document.getElementById("lshd1").style.color = "white";
+            document.getElementById("body1").style.margin="0px";
+            document.getElementById("title").innerText = "搜素结果";
+            if (t=="3") {
+                sous();
+            }
+        }
+    }
+
+    if (getQueryString('kind') != null) {
+        var question1 = document.getElementsByName('question');
+        var count = question1.length;
+        document.getElementsByName("dzs")[count-1].style.marginBottom="200px";
+    }
+
+    function sous() {
+        var c = document.getElementById("con").value;
+        if (getQueryString('t') == "3") {
+            c = getQueryString('con');
+        }
+        if (c=="") {
+            alert("搜索内容为空！");
+        } else {
+            var reuse = getQueryString('reuse');
+            var contentInput = document.getElementById('contentInput');
+            contentInput.value = c;
+            var circleID = document.getElementById('circleID');
+            circleID.value = getQueryString('id');
+            var searchForm =  document.getElementById('searchForm');
+            searchForm.action = "newQuestion.view?kind=11&t=2&id="+ getQueryString('id')+"&reuse="+getQueryString('reuse')+"&con="+c+"&circleName="+getQueryString1("circleName");
+            if(contentInput.value!=''&&contentInput.value!=null){
+                var timestamp = new Date().getTime();
+                var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" +getQueryString('id')  + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=question");
+            }
+            searchForm.submit();
+            /*this.location.href="newQuestion.view?kind=11&t=2&w=a&id=" + circleID+"&reuse="+reuse+"&con="+c;*/
+        }
+    }
+    if (w=='a') {
+        if ( document.getElementById("sousu")!=null) {
+            document.getElementById("sousu").style.display = "none";
+        }
+        document.getElementById("title").innerText = "搜素结果";
+    }
+    function show() {
+        if(getQueryString('con') != null) {
+            var contentInput = document.getElementById('contentInput');
+            contentInput.value = getQueryString1('con');
+            var circleID = document.getElementById('circleID');
+            circleID.value = getQueryString('id');
+            var searchForm =  document.getElementById('searchForm');
+            searchForm.action = "newQuestion.view?kind=11&t=1&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse')+"&circleName="+getQueryString1("circleName");
+            if(contentInput.value!=''&&contentInput.value!=null){
+                var timestamp = new Date().getTime();
+                var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" +getQueryString('id')  + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=question");
+            }
+            searchForm.submit();
+        }
+    }
+    var question = document.getElementsByName('question');
+    if(question.length == 0){
+        tishi.innerText="很抱歉，没有您想要的资源！";
+    }
+</script>
+<script>/*微信公众号使用*/
+function play(obj){
+    var type = obj;
+    var page = "";
+    var circleID = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    /*var menuname = getQueryString1("menuname");*/
+    if (type=="lshd") {
+        page = "answeredQuestion.view?kind=22&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse')+"&circleName="+getQueryString1("circleName");
+    }
+    this.location.href=page;
+}
+function play1(obj){
+    var type = obj;
+    var page = "";
+    var circleID = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    var c = getQueryString('con');
+    if (type=="lshd1") {
+        page = "searchAnsweredQuestion.view?kind=22&w=a&id="+ getQueryString('id')+"&reuse="+getQueryString('reuse')+"&con="+c+"&circleName="+getQueryString1("circleName");
+    }
+    this.location.href=page;
+}
+</script>

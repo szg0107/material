@@ -175,7 +175,7 @@
 
 
 
-<body id="body1" style="margin: 0 auto;padding: 0;background:#efeef4;font-size: 25px;">
+<body id="body1" style="margin: 0 auto;padding: 0;background:#efeef4;font-size: 15px;">
 
 <div id="timu" style="display:none;width: 100%;height: 45px;background: #029ae5;line-height: 45px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
     <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
@@ -185,15 +185,16 @@
 <div style="text-align: center;">
     <!--任务描述-->
     <ylt.for dataId="1504336874881">
-    <div  style="background: #FFFFFF;" id="descriptions">$value</div>
+        <div  style="background: #FFFFFF; border-radius: 10px;margin: 15px;font-size: 20px;" id="descriptions">$value</div>
     </ylt.for>
 
     <!--任务选项-->
+    <div style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;margin-left: 15px;margin-right: 15px;padding-bottom:10px;border-radius: 10px;">
     <ylt.for dataId="1499854541265">
-        <div onclick="selectOption(this)" style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 4px;padding-left: 20px;"name="options">
+        <div onclick="selectOption(this)" style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;padding-left: 20px;margin-left: 15px;margin-right: 15px;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #efeef4;"name="options">
 
 
-            <img width="20px" alt="0" height="20px" src="res/images/weixuanzhong.png" style="float: left;margin-top: 5px;" name="isSelected" id="$value"/>
+            <img width="20px" alt="0" height="20px" src="res/images/weixuanzhong.png" style="float: left;margin-right: 10px;" name="isSelected" id="$value"/>
 
             <div style="float: left;text-align:left;">
                 <span  name="theOption">$value</span><br/>
@@ -203,7 +204,7 @@
 
         </div>
     </ylt.for>
-
+    </div>
 
 
     <div style="text-align: center;margin: 0 auto; width: 95%;clear: both;">
@@ -285,7 +286,7 @@
         if (r != null) return unescape(r[2]); return null;
     }
     /*给任务描述赋值*/
-    document.getElementById("descriptions").innerText+="(最多选择"+selectNumber+"项)";
+    document.getElementById("descriptions").innerHTML+="<br/><span style='font-size: 10px;color: gray;'>(最多选择"+selectNumber+"项)</span>";
     /*得到所有图片地址为0时img隐藏*/
     var option_pictures=document.getElementsByName("option_pictures");
     for(var i=0;i<option_pictures.length;i++){
@@ -371,6 +372,13 @@
 <script type="text/javascript">
     function closeDivFun() {
         document.getElementById('tanchuang2').style.display = 'none';
+
+        if (getQueryString('kind') != null) {
+            var timestamp = Date.parse(new Date());
+            var cid = getQueryString('id');
+            this.location.href = "my_task.view?kind=wdrw&id="+cid+"&time="+timestamp;
+        }
+
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.closeTask.postMessage("task");

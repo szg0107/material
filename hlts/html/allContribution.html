@@ -21,9 +21,61 @@
             font-size: 50px;
             color: black;
         }
+        .divFrame {
+
+            background-color: #FFFFFF;
+            margin: 20px auto 0;
+            border-radius: 4px;
+            border: 15px solid #C0C0C0;
+            display:none;
+            position:fixed;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            height: 140px;
+            width: 97%;
+            /*background: border-width: 2px;;
+            border-style: solid;
+            border-color:black;
+            border-width: 2px;*/
+        }
+
+        .inputPsorText {
+            background-color: transparent;
+            border: 0 none;
+            float: left;
+            /*height: 40px;
+            width: 208px;*/
+            margin-left: 12px;
+            font-size: 55px;
+            font-family: 微软雅黑;
+            margin-top:2px;
+            width: 64%;
+            height: 120px;
+            line-height: 120px;
+            margin-top:15px;
+            margin-left:3%
+        }
     </style>
 </head>
-<body bgcolor="#efeef4" style="font-family: Heiti SC;">
+<body id="body1" bgcolor="#efeef4">
+
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="fanhicl()">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">个人贡献</span>
+    <img id="picture" src="res/images/jia.png" style="width: 9%;height: 80%;margin-top:0.5%;margin-right:2%;" align="right" onclick="fill();">
+</div>
+<div id="menu" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
+    <input id="qbgx" type="button" onclick="" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:6px;width: 49%;height:90px;" value="全部">
+    <input id="grgx" type="button" onclick="play('grgx');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:5px;width: 49%;height:90px;" value="个人贡献">
+</div>
+<div id="menu1" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
+    <input id="qbgx1" type="button" onclick="" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:6px;width: 49%;height:90px;" value="所有贡献">
+    <input id="grgx1" type="button" onclick="play1('grgx1');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:5px;width: 49%;height:90px;" value="个人贡献">
+</div>
+
+
+
 
 
 <ylt.for dataId="1491880109981">
@@ -35,13 +87,13 @@
             </td>
         </tr>
         <tr>
-            <td style="font-size: 40px;color: gray; text-indent: 2em;" class="limitlength">
+            <td style="font-size: 40px;color: gray;" class="limitlength">
                 $value
             </td>
         </tr>
     </table>
-    <div style="padding-left: 48px;padding-right:48px;background-color: white;font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;">
-        $value    $value 点赞数:<span name="beizanshu">$value</span>
+    <div name="dzs" style="padding-left: 48px;padding-right:48px;background-color: white;font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;">
+        $value<span style="margin-left: 20px;margin-right: 20px;">$value</span> 点赞数:<span name="beizanshu">$value</span>
     </div>
 </ylt.for>
 <div id="tishi" class="gps_font" align="center"></div>
@@ -50,14 +102,97 @@
     <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
     <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
 </form>
+
+<div id="sousu" class="divFrame">
+    <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
+    <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
+    <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
+</div>
+
+
+
+
+
+<div style="display: none;">
+    <ylt.for dataId="1503649876407">
+        <input name="ejcd" type="text" value="$value,$value,$value,$value,$value"/>
+    </ylt.for>
+</div>
+
+<div style="display:none;">
+    <ylt.for dataId="1506062212646">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+        <input name="menunamesss" value="$value">
+    </ylt.for>
+</div>
 </body>
-
-
 <script>
-    var contribution = document.getElementsByName('contribution');
-    if(contribution.length == 0){
-        tishi.innerText="很抱歉，没有您想要的资源！";
+    var circleId="";
+    <ylt.v message="circleId">
+            $value
+    circleId="$value";
+    </ylt.v>
+    var admin="";
+    <ylt.v message="admin">
+            $value
+    admin="$value";
+    </ylt.v>
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
     }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r =  window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    var menuname = document.getElementsByName("menunamesss")[1].value;
+    if (getQueryString('reuse') == "zero") {
+
+    } else if(getQueryString('reuse') == "one") {
+        menuname = document.getElementsByName("menunamesss")[20].value;
+    }
+
+    function fanhicl() {
+        var timestampsds=new Date().getTime();
+        var tm = getQueryString('kind');
+        var t = getQueryString('t');
+        if (tm == "11" && t == "1") {
+            this.location.href = "CircleDetails_1.view?id="+circleId+"&circleName="+getQueryString1("circleName")+"&admin="+admin+"&time="+timestampsds;
+        } else {
+            this.location.href = "allContribution.view?kind=11&t=1&w=a&reuse=zero&con=&id="+circleId+"&circleName="+getQueryString1("circleName")+"&menuname="+menuname;
+        }
+
+    }
+</script>
+<script>
+
     function beiZanShuChuShiHua(){
         var bzs=document.getElementsByName("beizanshu");
         for(var i=0;i<bzs.length;i++){
@@ -69,25 +204,29 @@
     beiZanShuChuShiHua();
 
     function clickContribution(contributionID) {
-
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
         if(!isVIP){
-            /*alert('您不是本圈子会员！请进行充值！');*/
-            var userAgent = navigator.userAgent;
-            if (userAgent.indexOf("iPhone") >= 0) {
-                window.webkit.messageHandlers.needPay.postMessage(null);
+            if (getQueryString('kind') != null) {
+                alert('您不是本圈子会员！请进行充值！');
             } else {
-                window.callByJs.isVIP();
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.needPay.postMessage(null);
+                } else {
+                    window.callByJs.isVIP();
+                }
+
+                return;
             }
 
-            return;
         }
 
         addWatchCount(getQueryString('id'),contributionID,'contribute');
 
-
-
         var dict = {"contributionID": contributionID};
+        if(isVIP && getQueryString('kind') != null){
+            this.location.href="contributionDetails.view?kind=gxxq&circleID="+getQueryString('id')+"&id="+contributionID;
+        }
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.intoContributionIDDetails.postMessage(dict);
@@ -173,16 +312,7 @@
 
 </script>
 <script>
-    function getQueryString1(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = decodeURI(window.location.href).substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r =  window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
+
     if(getQueryString('content') != "" && getQueryString('content') != null) {
         var timestamp = new Date().getTime();
         var contentInput = document.getElementById('contentInput');
@@ -190,11 +320,174 @@
         var circleID = document.getElementById('circleID');
         circleID.value = getQueryString('id');
         var searchForm =  document.getElementById('searchForm');
-        searchForm.action = "allContribution.view" +"?id="+ getQueryString('id');
+        searchForm.action = "allContribution.view" +"?id="+ getQueryString('id')+"&reuse="+getQueryString('reuse');
         if(contentInput.value!=''&&contentInput.value!=null){
             var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + getQueryString('id') + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=contribute");
         }
         searchForm.submit();
     }
+</script>
+
+
+
+
+
+<!--微信公众号使用-->
+<script>
+    if (getQueryString('kind') != null) {
+        var datas = document.getElementsByName("ejcd");
+        var names = "";
+        if (getQueryString('reuse') == "zero") {
+            names = datas[0].value;
+        } else if (getQueryString('reuse') == "one"){
+            names = datas[1].value;
+        }
+        if (names != "") {
+            document.getElementById("qbgx").value = names.split(",")[3];
+            document.getElementById("grgx").value = names.split(",")[4];
+            document.getElementById("qbgx1").value = names.split(",")[3];
+            document.getElementById("grgx1").value = names.split(",")[4];
+        }
+    }
+
+    if (getQueryString('kind') != null) {/*微信公众号使用*/
+        var tm = getQueryString('kind');
+        var t = getQueryString('t');
+        var c = getQueryString('con');
+        var w = getQueryString('w');
+        if (tm == "11" && t == "1") {
+            /*var menuname = getQueryString1("menuname");*/
+            document.getElementById("title").innerText = menuname;
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("menu").style.display = "block";
+            document.getElementById("qbgx").style.background = "white";
+            document.getElementById("qbgx").style.color = "#029ae5";
+            document.getElementById("grgx").style.background = "#029ae5";
+            document.getElementById("grgx").style.color = "white";
+            document.getElementById("body1").style.margin="0px";
+            document.getElementById("sousu").style.display = "block";
+            if (w == "a") {
+                document.getElementById("body1").style.display = "none";
+                show(t);
+            }
+            /*if (w == "a") {
+             show(t);
+             }*/
+        } else if(tm == "11" && t == "2"){
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("menu1").style.display = "block";
+            document.getElementById("qbgx1").style.background = "white";
+            document.getElementById("qbgx1").style.color = "#029ae5";
+            document.getElementById("grgx1").style.background = "#029ae5";
+            document.getElementById("grgx1").style.color = "white";
+            document.getElementById("body1").style.margin="0px";
+            document.getElementById("picture").style.display= "none";
+            document.getElementById("title").innerText = "搜素结果";
+            document.getElementById("sousu").style.display = "none";
+            if (w == "a") {
+                document.getElementById("body1").style.display = "none";
+                show(t);
+            }
+            /*if (w == "a") {
+             show(t);
+             }*/
+        }
+    }
+
+    if (getQueryString('kind') != null) {
+        var contribution1 = document.getElementsByName('contribution');
+        var count = contribution1.length;
+        if (count > 1) {
+            document.getElementsByName("dzs")[count-1].style.marginBottom="200px";
+        }
+    }
+
+    function sous() {
+        var c = document.getElementById("con").value;
+        if (c=="") {
+            alert("搜索内容为空！");
+        } else {
+            var circleID = getQueryString('id');
+            var reuse = getQueryString('reuse');
+            var timestamp = new Date().getTime();
+            var contentInput = document.getElementById('contentInput');
+            contentInput.value = c;
+            var circleID = document.getElementById('circleID');
+            circleID.value = getQueryString('id');
+            var searchForm =  document.getElementById('searchForm');
+            if (t=="2") {
+                searchForm.action = "allContribution.view?kind=11&t=1&id="+ getQueryString('id')+"&reuse="+getQueryString('reuse')+"&con="+c+"&circleName="+getQueryString1("circleName")+"&menuname="+menuname;
+            } else {
+                searchForm.action = "allContribution.view?kind=11&t=2&id="+ getQueryString('id')+"&reuse="+getQueryString('reuse')+"&con="+c+"&circleName="+getQueryString1("circleName")+"&menuname="+menuname;
+            }
+            if(contentInput.value!=''&&contentInput.value!=null){
+                var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + getQueryString('id') + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=contribute");
+            }
+            searchForm.submit();
+            /*this.location.href="allContribution.view?kind=11&t=2&w=a&id=" + circleID+"&reuse="+reuse+"&con="+c;*/
+        }
+    }
+
+    function show(t) {
+        if(getQueryString('con') != null) {
+            var timestamp = new Date().getTime();
+            var contentInput = document.getElementById('contentInput');
+            contentInput.value = getQueryString1('con');
+            var circleID = document.getElementById('circleID');
+            circleID.value = getQueryString('id');
+            var searchForm =  document.getElementById('searchForm');
+            /*var menuname = getQueryString1("menuname");*/
+            if (t=="1") {
+                searchForm.action = "allContribution.view?kind=11&t=1&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse')+"&con="+c+"&circleName="+getQueryString1("circleName")+"&menuname="+menuname;
+            } else {
+                searchForm.action = "allContribution.view?kind=11&t=2&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse')+"&con="+c+"&circleName="+getQueryString1("circleName")+"&menuname="+menuname;
+            }
+            if(contentInput.value!=''&&contentInput.value!=null){
+                var Searchrecords = sys_doComMandReturn("040", "S_QZBID=" + getQueryString('id') + "&S_SSSJ=" + timestamp + "&S_SSNR=" + contentInput.value+ "&S_ID=" + timestamp+"&S_SSLX=contribute");
+            }
+            searchForm.submit();
+        }
+    }
+</script>
+<script>/*微信公众号使用*/
+function play(obj){
+    var type = obj;
+    var page = "";
+    var circleID = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    var cc = getQueryString('con');
+    /*var menuname = getQueryString1("menuname");*/
+    if (type=="grgx") {
+        page = "myContribution.view?kind=22&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse')+"&circleName="+getQueryString1("circleName");
+    }
+    this.location.href=page;
+}
+function play1(obj){
+    var type = obj;
+    var page = "";
+    var circleID = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    var cc = getQueryString('con');
+    if (cc != null) {
+        if (type=="grgx1") {
+            page = "searchMyContribution.view?kind=22&w=a&id="+ getQueryString('id')+"&reuse="+getQueryString('reuse')+"&con="+cc+"&circleName="+getQueryString1("circleName")+"&menuname="+menuname;
+        }
+    }
+    /*if (type=="qbgx1") {
+     page = "allContribution.view?kind=11&t=2&id="+ getQueryString('id')+"&reuse="+getQueryString('reuse');
+     } else {
+     page = "searchMyContribution.view?kind=22&w=a&id="+ getQueryString('id')+"&reuse="+getQueryString('reuse')+"&con="+getQueryString('con');
+     }*/
+    this.location.href=page;
+}
+function fill() {
+    var id = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    this.location.href="putContribution.view?kind=fbgx&taskId=&id="+id+"&reuse="+reuse;
+}
+var contribution = document.getElementsByName('contribution');
+if(contribution.length == 0){
+    tishi.innerText="很抱歉，没有您想要的资源！";
+}
 </script>
 </html>

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
     <title>Title</title>
     <style>
         /*设置单元格内容的数量超出用省略号代替*/
@@ -17,39 +19,117 @@
             font-size: 50px;
             color: black;
         }
+        .divFrame {
+
+            background-color: #FFFFFF;
+            margin: 20px auto 0;
+            border-radius: 4px;
+            border: 15px solid #C0C0C0;
+            display:none;
+            position:fixed;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            height: 140px;
+            width: 97%;
+            /*background: border-width: 2px;;
+            border-style: solid;
+            border-color:black;
+            border-width: 2px;*/
+        }
+
+        .inputPsorText {
+            background-color: transparent;
+            border: 0 none;
+            float: left;
+            /*height: 40px;
+            width: 208px;*/
+            margin-left: 12px;
+            font-size: 55px;
+            font-family: 微软雅黑;
+            margin-top:2px;
+            width: 64%;
+            height: 120px;
+            line-height: 120px;
+            margin-top:15px;
+            margin-left:3%
+        }
     </style>
 
 </head>
-<body bgcolor="#efeef4" style="margin: 0;padding: 0;">
+<body id="body1" bgcolor="#efeef4" style="margin: 0;padding: 0;">
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">个人贡献</span>
+    <img src="res/images/jia.png" style="width: 9%;height: 80%;margin-top:0.5%;margin-right:2%;" align="right" onclick="fill();">
+</div>
+<div id="menu" style="display:none;width: 100%;height: 100px;line-height: 100px;line-width: 500px;margin-top:3px;"  ><!--微信公众号使用-->
+    <input id="qbgx" type="button" onclick="play('qbgx');" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:6px;width: 49%;height:90px;" value="全部">
+    <input id="grgx" type="button" onclick="" style="text-align: center;color: #FFFFFF;background:#029ae5;border-color:white;border-style: white;border-width: 0px;font-size: 50px;margin-left:5px;width: 49%;height:90px;" value="个人贡献">
+</div>
+
 <ylt.for dataId="1492504812331">
-    <div class="gps_font" style="background: #FFFFFF;width: 100%;position: fixed; z-index: 999;height: 100px;line-height: 100px;border-bottom: 5px solid #efeef4;">我的贡献数：$value</div>
+    <div id="gxs" class="gps_font" style="background: #FFFFFF;position:fixed;width: 100%; z-index: 999;height: 100px;line-height: 100px;border-bottom: 5px solid #efeef4;">我的贡献数：$value</div>
 </ylt.for>
-<div style="height: 80px"></div>
+<div id="juli1" style="height: 80px"></div>
 <ylt.for dataId="1491880155403">
-    <table width="100%" style="padding-left: 48px;background-color: white;" onclick="clickContribution('$value')" class="limitlength">
+    <table width="100%" style="padding-left: 48px;background-color: white;" onclick="clickContribution('$value')" class="limitlength" name="pagingDiv">
         <tr style="height: 100px;">
             <td style="font-size: 50px"  class="limitlength">
                 $value
             </td>
         </tr>
         <tr>
-            <td style="font-size: 40px;color: gray;text-indent: 2em;"  class="limitlength">
+            <td style="font-size: 40px;color: gray;"  class="limitlength">
                 $value
             </td>
         </tr>
         <tr >
             <td style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4">
-                $value 点赞数:<span name="beizanshu">$value</span>
+                <span style="margin-right:20px; ">$value</span>点赞数:<span name="beizanshu">$value</span>
             </td>
         </tr>
 
     </table>
 </ylt.for>
+
+<div id="sousu" class="divFrame">
+    <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
+    <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
+    <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
+</div>
+<div style="display: none;">
+    <ylt.for dataId="1503649876407">
+        <input name="ejcd" type="text" value="$value,$value,$value,$value,$value"/>
+    </ylt.for>
+</div>
 </body>
 
 <script>
     function clickContribution(contributionID) {
+        var isVIP = Can_the_content_be_viewed(getQueryString('id'));
+        if(!isVIP){
+            if (getQueryString('kind') != null) {
+                alert('您不是本圈子会员！请进行充值！');
+            } else {
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iPhone") >= 0) {
+                    window.webkit.messageHandlers.needPay.postMessage(null);
+                } else {
+                    window.callByJs.isVIP();
+                }
+
+                return;
+            }
+
+        }
+
+        addWatchCount(getQueryString('id'),contributionID,'contribute');
+
         var dict = {"contributionID": contributionID};
+        if(isVIP && getQueryString('kind') != null){
+            this.location.href="contributionDetails.view?kind=gxxq&circleID="+getQueryString('id')+"&id="+contributionID;
+        }
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.intoContributionIDDetails.postMessage(dict);
@@ -66,5 +146,87 @@
         }
     }
     beiZanShuChuShiHua();
+</script>
+<script>
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    function sous() {
+        var c = document.getElementById("con").value;
+        if (c=="") {
+            alert("搜索内容为空！");
+        } else {
+            var circleID = getQueryString('id');
+            var reuse = getQueryString('reuse');
+            this.location.href="searchMyContribution.view?kind=22&w=a&id=" + circleID+"&reuse="+reuse+"&con="+c;
+        }
+    }
+
+
+
+
+
+    if (getQueryString('kind') != null) {
+        var datas = document.getElementsByName("ejcd");
+        var names = "";
+        if (getQueryString('reuse') == "zero") {
+            names = datas[0].value;
+        } else if (getQueryString('reuse') == "one"){
+            names = datas[1].value;
+        }
+        if (names != "") {
+            document.getElementById("qbgx").value = names.split(",")[3];
+            document.getElementById("grgx").value = names.split(",")[4];
+        }
+    }
+
+
+    if (getQueryString('kind') != null) {/*微信公众号使用*/
+        var tm = getQueryString('kind');
+        var pagingDivs = document.getElementsByName('pagingDiv');
+        var count = pagingDivs.length;
+        if (tm == "22") {
+            var menuname = getQueryString1("menuname");
+            document.getElementById("title").innerText = menuname;
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("menu").style.display = "block";
+            document.getElementById("grgx").style.background = "white";
+            document.getElementById("grgx").style.color = "#029ae5";
+            document.getElementById("qbgx").style.background = "#029ae5";
+            document.getElementById("qbgx").style.color = "white";
+            document.getElementById("body1").style.margin="0px";
+            document.getElementById("sousu").style.display = "block";
+            document.getElementsByName('pagingDiv')[count-1].style.marginBottom="200px";
+            document.getElementById("gxs").style.position = "relative";
+            document.getElementById("juli1").style.display = "none";
+        }
+    }
+</script>
+
+
+
+
+
+<script>/*微信公众号使用*/
+function play(obj){
+    var type = obj;
+    var page = "";
+    var circleID = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    var menuname = getQueryString1("menuname");
+    if (type=="qbgx") {
+        page = "allContribution.view?kind=11&t=1&w=a&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse')+"&con=";
+    } else {
+        page = "myContribution.view?kind=22&id="+ getQueryString('id')+"&menuname="+menuname+"&reuse="+getQueryString('reuse');
+    }
+    this.location.href=page;
+}
+function fill() {
+    var id = getQueryString('id');
+    var reuse = getQueryString('reuse');
+    this.location.href="putContribution.view?kind=fbgx&taskId=&id="+id+"&reuse="+reuse;
+}
 </script>
 </html>

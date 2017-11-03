@@ -93,21 +93,23 @@
     /*得到图片的高*/
     function getImgHeight(){
         /*定时执行获取宽高*/
-        var check = function(){
-            /*只要任何一方大于0*/
-            /*表示已经服务器已经返回宽高*/
-            if(bannerImg.width>0 || bannerImg.height>0){
-                bgDiv.style.height=bannerImg.height+"px";
-                clearInterval(set);
+        if(bannerImg.src!=""){
+            var check = function(){
+                /*只要任何一方大于0*/
+                /*表示已经服务器已经返回宽高*/
+                if(bannerImg.width>0 || bannerImg.height>0){
+                    bgDiv.style.height=bannerImg.height+"px";
+                    clearInterval(set);
+                }
             }
-        };
 
-        var set = setInterval(check,40);
+            var set = setInterval(check,40);
 
-        /*加载完成获取宽高*/
-        bannerImg.onload = function(){
-            bgDiv.style.height=bannerImg.height+"px";
-        };
+            /*加载完成获取宽高*/
+            bannerImg.onload = function(){
+                bgDiv.style.height=bannerImg.height+"px";
+            }
+        }
     }
     getImgHeight();
 </script>

@@ -12,7 +12,6 @@
         line-height: 100px;
         width: 100%;
         color: #666666;
-        font-family: Heiti SC;
         font-size: 30px;
     }
     .lineDiv {
@@ -64,7 +63,14 @@ EFEEF4
         <input name="xtb" type="text" value="$value,$value"/>
     </ylt.for>
 </div>
-
+<div style="display: none;" id="tuo_Zhan_Gong_Neng">
+    <ylt.for dataId="1509587675255">
+        <div name="t_z_tp">$value</div>
+        <div name="t_z_bm">$value</div>
+        <div name="t_z_ym">$value</div>
+        <div name="t_z_url">$value</div>
+    </ylt.for>
+</div>
 
 <div style="display: none;">
     <ylt.for dataId="1503649876407">
@@ -73,31 +79,40 @@ EFEEF4
 </div>
 
 <script>
+    /*九宫格需要的常量*/
     var winWidth = document.body.clientWidth;
     var lineWidth=3;
     var divheight=(winWidth-(4*lineWidth)+0.00000000000001)*0.25;
     var fid = document.getElementById('items');
     var itemDivs = document.getElementsByName('itemDiv');
+
+    /*拓展功能需要的变量*/
+    var t_z_tpArray=document.getElementsByName("t_z_tp");
+    var t_z_bmArray=document.getElementsByName("t_z_bm");
+    var t_z_ymArray=document.getElementsByName("t_z_ym");
+    var t_z_urlArray=document.getElementsByName("t_z_url");
 </script>
 <script type="text/javascript">
     /*得到图片的高*/
     function getImgHeight(){
         /*定时执行获取宽高*/
-        var check = function(){
-            /*只要任何一方大于0*/
-            /*表示已经服务器已经返回宽高*/
-            if(bannerImg.width>0 || bannerImg.height>0){
-                bgDiv.style.height=bannerImg.height+"px";
-                clearInterval(set);
+        if(bannerImg.src!=""){
+            var check = function(){
+                /*只要任何一方大于0*/
+                /*表示已经服务器已经返回宽高*/
+                if(bannerImg.width>0 || bannerImg.height>0){
+                    bgDiv.style.height=bannerImg.height+"px";
+                    clearInterval(set);
+                }
             }
-        };
 
-        var set = setInterval(check,40);
+            var set = setInterval(check,40);
 
-        /*加载完成获取宽高*/
-        bannerImg.onload = function(){
-            bgDiv.style.height=bannerImg.height+"px";
-        };
+            /*加载完成获取宽高*/
+            bannerImg.onload = function(){
+                bgDiv.style.height=bannerImg.height+"px";
+            }
+        }
     }
     getImgHeight();
 </script>
@@ -131,8 +146,8 @@ EFEEF4
             var newimg = document.createElement('img');
             newimg.setAttribute("name", "cdtb");
             newimg.setAttribute("src","res/images/acquiescenceImg.png");
-            newimg.setAttribute("width", (divheight*0.35)+"px;");
-            newimg.setAttribute("height", (divheight*0.35)+"px;");
+            newimg.setAttribute("width", (divheight*0.45)+"px;");
+            newimg.setAttribute("height", (divheight*0.45)+"px;");
             newimg.setAttribute('style', 'margin-top: 40px;');
             newdiv.appendChild(newimg);
 
@@ -147,7 +162,7 @@ EFEEF4
             newimg2.setAttribute("src","res/images/dianA.png");
             newimg2.setAttribute("align", "right");
             newimg2.setAttribute("name", "dian");
-            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;position: absolute;z-index: 999;right: 0;top: 0;float: right;");
+            newimg2.setAttribute("style", "display: none;width: 30px;height: 30px;position: absolute;z-index: 998;right: 0;top: 0;float: right;");
             newdiv.appendChild(newimg2);
 
 
@@ -156,7 +171,7 @@ EFEEF4
              */
             var newSpan = document.createElement('span');
             newSpan.setAttribute("name", "itemName");
-            newSpan.setAttribute("style", "display: block;margin-top: 30px;");
+            newSpan.setAttribute("style", "display: block;margin-top: 40px;font-size: 35px;");
             newSpan.setAttribute("class","limitlength");
             newdiv.appendChild(newSpan);
 
@@ -219,7 +234,8 @@ EFEEF4
             fid.appendChild(newdiv);
         }
     }
-    for(var i=0;i<26;i++){
+
+    for(var i=0;i<(26+t_z_ymArray.length);i++){
         creatItem();
     }
 </script>
@@ -319,12 +335,19 @@ EFEEF4
     var itemsDiv = document.getElementsByName("itemDiv");
     var itemsName = document.getElementsByName("itemName");
 
-    for(var i=0;i<items.length;i++){
-        itemsName[parseInt(shunxuArray[i])].innerHTML = items[i];
+    for(var i=0;i<items.length+t_z_ymArray.length;i++){
 
+        if(i<26){
+            itemsName[parseInt(shunxuArray[i])].innerHTML = items[i];
+            if(xianshiArray[i] == "B"){
+                itemsDiv[parseInt(shunxuArray[i])].style.display = "none";
+            }
 
-        if(xianshiArray[i] == "B"){
-            itemsDiv[parseInt(shunxuArray[i])].style.display = "none";
+        }else{
+            itemsName[i].innerHTML = t_z_bmArray[(i-26)].innerText;
+            if(t_z_tpArray[(i-26)].innerText!=''){
+                cdtbArray[i].src='upload/'+t_z_tpArray[(i-26)].innerText;
+            }
         }
 
     }
@@ -458,24 +481,31 @@ EFEEF4
         var serialNumber;
         var listName;
         var index;
+        var expandUrl="";
         var itemsDiv = document.getElementsByName('itemDiv');
         for(var i=0;i<itemsDiv.length;i++){
             if(itemsDiv[i] == self){
                 index = i;
             }
         }
-        for(var i=0;i<shunxuArray.length;i++){
-            if(shunxuArray[i]==index)serialNumber=i;
+        if(index<26){
+            for(var i=0;i<shunxuArray.length;i++){
+                if(shunxuArray[i]==index)serialNumber=i;
+            }
+            listName = items[serialNumber];
+        }else{
+            serialNumber=t_z_ymArray[(index-26)].innerText;
+            listName=t_z_bmArray[(index-26)].innerText;
+            expandUrl=t_z_urlArray[(index-26)].innerText;
         }
 
-        listName = items[serialNumber];
 
-        var reply = {"serialNumber":serialNumber,"listName":listName};
+        var reply = {"serialNumber":serialNumber,"listName":listName,"expandUrl":expandUrl};
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.clickReply.postMessage(reply);
         }else{
-            window.callByJs.setValue(serialNumber,listName);
+            window.callByJs.setValue(serialNumber,listName,expandUrl);
         }
     }
     var admins=getQueryString("admin");
@@ -487,12 +517,12 @@ EFEEF4
     }
 
     function shenqing_gly() {
-        var reply = {"serialNumber":999,"listName":"申请成为工作圈管理员"};
+        var reply = {"serialNumber":999,"listName":"申请成为工作圈管理员","expandUrl":""};
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.clickReply.postMessage(reply);
         }else{
-            window.callByJs.setValue("999","申请成为工作圈管理员");
+            window.callByJs.setValue("999","申请成为工作圈管理员","");
         }
     }
     function xianShiYuanDian(){

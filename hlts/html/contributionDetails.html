@@ -19,7 +19,13 @@
         border: 1px solid gray;
     }
 </style>
-<body style="font-family: Heiti SC;">
+<body id="body1">
+
+<div id="timu" style="display:none;width: 100%;height: 120px;background: #029ae5;line-height: 120px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+    <span id="title" style="color: #FFFFFF;font-size: 50px;margin-left:30%;font-family: 微软雅黑;">贡献详情</span>
+</div>
+
 <ylt.for dataId="1491898403602">
     <div style="margin-right: 48px;margin-left: 48px;">
         <div style="font-size: 60px;margin-bottom: 30px;">$value</div>
@@ -27,7 +33,7 @@
 
 
         <div style="font-size: 40px;">
-            $value $value 点赞数:<span name="zanCount" style="color: gray"></span>
+            $value<span style="margin-left: 20px;margin-right: 20px;">$value</span>点赞数:<span name="zanCount" style="color: gray"></span>
             <img src="res/images/grayPraise.png" onclick="praise(this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;"/>
         </div>
         <hr/>
@@ -46,7 +52,7 @@
             <img name="uploadImg" onclick="clickPicture(this)" src="upload/$value" width="100%" height="100%" style="border-radius: 20px;">
         </div>
         <div style="height: 30px;clear: both;"></div>
-        <div style="font-size: 50px;text-indent: 2em;clear: both;">$value</div>
+        <div style="font-size: 50px;clear: both;"><pre style="word-wrap:break-word;display: block;white-space: pre-wrap;">$value</pre></div>
     </div>
 </ylt.for>
 
@@ -173,6 +179,15 @@
         /**alert("后"+strResult);**/
         Result = Result.split(start)[1];
         return Result;
+    }
+</script>
+<script>
+    if (getQueryString('kind') != null) {
+        var tm = getQueryString('kind');
+        if (tm == "gxxq") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("body1").style.margin="0px";
+        }
     }
 </script>
 </body>

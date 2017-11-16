@@ -31,7 +31,7 @@
 <div id="items" style="margin-top: 0px">
     <ylt.for dataId="1489977256203">
         <table border="0" cellpadding="0" cellspacing="0" width="100%" name="pagingDiv" style="margin-top: 2px;" >
-            <tr style="height: 133px;" onclick="clickCircle('$value','$value','$value','$value','$value','$value','$value','');" bgcolor="white" name="hang">
+            <tr style="height: 133px;" onclick="clickCircle('$value','$value','$value','$value','$value','$value','$value','','$value');" bgcolor="white" name="hang">
                 <td class="gps_td" style="width: 163px;height: 133px;">
                     <img src="" alt="upload/$value" name="pagingImg" style="margin-left: 30px;height: 120px;width: 133px;border: 1px solid gray;line-height: 200px;border-radius: 20px;"/>
                 </td>
@@ -69,7 +69,7 @@
         index = toIndex;
         if(index == count){
             var userAgent = navigator.userAgent;
-            if (userAgent.indexOf("iPhone") >= 0) {
+            if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                 window.webkit.messageHandlers.noMoreData.postMessage("没有更多数据了");
             }else{
                 /*window.callByJs.setValue("noMoreData");*/
@@ -101,7 +101,7 @@
                     bgDiv.style.height=bannerImg.height+"px";
                     clearInterval(set);
                 }
-            }
+            };
 
             var set = setInterval(check,40);
 
@@ -265,7 +265,8 @@
              var strVResult=sys_doComMandReturn("099","S_FL=gx2&S_ID="+(timestampsds+i)+"&S_ONE=所有&S_QZID="+circleID+"&S_TWO=个人贡献");
              var strVResult=sys_doComMandReturn("099","S_FL=hd2&S_ID="+(timestampsds+i)+"&S_ONE=最新问题&S_QZID="+circleID+"&S_TWO=历史回答");*/
 
-            var valueStr = "var circle = {'circleID':'" + circleID + "','circleName':'" + circleName + "'};var userAgent = navigator.userAgent;if (userAgent.indexOf('iPhone') >= 0) {window.webkit.messageHandlers.searchintoCircle.postMessage(circle);}else{window.callByJs.certification('02','04','06');window.callByJs.setValue('" + circleID + "','" + '' + "','" + '' +"','"+circleName +"');};";            document.getElementById('urlAA').value = valueStr;
+            var valueStr = "var circle = {'circleID':'" + circleID + "','circleName':'" + circleName + "'};var userAgent = navigator.userAgent;if (userAgent.indexOf('iPhone') >= 0) {window.webkit.messageHandlers.searchintoCircle.postMessage(circle);}else{window.callByJs.certification('02','04','06','');window.callByJs.setValue('" + circleID + "','" + '' + "','" + '' +"','"+circleName +"');};";
+            document.getElementById('urlAA').value = valueStr;
             return true;
         }
     }
@@ -315,7 +316,7 @@
 
 <script>
     var isClick=true;
-    function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2) {
+    function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2,circleIcon) {
         if(name_Nuthentication(circleID) == 0){
             circleRZ = "01";
             userRZ = "03";
@@ -323,15 +324,16 @@
             userRZ = "04";
         }
 
-        var circle = {"circleID":circleID,"circleName":circleName,'circleAdmin':circleAdmin,'circleRZ':circleRZ,'userRZ':userRZ,'videoYZ':videoYZ,'isSF':isSF};
+
+        var circle = {"circleID":circleID,"circleName":circleName,'circleAdmin':circleAdmin,'circleRZ':circleRZ,'userRZ':userRZ,'videoYZ':videoYZ,'isSF':isSF,'circleIcon':circleIcon};
         var userAgent = navigator.userAgent;
         if(isClick){
             isClick=false;
             setTimeout(function(){isClick=true;},2000);
-            if (userAgent.indexOf("iPhone") >= 0) {
+            if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                 window.webkit.messageHandlers.intoCircle.postMessage(circle);
             }else{
-                window.callByJs.certification(circleRZ,userRZ,videoYZ);
+                window.callByJs.certification(circleRZ,userRZ,videoYZ,circleIcon);
                 window.callByJs.setValue(circleID,circleName,circleAdmin,circleName2);
 
             }

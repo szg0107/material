@@ -104,7 +104,7 @@ EFEEF4
                     bgDiv.style.height=bannerImg.height+"px";
                     clearInterval(set);
                 }
-            }
+            };
 
             var set = setInterval(check,40);
 
@@ -269,7 +269,7 @@ EFEEF4
 
 
     var userAgent = navigator.userAgent;
-    if (userAgent.indexOf("iPhone") >= 0) {
+    if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
         window.webkit.messageHandlers.ejcd.postMessage(ejcdDataArray);
     }else{
         window.callByJs.getSubMenuName(gerengonxian,gerengonxian_one,woyaohuida,woyaohuida_one);
@@ -389,7 +389,7 @@ EFEEF4
         code = code.substr(0,6);
         var data = {"code":code};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.blocCode.postMessage(data);
         }else{
             window.callByJs.getGroupCode(code);
@@ -463,7 +463,7 @@ EFEEF4
     var reply = {"resources":resources,"resourcesShunXu":resourcesShunXu,"resourcesCount":resourcesCount,"urls":urls,"isOpenCategory":isOpenCategory};
     var reply_one={"resources":resources_one,"resourcesShunXu":resourcesShunXu_one,"resourcesCount":resourcesCount_one,"isOpenCategory_one":isOpenCategory_one};
     var userAgent = navigator.userAgent;
-    if (userAgent.indexOf("iPhone") >= 0) {
+    if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
         window.webkit.messageHandlers.resources.postMessage(reply);
         window.webkit.messageHandlers.resourcesOne.postMessage(reply_one);
     }else{
@@ -502,7 +502,7 @@ EFEEF4
 
         var reply = {"serialNumber":serialNumber,"listName":listName,"expandUrl":expandUrl};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.clickReply.postMessage(reply);
         }else{
             window.callByJs.setValue(serialNumber,listName,expandUrl);
@@ -519,7 +519,7 @@ EFEEF4
     function shenqing_gly() {
         var reply = {"serialNumber":999,"listName":"申请成为工作圈管理员","expandUrl":""};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.clickReply.postMessage(reply);
         }else{
             window.callByJs.setValue("999","申请成为工作圈管理员","");

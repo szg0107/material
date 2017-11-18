@@ -37,6 +37,12 @@
         if (r != null) return unescape(r[2]);
         return null;
     }
+    var circleIcon="";
+    if(getQueryString1("circleIcon")){
+        circleIcon=getQueryString1("circleIcon");
+    }else{
+        circleIcon="1493980291835_0.png";
+    }
     document.getElementById('T_P_QZB$S_QZM').hidden=true;
     /**这是获取session用户名**/
     var user="";
@@ -101,9 +107,9 @@
                 kongzhi = "06";
             }
             if(name_Nuthentication(returnResults[0]) == 0){
-                clickCircle(returnResults[0],searchContent,returnResults[1],"01","03","",kongzhi,"");
+                clickCircle(returnResults[0],searchContent,returnResults[1],"01","03","",kongzhi,"",circleIcon);
             }else{
-                clickCircle(returnResults[0],searchContent,returnResults[1],"","","",kongzhi,"");
+                clickCircle(returnResults[0],searchContent,returnResults[1],"","","",kongzhi,"",circleIcon);
             }
 
 
@@ -124,7 +130,7 @@
              var strVResultss=sys_doComMandReturn("041","S_QZID="+circleID+"&S_ID="+(timestamp+random3Code()));*/
 
 
-            for(i=0;i<7;i++){
+            for(var i=0;i<7;i++){
                 var timestampsds=new Date().getTime();
                 if(i==0){
                     var strVResult=sys_doComMandReturn("067","S_ID="+(timestampsds+i+random3Code())+"&S_QZID="+circleID+"&S_SFXS=A_A_A_A&S_XSSX=0_1_2_3&S_SP=视频&S_TP=图片&S_YP=音频&S_WA=文案&S_CFSY=zero");
@@ -155,7 +161,8 @@
              var strVResult=sys_doComMandReturn("099","S_FL=gx2&S_ID="+(timestampsds+i)+"&S_ONE=所有&S_QZID="+circleID+"&S_TWO=个人贡献");
              var strVResult=sys_doComMandReturn("099","S_FL=hd2&S_ID="+(timestampsds+i)+"&S_ONE=最新问题&S_QZID="+circleID+"&S_TWO=历史回答");*/
 
-            var valueStr = "var circle = {'circleID':'" + circleID + "','circleName':'" + circleName + "'};var userAgent = navigator.userAgent;if (userAgent.indexOf('iPhone') >= 0) {window.webkit.messageHandlers.searchintoCircle.postMessage(circle);}else{window.callByJs.certification('02','04','06');window.callByJs.setValue('" + circleID + "','" + '' + "','" + '' +"','"+circleName +"');};";            document.getElementById('urlAA').value = valueStr;
+            var valueStr = "var circle = {'circleID':'" + circleID + "','circleName':'" + circleName + "'};var userAgent = navigator.userAgent;if (userAgent.indexOf('iPhone') >= 0) {window.webkit.messageHandlers.searchintoCircle.postMessage(circle);}else{window.callByJs.certification('02','04','06','1493980291835_0.png');window.callByJs.setValue('" + circleID + "','" + '' + "','" + '' +"','"+circleName +"');};";
+            document.getElementById('urlAA').value = valueStr;
             return true;
         }
     }
@@ -165,7 +172,7 @@
         var ResultStr=getTx("seekName="+name,"phoneJump.view");
         var over=";";
         var cID=incision(ResultStr,"circleNumber=",over);
-        Admin=incision(ResultStr,"circleAdmin=",over);
+        var Admin=incision(ResultStr,"circleAdmin=",over);
         var Results = new Array();
         Results[0]=cID;
         Results[1]=Admin;
@@ -198,7 +205,7 @@
 </script>
 
 <script>
-    function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2) {
+    function clickCircle(circleID,circleName,circleAdmin,circleRZ,userRZ,isSF,videoYZ,circleName2,circleIcon) {
         if(name_Nuthentication(circleID) == 0){
             circleRZ = "01";
             userRZ = "03";
@@ -206,12 +213,12 @@
             userRZ = "04";
         }
 
-        var circle = {"circleID":circleID,"circleName":circleName,'circleAdmin':circleAdmin,'circleRZ':circleRZ,'userRZ':userRZ,'videoYZ':videoYZ,'isSF':isSF};
+        var circle = {"circleID":circleID,"circleName":circleName,'circleAdmin':circleAdmin,'circleRZ':circleRZ,'userRZ':userRZ,'videoYZ':videoYZ,'isSF':isSF,'circleIcon':circleIcon};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.intoCircle.postMessage(circle);
         }else{
-            window.callByJs.certification(circleRZ,userRZ,videoYZ);
+            window.callByJs.certification(circleRZ,userRZ,videoYZ,circleIcon);
             window.callByJs.setValue(circleID,circleName,circleAdmin,circleName2);
 
         }

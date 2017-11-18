@@ -174,7 +174,7 @@
     function clickCourseware(Courseware) {
         var courseware = {"Courseware":Courseware};
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.intoCourseware.postMessage(courseware);
         }else{
             window.callByJs.setValue(Courseware);
@@ -191,7 +191,7 @@
                 var title=document.getElementsByName('title')[i].innerHTML;
                 var data = {"title": title,"content":neirong};
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.details.postMessage(data);
                 } else {
                     alert("主题:\n"+title.replace(/(^\s*)/g,"")+"\n"+"简介:\n"+neirong);

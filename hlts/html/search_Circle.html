@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <style>
+        .gps_font {
+            font-size: 48px;
+            color: black;
+        }
+    </style>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <meta name=viewport content="user-scalable=no">
+    <meta charset="UTF-8">
+    <title>所有圈子</title>
+</head>
+<body style="margin: 0 auto;" bgcolor="#efeef4">
+<div>
+    <div style="margin-bottom: 30px;text-align: center;">
+        <ylt.for dataId="1505203549619">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" name="pagingDiv"
+                   style="margin-top: 4px;background: #FFFFFF;" align="center">
+                <tr style="height: 133px;" onclick="getCircleNames('$value','$value')">
+                    <td class="gps_td" style="width: 163px;height: 133px;">
+                        <img src="upload/$value" alt="" name="pagingImg"
+                             style="margin-left: 30px;height: 120px;width: 133px;border: 1px solid gray;line-height: 200px;border-radius: 20px;"/>
+                    </td>
+                    <td align="left"><span style="margin-left: 30px;" class="gps_font" name="circleName">$value</span>
+                    </td>
+                    <td align="right"><img src="res/images/jia_lan.png"
+                                           style="margin-right: 30px;width: 50px;height: 50px;"/></td>
+                </tr>
+            </table>
+        </ylt.for>
+    </div>
+
+    <div style="text-align: center;font-size: 48px;" id="tiShi"></div>
+
+    <div style="display: none;" id="souSuo">
+        <form id="searchForm" action="search_Circle.view" method="post">
+            <input type='hidden' name='NO_charset' value='utf-8'/>
+            <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
+        </form>
+    </div>
+
+
+</div>
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    /*得到地址栏的中文参数*/
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    /*得到地址栏的英文参数*/
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    /*搜索的圈子名*/
+    var circleName = getQueryString1("circleName");
+    /*父容器*/
+    var pagingDiv = document.getElementsByName("pagingDiv");
+    /*搜索的关键字*/
+    var cName = getQueryString1("cName");
+    /*搜索的圈子是否存在*/
+    var isCircleExist = seekName(cName);
+    /*根据用户输入的内容查出匹配的圈子*/
+    function sous(circleName) {
+        contentInput.value = circleName;
+        searchForm.action = "search_Circle.view?&w=a&cName=" + circleName;
+        searchForm.submit();
+    }
+    /*如果circleName不为空调用搜索方法将圈子名称传入*/
+    if (circleName) {
+        sous(circleName);
+    }
+
+    /**搜索的圈子名是否存在**/
+    function seekName(name) {
+        var ResultStr = getTx("seekName=" + name, "phoneJump.view");
+        var over = ";";
+        var cID = incision(ResultStr, "circleNumber=", over);
+        var Admin = incision(ResultStr, "circleAdmin=", over);
+        var Results = new Array();
+        Results[0] = cID;
+        Results[1] = Admin;
+        return Results;
+    }
+
+
+    /**切割字符串方法  incision(切割) Result结果，从哪里切，切割到哪**/
+    function incision(Result, start, over) {
+        Result = Result.substr(Result.indexOf(start));
+        Result = Result.substr(0, Result.indexOf(over));
+        /**alert("后"+strResult);**/
+        Result = Result.split(start)[1];
+        return Result;
+    }
+    /*如果匹配列表有值时提示创建或加入圈子否则提示*/
+    if (pagingDiv.length != 0) {
+        /*圈子存在不是集团圈子*/
+        if (isCircleExist[0] != null && check_to_bloc(cName) == 'false') {
+            tiShi.setAttribute("onclick", "getCircleNames('" + cName + "');");
+            tiShi.innerHTML = "加入\"<span style='color: #ff0000;'>" + cName + "</span>\"工作圈!<br/><button style='border-radius: 10px;font-size: 48px;background-color: #029ae5;color: #FFFFFF;'>加入</button>";
+        } else if (isCircleExist[0] == null) {
+            tiShi.setAttribute("onclick", "getCircleNames('" + cName + "');");
+            tiShi.innerHTML = "创建\"<span style='color: #ff0000;'>" + cName + "</span>\"工作圈!<br/><button style='border-radius: 10px;font-size: 48px;background-color: #029ae5;color: #FFFFFF;'>创建</button>";
+        }
+
+    } else {
+        if (isCircleExist[0] != null && check_to_bloc(cName) == 'true') {
+            /*圈子存在并且是集团圈子*/
+            tiShi.innerHTML = "抱歉，\"<span style='color: #ff0000;'>" + cName + "</span>\"工作圈是集团工作圈，目前不能创建或加入！";
+        } else {
+            tiShi.setAttribute("onclick", "getCircleNames('" + cName + "');");
+            tiShi.innerHTML = "抱歉，没有找到与\"<span style='color: #ff0000;'>" + cName + "</span>\"相关的工作圈；您可以创建\"<span style='color: #029ae5'>" + cName + "</span>\"工作圈。<br/><button style='border-radius: 10px;font-size: 48px;background-color: #029ae5;color: #FFFFFF;'>创建工作圈</button>";
+        }
+    }
+</script>
+
+<script type="text/javascript">
+
+    /*设置或获取 URL 的主机部分*/
+    var address = window.location.host;
+    var url = "";
+    if (address == "123.56.187.157") {
+        url = "/hlts/phone_gzqz.view?&circleName=";
+    } else {
+        url = "/phone_gzqz.view?&circleName=";
+    }
+
+    function getCircleNames(circleName, circleIcon) {
+        window.location = url + circleName + "&circleIcon=" + circleIcon;
+    }
+</script>

@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
 <style>
     .gps_font {
         font-size: 48px;
@@ -7,12 +10,13 @@
 <meta name=viewport content="user-scalable=no">
 <meta charset="UTF-8">
 <title>所有圈子</title>
+</head>
 <body style="margin: 0 auto;" bgcolor="#efeef4">
 <div>
     <div style="margin-bottom: 160px;align: center;">
         <ylt.for dataId="1505203549619">
             <table border="0" cellpadding="0" cellspacing="0" width="85%" name="pagingDiv" style="margin-top: 4px;border-bottom: 1px solid #000000;" align="center" >
-                <tr style="height: 133px;" onclick="getCircleNames('$value')">
+                <tr style="height: 133px;" onclick="getCircleNames('$value','$value')">
                     <td class="gps_td" style="width: 163px;height: 133px;">
                         <img src="upload/$value" alt="" name="pagingImg" style="margin-left: 30px;height: 120px;width: 133px;border: 1px solid gray;line-height: 200px;border-radius: 20px;"/>
                     </td>
@@ -23,6 +27,7 @@
         </ylt.for>
     </div>
 
+    <div style="text-align: center;font-size: 48px;" id="tiShi"></div>
 
     <div style="background:#BFBFBF;text-align: center;padding: 10px;position: fixed;z-index: 999;right: 0;bottom:0;width: 100%;" id="souSuo">
         <form id="searchForm" action="all_circle.view" method="post">
@@ -48,21 +53,25 @@
 
 <script type="text/javascript" charset="UTF-8">
     var ua = navigator.userAgent.toLowerCase();
+    var pagingDivs=document.getElementsByName("pagingDiv");
     if (/iphone|ipad|ipod/.test(ua)) {
         con.style.width="65%";
     }
+    /*得到地址栏的中文参数*/
     function getQueryString1(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = decodeURI(window.location.href).substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+    /*得到地址栏的英文参数*/
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return null;
     }
-    if(getQueryString1('content')!=null){
+    /*如果w的值等于a隐藏搜索框*/
+    if(getQueryString('w')=="a"){
         souSuo.style.display="none";
     }
     /*根据用户输入的内容查出匹配的圈子*/
@@ -74,6 +83,9 @@
             searchForm.action="all_circle.view?w=a";
             searchForm.submit();
         }
+    }
+    if(pagingDivs.length==0){
+        tiShi.innerText="抱歉，没有找到相关的工作圈!"
     }
 </script>
 
@@ -88,7 +100,7 @@
         url= "/phone_gzqz.view?&circleName=";
     }
 
-    function getCircleNames(circleName){
-        window.location= url +circleName;
+    function getCircleNames(circleName,circleIcon){
+        window.location= url +circleName+"&circleIcon="+circleIcon;
     }
 </script>

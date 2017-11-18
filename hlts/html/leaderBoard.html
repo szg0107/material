@@ -40,7 +40,7 @@
             <img src="upload/$value" alt="" name="allImage" style="height: 115px;width: 115px;border: 1px solid gray;border-radius: 80px;float: left;margin-top: 20px;"/>
             <div style="float: left;margin-left: 20px;line-height: 150px;text-overflow: ellipsis; white-space: nowrap;overflow:hidden;width: 50%;text-align: left;" name="allMingZi">$value</div>
         </div>
-        <div style="width: 30%;margin-top: 20px;float:left;font-size: 48px;text-align: center;" name="allFen">$value<br/><span style="color:#666666;font-size: 28px;">总分</span></div>
+        <div style="width: 30%;margin-top: 20px;float:left;font-size: 48px;text-align: center;" name="allFen"><span name="fenShu">$value</span><br/><span style="color:#666666;font-size: 28px;">总分</span></div>
     </div>
 </ylt.for>
 
@@ -56,6 +56,7 @@
         var allImageDiv=document.getElementsByName("allImage");
         var allMingZiDiv=document.getElementsByName("allMingZi");
         var allFenDiv=document.getElementsByName("allFen");
+        var fenShuSpan=document.getElementsByName("fenShu");
         if(waiBuDiv.length>=3){
             for(var i=0;i<3;i++){
                 /*allPaiMingDiv[i].style.color="#029ae5";*/
@@ -89,6 +90,9 @@
         }
 
         for(var i=0;i<waiBuDiv.length;i++){
+            if(fenShuSpan[i].innerText==null||fenShuSpan[i].innerText==""||fenShuSpan[i].innerText=="null"){
+                fenShuSpan[i].innerText="暂无";
+            }
             if(user==waiBuDiv[i].id){
                 tu.src=allImageDiv[i].src;
                 MingZi.innerText=allMingZiDiv[i].innerText;

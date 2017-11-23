@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name=viewport content="user-scalable=no">
+    <title>电商订单</title>
+    <style>
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
+
+    </style>
+</head>
+<body style="margin: 0;padding: 0;">
+<div style="margin:20px;">
+    <ylt.for dataId="1511455868875">
+        <div class="gps_font">
+            <div style="overflow: auto;margin-top: 10px;margin-bottom: 10px;" onclick="click_order('$value')">
+                <div style="float: left;width: 40%;height:300px;text-align: center;"><img
+                        src="upload/$value" style="width:280px;height: 280px;margin-top: 10px;margin-left:5px;"/></div>
+                <div style="float: left;width: 60%;height:300px;">
+                    <div style="text-overflow: ellipsis;overflow:hidden;height: 200px;">
+                        <!--飞利浦（PHILIPS）新国标插座/插线板/插排/排插/接线板/拖线板 8位3米全长 保护门安全 防火阻燃 商品信息-->
+                        $value
+                    </div>
+                    <div style="overflow: auto; margin-top: 10px;">
+                        <div style="float: left;">共$value件商品</div>
+                        <div style="float: right;">实付￥$value</div>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow: auto;">
+                <div style="float: left;">$value</div>
+                <button style="float: right;" class="gps_font">确认收货</button>
+            </div>
+            <hr size="3" style="background: #666;border: 0;">
+        </div>
+    </ylt.for>
+</div>
+<script type="text/javascript">
+    function click_order(orderid){
+        var data = {"productId":orderid};
+        var value=[orderid];
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
+            window.webkit.messageHandlers.intoProduct.postMessage(data);
+        } else {
+            window.callByJs.setValue(value);
+        }
+    }
+</script>
+</body>
+</html>

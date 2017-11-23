@@ -144,45 +144,51 @@
 
 <script type="text/javascript">
     var count = 1;
+
     function initType() {
         T_SPDDB$S_GMSL.style.marginLeft = "0px";
         T_SPDDB$S_GMSL.value = "1";
     }
     initType();
+
     function addCount() {
         count = parseInt(T_SPDDB$S_GMSL.value);
         if (count > 0) {
             ++count;
             T_SPDDB$S_GMSL.value = count + "";
+            T_SPDDB$S_ZJE.value = (count * parseFloat(T_SPDDB$S_ZJE.value)) + "";
         }
     }
+
     function subtractionCount() {
         count = parseInt(T_SPDDB$S_GMSL.value);
         if (count > 1) {
             --count;
             T_SPDDB$S_GMSL.value = count + "";
+            T_SPDDB$S_ZJE.value = (count * parseFloat(T_SPDDB$S_ZJE.value)) + "";
         }
     }
     /*得到单选按钮的值*/
     function getValue() {
         document.getElementById("tij").click();
-        var value = '';
+        var payWay = '';
         var radio = document.getElementsByName("Fruit");
         for (var i = 0; i < radio.length; i++) {
             if (radio[i].checked == true) {
-                value = radio[i].value;
+                payWay = radio[i].value;
                 break;
             }
         }
-        /*var taskDescription = document.getElementById("pay_cost_reason").innerText;
-
-         var dict = {"payWay": value, "amount": amount, "taskDescription": taskDescription};
-         var userAgent = navigator.userAgent;
-         if (userAgent.indexOf("iPhone") >= 0) {
-         window.webkit.messageHandlers.payWay.postMessage(dict);
-         } else {
-         window.callByJs.setValue(value, amount, taskDescription);
-         }*/
+        /*var taskDescription = document.getElementById("pay_cost_reason").innerText;*/
+        var amount = T_SPDDB$S_ZJE.value;
+        var dict = {"payWay": payWay, "amount": amount};
+        var valueArray = [payWay, amount];
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.payWay.postMessage(dict);
+        } else {
+            window.callByJs.setValue(valueArray);
+        }
     }
 </script>
 </body>

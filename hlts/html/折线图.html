@@ -1,56 +1,56 @@
 <html lang="en">
 <head>
-  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/highcharts.js"></script>
 
-  <script>
-    $(function () {
-    $('#container').highcharts({
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: '上面'
-        },
-        subtitle: {
-            text: '互联探索'
-        },
-        xAxis: { 
-            categories: ['xzczx', 'Feb', 'Mar', 'Apr', 'May', 'Jun' ,'11111', '2222', '33333', '555', '666', '777777' ]
-        },
-        yAxis: {
-            title: {
-                text: '侧面'
-            }
-        },
-        tooltip: {
-            enabled: false,
-            formatter: function() {
-                return '<b>'+ this.series.name +'</b>'+this.x +': '+ this.y +'°C';
-            }
-        },
-        plotOptions: {
-            line: {
-                dataLabels: {
-                    enabled: true
+    <script>
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    type: 'line'
                 },
-                enableMouseTracking: false
-            }
-        },
-        series: [{
-            name: 'Tokyo',
-            data: [58.7, 6.9, 9.5, 14.5, 18.4, 21.5,58.7, 6.9, 9.5, 14.5, 18.4, 21.5]
-        }, {
-            name: 'London',
-            data: [180, 4.2, 5.7, 8.5, 11.9, 15.2 ]
-        }]
-    });
-});
-  </script>
+                title: {
+                    text: '上面'
+                },
+                subtitle: {
+                    text: '互联探索'
+                },
+                xAxis: {
+                    categories: ['xzczx', 'Feb', 'Mar', 'Apr', 'May', 'Jun' ,'11111', '2222', '33333', '555', '666', '777777' ]
+                },
+                yAxis: {
+                    title: {
+                        text: '侧面'
+                    }
+                },
+                tooltip: {
+                    enabled: false,
+                    formatter: function() {
+                        return '<b>'+ this.series.name +'</b>'+this.x +': '+ this.y +'°C';
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Tokyo',
+                    data: [58.7, 6.9, 9.5, 14.5, 18.4, 21.5,58.7, 6.9, 9.5, 14.5, 18.4, 21.5]
+                }, {
+                    name: 'London',
+                    data: [180, 4.2, 5.7, 8.5, 11.9, 15.2 ]
+                }]
+            });
+        });
+    </script>
 </head>
 <body>
-  <div id="container" style="min-width:700px;height:400px"></div>
-  
-  
+<div id="container" style="min-width:700px;height:400px"></div>
+
+
 </body>
 </html>

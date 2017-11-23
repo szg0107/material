@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name=viewport content="user-scalable=no">
-    <title>个人信息</title>
+    <title></title>
 
 
 </head>
@@ -93,16 +93,16 @@
                         公司名称:$value
                     </td>
                 </tr>
-                <tr>
-                    <td >
-                        所在部门:$value
-                    </td>
-                </tr>
-                <tr>
-                    <td >
-                        从事专业:$value
-                    </td>
-                </tr>
+                <!--<tr>-->
+                <!--<td >-->
+                <!--所在部门:$value-->
+                <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--<td >-->
+                <!--从事专业:$value-->
+                <!--</td>-->
+                <!--</tr>-->
 
             </table>
             <button type="submit" style="background-color: #029ae5;width: 450px;height: 100px;margin-top: 100px;color: white;border-radius: 10px;font-size: 50px;"  onclick="changeNickName();">完成</button>
@@ -152,7 +152,7 @@
 
 
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.progress.postMessage(progressStr);
         }else{
             window.callByJs.setValues(progressStr);
@@ -205,14 +205,18 @@
         document.getElementById("T_YHBA$S_NC").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
         document.getElementById("T_YHBA$S_GRYX").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
         document.getElementById("T_YHBA$S_GSMC").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
-        document.getElementById("T_YHBA$S_SZBM").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
-        document.getElementById("T_YHBA$S_CSZY").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+        /*
+         document.getElementById("T_YHBA$S_SZBM").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+         document.getElementById("T_YHBA$S_CSZY").setAttribute("onclick","original_hair_message(this.placeholder,this.id,this.value)");
+         */
     }
     document.getElementById("T_YHBA$S_NC").setAttribute("placeholder","请输入用户名昵称");
     document.getElementById("T_YHBA$S_GRYX").setAttribute("placeholder","请输入个人邮箱");
     document.getElementById("T_YHBA$S_GSMC").setAttribute("placeholder","请输入公司名称");
-    document.getElementById("T_YHBA$S_SZBM").setAttribute("placeholder","请输入所在部门");
-    document.getElementById("T_YHBA$S_CSZY").setAttribute("placeholder","请输入从事专业");
+    /*
+     document.getElementById("T_YHBA$S_SZBM").setAttribute("placeholder","请输入所在部门");
+     document.getElementById("T_YHBA$S_CSZY").setAttribute("placeholder","请输入从事专业");
+     */
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = decodeURI(window.location.search).substr(1).match(reg);
@@ -224,16 +228,19 @@
      document.getElementById('nickName').value=valueStr;*/
     T_YHBA$S_NC.style.width="65%";
     T_YHBA$S_GRYX.style.width="65%";
-    T_YHBA$S_SZBM.style.width="65%";
     T_YHBA$S_GSMC.style.width="65%";
-    T_YHBA$S_CSZY.style.width="65%";
+
+    /*
+     T_YHBA$S_SZBM.style.width="65%";
+     T_YHBA$S_CSZY.style.width="65%";
+     */
     function changeNickName() {
         var nickName = document.getElementById('T_YHBA$S_NC').value;
         /*var strVResult = sys_doComMandReturn("017", "&S_NC=" + nickName);*/
         alert('修改成功');
 
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.changeSuccess.postMessage(nickName);
         }else{
             window.callByJs.setValue(nickName);

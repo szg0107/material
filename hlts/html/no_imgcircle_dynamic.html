@@ -32,17 +32,21 @@
 </div>
 
 <ylt.for dataId="1501228333094">
-    <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;">
-        <div onclick="clickCourseware('$value',this);recordLrecord('$value');" name="pdf">
-            <div class="gps_font" style="background-color: #efeef4;height:100%;margin-top: 30px;overflow:auto;">
-                <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
-                <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
-                    <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:30px;height:30px;display: none;">
-                    <div  name="title" style="float: left;word-break: break-all;word-wrap: break-word;">$value</div>
+    <div style="margin-top: 0px;margin-left: 20px;margin-right: 20px;clear: both;">
+        <div style="overflow: auto;" onclick="clickCourseware('$value',this);recordLrecord('$value');">
+            <div style="float: left;width: 40%;"><img src="" alt="upload/$value" name="pagingImg" width="100%" style="border: 1px solid gray;border-radius: 20px;height: 300px;width: 300px;margin-top: 20px;"></div>
+            <div style="float: left;overflow: auto;width: 60%;">
+                <div  name="pdf">
+                    <div class="gps_font" style="background-color: #efeef4;height:100%;margin-top: 30px;overflow:auto;">
+                        <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
+                        <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
+                            <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:30px;height:30px;display: none;">
+                            <div  name="title" style="float: left;word-break: break-all;word-wrap: break-word;">$value</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
         <div style="height: 100px;margin-left: 20px;" align="center">
             <div  style="font-size: 35px;color: gray;float: left;margin-top: 30px">
                 $value
@@ -59,7 +63,7 @@
             </div>
 
 
-            <div style="float: left;margin-top: 20px;margin-left: 80px;">
+            <div style="float: right;margin-top: 20px;margin-left: 80px;">
                 <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'dynamic',this)" id="$value"
                      name="zan" align="right" style="width: 60px;height: 60px;margin-left: 10%"/>
             </div>
@@ -71,8 +75,6 @@
             <!--style="margin-top: 20px;width: 60px;height: 60px;"/>-->
             <!--</div>-->
         </div>
-
-
         <div style="background-color: white;clear: both;">
             <hr size="3" style="background: #666;border: 0;">
         </div>
@@ -122,6 +124,14 @@
 <script type="text/javascript">
     updateZan('dynamic',getQueryString('id'));
     var pdf = document.getElementsByName('pdf');
+    var pagingImgDiv=document.getElementsByName("pagingImg");
+    for(var i=0;i<pagingImgDiv.length;i++){
+        if(pagingImgDiv[i].alt.length>7){
+            pagingImgDiv[i].src=pagingImgDiv[i].alt;
+        }else{
+            pagingImgDiv[i].src="upload/1493980291835_0.png";
+        }
+    }
     if(pdf.length == 0){
         tishi.innerText="很抱歉，没有您想要的资源！";
     }
@@ -134,7 +144,7 @@
                 alert('您不是本圈子会员！请进行充值！');
             } else {
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.needPay.postMessage(null);
                 } else {
                     window.callByJs.isVIP();
@@ -164,7 +174,7 @@
             setTimeout(function () {
                 isClick = true;
             }, 2000);
-            if (userAgent.indexOf("iPhone") >= 0) {
+            if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                 window.webkit.messageHandlers.intoCourseware.postMessage(courseware);
             } else {
                 window.callByJs.setValue(Courseware);
@@ -182,7 +192,7 @@
                 var title=document.getElementsByName('title')[i].innerHTML;
                 var data = {"title": title,"content":neirong};
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.details.postMessage(data);
                 } else {
                     alert("主题:\n\t\t"+title.replace(/(^\s*)/g,"")+"\n"+"简介:\n\t\t"+neirong);

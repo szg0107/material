@@ -13,6 +13,38 @@
         white-space: -o-pre-wrap; /*Opera7*/
         word-wrap: break-word; /*InternetExplorer5.5+*/
     }
+
+    /*轮播图样式*/
+    #div1 {
+        position: relative;
+        border: 1px solid black;
+        margin-left: 10%;
+        height: 400px;
+        margin-top: 20px;
+        overflow: hidden;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #div1 ul {
+        position: absolute;
+        left: 0;
+    }
+
+    #div1 ul li {
+        list-style: none;
+        float: left;
+        width: 0px;
+        padding: 0px;
+    }
+
+    #div1 img {
+        width: 100%;
+        padding: 0px;
+    }
 </style>
 <body>
 
@@ -41,17 +73,50 @@
 
     <div style="width: 100%;height: 10px;overflow: hidden"></div>
 
+    <!--轮播图+购买按钮-->
     <div style="width: 95%;margin-left: 5%;font-size: 45px;color: black;">为您推荐:</div>
-    <!--商品描述-->
-    <div style="width: 90%;font-family: '微软雅黑';color: #3a3a3a;font-size: 48px;letter-spacing: 2px;overflow: hidden;margin-left: 5%;margin-top: 50px;">
-        <pre style="word-wrap: break-word;" width="100%">$value</pre>
+    <div id="div1">
+        <ul>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+            <li>
+                <img src="" alt="$value">
+            </li>
+        </ul>
     </div>
 
 
     <div style="width: 100%;height: 100px"></div>
-    <!--轮播图+购买按钮-->
-    <div style="display: none;">$value $value $value $value $value $value $value $value $value $value</div>
-    <div style="width: 90%;margin-left: 5%;margin-right:5%;font-size: 45px;color: black;text-align: right;"><button onclick="window.location.href='https://www.baidu.com/'">购买</button></div>
+    <div style="width: 95%;margin-left: 5%;font-size: 45px;color: black;">商品简介:</div>
+    <!--商品描述-->
+    <div style="width: 90%;font-family: '微软雅黑';color: #3a3a3a;font-size: 48px;letter-spacing: 2px;overflow: hidden;margin-left: 5%;margin-top: 50px;">
+        <pre style="word-wrap: break-word;" width="100%">$value</pre>
+    </div>
+    <div style="width: 90%;margin-left: 5%;margin-right:5%;font-size: 45px;color: black;text-align: right;display: none;">
+        <button onclick="window.location.href='https://www.baidu.com/'">$value 购买</button>
+    </div>
     <div style="width: 95%;font-size: 36px;color: #029ae5;margin-top: 100px;margin-left: 5%">
         看更多精彩内容，请下载开门KMoon应用并搜索"$value"。
     </div>
@@ -67,12 +132,113 @@
 </div>
 </body>
 
-<script>
+<script type="text/javascript">
     var userAgent = navigator.userAgent;
     if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
         document.getElementById('2weima').src = "res/images/IOS.png";
     } else {
         document.getElementById('2weima').src = "res/images/ANZHUO.png";
+    }
+</script>
+
+
+<script type="text/javascript">
+
+
+    var oDiv = document.getElementById("div1");
+    var oUl = oDiv.getElementsByTagName("ul")[0];
+    var aLi = oUl.getElementsByTagName("li");
+
+
+    for (var i = 0; i < aLi.length; i++) {
+        if (aLi[i].childNodes[1].alt.indexOf('.') != -1) {
+            aLi[i].childNodes[1].src = 'upload/' + aLi[i].childNodes[1].alt;
+        } else {
+            aLi[i].parentNode.removeChild(aLi[i]);
+            i--;
+        }
+    }
+
+
+    var SCREEN_WIDTH = oDiv.clientWidth*0.9;
+
+    oUl.style.width = aLi.length * SCREEN_WIDTH + "px";
+    oUl.style.height = SCREEN_WIDTH + "px";
+
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].style.width = SCREEN_WIDTH + "px";
+    }
+    oDiv.style.height = SCREEN_WIDTH + "px";
+    oDiv.style.width = SCREEN_WIDTH + "px";
+
+    var t;
+
+
+    var x = 0;
+    /*触摸时的首次触摸点，用于计算触摸的位移量*/
+    var lastleftClient = 0;
+    /*上一次触摸时的偏移量*/
+    var cha = 0;
+    /* 图片还未回正时再次被触摸时离最近的回正位的偏移量*/
+    oDiv.addEventListener("touchstart", function (e) {
+        var e = e || window.event;
+        var touch = e.touches[0];
+        x = touch.clientX;
+        down = true;
+        window.clearInterval(t);
+
+        e.preventDefault();
+    }, false);
+    oDiv.addEventListener("touchmove", function (e) {
+        var e = e || window.event;
+        var touch = e.changedTouches[0];
+
+        oUl.id = touch.clientX - x;
+        oUl.style.left = lastleftClient - cha + touch.clientX - x + "px";
+
+        var xishu;
+        if (parseInt(oUl.style.left.substring(0, oUl.style.left.length - 2)) < 0 && parseInt(oUl.style.left.substring(0, oUl.style.left.length - 2)) > -(aLi.length - 1) * SCREEN_WIDTH) {
+            xishu = 1
+        } else {
+            xishu = 0.25;
+        }
+        oUl.style.left = lastleftClient - cha + (touch.clientX - x) * xishu + "px";
+
+
+    }, false);
+    oDiv.addEventListener("touchend", function (e) {
+        var e = e || window.event;
+        var touch = e.changedTouches[0];
+        /*右移动超过屏幕1/2*/
+        if (touch.clientX - x > (SCREEN_WIDTH / 2)) {
+            if (-lastleftClient > 0) {
+                lastleftClient += SCREEN_WIDTH;
+            }
+        }
+        /*左移动超过屏幕1/2*/
+        if (touch.clientX - x < (-SCREEN_WIDTH / 2)) {
+            if (-lastleftClient < (aLi.length - 1) * SCREEN_WIDTH) {
+                lastleftClient -= SCREEN_WIDTH;
+            }
+        }
+
+        t = window.setInterval("guiwei()", 1);
+
+    }, false);
+
+
+    function guiwei() {
+        var speed = 20;
+        /*回正速度*/
+        if (lastleftClient - parseInt(oUl.style.left.substring(0, oUl.style.left.length - 2)) >= speed) {
+            oUl.style.left = parseInt(oUl.style.left.substring(0, oUl.style.left.length - 2)) + speed + 'px';
+        } else if (lastleftClient - parseInt(oUl.style.left.substring(0, oUl.style.left.length - 2)) <= -speed) {
+            oUl.style.left = parseInt(oUl.style.left.substring(0, oUl.style.left.length - 2)) - speed + 'px';
+        } else {
+            oUl.style.left = lastleftClient + "px";
+            window.clearInterval(t);
+        }
+        cha = lastleftClient - parseInt(oUl.style.left.substring(0, oUl.style.left.length - 2));
     }
 </script>
 </html>

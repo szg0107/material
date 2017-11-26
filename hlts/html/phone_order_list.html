@@ -3,24 +3,27 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='js/checkform.js'></script>
     <title>电商订单</title>
     <style>
         .gps_font {
-            font-size: 50px;
+            font-size: 40px;
             color: black;
+            margin-top:10px;
         }
 
     </style>
 </head>
-<body style="margin: 0;padding: 0;">
-<div style="margin:20px;">
+<body style="margin: 0;padding: 0;background:#efeef4; ">
+<div>
     <ylt.for dataId="1511455868875">
         <div class="gps_font">
-            <div style="overflow: auto;margin-top: 10px;margin-bottom: 10px;" onclick="click_order('$value')">
-                <div style="float: left;width: 40%;height:300px;text-align: center;"><img
-                        src="upload/$value" style="width:280px;height: 280px;margin-top: 10px;margin-left:5px;"/></div>
-                <div style="float: left;width: 60%;height:300px;">
-                    <div style="text-overflow: ellipsis;overflow:hidden;height: 200px;">
+            <div style="overflow: auto;margin-top: 20px;margin-bottom: 2px;background: #FFFFFF;padding-bottom: 20px;" onclick="click_order(this,'orderId')"
+                 name="orderId" id="$value">
+                <div style="float: left;width: 40%;height:400px;text-align: center;margin: 10px;"><img
+                        src="upload/$value" style="width:380px;height: 380px;margin-top: 10px;"/></div>
+                <div style="float: left;width: 55%;height:400px;margin-left: 20px;margin-top: 10px;">
+                    <div style="text-overflow: ellipsis;overflow:hidden;height: 330px;">
                         <!--飞利浦（PHILIPS）新国标插座/插线板/插排/排插/接线板/拖线板 8位3米全长 保护门安全 防火阻燃 商品信息-->
                         $value
                     </div>
@@ -30,23 +33,65 @@
                     </div>
                 </div>
             </div>
-            <div style="overflow: auto;">
-                <div style="float: left;">$value</div>
-                <button style="float: right;" class="gps_font">确认收货</button>
+            <div style="overflow: auto;background: #FFFFFF;height: 100px;line-height: 100px;">
+                <div style="float: right;margin-left: 40px;margin-right: 40px;" name="orderStatus">$value</div>
+                <div style="float: right;border: 1px solid #029ae5; color: #029ae5;border-radius:10px;margin-left: 40px;height: 60px;line-height: 60px;margin-top: 20px;padding-left: 20px;padding-right: 20px;" onclick="click_order(this,'orderDetails')" name="orderDetails">订单详情</div>
+                <button style="float: right;background:#FFFFFF;border: 1px solid #029ae5; color: #029ae5;border-radius:10px;height: 60px;line-height: 60px;margin-top: 20px;border-radius:10px;display: none;padding-left: 20px;padding-right: 20px;"
+                        class="gps_font" name="confirmGoods" onclick="click_goods(this,'confirmGoods')">确认收货
+                </button>
             </div>
-            <hr size="3" style="background: #666;border: 0;">
         </div>
     </ylt.for>
+    <div id="tishi" class="gps_font" style="text-align: center;"></div>
 </div>
 <script type="text/javascript">
-    function click_order(orderid){
-        var data = {"productId":orderid};
-        var value=[orderid];
+    /*商品id，确认收货,订单状态*/
+    var orderIdArray = document.getElementsByName('orderId');
+    var confirmGoodsArray = document.getElementsByName('confirmGoods');
+    var orderStatusArray = document.getElementsByName('orderStatus');
+    /*判断订单是否是已收货的*/
+    for (var i = 0; i < orderStatusArray.length; i++) {
+        if (orderStatusArray[i].innerText != "已收货") {
+            confirmGoodsArray[i].style.display = "inline";
+        }
+    }
+    if(orderIdArray.length==0){
+        tishi.innerText="您目前还没有任何订单。";
+    }
+    /*确认收货是否可以点击*/
+    var isGoodsClick = true;
+    /*点击订单*/
+    function click_order(element, name) {
+        var i = query_element_id(element, name);
+        var data = {"productId": orderIdArray[i].id};
+        var value = [orderIdArray[i].id];
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.intoProduct.postMessage(data);
         } else {
             window.callByJs.setValue(value);
+        }
+    }
+    /*点击确认收货*/
+    function click_goods(element, name) {
+        var i = query_element_id(element, name);
+        if (isGoodsClick) {
+            isGoodsClick = false;
+            setTimeout(function () {
+                isGoodsClick = true;
+            }, 2000);
+            /*修改订单状态 并隐藏确认收货按钮*/
+            var Modify_order_status = sys_doComMandReturn("140", "id=" + orderIdArray[i].id);
+            confirmGoodsArray[i].style.display = "none";
+        }
+    }
+    /*得到当前选中项是第几个*/
+    function query_element_id(element, name) {
+        var elements = document.getElementsByName(name);
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] == element) {
+                return i;
+            }
         }
     }
 </script>

@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='js/pub.js'></script>
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/KMoonPub.js'></script>
     <title>Title</title>
     <style>
         .anniuFont {
@@ -29,13 +33,15 @@
 
 <ylt.for dataId="1511339188569">
 
-    <div name="productId" id="$value"  style="height: 520px;margin-top: 20px;background-color: white;padding-left: 20px;padding-top: 20px;padding-right: 20px;">
+    <div name="productId" id="$value"
+         style="height: 520px;margin-top: 20px;background-color: white;padding-left: 20px;padding-top: 20px;padding-right: 20px;">
         <div name="product" onclick="click_product(this,'product')">
-            <div style="width: 43%;height: 400px; float:left;" >
+            <div style="width: 43%;height: 400px; float:left;">
                 <img width="380px" height="380px" style="margin-left: 10px;margin-top: 10px"
                      src="upload/$value">
             </div>
-            <div name="productName" style="margin-left: 2%;width: 55%;height:340px;float: left;font-size: 36px;table-layout: fixed;text-overflow: ellipsis;-o-text-overflow: ellipsis;overflow: hidden;">
+            <div name="productName"
+                 style="margin-left: 2%;width: 55%;height:340px;float: left;font-size: 36px;table-layout: fixed;text-overflow: ellipsis;-o-text-overflow: ellipsis;overflow: hidden;">
                 $value
             </div>
             <div style="margin-left: 2%;width: 55%;height:60px;float: left;">
@@ -43,7 +49,7 @@
                     ￥<span name="productPrice">$value</span>
                 </div>
                 <div style="float: left;width: 50%;font-size: 36px">
-                    库存：$value
+                    库存：<span name="productStock">$value</span>
                 </div>
             </div>
         </div>
@@ -52,68 +58,146 @@
         <div style="width: 100%;height: 10px;overflow: auto;"></div>
         <div style="width: 100%;height: 5px;background-color: #efeef4;margin-top: 10px;"></div>
         <div style="width: 100%;height: 100px;">
-            <div style="width: 25%;height: 100%;float: left">
-                <img src="res/images/wx_share.png" class="anniuIcon">
+            <div style="width: 25%;height: 100%;float: left;" name="sc" onclick="click_sc(this,'sc')">
+                <img src="res/images/wsc.png" name="scpt" class="anniuIcon">
                 <div class="anniuFont">收藏</div>
             </div>
             <div style="width: 25%;height: 100%;float: left;" name="sj" onclick="click_sj(this,'sj','$value')">
-                <img src="res/images/wx_share.png" class="anniuIcon">
-
+                <img src="res/images/sj.png" class="anniuIcon">
                 <div class="anniuFont">商家</div>
             </div>
-            <div style="width: 25%;height: 100%;float: left" name="zf" onclick="click_zf(this,'sj')">
-                <img src="res/images/wx_share.png" class="anniuIcon">
-
+            <div style="width: 25%;height: 100%;float: left" name="zf" onclick="click_zf(this,'zf')">
+                <img src="res/images/wx.png" class="anniuIcon">
                 <div class="anniuFont">转发</div>
+                <div name="productProfile" hidden="true">$value</div>
             </div>
             <div style="width: 25%;height: 100%;float: left" name="gm" onclick="click_gm(this,'gm')">
-                <img src="res/images/wx_share.png" class="anniuIcon">
+                <img src="res/images/gwc.png" class="anniuIcon">
                 <div class="anniuFont">购买</div>
             </div>
+        </div>
+        <div name="circleIcon" hidden="true">
+            $value
         </div>
     </div>
 </ylt.for>
 </body>
 <script type="text/javascript">
-
+    /*商品id*/
     var productIdArray = document.getElementsByName('productId');
+    /*商品名称*/
     var productNameArray = document.getElementsByName('productName');
+    /*商品价格*/
     var productPriceArray = document.getElementsByName('productPrice');
-
-    function click_product(element,name) {
-        var i =  query_element_id(element,name);
-        var data = {"productId":productIdArray[i].id};
-        var value=[productIdArray[i].id];
+    /*商品简介*/
+    var productProfileArray = document.getElementsByName('productProfile');
+    /*收藏商品*/
+    var sctpArray = document.getElementsByName('scpt');
+    /*商品库存*/
+    var productStockArray = document.getElementsByName('productStock');
+    /*圈子封面图*/
+    var circleIconArray = document.getElementsByName('circleIcon');
+    /*点击订单*/
+    function click_product(element, name) {
+        var i = query_element_id(element, name);
+        var data = {"productId": productIdArray[i].id};
+        var value = [productIdArray[i].id];
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.intoProduct.postMessage(data);
         } else {
             window.callByJs.setValue(value);
         }
     }
-    function click_gm(element,name) {
-        var i =  query_element_id(element,name);
-        var data = {"productName":productNameArray[i].innerText,"productPrice":productPriceArray[i].innerText,"productId":productIdArray[i].id};
-        var value=[productNameArray[i].innerText,productPriceArray[i].innerText,productIdArray[i].id];
+    /*点击购买*/
+    function click_gm(element, name) {
+        var i = query_element_id(element, name);
+        var data = {"productId": productIdArray[i].id};
+        var value = [productIdArray[i].id];
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
-            window.webkit.messageHandlers.intoProduct.postMessage(data);
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+            window.webkit.messageHandlers.buyProduct.postMessage(data);
         } else {
             window.callByJs.buy(value);
         }
     }
-    function click_sj(element,name) {
-        var i =  query_element_id(element,name);
-
+    /*点击转发*/
+    function click_zf(element, name) {
+        var i = query_element_id(element, name);
+        var data = {
+            "title": productNameArray[i].innerText,
+            "content": productProfileArray[i].innerText,
+            "id": productIdArray[i].id,
+            "circleIcon" : trim(circleIconArray[i].innerHTML)
+        };
+        var value = [productNameArray[i].innerText, productProfileArray[i].innerText, productIdArray[i].id,trim(circleIconArray[i].innerHTML)];
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+            window.webkit.messageHandlers.wx_share.postMessage(data);
+        } else {
+            window.callByJs.weChatShare(value);
+        }
+    }
+    /*点击商家*/
+    function click_sj(element, name) {
+        var i = query_element_id(element, name);
+        var neirong = productProfileArray[i].innerHTML;
+        neirong = neirong.replace(/(^\s*)/g, "");
+        var data = {"content": neirong};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+            window.webkit.messageHandlers.sjInfo.postMessage(data);
+        } else {
+        }
 
     }
-    function query_element_id(element,name) {
-        var elements =  document.getElementsByName(name);
-        for(var i=0;i<elements.length;i++){
-            if(elements[i]==element){
+    function query_element_id(element, name) {
+        var elements = document.getElementsByName(name);
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] == element) {
                 return i;
             }
         }
+    }
+    /*收藏*/
+    function click_sc(element, name) {
+        var i = query_element_id(element, name);
+        var collectionId = productIdArray[i].id;
+        var category = 'sp';
+        var circleId = getQueryString('id');
+        var obj = sctpArray[i];
+
+        var userCollect = getTx("collectionId=" + collectionId + "&category=" + category, "phoneJumpB.view");
+        var userCollectID = incision(userCollect, "userCollectID=", ";");
+        if (userCollectID == "" || userCollectID == "null" || userCollectID == undefined || userCollectID == null) {
+            var timestamp = new Date().getTime();
+
+            var strVResult = sys_doComMandReturn("063", "S_CPID=" + collectionId + "&S_ID=" + timestamp + "&S_LB=" + category + "&S_QZID=" + circleId + "&S_SCSJ=" + timestamp);
+            obj.src = "res/images/ysc.png";
+            return 0;
+        } else {
+            var strVResult = sys_doComMandReturn("064", "S_ID=" + userCollectID + "&S_LB=" + category);
+            obj.src = "res/images/wsc.png";
+            return 1;
+        }
+    }
+    function updateShouCang() {
+
+        for (var i = 0; i < productIdArray.length; i++) {
+            if (collectStatus(productIdArray[i].id, 'sp')) {
+                sctpArray[i].src = "res/images/ysc.png";
+            } else {
+                sctpArray[i].src = "res/images/wsc.png";
+            }
+            ;
+        }
+    }
+    updateShouCang();
+    function trim(testStr) {
+        var resultStr = testStr.replace(/\ +/g, "");
+        resultStr = resultStr.replace(/[ ]/g, "");
+        resultStr = resultStr.replace(/[\r\n]/g, "");
+        return resultStr;
     }
 </script>
 </html>

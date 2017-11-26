@@ -4,44 +4,74 @@
     <meta charset="UTF-8">
     <title>订单详情</title>
     <meta name=viewport content="user-scalable=no">
+    <style type="text/css">
+        /*标题样式*/
+        .wenZiStyle {
+            float: left;
+            width: 350px;
+            height: 130px;
+            line-height: 130px;
+            color: #666666;
+            text-indent: 1.5em;
+        }
+
+        /*外层div样式*/
+        .divStyle {
+            background: #FFFFFF;
+            width: 100%;
+            margin: 0 auto;
+            border-bottom: 2px #efeef4 solid;
+            overflow: auto;
+        }
+
+        /*内容样式*/
+        .describeStyle {
+            float: left;
+            word-wrap: break-word;
+            word-break: break-all;
+            height: 130px;
+            line-height: 130px;
+        }
+    </style>
 </head>
-<body style="margin: 0;padding: 0;">
+<body style="margin: 0;padding: 0;background:#efeef4;">
 <div>
     <ylt.for dataId="1511458630314">
-        <div style="margin:20px;font-size: 50px;">
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">商品简介:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+        <div style="margin-top:20px;font-size: 50px;">
+            <div class="divStyle">
+                <div class="wenZiStyle">商品名称:</div>
+                <div class="describeStyle"
+                     style="width: 60%;height:100%;line-height: 100%;margin-top: 40px;margin-bottom: 40px;">$value
+                </div>
             </div>
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">发货时间:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+            <div class="divStyle">
+                <div class="wenZiStyle">发货时间:</div>
+                <div class="describeStyle">$value</div>
             </div>
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">购买人:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+            <div class="divStyle">
+                <div class="wenZiStyle">用户昵称:</div>
+                <div class="describeStyle">$value</div>
             </div>
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">联系方式:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+            <div class="divStyle">
+                <div class="wenZiStyle">联系方式:</div>
+                <div class="describeStyle">$value</div>
             </div>
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">购买数量:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+            <div class="divStyle">
+                <div class="wenZiStyle">购买数量:</div>
+                <div class="describeStyle">$value</div>
             </div>
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">购买金额:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+            <div class="divStyle">
+                <div class="wenZiStyle">购买金额:</div>
+                <div class="describeStyle">$value</div>
             </div>
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">物流公司:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+            <div class="divStyle">
+                <div class="wenZiStyle">物流公司:</div>
+                <div class="describeStyle">$value</div>
             </div>
-            <div style="overflow: auto;margin-bottom: 10px;">
-                <div style="float: left;width: 230px;color: #666666;">运单号:</div>
-                <div style="color: #029ae5;float: left;">$value</div>
+            <div class="divStyle">
+                <div class="wenZiStyle">物流单号:</div>
+                <div class="describeStyle">$value</div>
             </div>
-
         </div>
     </ylt.for>
 </div>

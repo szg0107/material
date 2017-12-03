@@ -72,10 +72,12 @@
             <div class="divStyle">
                 <div class="wenZiStyle">购买数量：</div>
                 <div class="inputStyle">
-                    <input style="font-size: 50px;width: 100px;margin-left: 0px;margin-top:0px;height: 80px;" onclick="subtractionCount();" value="-"
+                    <input style="font-size: 50px;width: 100px;margin-left: 0px;margin-top:0px;height: 80px;"
+                           onclick="subtractionCount();" value="-"
                            type="button"/>
                     <!--<input type="text" id="shu" value="1" style="margin-left: 0px;"/>-->$value
-                    <input style="font-size: 50px;margin-left: 0px;margin-top:0px;width: 100px;height: 80px;" onclick="addCount();" value="+"
+                    <input style="font-size: 50px;margin-left: 0px;margin-top:0px;width: 100px;height: 80px;"
+                           onclick="addCount();" value="+"
                            type="button"/>
                 </div>
             </div>
@@ -92,56 +94,60 @@
                 <div class="inputStyle"><!--<input type="text"/>-->$value</div>
             </div>
             <div style="display: none;">$value $value $value $value $value $value</div>
-
-            <button id="tij" hidden="true"></button>
+            <div id="fukuan" style="text-align: center;margin-top: 100px;">
+                <button id="tij"
+                        style="background-color: #029ae5;color: #FFFFFF;width: 450px;font-size:50px;border-radius:10px;height: 100px; "
+                        onclick="nextStep();"> 提交订单
+                </button>
+            </div>
         </ylt.form>
     </div>
 </form>
-<div style="margin: 0 auto;" class="gps_font">
-    <div id="zffs">
+<!--<div style="margin: 0 auto;" class="gps_font">-->
+<!--<div id="zffs">-->
 
-        <div style="padding-top:50px; text-indent: 1em;padding-bottom: 50px;width: 95%; margin: 0 auto;"
-             class="gps_font">
-            支付方式:
-        </div>
+<!--<div style="padding-top:50px; text-indent: 1em;padding-bottom: 50px;width: 95%; margin: 0 auto;"-->
+<!--class="gps_font">-->
+<!--支付方式:-->
+<!--</div>-->
 
-        <div style="background: #FFFFFF;width: 100%;border-bottom: 2px #efeef4 solid ;margin: 0 auto;">
-            <form action="" method="get">
-                <div style="border-bottom: 2px #efeef4 solid;height: 130px;line-height: 100px;"
-                     onclick="document.getElementsByName('Fruit')[0].checked='checked'">
-                    <div style="float: left;text-indent: 2em;">
-                        <img style="margin-top: 15px" src="res/images/zhifubao.png"/>
-                    </div>
-                    <div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">
-                        支付宝
-                    </div>
-                    <input name="Fruit" type="radio" value="支付宝" checked
-                           style="width:40px;height:40px;float: right;margin-top: 50px;margin-right: 40px;"/>
-                </div>
-                <div style="height: 130px;line-height: 100px;"
-                     onclick="document.getElementsByName('Fruit')[1].checked='checked'">
-                    <div style="float: left;text-indent: 2em;">
-                        <img style="margin-top: 15px;width: 100px;height: 100px;"
-                             src="res/images/WePay.png"/>
-                    </div>
-                    <div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">
-                        微信
-                    </div>
-                    <input name="Fruit" type="radio" value="微信"
-                           style="width:40px;height:40px;float: right;margin-top: 50px;margin-right: 40px;"/>
-                </div>
-            </form>
-        </div>
+<!--<div style="background: #FFFFFF;width: 100%;border-bottom: 2px #efeef4 solid ;margin: 0 auto;">-->
+<!--<form action="" method="get">-->
+<!--<div style="border-bottom: 2px #efeef4 solid;height: 130px;line-height: 100px;"-->
+<!--onclick="document.getElementsByName('Fruit')[0].checked='checked'">-->
+<!--<div style="float: left;text-indent: 2em;">-->
+<!--<img style="margin-top: 15px" src="res/images/zhifubao.png"/>-->
+<!--</div>-->
+<!--<div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">-->
+<!--支付宝-->
+<!--</div>-->
+<!--<input name="Fruit" type="radio" value="支付宝" checked-->
+<!--style="width:40px;height:40px;float: right;margin-top: 50px;margin-right: 40px;"/>-->
+<!--</div>-->
+<!--<div style="height: 130px;line-height: 100px;"-->
+<!--onclick="document.getElementsByName('Fruit')[1].checked='checked'">-->
+<!--<div style="float: left;text-indent: 2em;">-->
+<!--<img style="margin-top: 15px;width: 100px;height: 100px;"-->
+<!--src="res/images/WePay.png"/>-->
+<!--</div>-->
+<!--<div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">-->
+<!--微信-->
+<!--</div>-->
+<!--<input name="Fruit" type="radio" value="微信"-->
+<!--style="width:40px;height:40px;float: right;margin-top: 50px;margin-right: 40px;"/>-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
 
-    </div>
+<!--</div>-->
 
-    <div id="fukuan" style="text-align: center;margin-top: 100px;">
-        <button onclick="getValue();"
-                style="background-color: #029ae5;color: #FFFFFF;width: 450px;font-size:50px;border-radius:10px;height: 100px; ">
-            确认付款
-        </button>
-    </div>
-</div>
+<!--<div id="fukuan" style="text-align: center;margin-top: 100px;">-->
+<!--<button onclick="getValue();"-->
+<!--style="background-color: #029ae5;color: #FFFFFF;width: 450px;font-size:50px;border-radius:10px;height: 100px; ">-->
+<!--确认付款-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
 <ylt.for dataId="1511515926885">
     <div style="display: none;">
         <div id="stock">$value</div>
@@ -149,36 +155,57 @@
         <div id="productPrice">$value</div>
     </div>
 </ylt.for>
+<ylt.for dataId="1511868273932">
+    <div style="display: none;">
+        <div id="consigneeName">$value</div>
+        <div id="consigneeTelephone">$value</div>
+        <div id="consigneeAddress">$value</div>
+    </div>
+</ylt.for>
 <script type="text/javascript">
     /*获取地址参数*/
     function getQueryString1(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = decodeURI(window.location.href).substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
+        if (r != null) return unescape(r[2]);
+        return null;
     }
-    /*购买数量，单价,订单ID,库存量*/
+    /*购买数量，单价,订单ID,库存量，收货人姓名，收货人电话，收货人地址*/
     var count = 1;
-    var price=parseFloat(productPrice.innerText);
-    var orderId=T_SPDDB$S_ID.value;
-    var productStock=parseInt(stock.innerText);
+    var price = parseFloat(productPrice.innerText);
+    /*var price=productPrice.innerText;*/
+    var orderId = T_SPDDB$S_ID.value;
+    var productStock = parseInt(stock.innerText);
+    var consigneeNameValue = consigneeName.innerText;
+    var consigneeTelephoneValue = consigneeTelephone.innerText;
+    var consigneeAddressValue = consigneeAddress.innerText;
     /*初始化input数据*/
     function initType() {
+        /*给购买数量赋值初值，设置属性*/
         T_SPDDB$S_GMSL.style.marginLeft = "0px";
         T_SPDDB$S_GMSL.value = "1";
-        T_SPDDB$S_GMSL.style.textAlign="center";
-        T_SPDDB$S_GMSL.setAttribute('oninput',"inputValueChange();");
-        T_SPDDB$S_QZID.value=circleId.innerText;
-        T_SPDDB$S_ZJE.value=price;
+        T_SPDDB$S_GMSL.style.textAlign = "center";
+        T_SPDDB$S_GMSL.setAttribute("oninput", "inputValueChange();");
+        T_SPDDB$S_GMSL.setAttribute("onblur", "setInValue();");
+        /*给圈子ID、总金额赋初值*/
+        T_SPDDB$S_QZID.value = circleId.innerText;
+        T_SPDDB$S_ZJE.value = price;
+        /*用户最后一次订单信息  如果不为空就给昵称、电话、地址赋值*/
+        if (consigneeNameValue != "" || consigneeNameValue != "null") {
+            T_SPDDB$S_SHRXM.value = consigneeNameValue;
+            T_SPDDB$S_SHRDH.value = consigneeTelephoneValue;
+            T_SPDDB$S_SHRDZ.value = consigneeAddressValue;
+        }
     }
     initType();
     /*增加购买数量*/
     function addCount() {
         count = parseInt(T_SPDDB$S_GMSL.value);
-        if (count > 0&&count<productStock) {
+        if (count > 0 && count < productStock) {
             ++count;
             T_SPDDB$S_GMSL.value = count + "";
-            T_SPDDB$S_ZJE.value = (count *price ) + "";
-        }else{
+            T_SPDDB$S_ZJE.value = ((count * 100) * (price * 100)) / 10000 + "";
+        } else {
             alert("购买数量不能大于库存数量");
         }
     }
@@ -188,20 +215,25 @@
         if (count > 1) {
             --count;
             T_SPDDB$S_GMSL.value = count + "";
-            T_SPDDB$S_ZJE.value = (count * price) + "";
+            T_SPDDB$S_ZJE.value = ((count * 100) * (price * 100)) / 10000 + "";
         }
     }
     /*检测用户输入的是否是正整数并且小于库存量，并给总金额赋值*/
-    function inputValueChange(){
-        if(isRoundNumber(T_SPDDB$S_GMSL)&&parseInt(T_SPDDB$S_GMSL.value)<productStock){
-            if(parseInt(T_SPDDB$S_GMSL.value)<=0){
-                T_SPDDB$S_GMSL.value="1";
-                T_SPDDB$S_ZJE.value =price;
-            }else{
-                T_SPDDB$S_ZJE.value =parseInt(T_SPDDB$S_GMSL.value)*price;
+    function inputValueChange() {
+        if (isRoundNumber(T_SPDDB$S_GMSL) == undefined) {
+            if (parseInt(T_SPDDB$S_GMSL.value) < productStock) {
+                T_SPDDB$S_ZJE.value = parseInt(T_SPDDB$S_GMSL.value) * price;
+            } else {
+                T_SPDDB$S_GMSL.value = productStock;
+                T_SPDDB$S_ZJE.value = productStock * price;
             }
-        }else{
-            T_SPDDB$S_ZJE.value =parseInt(T_SPDDB$S_GMSL.value)*price;
+        }
+    }
+    /*如果购买数量为空时，购买数量为1，总金额为单价*/
+    function setInValue() {
+        if (isRoundNumber(T_SPDDB$S_GMSL) == false) {
+            T_SPDDB$S_GMSL.value = 1;
+            T_SPDDB$S_ZJE.value = price;
         }
     }
     /*得到单选按钮的值*/
@@ -217,8 +249,8 @@
         }
         /*var taskDescription = document.getElementById("pay_cost_reason").innerText;*/
         var amount = T_SPDDB$S_ZJE.value;
-        var dict = {"payWay": payWay, "orderId": orderId,"amount":amount};
-        var valueArray = [payWay, orderId,amount];
+        var dict = {"payWay": payWay, "orderId": orderId, "amount": amount};
+        var valueArray = [payWay, orderId, amount];
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0) {
             window.webkit.messageHandlers.payWay.postMessage(dict);
@@ -226,29 +258,35 @@
             window.callByJs.setValue(valueArray);
         }
     }
-
-
+    /*提交订单表单，跳转支付页面*/
+    function nextStep() {
+        urlAA.value = "window.location.href='phone_order_payment.view?&id=" + orderId + "'";
+    }
     /*输入的是否是正整数*/
     function isRoundNumber(obj) {
-        var num=obj.value;
-        if (num=="") {
-            obj.value=1;
+        var num = obj.value;
+        if (num == "") {
+            /*obj.value=1;*/
+            return false;
+        }
+        if (!(/(^[1-9]\d*$)/.test(num))) {
+            obj.value = num.substring(0, num.length - 1);
             return true;
         }
-         if (!(/(^[1-9]\d*$)/.test(num))) {
+        /*if (!(/(^[1-9]\d*$)/.test(num))) {
          alert("请输入正整数");
          return false;
-         }
+         }*/
         /*if (!(/^-?\d+\.?\d{0,2}$/.test(num))) {
-            alert("请输入小数（最多两位）或者正整数");
-            return false;
-        }else {
-            if(parseInt(min.innerText)<=parseInt(num)&&parseInt(num)<=parseInt(max.innerText)){
-                alert("输入正确");
-            }else{
-                alert("请输入打分区间之内的整数");
-            }
-        }*/
+         alert("请输入小数（最多两位）或者正整数");
+         return false;
+         }else {
+         if(parseInt(min.innerText)<=parseInt(num)&&parseInt(num)<=parseInt(max.innerText)){
+         alert("输入正确");
+         }else{
+         alert("请输入打分区间之内的整数");
+         }
+         }*/
     }
 </script>
 </body>

@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div style="height: 100px;margin-left: 20px;" align="center">
+            <div style="height: 80px;margin-left: 20px;" align="center">
                 <div style="font-size: 35px;color: gray;float: left;margin-top: 30px">
                     $value
                 </div>
@@ -226,7 +226,7 @@
             }
         }
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.clickNotification.postMessage(content);
         } else {
             window.callByJs.setValue(notificationId);

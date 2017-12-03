@@ -60,23 +60,30 @@
         <div style="width: 100%;height: 100px;">
             <div style="width: 25%;height: 100%;float: left;" name="sc" onclick="click_sc(this,'sc')">
                 <img src="res/images/wsc.png" name="scpt" class="anniuIcon">
+
                 <div class="anniuFont">收藏</div>
             </div>
             <div style="width: 25%;height: 100%;float: left;" name="sj" onclick="click_sj(this,'sj','$value')">
                 <img src="res/images/sj.png" class="anniuIcon">
+
                 <div class="anniuFont">商家</div>
             </div>
             <div style="width: 25%;height: 100%;float: left" name="zf" onclick="click_zf(this,'zf')">
                 <img src="res/images/wx.png" class="anniuIcon">
+
                 <div class="anniuFont">转发</div>
                 <div name="productProfile" hidden="true">$value</div>
             </div>
             <div style="width: 25%;height: 100%;float: left" name="gm" onclick="click_gm(this,'gm')">
                 <img src="res/images/gwc.png" class="anniuIcon">
+
                 <div class="anniuFont">购买</div>
             </div>
         </div>
         <div name="circleIcon" hidden="true">
+            $value
+        </div>
+        <div name="businessProfile" hidden="true">
             $value
         </div>
     </div>
@@ -97,6 +104,8 @@
     var productStockArray = document.getElementsByName('productStock');
     /*圈子封面图*/
     var circleIconArray = document.getElementsByName('circleIcon');
+    /*商家简介*/
+    var businessProfileArray = document.getElementsByName('businessProfile');
     /*点击订单*/
     function click_product(element, name) {
         var i = query_element_id(element, name);
@@ -128,9 +137,9 @@
             "title": productNameArray[i].innerText,
             "content": productProfileArray[i].innerText,
             "id": productIdArray[i].id,
-            "circleIcon" : trim(circleIconArray[i].innerHTML)
+            "circleIcon": trim(circleIconArray[i].innerHTML)
         };
-        var value = [productNameArray[i].innerText, productProfileArray[i].innerText, productIdArray[i].id,trim(circleIconArray[i].innerHTML)];
+        var value = [productNameArray[i].innerText, productProfileArray[i].innerText, productIdArray[i].id, trim(circleIconArray[i].innerHTML)];
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.wx_share.postMessage(data);
@@ -141,13 +150,15 @@
     /*点击商家*/
     function click_sj(element, name) {
         var i = query_element_id(element, name);
-        var neirong = productProfileArray[i].innerHTML;
+        var neirong = businessProfileArray[i].innerHTML;
         neirong = neirong.replace(/(^\s*)/g, "");
         var data = {"content": neirong};
+        var value = [neirong];
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.sjInfo.postMessage(data);
         } else {
+            window.callByJs.businessInformation(value);
         }
 
     }

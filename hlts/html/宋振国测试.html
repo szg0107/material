@@ -32,3 +32,17 @@
 <input type="file" name="fileField" id="fileField" />
 </body>
 </html>
+
+
+<table id="table1">
+    <tr><td>111</td></tr>
+    <tr><td>222</td></tr>
+</table>
+<a id="output"><button onclick="">aaa</button></a>
+<script>
+    var html = "<html><head><meta charset='utf-8' /></head><body>" + document.getElementById("table1").outerHTML + "</body></html>";
+    var blob = new Blob([html], { type: "application/vnd.ms-excel" });
+    var a = document.getElementById("output");
+    a.href = URL.createObjectURL(blob);
+    a.download = "指挥部入库物资供应商情况统计明细表.xls";
+</script>

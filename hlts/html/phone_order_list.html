@@ -45,13 +45,13 @@
     <div id="tishi" class="gps_font" style="text-align: center;"></div>
 </div>
 <script type="text/javascript">
-    /*商品id，确认收货,订单状态*/
+    /*订单id，确认收货,订单状态*/
     var orderIdArray = document.getElementsByName('orderId');
     var confirmGoodsArray = document.getElementsByName('confirmGoods');
     var orderStatusArray = document.getElementsByName('orderStatus');
     /*判断订单是否是已收货的*/
     for (var i = 0; i < orderStatusArray.length; i++) {
-        if (orderStatusArray[i].innerText != "已收货") {
+        if (/*orderStatusArray[i].innerText != "已收货"&&*/orderStatusArray[i].innerText !="未付款") {
             confirmGoodsArray[i].style.display = "inline";
         }
     }
@@ -63,11 +63,11 @@
     /*点击订单*/
     function click_order(element, name) {
         var i = query_element_id(element, name);
-        var data = {"productId": orderIdArray[i].id};
-        var value = [orderIdArray[i].id];
+        var data = {"productId": orderIdArray[i].id,"orderStatus":orderStatusArray[i].innerText};
+        var value = [orderIdArray[i].id,orderStatusArray[i].innerText];
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
-            window.webkit.messageHandlers.intoProduct.postMessage(data);
+            window.webkit.messageHandlers.orderDetails.postMessage(data);
         } else {
             window.callByJs.setValue(value);
         }
@@ -81,9 +81,22 @@
                 isGoodsClick = true;
             }, 2000);
             /*修改订单状态 并隐藏确认收货按钮*/
-            var Modify_order_status = sys_doComMandReturn("140", "id=" + orderIdArray[i].id);
-            confirmGoodsArray[i].style.display = "none";
+            /*var Modify_order_status = sys_doComMandReturn("140", "id=" + orderIdArray[i].id);
+             confirmGoodsArray[i].style.display = "none";*/
+            var userAgent = navigator.userAgent;
+            var data = {"productId": orderIdArray[i].id};
+            var value = [orderIdArray[i].id,i+""];
+            if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+                window.webkit.messageHandlers.ConfirmGoods.postMessage(data);
+            } else {
+                window.callByJs.ConfirmGoods(value);
+            }
         }
+    }
+    /*修改订单状态*/
+    function Modify_order_status(number){
+        var Modify_order_status = sys_doComMandReturn("140", "id=" + orderIdArray[number].id);
+        confirmGoodsArray[number].style.display = "none";
     }
     /*得到当前选中项是第几个*/
     function query_element_id(element, name) {

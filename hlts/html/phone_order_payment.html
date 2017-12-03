@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <meta name=viewport content="user-scalable=no">
+    <style type="text/css">
+        /*标题样式*/
+        .wenZiStyle {
+            float: left;
+            width: 350px;
+            height: 130px;
+            line-height: 130px;
+            color: #666666;
+            text-indent: 1.5em;
+        }
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
+        /*外层div样式*/
+        .divStyle {
+            background: #FFFFFF;
+            width: 100%;
+            margin: 0 auto;
+            border-bottom: 2px #efeef4 solid;
+            overflow: auto;
+        }
+
+        /*内容样式*/
+        .describeStyle {
+            float: left;
+            word-wrap: break-word;
+            word-break: break-all;
+            height: 130px;
+            line-height: 130px;
+        }
+    </style>
+</head>
+<body style="margin: 0;padding: 0;background:#efeef4;">
+<div>
+    <ylt.for dataId="1511784605381">
+        <div style="margin-top:20px;font-size: 50px;">
+            <div class="divStyle">
+                <div class="wenZiStyle">商品名称:</div>
+                <div class="describeStyle"
+                     style="width: 60%;height:100%;line-height: 100%;margin-top: 40px;margin-bottom: 40px;">$value
+                </div>
+            </div>
+            <div class="divStyle">
+                <div class="wenZiStyle">用户昵称:</div>
+                <div class="describeStyle">$value</div>
+            </div>
+            <div class="divStyle">
+                <div class="wenZiStyle">联系方式:</div>
+                <div class="describeStyle">$value</div>
+            </div>
+            <div class="divStyle">
+                <div class="wenZiStyle">购买数量:</div>
+                <div class="describeStyle">$value</div>
+            </div>
+            <div class="divStyle">
+                <div class="wenZiStyle">购买金额:</div>
+                <div class="describeStyle" id="amountDiv">$value</div>
+            </div>
+            <div class="divStyle">
+                <div class="wenZiStyle">收货地址:</div>
+                <div class="describeStyle">$value</div>
+            </div>
+            <div class="divStyle">
+                <div class="wenZiStyle">买家留言:</div>
+                <div class="describeStyle">$value</div>
+            </div>
+        </div>
+    </ylt.for>
+    <div style="margin: 0 auto;" class="gps_font">
+        <div id="zffs">
+
+            <div style="padding-top:50px; text-indent: 1em;padding-bottom: 50px;width: 95%; margin: 0 auto;"
+                 class="gps_font">
+                支付方式:
+            </div>
+
+            <div style="background: #FFFFFF;width: 100%;border-bottom: 2px #efeef4 solid ;margin: 0 auto;">
+                <form action="" method="get">
+                    <div style="border-bottom: 2px #efeef4 solid;height: 130px;line-height: 100px;"
+                         onclick="document.getElementsByName('Fruit')[0].checked='checked'">
+                        <div style="float: left;text-indent: 2em;">
+                            <img style="margin-top: 15px" src="res/images/zhifubao.png"/>
+                        </div>
+                        <div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">
+                            支付宝
+                        </div>
+                        <input name="Fruit" type="radio" value="支付宝" checked
+                               style="width:40px;height:40px;float: right;margin-top: 50px;margin-right: 40px;"/>
+                    </div>
+                    <div style="height: 130px;line-height: 100px;"
+                         onclick="document.getElementsByName('Fruit')[1].checked='checked'">
+                        <div style="float: left;text-indent: 2em;">
+                            <img style="margin-top: 15px;width: 100px;height: 100px;"
+                                 src="res/images/WePay.png"/>
+                        </div>
+                        <div style="float: left;margin-top: 15px;margin-left: 30px;" class="gps_font">
+                            微信
+                        </div>
+                        <input name="Fruit" type="radio" value="微信"
+                               style="width:40px;height:40px;float: right;margin-top: 50px;margin-right: 40px;"/>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div id="fukuan" style="text-align: center;margin-top: 100px;margin-bottom: 100px;">
+            <button onclick="getValue();"
+                    style="background-color: #029ae5;color: #FFFFFF;width: 450px;font-size:50px;border-radius:10px;height: 100px; ">
+                确认付款
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    /*获取地址参数*/
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    /*得到单选按钮的值*/
+    function getValue() {
+        var payWay = '';
+        var radio = document.getElementsByName("Fruit");
+        for (var i = 0; i < radio.length; i++) {
+            if (radio[i].checked == true) {
+                payWay = radio[i].value;
+                break;
+            }
+        }
+        /*金额、ID*/
+        var amount = amountDiv.innerText;
+        var orderId=getQueryString1("id");
+        /*var taskDescription = document.getElementById("pay_cost_reason").innerText;*/
+        var dict = {"payWay": payWay, "orderId": orderId, "amount": amount};
+        var valueArray = [payWay, orderId, amount];
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0) {
+            window.webkit.messageHandlers.payWay.postMessage(dict);
+        } else {
+            window.callByJs.setValue(valueArray);
+        }
+    }
+</script>
+</body>
+</html>

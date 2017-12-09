@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>圈子通讯录</title>
+    <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='res/js/activation_code.js'></script>
+    <style type="text/css">
+        /*标题样式*/
+        .wenZiStyle {
+            float: left;
+            height: 130px;
+            line-height: 130px;
+            color: #666666;
+            margin-right: 50px;
+        }
+
+        .gps_font {
+            font-size: 50px;
+            color: black;
+        }
+
+        /*外层div样式*/
+        .divStyle {
+            background: #FFFFFF;
+            width: 100%;
+            margin-left: 50px;
+            border-bottom: 2px #efeef4 solid;
+            overflow: auto;
+        }
+
+        /*内容样式*/
+        .describeStyle {
+            float: left;
+            word-wrap: break-word;
+            word-break: break-all;
+            height: 130px;
+            line-height: 130px;
+        }
+    </style>
+</head>
+<body style="margin: 0;padding: 0;">
+<div>
+    <div style="margin-top:20px;font-size: 48px;width: 90%">
+        <ylt.for dataId="1512390273507">
+            <div class="divStyle" onclick="clickUser(this,'warp')"  name="warp">
+                <div class="wenZiStyle"><img src="upload/$value" height="100px" style="margin-top: 15px;border-radius: 50px;"/></div>
+                <div class="describeStyle" style="width: 30%;">$value</div>
+                <div class="describeStyle" name="phoneNumberValue" style="float: right;color: #666666;font-size: 42px;margin-right: 50px;">$value</div>
+            </div>
+        </ylt.for>
+    </div>
+
+    <!--搜索-->
+    <form id="searchForm" action="circle_address_book.view" method="post">
+        <input id="contentInput" name="content" style="width: 100%;" value="" type="text" hidden="true"/>
+        <input id="circleID" name="id" style="width: 100%;" value="" type="text" hidden="true"/>
+        <input id="phoneNumbers" name="phoneNumber" style="width: 100%;" value="" type="text" hidden="true"/>
+    </form>
+    <!--<button onclick="searchUser('孙')">搜索按钮</button>-->
+</div>
+<script>
+    var phoneNumberValueArray = document.getElementsByName("phoneNumberValue");
+    var circleIDValue = getQueryString1("id");
+    for (var i = 0; i < phoneNumberValueArray.length; i++) {
+        phoneNumberValueArray[i].innerText = zhjiem(phoneNumberValueArray[i].innerText);
+    }
+    /*获取地址参数*/
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    /*点击用户*/
+    function clickUser(element, name) {
+        var i = query_element_id(element, name);
+        var phoneNumber = phoneNumberValueArray[i].innerText;
+        phoneNumber = zhjm(phoneNumber);
+        var data = {"phoneNumber": phoneNumber};
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+            window.webkit.messageHandlers.peopleDetills.postMessage(data);
+        } else {
+            window.callByJs.getPhoneNumber(phoneNumber);
+        }
+    }
+    /*搜索用户*/
+    function searchUser(content) {
+        contentInput.value = content;
+        circleID.value = circleIDValue;
+        phoneNumbers.value = zhjm(content);
+        searchForm.action = "circle_address_book.view?&id=" + circleIDValue;
+        searchForm.submit();
+    }
+    /*得到当前选中项是第几个*/
+    function query_element_id(element, name) {
+        var elements = document.getElementsByName(name);
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] == element) {
+                return i;
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type='text/javascript' src='js/pub.js'></script>
+    <link rel="stylesheet" href="res/css/prompt_dialog_box(A).css" />
+    <script type='text/javascript' src='js/check.js'></script>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/PC_public_JS.js'></script>
+    <script type='text/javascript' src='res/js/activation_code.js'></script>
+    <script type='text/javascript' src='js/WdatePicker.js' ></script>
+
+
+
+
+    <style>
+        .tdtd {
+            border-right: 2px solid #ffffff;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<script type="text/javascript">
+    function SetTableColor() {
+        var tbl = document.getElementsByName("tabletest");
+        /**	var trs = tbl.getElementsByTagName("tr");**/
+        for(var i = 0; i < tbl.length; i++) {
+            var j = i + 1;
+            if(j % 2 == 0) {
+                tbl[i].style.background = "#d4e7f7";
+            } else {
+
+                tbl[i].style.background = "#f3f5f5";
+
+
+            }
+        }
+    }
+
+
+</script>
+
+
+<body>
+
+<div style="width:100%;height: 80%;margin: 0px;padding-top: 30px;" align="left" >
+    <table id="frametable" width="80%" height="100%" cellpadding="0" cellspacing="0"  border="0">
+
+        <tr height="80px">
+            <td align="center" width="100%">
+                <form id="findindex" action="PC_deleteInformAndDynamic.view" method="post">
+                    <table width="1198px" border="0" style="font-weight: bolder;">
+                        <tr>
+
+                            <td align="left" width="45%" style="">
+                                开始时间:<input id="S_ZCSQBA$S_LXRDH" class="Wdate" readonly="" onclick="WdatePicker()" rule="bxtx" ruletip="开始时间" placeholder="开始时间" name="S_ZCSQBA$S_LXRDH" style="width:120px;" type="text"/>
+                                截止时间:<input id="S_ZCSQBA$S_GSDZ" class="Wdate" readonly=""  onclick="WdatePicker()" rule="bxtx" onfocus="timeComparison()" ruletip="截止时间" placeholder="截止时间" name="S_ZCSQBA$S_GSDZ" style="width:120px;" type="text">
+
+
+                            </td>
+
+
+                            <td align="right" width="45%">
+                                关键字:
+                                <input  id="intt" name="MC" style="width: 398px;border: 1px solid #d7d7d7;height: 30px;" type="text" />
+                                <input id="scrS" name="scr" type="hidden" />
+                            </td>
+                            <td align="right">
+                                <button onclick="find()" style=" border: 1px solid #FFFFFF;;color: #FFFFFF; background:#2885d5;height: 38px; width: 70px; display: block;line-height: 38px;border-radius:5px;">搜索</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td valign="top" height="100%" align="left">
+                <table cellpadding="0" cellspacing="0" width="1198px" height="" style="background:#ffffff;" id="" border="0">
+                    <tr style="background-color: #2885d5 ;height: 50px;">
+                        <td align="center" width="10%" class="tdtd" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">上传时间</td>
+                        <td align="center" class="tdtd" width="" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">名称</td>
+                        <td align="center" class="tdtd" width="12%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">类型 </td>
+                        <td align="center" class="tdtd" width="12%"  style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">上传人</td>
+
+                        <td align="center" class="tdtd"  width="10%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">删除</td>
+                    </tr>
+
+                </table>
+
+                <!--原来数据集ID 1504691464353-->
+                <ylt.for dataId="1504691464353">
+                    <table cellpadding="0" cellspacing="0" width="1198px" height="" style="background:#ffffff;font-size:14px;" name="tabletest" border="0">
+
+                        <tr height="35px">
+
+                            <td align="center" width="10%" class="tdtd">$value</td>
+                            <td align="center"  class="tdtd" style="text-indent: 1em;">
+                                <div style="text-align:left;width:600px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;WHITE-SPACE: nowrap;margin: 0 auto;">
+                                    $value
+                                </div>
+                            </td>
+                            <td align="center" width="12%" class="tdtd">$value</td>
+                            <td align="center"  class="tdtd"  width="12%"name="userPhoneNum">$value</td>
+                            <td align="center" width="10%" class="tdtd">
+                                <input type="button" value="删除" onclick="deleteCount($value)" />
+                            </td>
+
+
+
+                        </tr>
+
+                    </table>
+
+                </ylt.for>
+
+
+
+
+
+            </td>
+        </tr>
+
+
+
+    </table>
+</div>
+
+
+<div id="hbg" style="display: none" class="silhouette" name="hbg"></div>
+<div id="tishikuang" style="display: none" >
+    <div class="shang" style="cursor: move;text-align: left;">再次提醒您</div>
+    <div id="" class="zhong" style="text-align: left;">确定要删除吗</div>
+    <div id="" class="zhong" style="text-align: right; border-top: 1px solid red;">
+        <input type="hidden"  id="transmitValue" />
+        <input type="button" class="anniu" value="确定" style="color:#FFF" onclick="clickAffirm()"/>
+        <input type="button" class="anniu" value="取消" style="color:#FFF" onclick="clickAbolish()"/>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+<style>
+    input{
+        border: 1px solid #FFFFFF;
+
+
+        border-radius:5px;
+    }
+</style>
+<script>
+    /**分页显示**/
+
+    var objSplit = document.getElementById("sys_split_msg");
+    objSplit.style.display="";
+    objSplit.style.width="1132px";
+    objSplit.style.height="30px";
+    objSplit.style.marginTop = "10px";
+
+
+    SetTableColor();
+</script>
+
+
+<script>
+
+    /**判断session里的值，是否是圈子管理员并且，用PC端登录**/
+
+    /*if(user==""||jusese!="sc"||equipment!="pc_circle"){
+     window.location.href="index.view";
+     }*/
+
+</script>
+
+
+<script type="text/javascript">
+    /**回车事件**/
+    document.onkeydown=function(event)
+    {
+        e = event ? event : (window.event ? window.event : null);
+        if(e.keyCode==13){
+            find();
+
+        }
+    }
+</script>
+
+<script>
+    window.onload=function () {
+        var userPhoneNum=document.getElementsByName("userPhoneNum");
+        for(var i=0;i<userPhoneNum.length;i++){
+            userPhoneNum[i].innerHTML=zhjiem(userPhoneNum[i].innerHTML);
+        };
+
+
+    };
+
+
+    var NumberValue="";
+
+    function deleteCount(Number) {
+        NumberValue=Number;
+
+
+        document.getElementById('hbg').style.display = '';
+
+        document.getElementById('tishikuang').style.display = '';
+        window.parent.document.getElementById('hbg').style.display = '';
+    }
+
+    /*   取消删除 */
+    function clickAbolish() {
+
+        document.getElementById('hbg').style.display = 'none';
+        document.getElementById('tishikuang').style.display = 'none';
+        window.parent.document.getElementById('hbg').style.display = 'none';
+    }
+
+    /** 确认  删除 **/
+    function clickAffirm() {
+        window.parent.document.getElementById('hbg').style.display = 'none';
+        document.getElementById('hbg').style.display = 'none';
+        /*alert(NumberValue);*/
+        var strVResult = sys_doComMandReturn("113", "S_ID=" +NumberValue);
+
+        window.location.href = returnURL();
+
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    var type=getQueryString("type");
+    var reuse=getQueryString("reuse");
+
+
+    function find() {
+        var s = document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value; /**开始时间**/
+        scrS.value=zhjm(intt.value);
+        if(s != null && s != "") {
+            var ss = s.replace(/-/g, '/');
+            var sss = new Date(ss);
+            var ssss = sss.getTime().toString();
+            /*alert(ssss);*/
+        } else {
+            var ssss = "";
+
+        }
+
+        var k = document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value;
+
+        if(k != null && k != "") {
+            var kk = k.replace(/-/g, '/');
+            var kkk = new Date(kk);
+            var kkkk = kkk.getTime().toString();
+            var gg = parseInt(kkkk) + parseInt(86400000);
+            /*alert(gg);*/
+        } else {
+            var gg = "";
+        }
+        if(ssss != "" && gg != "") {
+            if(ssss > gg) {
+                document.getElementById('hbg').style.display = '';
+                document.getElementById('replaceEXTOP').style.display = '';
+                document.getElementById('extop_Prompt_content').innerText = "发布时间不可以大于截止时间";
+                /*alert("发布时间不可以大于截止时间");*/
+            } else {
+                /**document.getElementById("ww").value = document.getElementById("intt").value;**/
+                document.getElementById("findindex").action = "PC_deleteInformAndDynamic.view?w=a&ssss=" + ssss + "&kkkk=" + gg+"&type="+type+"&reuse="+reuse;
+                findindex.submit();
+            }
+
+        } else if(ssss != "" && gg == "") {
+            /*alert("结束时间没写");*/
+            document.getElementById("findindex").action = "PC_deleteInformAndDynamic.view?w=b&ssss=" + ssss+"&type="+type+"&reuse="+reuse;
+            findindex.submit();
+
+        } else if(ssss == "" && gg != "") {
+            /*alert("开始时间没写");*/
+            document.getElementById("findindex").action = "PC_deleteInformAndDynamic.view?w=c&kkkk=" + gg+"&type="+type+"&reuse="+reuse;
+            findindex.submit();
+
+        } else if(ssss == "" && gg == "") {
+            /*alert(1);*/
+            document.getElementById("findindex").action = "PC_deleteInformAndDynamic.view?w=d&type="+type+"&reuse="+reuse;
+            findindex.submit();
+        } else {
+            alert("请输入查询条件");
+        }
+
+    }
+
+    /*开始时间，截止时间对比方法*/
+    function timeComparison() {
+        var beginTime = document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value; /**开始时间**/
+        if(beginTime != null && beginTime != "") {
+            var beginTime = beginTime.replace(/-/g, '/');
+            var beginTime = new Date(beginTime);
+            var beginTime = beginTime.getTime().toString();
+            /*alert(ssss);*/
+        } else {
+            var beginTime = "";
+        }
+
+        var endTime = document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value;
+
+        if(endTime != null && endTime != "") {
+            var endTime = endTime.replace(/-/g, '/');
+            var endTime = new Date(endTime);
+            var endTime = endTime.getTime().toString();
+            var endTime = parseInt(endTime) + parseInt(86400000);
+            /*alert(gg);*/
+        } else {
+            var endTime = "";
+        }
+        if(beginTime != "" && endTime != "") {
+            if(beginTime > endTime) {
+                document.getElementById('hbg').style.display = '';
+                document.getElementById('replaceEXTOP').style.display = '';
+                document.getElementById('extop_Prompt_content').innerText = "发布时间不可以大于截止时间";
+                /*	alert("发布时间不可以大于截止时间");*/
+                document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value = "";
+            }
+        }
+
+    }
+</script>
+
+<script>
+    function userDate(uData) {
+
+        var myDate = new Date(uData);
+
+        var year = myDate.getFullYear();
+
+        var month = myDate.getMonth() + 1;
+
+        var day = myDate.getDate();
+
+        return year + "-" + month + "-" + day;
+    }
+</script>
+
+<script type="text/javascript">
+    var keyword = "";
+    <ylt.v message = "MC">
+            $value
+    keyword = "$value";
+    </ylt.v>
+    if(keyword != "") {
+        document.getElementsByName("MC")[0].value = keyword;
+    }
+    var startTime = "";
+    <ylt.v message = "ssss">
+            $value
+    startTime = "$value";
+
+    </ylt.v>
+    var finishTime = "";
+    <ylt.v message = "kkkk">
+            $value
+    finishTime = "$value" - parseInt(86400000);
+
+    </ylt.v>
+    if(finishTime != "" && startTime != "") {
+
+        document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value = userDate(parseInt(startTime));
+        document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value = userDate(parseInt(finishTime));
+
+    } else if(finishTime != "" && startTime == "") {
+
+        document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value = userDate(parseInt(finishTime));
+    } else if(finishTime == "" && startTime != "") {
+        document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value = userDate(parseInt(startTime));
+
+    }
+</script>
+
+<style>
+    #tishikuang {
+        position: fixed;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+        height: 168px;
+        border-radius: 4px;
+        background-color: #fff;
+        z-index: 1008;
+        /* 设置层级，主要是为了遮住页面内的其他内容 */
+    }
+
+    .shang {
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #eee;
+        border-radius: 2px 2px 0 0;
+        color: #333;
+        font-size: 14px;
+        height: 42px;
+        line-height: 42px;
+        overflow: hidden;
+        padding: 0 80px 0 20px;
+    }
+
+    .zhong {
+        font-size: 14px;
+        line-height: 24px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px;
+        position: relative;
+        word-break: break-all;
+    }
+
+    .anniu {
+        cursor: pointer;
+        font-weight: 400;
+        height: 28px;
+        line-height: 28px;
+        margin: 6px 6px 0;
+        padding: 0 15px;
+        background: #2885d5 none repeat scroll 0 0;
+    }
+</style>

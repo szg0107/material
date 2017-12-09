@@ -134,6 +134,47 @@
     </div>
 </ylt.for>
 
+<ylt.for dataId="1509326826222">
+    <div style="margin-top: 40px;margin-left: 40px;margin-right: 40px;clear: both;" name="pagingDiv" class="limitlength">
+        <div onclick="clickCourseware('$value',this);recordLrecord('$value');" name="mp3" style="border-radius: 20px; border: 1px solid gray;">
+            <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:50px;height:50px;display: none;">
+            <img src="" alt="upload/$value" name="pagingImg" width="100%" style="border: 1px solid gray;border-radius: 20px;">
+        </div>
+
+        <div class="gps_font" style="background-color: #efeef4;clear: both;height: 60px;margin-top: 30px;">
+            <div style="float: left;width: 15%;"class="gps_font">主题：</div>
+            <div class="limitlength gps_font" style="float: left;width: 83%;margin-left: 10px;">
+                <div class="limitlength"  name="title" style="width: 50%;float: left">$value</div>
+                <div style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;float: left">
+                    点赞数:
+                    <span name="zanCount"></span>
+                </div>
+                <img src="res/images/wx_share.png" style="margin-left: 40px" name="share" onclick="wx_share(this,'$value')" />
+                <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'mp3',this)" id="$value" name="zan" align="right" style="width: 50px;height: 50px;"/>
+            </div>
+        </div>
+
+        <div class="gps_font" style="background-color: #efeef4;clear: both;height: 300px;">
+            <div style="float: left;width: 15%;height:260px; "class="gps_font">
+                <div>简介：</div>
+                <div>
+                    <img name="shoucang" src="res/images/weishoucang.png" alt="$value" onclick="collect(this,this.alt,'mp3',getQueryString('id'))"  style="margin-top: 20px;margin-left:10px;width: 80px;height: 80px;"/>
+                </div>
+                <div>
+                    <img name="contentButton" src="res/images/blueBook1.png" onclick="PopupWindow(this)"  style="margin-top: 20px;width: 100px;height: 100px;"/>
+                </div>
+            </div>
+            <div name="content" style="float: left;width: 83%;height: 260px;white-space:normal;border-radius: 10px;margin-left: 10px;"class="limitlength gps_font">
+                $value
+            </div>
+        </div>
+
+        <div style="background-color: white;clear: both;" name="juli">
+            <hr size="10" style="background: #666;border: 0;">
+        </div>
+    </div>
+</ylt.for>
+
 <div id="sousu" class="divFrame">
     <img src="res/images/ss.png"  style="float:left;margin-top: 15px;margin-left: 15px;background-size: 50%;height: 80%;">
     <input id="con" class="inputPsorText" name="con" value=""  placeholder="请输入搜索关键字" autocomplete="on" type="text">
@@ -160,7 +201,7 @@
         var data = {"title": title,"content":content,"fileName":fileName};
         var stringArray = [title,content,fileName];
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.wx_share.postMessage(data);
         } else {
             window.callByJs.weChatShare(stringArray);
@@ -190,7 +231,7 @@
      paging_index = toIndex;
      if(paging_index == paging_count){
      var userAgent = navigator.userAgent;
-     if (userAgent.indexOf("iPhone") >= 0) {
+     if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
      window.webkit.messageHandlers.noMoreData.postMessage("没有更多数据了");
      }else{
 
@@ -231,7 +272,7 @@
             paging_index = toIndex;
             if(paging_index == paging_count){
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.noMoreData.postMessage("没有更多数据了");
                 }
             }
@@ -258,7 +299,7 @@
             paging_index = toIndex;
             if(paging_index == paging_count){
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.noMoreData.postMessage("没有更多数据了");
                 }else{
 
@@ -325,7 +366,7 @@
             } else {
                 /*alert('您不是本圈子会员！请进行充值！');*/
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.needPay.postMessage(null);
                 } else {
                     window.callByJs.isVIP();
@@ -334,7 +375,7 @@
             }
         } else {
             var userAgent = navigator.userAgent;
-            if (userAgent.indexOf("iPhone") >= 0) {
+            if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             } else if (userAgent.indexOf("Android") >= 0) {
             } else {
                 this.location.href="upload/"+audioStr;
@@ -359,7 +400,7 @@
             setTimeout(function () {
                 isClick = true;
             }, 2000);
-            if (userAgent.indexOf("iPhone") >= 0) {
+            if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                 window.webkit.messageHandlers.intoAudio.postMessage(audio);
             } else {
                 window.callByJs.setValue(audioStr);
@@ -377,7 +418,7 @@
                 var title=document.getElementsByName('title')[i].innerHTML;
                 var data = {"title": title,"content":neirong};
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.details.postMessage(data);
                 } else {
                     alert("主题:\n\t\t"+title.replace(/(^\s*)/g,"")+"\n"+"简介:\n\t\t"+neirong);

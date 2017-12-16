@@ -28,13 +28,8 @@
 
             background-color: #FFFFFF;
             margin: 20px auto 0;
-            border-top-right-radius: 4px;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-            border-color:#C0C0C0;
-            border-style: solid;
-            border-width: 15px;
+            border-radius: 4px;
+            border: 15px solid #C0C0C0;
             display:none;
             position:fixed;
             bottom:0px;
@@ -68,9 +63,7 @@
             text-align: center;
             color: #FFFFFF;
             background:#029ae5;
-            border-color:white;
-            border-style: none;
-            border-width: 0px;
+            border: 0px none white;
             font-size: 50px;
             /*margin-left:1px;*/
             /*width: 24.4%;*/
@@ -206,6 +199,22 @@
     <img src="res/images/jg.png" onclick="sous()" style="float:left;margin-top: 15px;margin-left: 5%;background-size: 50%;height: 80%;">
 </div>
 <script>
+    var address = window.location.host;
+    var imgAddress="";
+    var jspAddress="";
+    /*初始化*/
+    function jspValue() {
+        /*如果测试服务器资源地址前加/hlts*/
+        if (address == "123.56.187.157" || address == "www.6xy8.com") {
+            jspAddress = "res/java/getPictures.jsp";
+            imgAddress=window.location.protocol+"//"+address+"/hlts/upload/";
+        } else {
+            jspAddress = "res/java/getPictures.jsp";
+            imgAddress=window.location.protocol+"//"+address+"/upload/";
+        }
+    }
+    jspValue();
+
     function wx_share(element,fileName) {
         var shareArray = document.getElementsByName('share');
         var titleArray = document.getElementsByName('title');
@@ -381,18 +390,6 @@
 </body>
 
 <script type="text/javascript">
-    var address = window.location.host;
-    var jspAddress="";
-    /*初始化*/
-    function jspValue() {
-        /*如果测试服务器资源地址前加/hlts*/
-        if (address == "123.56.187.157" || address == "www.6xy8.com") {
-            jspAddress = "res/java/getPictures.jsp";
-        } else {
-            jspAddress = "res/java/getPictures.jsp";
-        }
-    }
-    jspValue();
     var picture = document.getElementsByName('pagingImg');
     if(picture.length == 0){
         tishi.innerText="很抱歉，没有您想要的资源！";
@@ -428,9 +425,15 @@
         var dianArray=document.getElementsByName("dian");
         var zanArray=document.getElementsByName("zan");
         var picturePosition=query_element_id(picture,"pagingImg");
-        var pictureAddress=getTx("resId=" + zanArray[picturePosition].id, jspAddress);
+        var pictureArray=new Array();
+        if(dianArray[picturePosition].title=="上传文件表"){
+            var pictureAddress=getTx("resId=" + zanArray[picturePosition].id, jspAddress);
+            pictureAddress=stringToSpace(pictureAddress);
+            pictureArray=pictureAddress.split(",");
+        }else{
+            pictureArray[0]=imgAddress+dianArray[picturePosition].title;
+        }
 
-        alert(pictureAddress);
         for(var i=0;i<aviDivArray.length;i++){
             if(aviDivArray[i]==picture){
                 if(dianArray[i].style.display=="inline"){
@@ -438,7 +441,7 @@
                 }
             }
         }
-        var content = {"picture": picture.src};
+        var content = {"picture": pictureArray};
         var userAgent = navigator.userAgent;
         if(isClick) {
             isClick = false;
@@ -448,7 +451,7 @@
             if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                 window.webkit.messageHandlers.pictureClick.postMessage(content);
             } else {
-                window.callByJs.setValue(picture.src);
+                window.callByJs.getImageUrlArray(pictureArray);
             }
         }
     }

@@ -8,7 +8,7 @@
     <script type='text/javascript' src='js/checkform.js'></script>
     <script type='text/javascript' src='res/js/KMoonPub.js'></script>
     <script type='text/javascript' src='res/js/resource.js'></script>
-
+    <script type='text/javascript' src='res/js/common_methods.js'></script>
     <meta name=viewport content="user-scalable=no">
 
     <style>
@@ -100,7 +100,57 @@
 
 <ylt.for dataId="1499136872517">
     <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;"  name="pagingDiv">
-        <div onclick="clickPicture('$value',this);recordLrecord('$value');" name="picture">
+        <div title="$value" onclick="clickPicture(this,'picture');recordLrecord(this.id);" id="$value" name="picture">
+            <div class="gps_font" style="background-color: #efeef4;height: 100%;margin-top: 30px;overflow:auto;">
+                <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
+                <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
+                    <img name="dian" src="res/images/dianA.png" style="position: relative;z-index: 999;right: 0;top: 0;float: right;width:30px;height:30px;display: none;">
+                    <div name="title" style="float: left;word-break: break-all;word-wrap: break-word;">$value</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 100px;" align="center">
+            <div  style="font-size: 35px;color: gray;float: left;margin-top: 30px;width: 300px;">
+                $value
+            </div>
+
+
+            <div style="float: left;margin-top: 30px;margin-left: 80px;width: 200px;" align="left">
+                   <span style="font-size: 35px;color: gray;border-bottom: 2px solid #efeef4;height: 50px;line-height: 50px;margin-left: 10%">
+                    点赞数:
+                    <span name="zanCount"></span>
+                   </span>
+            </div>
+
+            <div name="content" hidden="true" style="float: left;width: 83%;height: 260px;white-space:normal;border-radius: 10px;margin-left: 10px;"class="limitlength gps_font">
+                $value
+            </div>
+            <div style="float: left;margin-top: 20px;margin-left: 40px;">
+                <img src="res/images/wx_share.png"  name="share" onclick="wx_share(this,'$value')" />
+            </div>
+            <div style="float: left;margin-top: 20px;margin-left: 40px;">
+                <img src="res/images/bluePraise.png" onclick="praise(getQueryString('id'),'png',this)" id="$value"
+                     name="zan" align="right" style="width: 60px;height: 60px;margin-left: 10%"/>
+            </div>
+
+
+            <div class="gps_font" style="background-color: #efeef4;float: left;margin-left: 40px">
+                <img name="shoucang" src="res/images/weishoucang.png" alt="$value"
+                     onclick="collect(this,this.alt,'png',getQueryString('id'))"
+                     style="margin-top: 20px;width: 60px;height: 60px;"/>
+            </div>
+        </div>
+
+        <div style="background-color: white;clear: both;" name="juli">
+            <hr size="3" style="background: #666;border: 0;">
+        </div>
+    </div>
+</ylt.for>
+
+<ylt.for dataId="1509327597845">
+    <div style="margin-top: 0px;margin-left: 40px;margin-right: 40px;clear: both;"  name="pagingDiv">
+        <div title="$value" onclick="clickPicture(this,'picture');recordLrecord(this.id);"  id="$value" name="picture">
             <div class="gps_font" style="background-color: #efeef4;height: 100%;margin-top: 30px;overflow:auto;">
                 <!--<div style="float: left;width: 15%;" class="gps_font">主题：</div>-->
                 <div class="gps_font" style="float: left;width: 98%;margin-left: 10px;">
@@ -165,6 +215,22 @@
 
 
 <script>
+    var address = window.location.host;
+    var imgAddress="";
+    var jspAddress="";
+    var pictureDivArray=document.getElementsByName("picture");
+    /*初始化*/
+    function jspValue() {
+        /*如果测试服务器资源地址前加/hlts*/
+        if (address == "123.56.187.157" || address == "www.6xy8.com") {
+            jspAddress = "res/java/getPictures.jsp";
+            imgAddress=window.location.protocol+"//"+address+"/hlts/upload/";
+        } else {
+            jspAddress = "res/java/getPictures.jsp";
+            imgAddress=window.location.protocol+"//"+address+"/upload/";
+        }
+    }
+    jspValue();
     function wx_share(element,fileName) {
         var shareArray = document.getElementsByName('share');
         var titleArray = document.getElementsByName('title');
@@ -182,7 +248,7 @@
         var data = {"title": title,"content":content,"fileName":fileName};
         var stringArray = [title,content,fileName];
         var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
+        if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.wx_share.postMessage(data);
         } else {
             window.callByJs.weChatShare(stringArray);
@@ -234,8 +300,19 @@
         tishi.innerText="很抱歉，没有您想要的资源！";
     }
     var isClick=true;/*是否可以点击*/
-    function clickPicture(picture,element) {
+    function clickPicture(element,name) {
+        var picturePosition=query_element_id(element,name);
+        var pictureArray=new Array();
+        if(pictureDivArray[picturePosition].title=="上传文件表"){
+            var pictureAddress=getTx("resId=" + pictureDivArray[picturePosition].id, jspAddress);
+            pictureAddress=stringToSpace(pictureAddress);
+            pictureArray=pictureAddress.split(",");
+        }else{
+            pictureArray[0]=imgAddress+pictureDivArray[picturePosition].title;
+        }
 
+        /*alert(pictureAddress);
+        alert(pictureArray[0]);*/
         var isVIP = Can_the_content_be_viewed(getQueryString('id'));
         if(!isVIP){
             if (getQueryString('kind') != null) {
@@ -243,7 +320,7 @@
             } else {
                 /*alert('您不是本圈子会员！请进行充值！');*/
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.needPay.postMessage(null);
                 } else {
                     window.callByJs.isVIP();
@@ -255,16 +332,15 @@
                 this.location.href="upload/"+picture;
             }
         }
-        var aviDivArray=document.getElementsByName("picture");
         var dianArray=document.getElementsByName("dian");
-        for(var i=0;i<aviDivArray.length;i++){
-            if(aviDivArray[i]==element){
+        for(var i=0;i<pictureDivArray.length;i++){
+            if(pictureDivArray[i]==element){
                 if(dianArray[i].style.display=="inline"){
                     dianArray[i].style.display="none";
                 }
             }
         }
-        var content = {"picture": picture};
+        var content = {"picture": pictureArray};
         var userAgent = navigator.userAgent;
 
         if(isClick) {
@@ -272,10 +348,10 @@
             setTimeout(function () {
                 isClick = true;
             }, 2000);
-            if (userAgent.indexOf("iPhone") >= 0) {
+            if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                 window.webkit.messageHandlers.pictureClick.postMessage(content);
             } else {
-                window.callByJs.setValue(picture);
+                window.callByJs.getImageUrlArray(pictureArray);
             }
         }
     }
@@ -289,7 +365,7 @@
                 var title=document.getElementsByName('title')[i].innerHTML;
                 var data = {"title": title,"content":neirong};
                 var userAgent = navigator.userAgent;
-                if (userAgent.indexOf("iPhone") >= 0) {
+                if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
                     window.webkit.messageHandlers.details.postMessage(data);
                 } else {
                     alert("主题:\n\t\t"+title.replace(/(^\s*)/g,"")+"\n"+"简介:\n\t\t"+neirong);

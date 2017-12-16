@@ -38,13 +38,13 @@ EFEEF4
         */
 </style>
 <body style="margin: 0; padding: 0;background: #efeef4;">
-
+<!--bannner图展示-->
 <ylt.for dataId="1507518229523">
     <img src="upload/$value" width="100%" id="bannerImg" style="position:fixed;z-index: 999;"/>
     <div id="bgDiv"></div>
 </ylt.for>
 
-
+<!--菜单父容器-->
 <div id="items" style="overflow:auto;height: 100%;margin-top: 0px">
 
 </div>
@@ -57,21 +57,23 @@ EFEEF4
     <img src="images/pages/into_lan.png" align="right" style="margin-right: 50px;margin-top:30px;"/>
 </div>
 
-
+<!--菜单图标-->
 <div style="display: none;">
     <ylt.for dataId="1504079108633">
         <input name="xtb" type="text" value="$value,$value"/>
     </ylt.for>
 </div>
+<!--拓展功能查询-->
 <div style="display: none;" id="tuo_Zhan_Gong_Neng">
     <ylt.for dataId="1509587675255">
         <div name="t_z_tp">$value</div>
         <div name="t_z_bm">$value</div>
         <div name="t_z_ym">$value</div>
         <div name="t_z_url">$value</div>
+        <div name="t_z_cs">$value</div>
     </ylt.for>
 </div>
-
+<!--查询圈子二级菜单-->
 <div style="display: none;">
     <ylt.for dataId="1503649876407">
         <input name="ejcd" type="text" value="$value,$value,$value,$value,$value"/>
@@ -91,6 +93,7 @@ EFEEF4
     var t_z_bmArray=document.getElementsByName("t_z_bm");
     var t_z_ymArray=document.getElementsByName("t_z_ym");
     var t_z_urlArray=document.getElementsByName("t_z_url");
+    var t_z_csArray=document.getElementsByName("t_z_cs");
 </script>
 <script type="text/javascript">
     /*得到图片的高*/
@@ -482,6 +485,7 @@ EFEEF4
         var listName;
         var index;
         var expandUrl="";
+        var parameter="";
         var itemsDiv = document.getElementsByName('itemDiv');
         for(var i=0;i<itemsDiv.length;i++){
             if(itemsDiv[i] == self){
@@ -497,10 +501,11 @@ EFEEF4
             serialNumber=t_z_ymArray[(index-26)].innerText;
             listName=t_z_bmArray[(index-26)].innerText;
             expandUrl=t_z_urlArray[(index-26)].innerText;
+            parameter=t_z_csArray[(index-26)].innerText;
         }
 
 
-        var reply = {"serialNumber":serialNumber,"listName":listName,"expandUrl":expandUrl};
+        var reply = {"serialNumber":serialNumber,"listName":listName,"expandUrl":expandUrl,"parameter":parameter};
         var userAgent = navigator.userAgent;
         if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
             window.webkit.messageHandlers.clickReply.postMessage(reply);

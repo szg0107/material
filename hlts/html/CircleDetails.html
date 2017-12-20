@@ -541,7 +541,7 @@ EFEEF4
         gongSiBiXiuCongFU.push('$value');
         gongSiBiXiuCongType.push('$value');
     </ylt.for>
-        <ylt.for dataId="1499762079185">
+        <ylt.for dataId="1513565259903">
                 taskArry.push('$value');
     </ylt.for>
         if(gongSiBiXiuCongFU.length!=0){
@@ -580,9 +580,39 @@ EFEEF4
 
         }
         if(taskArry.length!=0){
+            /*全部任务*/
             imgs[shunxuArray[9]].style.display="inline";
-        }
 
+            /*按类型分开任务显示红点*/
+            for(var i=0;i<taskArry.length;i++){
+                switch (taskArry[i]){
+                    case "15":
+                        imgs[26+setTheRedDotOnTheExtensionTask("选择类任务")].style.display="inline";
+                        break;
+                    case "16":
+                        imgs[26+setTheRedDotOnTheExtensionTask("缴费类任务")].style.display="inline";
+                        break;
+                    case "17":
+                        imgs[26+setTheRedDotOnTheExtensionTask("图文类任务")].style.display="inline";
+                        break;
+                    case "23":
+                        imgs[26+setTheRedDotOnTheExtensionTask("考试类任务")].style.display="inline";
+                        break;
+                    case "24":
+                        imgs[26+setTheRedDotOnTheExtensionTask("统计类任务")].style.display="inline";
+                        break;
+                    case "25":
+                        imgs[26+setTheRedDotOnTheExtensionTask("问卷类任务")].style.display="inline";
+                        break;
+                    case "26":
+                        imgs[26+setTheRedDotOnTheExtensionTask("审核类任务")].style.display="inline";
+                        break;
+                    case "27":
+                        imgs[26+setTheRedDotOnTheExtensionTask("差异通知类任务")].style.display="inline";
+                        break;
+                }
+            }
+        }
     }
     xianShiYuanDian();
     /*查询单一个菜单的顺序*/
@@ -607,6 +637,35 @@ EFEEF4
         for(var i=0;i<gongSiBiXiuCongFU.length;i++){
             if(gongSiBiXiuCongFU[i]==obj&&gongSiBiXiuCongType[i]==obj2){
                 return isBeings=true;
+            }
+        }
+    }
+    /*八大任务分支是否开启*/
+    function setTheRedDotOnTheExtensionTask(taskName){
+        if(t_z_ymArray.length!=0){
+            for(var i=0;i<t_z_ymArray.length;i++){
+                /*switch (t_z_ymArray[i].innerText){
+                    case "选择类任务":
+                        return i;
+                    case "缴费类任务":
+                        return i;
+                    case "图文类任务":
+                        return i;
+                    case "考试类任务":
+                        return i;
+                    case "统计类任务":
+                        return i;
+                    case "问卷类任务":
+                        return i;
+                    case "审核类任务":
+                            alert(i);
+                        return i;
+                    case "差异通知类任务":
+                        return i;
+                }*/
+                if(t_z_ymArray[i].innerText==taskName){
+                    return i;
+                }
             }
         }
     }

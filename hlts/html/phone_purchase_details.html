@@ -7,6 +7,7 @@
     <script type='text/javascript' src='js/pub.js'></script>
     <script type='text/javascript' src='js/check.js'></script>
     <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/common_methods.js'></script>
     <style type="text/css">
         .gps_font {
             font-size: 50px;
@@ -157,9 +158,9 @@
 </ylt.for>
 <ylt.for dataId="1511868273932">
     <div style="display: none;">
-        <div id="consigneeName">$value</div>
-        <div id="consigneeTelephone">$value</div>
-        <div id="consigneeAddress">$value</div>
+        <div name="consigneeName">$value</div>
+        <div name="consigneeTelephone">$value</div>
+        <div name="consigneeAddress">$value</div>
     </div>
 </ylt.for>
 <script type="text/javascript">
@@ -170,70 +171,124 @@
         if (r != null) return unescape(r[2]);
         return null;
     }
-    /*购买数量，单价,订单ID,库存量，收货人姓名，收货人电话，收货人地址*/
+
+    /*购买数量*/
     var count = 1;
-    var price = parseFloat(productPrice.innerText);
-    /*var price=productPrice.innerText;*/
-    var orderId = T_SPDDB$S_ID.value;
-    var productStock = parseInt(stock.innerText);
-    var consigneeNameValue = consigneeName.innerText;
-    var consigneeTelephoneValue = consigneeTelephone.innerText;
-    var consigneeAddressValue = consigneeAddress.innerText;
+
+    /*单价*/
+    var productPriceObject = getObjectById("productPrice");
+    var price = parseFloat(productPriceObject.innerText);
+
+    /*订单ID*/
+    var orderIdObject = getObjectById("T_SPDDB$S_ID");
+    var orderId = orderIdObject.value;
+
+    /*库存量*/
+    var stockObject = getObjectById("stock");
+    var productStock = parseInt(stockObject.innerText);
+
+    /*收货人姓名*/
+    var consigneeNameObject = document.getElementsByName("consigneeName");
+    var consigneeNameValue = "";
+
+    /*收货人电话*/
+    var consigneeTelephoneObject = document.getElementsByName("consigneeTelephone");
+    var consigneeTelephoneValue = "";
+
+    /*收货人地址*/
+    var consigneeAddressObject = document.getElementsByName("consigneeAddress");
+    var consigneeAddressValue = "";
+
+    /*表单购买数量*/
+    var GMSLObject = getObjectById("T_SPDDB$S_GMSL");
+
+    /*表单圈子id*/
+    var circleIDObject = getObjectById("T_SPDDB$S_QZID");
+
+    /*查询出的圈子id*/
+    var selectCircleIdObject = getObjectById("circleId");
+
+    /*表单总金额*/
+    var ZJEObject = getObjectById("T_SPDDB$S_ZJE");
+
+    /*表单购买人id*/
+    var GMRIDObject = getObjectById("T_SPDDB$S_GMRID");
+
+    /*表单商品id*/
+    var SPIDObject = getObjectById("T_SPDDB$S_SPID");
+
+    /*表单收货人姓名*/
+    var SHRXMObject = getObjectById("T_SPDDB$S_SHRXM");
+
+    /*表单收货人电话*/
+    var SHRDHObject = getObjectById("T_SPDDB$S_SHRDH");
+
+    /*表单收货人地址*/
+    var SHRDZObject = getObjectById("T_SPDDB$S_SHRDZ");
+
+    /*获取用户上一次的订单信息*/
+    if (consigneeNameObject.length > 0) {
+        consigneeNameValue = consigneeNameObject[0].innerText;
+        consigneeTelephoneValue = consigneeTelephoneObject[0].innerText;
+        consigneeAddressValue = consigneeAddressObject[0].innerText;
+    }
     /*初始化input数据*/
     function initType() {
         /*给购买数量赋值初值，设置属性*/
-        T_SPDDB$S_GMSL.style.marginLeft = "0px";
-        T_SPDDB$S_GMSL.value = "1";
-        T_SPDDB$S_GMSL.style.textAlign = "center";
-        T_SPDDB$S_GMSL.setAttribute("oninput", "inputValueChange();");
-        T_SPDDB$S_GMSL.setAttribute("onblur", "setInValue();");
+        GMSLObject.style.marginLeft = "0px";
+        GMSLObject.style.width = "100px";
+        GMSLObject.value = "1";
+        GMSLObject.style.textAlign = "center";
+        GMSLObject.setAttribute("oninput", "inputValueChange();");
+        GMSLObject.setAttribute("onblur", "setInValue();");
         /*给圈子ID、总金额赋初值*/
-        T_SPDDB$S_QZID.value = circleId.innerText;
-        T_SPDDB$S_ZJE.value = price;
+        circleIDObject.value = selectCircleIdObject.innerText;
+        ZJEObject.value = price;
         /*用户最后一次订单信息  如果不为空就给昵称、电话、地址赋值*/
-        if (consigneeNameValue != "" || consigneeNameValue != "null") {
-            T_SPDDB$S_SHRXM.value = consigneeNameValue;
-            T_SPDDB$S_SHRDH.value = consigneeTelephoneValue;
-            T_SPDDB$S_SHRDZ.value = consigneeAddressValue;
+        if (consigneeNameValue != "" || consigneeNameValue != "null" || consigneeNameValue != undefined) {
+
+            SHRXMObject.value = consigneeNameValue;
+            SHRDHObject.value = consigneeTelephoneValue;
+            SHRDZObject.value = consigneeAddressValue;
         }
     }
     initType();
     /*增加购买数量*/
     function addCount() {
-        count = parseInt(T_SPDDB$S_GMSL.value);
+        count = parseInt(GMSLObject.value);
         if (count > 0 && count < productStock) {
             ++count;
-            T_SPDDB$S_GMSL.value = count + "";
-            T_SPDDB$S_ZJE.value = ((count * 100) * (price * 100)) / 10000 + "";
+            GMSLObject.value = count + "";
+            ZJEObject.value = ((count * 100) * (price * 100)) / 10000 + "";
         } else {
             alert("购买数量不能大于库存数量");
         }
     }
     /*减少购买数量*/
     function subtractionCount() {
-        count = parseInt(T_SPDDB$S_GMSL.value);
+        count = parseInt(GMSLObject.value);
         if (count > 1) {
             --count;
-            T_SPDDB$S_GMSL.value = count + "";
-            T_SPDDB$S_ZJE.value = ((count * 100) * (price * 100)) / 10000 + "";
+            GMSLObject.value = count + "";
+            ZJEObject.value = ((count * 100) * (price * 100)) / 10000 + "";
         }
     }
     /*检测用户输入的是否是正整数并且小于库存量，并给总金额赋值*/
     function inputValueChange() {
-        if (isRoundNumber(T_SPDDB$S_GMSL) == undefined) {
-            if (parseInt(T_SPDDB$S_GMSL.value) < productStock) {
-                T_SPDDB$S_ZJE.value = parseInt(T_SPDDB$S_GMSL.value) * price;
+        if (isRoundNumber(GMSLObject) == undefined) {
+            if (parseInt(GMSLObject.value) < productStock) {
+                ZJEObject.value = parseInt(GMSLObject.value) * price;
             } else {
-                T_SPDDB$S_GMSL.value = productStock;
-                T_SPDDB$S_ZJE.value = productStock * price;
+                GMSLObject.value = productStock;
+                ZJEObject.value = productStock * price;
             }
         }
     }
     /*如果购买数量为空时，购买数量为1，总金额为单价*/
     function setInValue() {
-        if (isRoundNumber(T_SPDDB$S_GMSL) == false) {
-            T_SPDDB$S_GMSL.value = 1;
-            T_SPDDB$S_ZJE.value = price;
+        if (isRoundNumber(GMSLObject) == false) {
+            GMSLObject.value = 1;
+            ZJEObject.value = price;
         }
     }
     /*得到单选按钮的值*/
@@ -248,7 +303,7 @@
             }
         }
         /*var taskDescription = document.getElementById("pay_cost_reason").innerText;*/
-        var amount = T_SPDDB$S_ZJE.value;
+        var amount = ZJEObject.value;
         var dict = {"payWay": payWay, "orderId": orderId, "amount": amount};
         var valueArray = [payWay, orderId, amount];
         var userAgent = navigator.userAgent;

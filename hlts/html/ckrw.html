@@ -1,0 +1,605 @@
+<html style="width: 100%;height: 100%;">
+<script type='text/javascript' src='res/js/activation_code.js'></script>
+<script type='text/javascript' src='js/pub.js'></script>
+<script type='text/javascript' src='js/check.js' ></script>
+<script type='text/javascript' src='js/checkform.js'  ></script>
+<script type='text/javascript' src='js/evenfunction.js' ></script>
+<script type='text/javascript' src='js/WdatePicker.js' ></script>
+<script type='text/javascript' src='js/fc.js'></script>
+<script type='text/javascript' src='js/LodopFuncs.js' ></script>
+<script type='text/javascript' src='js/print.js' ></script>
+<script type='text/javascript' src='js/ylselect.js' ></script>
+<script type='text/javascript' src='js/yltree.js' ></script>
+
+<script type='text/javascript' src='res/js/KMoonPub.js'></script>
+<link rel="stylesheet" href="res/css/prompt_dialog_box(A).css" />
+<script type='text/javascript' src='res/js/PC_public_JS.js'  ></script>
+<script type='text/javascript' src='res/js/PC_promptBox_01.js'></script>
+<script type='text/javascript' src='res/js/PromptBox.js'></script>
+<style>
+    .tdtd{
+        BORDER-RIGHT: #FFFFFF 2px solid;
+    }
+    .toupload {
+        background-color: #2885d5;
+        height: 24px;
+        line-height: 24px;
+        width: 60px;
+        cursor: pointer;
+        text-align: center;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .anniuds{
+        width: 120px;
+        height: 30px;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+        line-height: 20px;
+        background: #2885d5;
+        color: white;
+        text-decoration: none;
+        bottom: 0;
+        border: none;
+        border-radius: 5px;
+        font: normal 18px/30px "微软雅黑";
+    }
+    /*tr{
+        display:block;
+    }*/
+
+</style>
+<link rel="stylesheet" href="res/css/prompt_dialog_box(A).css" />
+<div style="width:100%;height: 100%;margin-top:30px;" align="left">
+
+    <table cellpadding="0" cellspacing="0" width="100%" height="" style="background:#ffffff;" id="" border="0">
+        <tr style="background-color: #2885d5 ;height: 50px;">
+            <td align="center" class="tdtd" width="9%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">创建人</td>
+            <td align="center" class="tdtd"  width="16%"  style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">任务名称</td>
+            <td align="center" class="tdtd" width="9%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">任务类型</td>
+            <td align="center" class="tdtd" width="10%"  style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">开始时间 </td>
+            <td align="center" class="tdtd"  width="10%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">结束时间</td>
+            <td align="center" class="tdtd"  width="8%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">任务状态</td>
+            <td align="center" class="tdtd"  width="10%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">查看并修改任务</td>
+            <td align="center" class="tdtd"  width="10%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">查看并修改详情</td>
+            <td align="center" class="tdtd"  width="8%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">人员范围</td>
+            <td align="center" class="tdtd"  width="10%" style="color: #FFFFFF;font-size: 20px;font-family: 微软雅黑;">修改任务状态</td>
+        </tr>
+
+    </table>
+
+
+    <ylt.for dataId="1499739501932">
+        <table cellpadding="0" cellspacing="0" width="100%" height="" style="background:#ffffff;font-size:14px;" name="tabletest" border="0">
+            <tr style="height: 35px;">
+                <td align="center" class="tdtd" width="9%" style="font-size: 14px;font-family: 微软雅黑;" name="userPhoneNum">$value</td>
+                <td align="center" class="tdtd" width="16%" style="font-size: 14px;font-family: 微软雅黑;">$value</td>
+                <td align="center" class="tdtd" width="9%" style="font-size: 14px;font-family: 微软雅黑;">$value</td>
+                <td align="center" class="tdtd" width="10%" style="font-size: 14px;font-family: 微软雅黑;">$value</td>
+                <td align="center" class="tdtd"  width="10%" style="font-size: 14px;font-family: 微软雅黑;" name="department">$value</td>
+                <td align="center" class="tdtd"  width="8%" style="font-size: 14px;font-family: 微软雅黑;" name="specialty">$value</td>
+                <td align="center" class="tdtd"  width="10%"  style="font-size: 14px;font-family: 微软雅黑;" >
+                    <a id="chakan" href="ckxq.view?sys_bed=t&id=$value"><input type="button" value="修改"/></a>
+                    <input type="hidden" value="$value" name="taskID"/>
+                    <input type="hidden" value="$value" name="taskType"/>
+                    <input type="hidden" value="$value" name="paymentType"/>
+                </td>
+                <td align="center" class="tdtd"  width="10%"  style="font-size: 14px;font-family: 微软雅黑;" >
+                    <a name="xiangq" href="ckxq.view?sys_bed=t&id="><input type="button" value="修改"/></a>
+                    <input type="hidden" value="$value" name="taskiidd"/>
+                    <input type="hidden" value="$value" name="taskt"/>
+                    <input type="hidden" value="$value" name="tjlx"/>
+                </td>
+                <td align="center" class="tdtd"  width="8%"  style="font-size: 14px;font-family: 微软雅黑;" name="status" >$value</td>
+                <td align="center" class="tdtd"  width="10%"  style="font-size: 14px;font-family: 微软雅黑;" name="" >
+
+                    <input type="button" onclick="openTask($value,this,'unlocking')" value="开启" name="unlocking"/>
+                    <input type="button" onclick="closeTask($value)" value="关闭" />
+
+                </td>
+            </tr>
+
+        </table>
+    </ylt.for>
+
+
+
+</div>
+<!--收款信息-->
+<div style="display:none;" id="information">
+    <ylt.for dataId="1512374131617">
+        $value$value
+    </ylt.for>
+</div>
+<div id="divID" style="width:100%;">
+
+</div>
+<!--<div id="hbg" style="display: none" name="hbg"></div>-->
+<div id="tishikuang" style="display:none" >
+    <div class="Exceltop" style="cursor: move;text-align: left;">正在导入Excel 请您稍后</div>
+    <div id="" class="Excelbuttom" style="text-align: left;  border-top: 1px solid red;">
+        <!--<div id="object_one"   class="object" style="background-color: royalblue;"></div>
+        <div id="object_two"   class="object" style="background-color: red;"></div>
+        <div id="object_three" class="object" style="background-color: rosybrown;"></div>-->
+        <div class="container">
+            <div id="bar" style="width:0%;"></div>
+        </div>
+        <span id="total"></span>
+
+    </div>
+
+
+
+</div>
+
+<!--<div id="hbg" style="display: none" name="hbg"></div>-->
+<div id="hintBox" style="display: none"  class="outerDiv">
+    <div class="shang" id="detectionFile" style="cursor: move;text-align: left;"></div>
+
+    <div id="" class="xia" style="text-align: right; border-top: 1px solid #2885d5;">
+
+        <input type="button" class="anniu" value="确定" style="color:#FFF" onclick="clickAbolish()"/>
+
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    /*任务类型*/
+    var taskTypeArray=document.getElementsByName("taskType");
+    var informationObject=document.getElementById("information");
+    var informationValue=informationObject.innerText.replace(/(^\s*)|(\s*$)/g, "");
+    /*得到当前选中项是第几个*/
+    function query_element_id(element, name) {
+        var elements = document.getElementsByName(name);
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] == element) {
+                return i;
+            }
+        }
+    }
+</script>
+<script>
+    function manurl() {
+        var tasks = document.getElementsByName("taskt");
+        var taskiidd = document.getElementsByName("taskiidd");
+        var xiangq = document.getElementsByName("xiangq");
+        var tjlx = document.getElementsByName("tjlx");
+        var tasklength = tasks.length;
+        for (var i=0;i<tasklength;i++) {
+            var url = "";
+            switch(tasks[i].value) {
+                case "15" : url = "ckxq_xz.view?sys_bed=t&id=";break;
+                case "16" : url = "ckxq.view?sys_bed=t&id=";break;
+                case "17" : url = "ckxq.view?sys_bed=t&id=";break;
+                case "23" : url = "ksrwxqxg.view?sys_bed=t&taskId=";break;
+                case "24" : url = "ckxq_tj.view?sys_bed=t&kind="+tjlx[i].value+"&id=";break;
+                case "25" : url = "wjrwhx.view?sys_bed=t&taskId=";break;
+                case "26" : url = "ckxq.view?sys_bed=t&id=";break;
+                case "27" : url = "ckxq.view?sys_bed=t&id=";break;
+            }
+            xiangq[i].href = url+taskiidd[i].value;
+        }
+    }
+    manurl();
+</script>
+<script>
+    /*关闭提示框*/
+    function clickAbolish(){
+
+        document.getElementById('hbg').style.display='none';
+        document.getElementById('hintBox').style.display='none';
+        var frames = document.getElementById("divID").childNodes;
+        while(frames.length>0){
+            document.getElementById("divID").removeChild(frames[0]);
+        }
+
+
+    }
+    /*开始任务*/
+    function openTask(iDvalue,element, name){
+        var i=query_element_id(element,name);
+        if(taskTypeArray[i].value=="16"){
+            if(informationValue.length>0){
+                var strVResult=sys_doComMandReturn("075","S_ID="+iDvalue);
+            }else{
+                var promptBox=new PromptBox("tanchuang");
+                promptBox.createNewPromptBox();
+                promptBox.showNewPromptBox("请前往基本信息，填写收款人姓名和账号！");
+                /*alert("请前往基本信息，填写收款人姓名和账号！");*/
+                promptBoxMethod_01("请前往基本信息，填写收款人姓名和账号！");
+            }
+        }else{
+            var strVResult=sys_doComMandReturn("075","S_ID="+iDvalue);
+        }
+
+        /*window.location.href="PC_taskManage.view";*/
+        window.location.href="ckrw.view";
+    }
+    /*关闭任务*/
+    function closeTask(iDvalue){
+        var strVResult=sys_doComMandReturn("076","S_ID="+iDvalue);
+        /*window.location.href="PC_taskManage.view";*/
+        window.location.href="ckrw.view";
+    }
+
+</script>
+
+<style>
+    input{
+        border: 1px solid #FFFFFF;
+
+
+        border-radius:5px;
+    }
+</style>
+
+
+<style>
+
+    #tishikuang{
+        position:fixed;
+        margin:auto;
+        left:0;
+        right:0; top:0;
+        bottom:0;
+        width: 500px;
+        height: 150px;
+        border-radius: 4px;
+        background-color: #fff;
+        z-index: 1008; /* 设置层级，主要是为了遮住页面内的其他内容 */
+    }
+    .Exceltop{
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #eee;
+        border-radius: 2px 2px 0 0;
+        color: #333;
+        font-size: 14px;
+        height: 42px;
+        line-height: 42px;
+        overflow: hidden;
+        padding: 0 80px 0 20px;
+    }
+    .Excelbuttom{
+        font-size: 14px;
+        line-height: 24px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px;
+        position: relative;
+        word-break: break-all;
+    }
+    .container{
+        width:450px;
+        border:1px solid #6C9C2C;
+        height:25px;
+    }
+    #bar{
+        background:#95CA0D;
+        float:left;
+        height:100%;
+        text-align:center;
+        line-height:150%;
+    }
+</style>
+
+
+<script>
+    SetTableColor();
+    /**分页显示**/
+
+    var objSplit = document.getElementById("sys_split_msg");
+    objSplit.style.display="";
+    objSplit.style.width="100%";
+    objSplit.style.height="30px";
+    objSplit.style.marginTop = "10px";
+
+    function SetTableColor() {
+        var tbl = document.getElementsByName("tabletest");
+        /**	var trs = tbl.getElementsByTagName("tr");**/
+        for(var i = 0; i < tbl.length; i++) {
+            var j = i + 1;
+            if(j % 2 == 0) {
+                tbl[i].style.background = "#d4e7f7";
+            } else {
+
+                tbl[i].style.background = "#f3f5f5";
+
+
+            }
+        }
+    }
+
+</script>
+<script>
+    /*var mailboxs = document.getElementsByName("mailbox");
+     var ml = mailboxs.length;
+     for (var i=0;i<ml;i++) {
+     if (mailboxs[i].value == "统计类") {
+     var href = document.getElementById("chakan").href;
+     var v = href.split("id=")[1];
+     document.getElementById("chakan").href = "ckxq_tongji.view?sys_bed=t&id="+v+"&kind="+1;
+     }
+     }*/
+</script>
+
+<script>
+
+
+    function SetPeopleScope() {
+        var  statusValue= document.getElementsByName("status");
+
+
+        for(var i = 0; i < statusValue.length; i++) {
+            /*alert(document.getElementsByName("status")[i].innerText);*/
+
+            if(document.getElementsByName("status")[i].innerText==="13") {
+                document.getElementsByName("status")[i].innerText="";
+
+                if(document.getElementsByName("taskType")[i].value==="16"){
+                    if(document.getElementsByName("paymentType")[i].value==="20"){
+                        var o = document.createElement('input');
+                        o.setAttribute("taskid", document.getElementsByName("taskID")[i].value);
+                        o.type = 'button';
+                        o.value = '指定人员';
+                        o.onclick= function(){
+                            addTaskPeopleAndMoney(this);
+                        };
+                        document.getElementsByName("status")[i].appendChild(o);
+
+                    }else{
+                        var o = document.createElement('input');
+                        o.setAttribute("taskid", document.getElementsByName("taskID")[i].value);
+                        o.type = 'button';
+                        o.value = '指定人员';
+                        o.onclick= function(){
+                            addTaskPeople(this);
+                        };
+                        document.getElementsByName("status")[i].appendChild(o);
+                    }
+
+
+
+                }else{
+                    var o = document.createElement('input');
+                    o.setAttribute("taskid", document.getElementsByName("taskID")[i].value);
+                    o.type = 'button';
+                    o.value = '指定人员';
+                    o.onclick= function(){
+                        addTaskPeople(this);
+                    };
+                    document.getElementsByName("status")[i].appendChild(o);
+                }
+
+            }
+            if(document.getElementsByName("status")[i].innerText==="14") {
+                document.getElementsByName("status")[i].innerText="全部";
+            }
+            if(document.getElementsByName("status")[i].innerText==="差异") {
+                document.getElementsByName("status")[i].innerText="差异类任务";
+            }
+        }
+    }
+    SetPeopleScope();
+
+    function addTaskPeople(val){
+        var frames = document.getElementById("divID").childNodes;
+        while(frames.length>0){
+            document.getElementById("divID").removeChild(frames[0]);
+        }
+
+        var iframe = document.createElement('iframe');
+
+        iframe.setAttribute("taskid",val.getAttribute("taskid"));
+        iframe.src="PC_addTaskPeople.view?id="+val.getAttribute("taskid");
+        iframe.name="iframeName";
+        iframe.scrolling="yes";
+        iframe.width="81%";
+        iframe.frameborder="0";
+        iframe.height="300px";
+        document.getElementById("divID").appendChild(iframe);
+    }
+    function addTaskPeopleAndMoney(val){
+        var frames = document.getElementById("divID").childNodes;
+        while(frames.length>0){
+            document.getElementById("divID").removeChild(frames[0]);
+        }
+
+        var iframe = document.createElement('iframe');
+
+        iframe.setAttribute("taskid",val.getAttribute("taskid"));
+        iframe.src="PC_addTaskPeopleAndMoney.view?id="+val.getAttribute("taskid");
+        iframe.name="iframeName";
+        iframe.scrolling="no";
+        iframe.width="81%";
+        iframe.frameborder="0";
+        iframe.height="300px";
+        document.getElementById("divID").appendChild(iframe);
+
+    }
+</script>
+
+
+<script type="text/javascript">
+    /**回车事件**/
+    document.onkeydown=function(event)
+    {
+        e = event ? event : (window.event ? window.event : null);
+        if(e.keyCode==13){
+            find();
+
+        }
+    }
+</script>
+
+
+<script>
+    function find() {
+        var s = document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value;/**开始时间**/
+
+        if(s != null && s != "") {
+            var ss = s.replace(/-/g, '/');
+            var sss = new Date(ss);
+            var ssss = sss.getTime().toString();
+            /*alert(ssss);*/
+        } else {
+            var ssss = "";
+
+        }
+
+        var k = document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value;
+
+        if(k != null && k != "") {
+            var kk = k.replace(/-/g, '/');
+            var kkk = new Date(kk);
+            var kkkk = kkk.getTime().toString();
+            var gg = parseInt(kkkk) + parseInt(86400000);
+            /*alert(gg);*/
+        } else {
+            var gg = "";
+        }
+        if(ssss != "" && gg != "") {
+            if(ssss > gg) {
+                document.getElementById('hbg').style.display='';
+                document.getElementById('replaceEXTOP').style.display='';
+                document.getElementById('extop_Prompt_content').innerText="发布时间不可以大于截止时间";
+                /*alert("发布时间不可以大于截止时间");*/
+            } else {
+                /**document.getElementById("ww").value = document.getElementById("intt").value;**/
+                document.getElementById("findindex").action = "PCcircleDelete.view?w=a&ssss=" + ssss + "&kkkk=" + gg;
+                findindex.submit();
+            }
+
+        } else if(ssss != "" && gg == "") {
+            /*alert("结束时间没写");*/
+            document.getElementById("findindex").action = "PCcircleDelete.view?w=b&ssss=" + ssss ;
+            findindex.submit();
+
+
+
+        } else if(ssss == "" && gg != "") {
+            /*alert("开始时间没写");*/
+            document.getElementById("findindex").action = "PCcircleDelete.view?w=c&kkkk=" + gg;
+            findindex.submit();
+
+
+        } else if(ssss == "" && gg == "") {
+            /*alert(1);*/
+            document.getElementById("findindex").action = "PCcircleDelete.view?w=d";
+            findindex.submit();
+        } else {
+            alert("请输入查询条件");
+        }
+
+    }
+
+
+    /*开始时间，截止时间对比方法*/
+    function  timeComparison(){
+        var beginTime= document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value;/**开始时间**/
+        if(beginTime != null && beginTime != "") {
+            var beginTime = beginTime.replace(/-/g, '/');
+            var beginTime = new Date(beginTime);
+            var beginTime = beginTime.getTime().toString();
+            /*alert(ssss);*/
+        } else {
+            var beginTime = "";
+        }
+
+        var endTime = document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value;
+
+        if(endTime != null && endTime != "") {
+            var endTime = endTime.replace(/-/g, '/');
+            var endTime = new Date(endTime);
+            var endTime = endTime.getTime().toString();
+            var endTime = parseInt(endTime) + parseInt(86400000);
+            /*alert(gg);*/
+        } else {
+            var endTime = "";
+        }
+        if(beginTime != "" && endTime != "") {
+            if(beginTime > endTime) {
+                document.getElementById('hbg').style.display='';
+                document.getElementById('replaceEXTOP').style.display='';
+                document.getElementById('extop_Prompt_content').innerText="发布时间不可以大于截止时间";
+                /*	alert("发布时间不可以大于截止时间");*/
+                document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value="";
+            }
+        }
+
+    }
+
+</script>
+
+
+
+<script>
+    function userDate(uData){
+
+        var myDate = new Date(uData);
+
+        var year = myDate.getFullYear();
+
+        var month = myDate.getMonth() + 1;
+
+        var day = myDate.getDate();
+
+        return year + "-" + month + "-"  + day;
+    };
+    window.onload=function () {
+        var userPhoneNum=document.getElementsByName("userPhoneNum");
+        for(var i=0;i<userPhoneNum.length;i++){
+            userPhoneNum[i].innerHTML=zhjiem(userPhoneNum[i].innerHTML);
+        };
+
+
+    };
+</script>
+
+
+<script type="text/javascript">
+    var keyword = "";
+    <ylt.v message="MC">
+            $value
+    keyword = "$value";
+    </ylt.v>
+    if(keyword != "") {
+        document.getElementsByName("MC")[0].value = keyword;
+    }
+    var startTime="";
+    <ylt.v message="ssss">
+            $value
+    startTime = "$value";
+
+    </ylt.v>
+    var finishTime="";
+    <ylt.v message="kkkk">
+            $value
+    finishTime = "$value"-parseInt(86400000);
+
+    </ylt.v>
+    if(finishTime!=""&&startTime!=""){
+
+        document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value = userDate(parseInt(startTime));
+        document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value = userDate(parseInt(finishTime));
+
+
+    }else if(finishTime!=""&&startTime==""){
+
+        document.getElementsByName("S_ZCSQBA$S_GSDZ")[0].value = userDate(parseInt(finishTime));
+    }else if(finishTime==""&&startTime!=""){
+        document.getElementsByName("S_ZCSQBA$S_LXRDH")[0].value = userDate(parseInt(startTime));
+
+    }
+</script>
+
+
+
+
+
+
+
+
+

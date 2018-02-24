@@ -190,20 +190,20 @@
 
     <!--任务选项-->
     <div style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;margin-left: 15px;margin-right: 15px;padding-bottom:10px;border-radius: 10px;">
-    <ylt.for dataId="1499854541265">
-        <div onclick="selectOption(this)" style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;padding-left: 20px;margin-left: 15px;margin-right: 15px;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #efeef4;"name="options">
+        <ylt.for dataId="1499854541265">
+            <div onclick="selectOption(this)" style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;padding-left: 20px;margin-left: 15px;margin-right: 15px;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #efeef4;"name="options">
 
 
-            <img width="20px" alt="0" height="20px" src="res/images/weixuanzhong.png" style="float: left;margin-right: 10px;" name="isSelected" id="$value"/>
+                <img width="20px" alt="0" height="20px" src="res/images/weixuanzhong.png" style="float: left;margin-right: 10px;" name="isSelected" id="$value"/>
 
-            <div style="float: left;text-align:left;">
-                <span  name="theOption">$value</span><br/>
-                <img width="150px" height="150px" src="upload/$value" name="option_pictures" style="display: block;"/>
-                <span>$value</span>
+                <div style="float: left;text-align:left;">
+                    <span  name="theOption">$value</span><br/>
+                    <img width="150px" height="150px" src="upload/$value" name="option_pictures" style="display: block;"/>
+                    <span>$value</span>
+                </div>
+
             </div>
-
-        </div>
-    </ylt.for>
+        </ylt.for>
     </div>
 
 
@@ -241,165 +241,165 @@
 
 <script type="text/javascript">
 
-    var selectNumber = getQueryString('selectNumber');
-    var selectCount = 0 ;
+  var selectNumber = getQueryString('selectNumber');
+  var selectCount = 0 ;
 
-    function selectOption(div) {
+  function selectOption(div) {
 
 
-        var optionDivs = document.getElementsByName('options');
-        var isSelecteds = document.getElementsByName('isSelected');
+    var optionDivs = document.getElementsByName('options');
+    var isSelecteds = document.getElementsByName('isSelected');
 
-        var index;
-        for(var i=0;i<optionDivs.length;i++){
-            if(optionDivs[i]==div)index = i;
-        }
-
-        if(isSelecteds[index].alt == "0"){
-            if(selectCount>=selectNumber){
-                alert('最多选择'+selectNumber+"项");
-                return;
-            }
-            isSelecteds[index].alt = "1";
-            isSelecteds[index].src = "res/images/xuanzhong.png";
-            selectCount++;
-        }else{
-            isSelecteds[index].alt = "0";
-            isSelecteds[index].src = "res/images/weixuanzhong.png";
-            selectCount--;
-        }
-
+    var index;
+    for(var i=0;i<optionDivs.length;i++){
+      if(optionDivs[i]==div)index = i;
     }
 
-
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r =  window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
+    if(isSelecteds[index].alt == "0"){
+      if(selectCount>=selectNumber){
+        alert('最多选择'+selectNumber+"项");
+        return;
+      }
+      isSelecteds[index].alt = "1";
+      isSelecteds[index].src = "res/images/xuanzhong.png";
+      selectCount++;
+    }else{
+      isSelecteds[index].alt = "0";
+      isSelecteds[index].src = "res/images/weixuanzhong.png";
+      selectCount--;
     }
 
+  }
 
 
-    function getQueryString1(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = decodeURI(window.location.href).substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-    /*给任务描述赋值*/
-    document.getElementById("descriptions").innerHTML+="<br/><span style='font-size: 10px;color: gray;'>(最多选择"+selectNumber+"项)</span>";
-    /*得到所有图片地址为0时img隐藏*/
-    var option_pictures=document.getElementsByName("option_pictures");
-    for(var i=0;i<option_pictures.length;i++){
-        var img=option_pictures[i].src;
-        if(img.substring((img.indexOf("u")+7)).length==0){
-            option_pictures[i].style.display="none";
-        };
-    }
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r =  window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+  }
+
+
+
+  function getQueryString1(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = decodeURI(window.location.href).substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+  }
+  /*给任务描述赋值*/
+  document.getElementById("descriptions").innerHTML+="<br/><span style='font-size: 10px;color: gray;'>(最多选择"+selectNumber+"项)</span>";
+  /*得到所有图片地址为0时img隐藏*/
+  var option_pictures=document.getElementsByName("option_pictures");
+  for(var i=0;i<option_pictures.length;i++){
+    var img=option_pictures[i].src;
+    if(img.substring((img.indexOf("u")+7)).length==0){
+      option_pictures[i].style.display="none";
+    };
+  }
 </script>
 
 <script type="text/javascript">
-    /*给时间戳后面加一位随机数*/
-    function randomCode() {
+  /*给时间戳后面加一位随机数*/
+  function randomCode() {
 
-        return Math.ceil(Math.random()*10-1);
+    return Math.ceil(Math.random()*10-1);
 
+  }
+  /*给时间戳后面加三位随机数*/
+  function random3Code() {
+    var code = "";
+    for(var i = 0;i<3;i++){
+      code +=randomCode();
     }
-    /*给时间戳后面加三位随机数*/
-    function random3Code() {
-        var code = "";
-        for(var i = 0;i<3;i++){
-            code +=randomCode();
-        }
-        return code;
+    return code;
+  }
+  var user="";
+  <ylt.v message="user">
+    $value
+  user="$value";
+  </ylt.v>
+  function completeTask(){
+    /*完成任务*/
+    var timestamp = new Date().getTime();
+    /*得到所有选中图片数组*/
+    var isSelecteds = document.getElementsByName('isSelected');
+    /*得到所有选择项的数组*/
+    var theOption=document.getElementsByName('theOption');
+    /*得到所有选择次数的数组*/
+    var strResult=selectCountMethod(getQueryString('taskId')).replace(/\s/g,"").split(';');
+    /*得到显示的div*/
+    var csdiv=document.getElementById('alertP');
+    var count=0;
+    for(var i=0;i<isSelecteds.length;i++){
+      if(isSelecteds[i].alt=="1"){
+        count++;
+      }
     }
-    var user="";
-    <ylt.v message="user">
-            $value
-    user="$value";
-    </ylt.v>
-    function completeTask(){
-        /*完成任务*/
-        var timestamp = new Date().getTime();
-        /*得到所有选中图片数组*/
-        var isSelecteds = document.getElementsByName('isSelected');
-        /*得到所有选择项的数组*/
-        var theOption=document.getElementsByName('theOption');
-        /*得到所有选择次数的数组*/
-        var strResult=selectCountMethod(getQueryString('taskId')).split(';');
-        /*得到显示的div*/
-        var csdiv=document.getElementById('alertP');
-        var count=0;
-        for(var i=0;i<isSelecteds.length;i++){
-            if(isSelecteds[i].alt=="1"){
-                count++;
-            }
+    /*根据选中图片数组的长度进行循环处理*/
+    if(count==0){
+      alert("请至少选择一项!!");
+    }else{
+      var Searchrecords = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + user);
+      for(var i=0;i<isSelecteds.length;i++){
+        /*创建一个span标签*/
+        var spans=document.createElement("span");
+        /*给span添加样式*/
+        /*spans.setAttribute("class","gps_font");*/
+        /*初始化选择次数*/
+        if(strResult[i].length==32||strResult[i]==""||strResult[i]=="null"||strResult[i]==null||strResult[i]=="NaN"||strResult[i] == undefined||strResult[i]==NaN){
+          strResult[i]="0";
         }
-        /*根据选中图片数组的长度进行循环处理*/
-        if(count==0){
-            alert("请至少选择一项!!");
+        /*如果选中选中次数加一并记录，否则记录原始的选择次数*/
+        if(isSelecteds[i].alt=="1"){
+
+          spans.innerHTML=theOption[i].innerHTML+":"+(parseInt(strResult[i])+1)+"次";
+          csdiv.appendChild(spans);
+          csdiv.appendChild(document.createElement("br"));
+          var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])+1));
         }else{
-            var Searchrecords = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + user);
-            for(var i=0;i<isSelecteds.length;i++){
-                /*创建一个span标签*/
-                var spans=document.createElement("span");
-                /*给span添加样式*/
-                /*spans.setAttribute("class","gps_font");*/
-                /*初始化选择次数*/
-                if(strResult[i].length==32||strResult[i]==""||strResult[i]=="null"||strResult[i]==null||strResult[i]=="NaN"||strResult[i] == undefined){
-                    strResult[i]="0";
-                }
-                /*如果选中选中次数加一并记录，否则记录原始的选择次数*/
-                if(isSelecteds[i].alt=="1"){
-
-                    spans.innerHTML=theOption[i].innerHTML+(parseInt(strResult[i])+1);
-                    csdiv.appendChild(spans);
-                    csdiv.appendChild(document.createElement("br"));
-                    var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])+1));
-                }else{
-                    spans.innerHTML=theOption[i].innerHTML+(parseInt(strResult[i]));
-                    csdiv.appendChild(spans);
-                    csdiv.appendChild(document.createElement("br"));
-                    var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])));
-                }
-            }
-            /*让提交按钮不可用*/
-            document.getElementById("submitButton").disabled = true;
-            openDiv();
+          spans.innerHTML=theOption[i].innerHTML+":"+(parseInt(strResult[i]))+"次";
+          csdiv.appendChild(spans);
+          csdiv.appendChild(document.createElement("br"));
+          var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])));
         }
-
+      }
+      /*让提交按钮不可用*/
+      document.getElementById("submitButton").disabled = true;
+      openDiv();
     }
+
+  }
 </script>
 <script type="text/javascript">
-    function closeDivFun() {
-        document.getElementById('tanchuang2').style.display = 'none';
+  function closeDivFun() {
+    document.getElementById('tanchuang2').style.display = 'none';
 
-        if (getQueryString('kind') != null) {
-            var timestamp = Date.parse(new Date());
-            var cid = getQueryString('id');
-            this.location.href = "my_task.view?kind=wdrw&id="+cid+"&time="+timestamp;
-        }
+    if (getQueryString('kind') != null) {
+      var timestamp = Date.parse(new Date());
+      var cid = getQueryString('id');
+      this.location.href = "my_task.view?kind=wdrw&id="+cid+"&time="+timestamp;
+    }
 
-        var userAgent = navigator.userAgent;
-        if (userAgent.indexOf("iPhone") >= 0) {
-            window.webkit.messageHandlers.closeTask.postMessage("task");
-        } else {
-            window.callByJs.setValue("关闭窗口");
-        }
+    var userAgent = navigator.userAgent;
+    if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
+      window.webkit.messageHandlers.closeTask.postMessage("task");
+    } else {
+      window.callByJs.setValue("关闭窗口");
     }
-    function openDiv() {
-        document.getElementById('tanchuang2').style.display = 'inline';
-    }
+  }
+  function openDiv() {
+    document.getElementById('tanchuang2').style.display = 'inline';
+  }
 </script>
 <script>
-    if (getQueryString('kind') != null) {
-        var tm = getQueryString('kind');
-        if (tm == "xzrw") {
-            document.getElementById("timu").style.display = "block";
-            document.getElementById("body1").style.margin="0px";
-            document.getElementById("title").innerText = "任务详情";
-            /*document.title="北京互联探索有限公司";*/
-        }
+  if (getQueryString('kind') != null) {
+    var tm = getQueryString('kind');
+    if (tm == "xzrw") {
+      document.getElementById("timu").style.display = "block";
+      document.getElementById("body1").style.margin="0px";
+      document.getElementById("title").innerText = "任务详情";
+      /*document.title="北京互联探索有限公司";*/
     }
+  }
 </script>
 
 

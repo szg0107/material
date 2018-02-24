@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .divStyles{
+            width: 90%;
+            margin: 0 auto;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body style="margin: 0;padding: 0;">
+<div>
+    <div style="background: #029ae5;" class="divStyles">
+        <div style="float: left;color: #FFFFFF;">SRM-PSS</div>
+        <div style="float: right;color: #FFFFFF;text-align: right;">
+            <span>图片1</span>
+            <span>图片2</span>
+            <span>图片3</span>
+        </div>
+    </div>
+    <div style="text-align: right;" class="divStyles">Super User</div>
+    <div style="text-align: right;" class="divStyles">
+        <div style="float: right;margin-right: 10%;">高级搜索...</div>
+        <div style="float: right;">选择属性...</div>
+    </div>
+    <div style="text-align: right;" class="divStyles"><input type="text" style="margin-right: 10%;"/></div>
+    <div style="background:#ECEFF1;" class="divStyles">
+        <div style="float: left;color: #FFFFFF;margin: 20px;background: #029ae5;width: 200px;height: 200px;text-align: center;line-height: 200px;" onclick="window.location.href='./html/CreateObject2.html'">任务箱</div>
+        <div style="float: left;color: #029ae5;margin: 20px;background: #FFFFFF;width: 200px;height: 200px;text-align: center;line-height: 200px;">创建产品结构</div>
+        <div style="float: left;color: #FFFFFF;margin: 20px;background: #029ae5;width: 200px;height: 200px;text-align: center;line-height: 200px;">创建文档及其它</div>
+        <div style="float: left;color: #029ae5;margin: 20px;background: #FFFFFF;width: 200px;height: 200px;text-align: center;line-height: 200px;">资源库</div>
+        <div style="float: left;color: #FFFFFF;margin: 20px;background: #029ae5;width: 200px;height: 200px;text-align: center;line-height: 200px;">协同工作区</div>
+        <div style="float: left;color: #029ae5;margin: 20px;background: #FFFFFF;width: 200px;height: 200px;text-align: center;line-height: 200px;">系统管理</div>
+    </div>
+    <div class="divStyles">
+        <div style="float: left;background: #029ae5;color: #FFFFFF;text-align: center; width: 120px;height: 80px;line-height: 80px;">零部件号</div>
+        <div style="float: left;background: #029ae5;color: #FFFFFF;text-align: center; width: 120px;height: 80px;line-height: 80px;margin-left: 10px;">零部名称</div>
+    </div>
+    <div id="nr" class="divStyles">
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    var fid=document.getElementById("nr");
+    function createDiv(){
+        var newsDiv = document.createElement('div');
+        newsDiv.setAttribute('name', 'itemDiv');
+        newsDiv.setAttribute('style', 'overflow: auto;');
+        /*newdiv.setAttribute('onclick', 'clickReply(this)');*/
+
+        var newsId=document.createElement('div');
+        newsId.setAttribute('name', 'IDs');
+        newsId.setAttribute('style','float: left;text-align: center; width: 120px;height: 80px;line-height: 80px;');
+        newsDiv.appendChild(newsId);
+
+        var newsName=document.createElement('div');
+        newsName.setAttribute('name', 'Names');
+        newsName.setAttribute('style','float: left;text-align: center; width: 120px;height: 80px;line-height: 80px;margin-left: 10px;');
+        newsDiv.appendChild(newsName);
+
+        fid.appendChild(newsDiv);
+    }
+    for(var i=0;i<5;i++){
+        createDiv();
+        document.getElementsByName('IDs')[i].innerText=i;
+        document.getElementsByName('Names')[i].innerText=(i+1);
+    }
+</script>
+</body>
+</html>

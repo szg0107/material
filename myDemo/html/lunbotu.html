@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>简易轮播图</title>
+  <style type="text/css">
+    #tab { overflow:hidden; width:400px; height:250px; position:relative; float:left;}
+    #tab>img:not(:first-child){ display:none; }
+
+  </style>
+  <script>
+    window.onload = function(){
+
+      var images = document.getElementsByTagName('img');
+      var pos = 0;
+      var len = images.length;
+      console.log(len);
+      setInterval(function(){
+
+        images[pos].style.display = 'none';
+        pos = ++pos == len ? 0 : pos;
+        images[pos].style.display = 'inline';
+
+      },1000);
+
+    };
+  </script>
+
+</head>
+
+<body>
+<div id="tab">
+  <img src="../img/01.jpg" width="400" height="250"/>
+  <img src="../img/02.jpg" width="400" height="250"/>
+  <img src="../img/03.jpg" width="400" height="250"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件状态</title>
+    <script type='text/javascript' src='res/js/activation_code.js'></script>
+    <script type='text/javascript' src='res/js/common_methods.js'></script>
+    <!--禁止缩放-->
+    <meta name=viewport content="user-scalable=no">
+    <!--禁止缩放字体原样输出-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">-->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+            font-size: 48px;
+        }
+
+        .leftDiv {
+            float: left;
+            text-align: right;
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 40%;
+        }
+
+        .rightDiv {
+            float: left;
+            width: 55%;
+        }
+        /*外层div样式*/
+        .divStyle {
+            background: #FFFFFF;
+            width: 100%;
+            margin-left: 50px;
+            border-bottom: 2px #efeef4 solid;
+            overflow: auto;
+        }
+
+        /*内容样式*/
+        .describeStyle {
+            float: left;
+            word-wrap: break-word;
+            word-break: break-all;
+            height: 130px;
+            line-height: 130px;
+        }
+        /*标题样式*/
+        .wenZiStyle {
+            float: left;
+            /*height: 130px;
+            line-height: 130px;*/
+            color: #666666;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!--描述区-->
+        <div style="background: #ffffff;margin-top: 10px;">
+            <div style="overflow: auto">
+                <div class="leftDiv" id="test">当前流程状态:</div>
+                <div class="rightDiv">并行</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">流程发起人:</div>
+                <div class="rightDiv" id="taskFounder">李星</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">当前所有处理人:</div>
+            </div>
+        </div>
+        <!--处理人-->
+        <div style="margin-top:20px;font-size: 48px;width: 95%">
+            <ylt.for dataId="1520316559331">
+                <div class="divStyle">
+                    <div class="wenZiStyle"><img src="upload/$value" height="100px" style="margin-top: 15px;border-radius: 50px;"/></div>
+                    <div class="describeStyle" style="width: 30%;">$value</div>
+                    <div class="describeStyle" name="phoneNumberValue" style="float: right;color: #666666;font-size: 42px;margin-right: 50px;">$value</div>
+                </div>
+            </ylt.for>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var phoneNumberValueArray = document.getElementsByName("phoneNumberValue");
+    for (var i = 0; i < phoneNumberValueArray.length; i++) {
+        phoneNumberValueArray[i].innerText = zhjiem(phoneNumberValueArray[i].innerText);
+    }
+    var taskFounder=document.getElementById("taskFounder");
+    taskFounder.innerText=getQueryString1('taskFounder');
+</script>
+</html>

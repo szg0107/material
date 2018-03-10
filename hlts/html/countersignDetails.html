@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>汇签类任务详情</title>
+    <!--<meta name=viewport content="user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <script type='text/javascript' src='res/js/common_methods.js'></script>
+    <script type='text/javascript' src='res/js/activation_code.js'></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .stairStyle {
+            display: inline-block;
+            text-align: center;
+            color: #029ae5;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .leftDiv {
+            float: left;
+            text-align: right;
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 20%;
+        }
+
+        .rightDiv {
+            float: left;
+            width: 70%;
+        }
+    </style>
+</head>
+<body style="background: #EFEEF4;">
+<div>
+    <!--任务描述区-->
+    <div style="background: #ffffff;margin-top: 10px;">
+        <ylt.for dataId="1520305634833">
+            <div style="overflow: auto">
+                <div class="leftDiv">来文标题</div>
+                <div class="rightDiv">$value</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">来文单位</div>
+                <div class="rightDiv">$value</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">紧急程度</div>
+                <div class="rightDiv">$value</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">操作类型</div>
+                <div class="rightDiv">$value</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">传递人</div>
+                <div class="rightDiv">$value</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">密级</div>
+                <div class="rightDiv">$value</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="leftDiv">留言</div>
+                <div class="rightDiv">$value</div>
+            </div>
+
+            <div style="display: none;">
+                <!--传递方式-->
+                <div id="circleId">$value</div>
+                <!--传递方式-->
+                <div id="transmittalMode">$value</div>
+                <!--任务创建人-->
+                <div id="taskFounder">$value</div>
+            </div>
+        </ylt.for>
+
+        <div style="overflow: auto">
+            <div class="leftDiv">附件内容</div>
+            <div class="rightDiv" style="color: #029ae5" id="fjContent"></div>
+        </div>
+    </div>
+
+    <!--意见区-->
+    <div style="background: #ffffff;margin-top: 10px;">
+        <div style="margin-left: 10px;padding-top: 10px;">
+            <span style="font-weight: bold;">领导意见区</span>
+            <ylt.for dataId="1520475759162">
+                <div style="margin-top: 10px">
+                    <div>$value</div>
+                    <div>$value $value</div>
+                </div>
+            </ylt.for>
+
+            <!--发起人意见-->
+            <ylt.for dataId="1520476294609">
+                <div style="margin-top: 10px">
+                    <div>$value</div>
+                    <div>$value $value</div>
+                </div>
+            </ylt.for>
+        </div>
+        <hr style="margin:10px;border: 1px solid #029ae5;"/>
+        <div style="margin-left: 10px;">
+            <span style="font-weight: bold;">部门/团队意见</span>
+            <ylt.for dataId="1520476467291">
+                <div style="margin-top: 10px">
+                    <div>$value</div>
+                    <div>$value $value</div>
+                </div>
+            </ylt.for>
+        </div>
+    </div>
+
+    <!--菜单区-->
+    <div id="menu_child" style="position: fixed;bottom: 50px;"></div>
+    <div id="menu" style="position: fixed;bottom: 0;background: #ffffff;width: 100%;"></div>
+
+
+    <!--数据区-->
+    <div style="display: none;">
+        <ylt.for dataId="1520474107010">
+            <span name="fj">$value</span>
+        </ylt.for>
+        <ylt.v message="user">
+            $value
+            <div id="user">$value</div>
+        </ylt.v>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    /*菜单数据*/
+    var navValue = [
+        {
+            name: "签署意见"
+        },
+        {
+            name: "传递",
+            child: [
+                {name: "传递领导"},
+                {name: "传递员工"}
+            ]
+        },
+        {
+            name: "终止"
+        },
+        {
+            name: "退还"
+        },
+        {
+            name: "更多",
+            child: [
+                {name: "文件状态"},
+                {name: "流程追踪"}
+            ]
+        }
+    ];
+    /*一级菜单容器*/
+    var menuDiv = document.getElementById("menu");
+    /*二级菜单容器*/
+    var menu_childDiv = document.getElementById("menu_child");
+    /*是否可以点击*/
+    var isClick = true;
+    /*用户用什么浏览器访问*/
+    var userAgent = navigator.userAgent;
+    /*传递方式*/
+    var transmittalModeValue = document.getElementById("transmittalMode").innerText.replace(/(^\s*)|(\s*$)/g, "");
+    /*任务创建人*/
+    var taskFounderValue = document.getElementById("taskFounder").innerText.replace(/(^\s*)|(\s*$)/g, "");
+    /*圈子id*/
+    var circleID = document.getElementById("circleId").innerText.replace(/(^\s*)|(\s*$)/g, "");
+    /*用户*/
+    var user = document.getElementById("user").innerText.replace(/(^\s*)|(\s*$)/g, "");
+
+    /*创建一级菜单和二级菜单*/
+    function createItem() {
+        /*计算每个span的宽*/
+        var spanWidth = parseInt(document.body.offsetWidth / navValue.length);
+        /*console.log(document.body.clientWidth + "------网页可见区域宽");
+        console.log(document.body.offsetWidth + "------网页可见区域宽(包括边线的宽)");
+        console.log(document.body.scrollWidth + "------网页正文全文宽");
+        console.log(window.screen.width + "------屏幕分辨率的宽");
+        console.log(window.screen.availWidth + "------屏幕可用工作区宽度");
+        console.log(navValue.length);
+        console.log(spanWidth);*/
+        for (var i = 0; i < navValue.length; i++) {
+            /*生成一级菜单console.log(navValue[i].name);*/
+            var stair = document.createElement('span');
+            stair.setAttribute("style", "width:" + spanWidth + "px;");
+            stair.setAttribute("class", "stairStyle");
+            stair.setAttribute("onclick", "itemClick(this.innerText)");
+            stair.innerText = navValue[i].name;
+            menuDiv.appendChild(stair);
+
+            /*生成二级菜单*/
+            if (navValue[i].child != undefined) {
+                /*二级菜单外层*/
+                var secondDiv = document.createElement('span');
+                secondDiv.setAttribute("style", "background: #ffffff;display:none;position:relative;left:" + i * spanWidth + 'px;');
+                secondDiv.setAttribute("id", "secondDiv" + i);
+                for (var j = 0; j < navValue[i].child.length; j++) {
+                    /*二级菜单内容console.log(navValue[i].child[j].name);*/
+                    var second = document.createElement('div');
+                    second.setAttribute("style", "width:" + spanWidth + "px;text-align: center;height:50px;line-height: 50px;color:#029ae5;");
+                    second.setAttribute("onclick", "itemClick(this.innerText)");
+                    second.innerText = navValue[i].child[j].name;
+                    secondDiv.appendChild(second);
+                    menu_childDiv.appendChild(secondDiv);
+                }
+            }
+        }
+    }
+
+    createItem();
+
+    /*选项点击事件*/
+    function itemClick(content) {
+        var secondDiv1 = document.getElementById("secondDiv1");
+        var secondDiv4 = document.getElementById("secondDiv4");
+        switch (content) {
+            case "签署意见":
+                secondDiv4.style.display = "none";
+                secondDiv1.style.display = "none";
+                setMessage(content);
+                break;
+            case "传递":
+                if (secondDiv4.style.display = "inline-block") {
+                    secondDiv4.style.display = "none";
+                }
+                if (secondDiv1.style.display == "none") {
+                    secondDiv1.style.display = "inline-block";
+                } else {
+                    secondDiv1.style.display = "none";
+                }
+                break;
+            case "终止":
+                /*flowRecord(content);*/
+                secondDiv4.style.display = "none";
+                secondDiv1.style.display = "none";
+                setMessage(content);
+                break;
+            case "退还":
+                /*flowRecord(content);*/
+                secondDiv4.style.display = "none";
+                secondDiv1.style.display = "none";
+                setMessage(content);
+                break;
+            case "更多":
+                if (secondDiv1.style.display = "inline-block") {
+                    secondDiv1.style.display = "none";
+                }
+                if (secondDiv4.style.display == "none") {
+                    secondDiv4.style.display = "inline-block";
+                } else {
+                    secondDiv4.style.display = "none";
+                }
+                break;
+            case "传递领导":
+                secondDiv4.style.display = "none";
+                secondDiv1.style.display = "none";
+                setMessage(content);
+                break;
+            case "传递员工":
+                secondDiv4.style.display = "none";
+                secondDiv1.style.display = "none";
+                setMessage(content);
+                break;
+            case "文件状态":
+                secondDiv4.style.display = "none";
+                secondDiv1.style.display = "none";
+                setMessage(content);
+                break;
+            case "流程追踪":
+                secondDiv4.style.display = "none";
+                secondDiv1.style.display = "none";
+                setMessage(content);
+                break;
+        }
+    }
+
+    /*创建附件span并绑定事件*/
+    function setFj() {
+        var fjArray = document.getElementsByName('fj');
+        var fjContent = document.getElementById("fjContent");
+        for (var i = 0; i < fjArray.length; i++) {
+            var fj = fjArray[i].innerText.replace(/(^\s*)|(\s*$)/g, "");
+            var fjSpan = document.createElement('span');
+            fjSpan.setAttribute("style", "display:inline-block;margin-right:10px;");
+            fjSpan.setAttribute("onclick", "checkTheAttachment('" + fj + "')");
+            fjSpan.innerText = "附件" + (i + 1);
+            fjContent.appendChild(fjSpan);
+        }
+    }
+
+    setFj();
+
+    /*点击查看附件按钮事件*/
+    function checkTheAttachment(file) {
+        var type = file.substring((file.length - 3));
+        var content = {"file": file, "type": type};
+        if (isClick) {
+            isClick = false;
+            setTimeout(function () {
+                isClick = true;
+            }, 2000);
+            if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+                window.webkit.messageHandlers.checkTheAttachment.postMessage(content);
+            } else if (userAgent.indexOf("Android") >= 0) {
+                window.callByJs.setValue(file, type);
+            }
+        }
+    }
+
+    /*给原生发送消息*/
+    function setMessage(message) {
+        /*1.菜单的值 2.传递方式 3.任务创建人*/
+        var messageArray = [message, transmittalModeValue, taskFounderValue];
+        var data = {"message": message,"transmittalMode":transmittalModeValue,"taskFounder":taskFounderValue};
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+            window.webkit.messageHandlers.caozuo.postMessage(data);
+        } else if (userAgent.indexOf("Android") >= 0) {
+            window.callByJs.setMessage(messageArray);
+        }
+    }
+
+    /* 记录流程同时完成任务*/
+    function flowRecord(cz) {
+        var time = (new Date()).valueOf();
+        var ID = time + random3Code();
+        var RWID = getQueryString1('taskId');
+        /*流程记录*/
+        var str = "S_CZ=" + cz + "&user=" + user + "&S_FSSJ=" + time + "&S_ID=" + ID + "&circleId=" + circleID + "&S_RWID=" + RWID + "&S_RYLX=&S_QSYJ=";
+        var strVResult = sys_doComMandReturn("150", str);
+        /*
+        * 记录完成任务
+        **/
+        str = "S_ID=" + ID + "&S_RWID=" + RWID + "&user=" + user;
+        strVResult = sys_doComMandReturn("073", str);
+    }
+</script>
+</html>

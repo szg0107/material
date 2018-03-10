@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>签署意见</title>
+    <script type='text/javascript' src='js/checkform.js'></script>
+    <meta name=viewport content="user-scalable=no">
+    <script type='text/javascript' src='res/js/common_methods.js'></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 48px;
+        }
+
+        .buttonStyle {
+            width: 20%;
+            color: #ffffff;
+            border-radius: 20px;
+            margin: 20px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body style="background: #EFEEF4;">
+<div>
+    <!--输入框区-->
+    <div style="background: #ffffff;overflow: auto;margin: 10px;">
+        <textarea style="width:100%;height:500px;border: 0px;resize:none;outline:none;background: #ffffff;" autofocus
+                  id="opinion" oninput="setNumberWords();"
+                  onfocus="commonOpinionsDiv.style.display='none';setNumberWords();"></textarea>
+        <sapn style="float: left;margin-left: 10px;color: #029ae5;font-size: 60px;" onclick="showCommonOpinions();">
+            常用意见
+        </sapn>
+        <span style="float: right;margin-right: 10px;font-size: 60px;" id="numberWords">0/50</span>
+    </div>
+
+    <!--按钮区-->
+    <div style="margin-top: 100px;text-align: center;margin-bottom: 100px;">
+        <button class="buttonStyle" style="background: #FF6600;width: 35%;"
+                onclick="SQLStatement(this.innerText);">设为常用意见
+        </button>
+        <button class="buttonStyle" style="background: #029ae5;" onclick="SQLStatement(this.innerText);">保存</button>
+        <button class="buttonStyle" style="background: #029ae5;" onclick="SQLStatement(this.innerText);">提交</button>
+    </div>
+
+    <!--常用意见区-->
+    <div id="commonOpinions" style="display: none;">
+        <ylt.for dataId="1520581710915">
+            <div style="overflow: auto;border-bottom: 1px solid #3a3a3a;margin-left: 10px;margin-right: 10px;"
+                 name="parentDiv">
+                <div name="opinionValue"
+                     style="float: left;width: 85%;line-height: 100px;text-overflow: ellipsis; white-space: nowrap;overflow:hidden;"
+                     onclick="setTextAreaValue(this.innerText);commonOpinionsDiv.style.display='none';">
+                    $value
+                </div>
+                <img src="res/images/shanchu.png" style="float: right;width: 100px;height: 100px;"
+                     onclick="clickDeleteOpinions(this,this.name,this.id);" name="deleteImg" id="$value"/>
+            </div>
+        </ylt.for>
+    </div>
+
+    <!--用户信息-->
+    <div style="display: none;">
+        <ylt.v message="user">
+            $value
+            <div id="user">$value</div>
+        </ylt.v>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    /*得到多行文本框控件*/
+    var opinions = document.getElementById("opinion");
+    /*多行文本最大输入字数*/
+    var numberWordsSpan = document.getElementById("numberWords");
+    /*用户用什么浏览器访问*/
+    var userAgent = navigator.userAgent;
+    /*常用意见*/
+    var commonOpinionsDiv = document.getElementById("commonOpinions");
+    /*意见外层div*/
+    var parentDivs = document.getElementsByName("parentDiv");
+    /*用户*/
+    var user = document.getElementById("user").innerText.replace(/(^\s*)|(\s*$)/g, "");
+    /*任务id*/
+    var taskId = getQueryString1('taskId');
+    /*圈子id*/
+    var circleId = getQueryString1('circleId');
+    /*传递方式*/
+    var transmittalMode = getQueryString1('transmittalMode');
+
+    /*设置多行文本的值*/
+    function setTextAreaValue(value) {
+        if (value.length >= 50) {
+            numberWordsSpan.innerText = "50/50";
+            numberWordsSpan.style.color = "#ff0000";
+            opinions.value = value.substring(0, 50);
+        } else {
+            opinions.value = value;
+            numberWordsSpan.innerText = value.length + "/50";
+            numberWordsSpan.style.color = "";
+        }
+    }
+
+    /*输入框内容发生改变时，动态改变字数*/
+    function setNumberWords() {
+        if (opinions.value.length >= 50) {
+            numberWordsSpan.innerText = "50/50";
+            numberWordsSpan.style.color = "#ff0000";
+            opinions.value = opinions.value.substring(0, 50);
+        } else {
+            numberWordsSpan.innerText = opinions.value.length + "/50";
+            numberWordsSpan.style.color = "";
+        }
+    }
+
+    /*删除常用意见 参数1：点击的控件  参数2：控件的name 参数3：控件的id*/
+    function clickDeleteOpinions(element, name, id) {
+        commonOpinionsDiv.removeChild(parentDivs[query_element_id(element, name)]);
+        /*删除常用意见*/
+        var strVResult = sys_doComMandReturn("155", "S_ID=" + id);
+        console.log(strVResult);
+    }
+
+    /*显示常用意见*/
+    function showCommonOpinions() {
+        console.log(commonOpinionsDiv.children.length);
+        if (commonOpinionsDiv.children.length > 0) {
+            if (commonOpinionsDiv.style.display == "none") {
+                commonOpinionsDiv.style.display = "";
+            } else {
+                commonOpinionsDiv.style.display = "none";
+            }
+        } else {
+            alert("您目前还没有常用意见！");
+        }
+    }
+
+    /*动态生成常用意见 参数1：常用意见的内容  参数2：常用意见的id*/
+    function createCommonOpinions(value, id) {
+        /*外层div*/
+        var parentDiv = document.createElement('div');
+        parentDiv.setAttribute("style", "overflow: auto;border-bottom: 1px solid #3a3a3a;margin-left: 10px;margin-right: 10px;");
+        parentDiv.setAttribute("name", "parentDiv");
+
+        /*内容div*/
+        var opinionValue = document.createElement("div");
+        opinionValue.setAttribute("style", "float: left;width: 85%;line-height: 100px;text-overflow: ellipsis; white-space: nowrap;overflow:hidden;");
+        opinionValue.setAttribute("name", "opinionValue");
+        opinionValue.setAttribute("onclick", "setTextAreaValue(this.innerText);commonOpinionsDiv.style.display='none';");
+        opinionValue.innerText = value;
+
+        /*删除图片*/
+        var deleteImg = document.createElement("img");
+        deleteImg.setAttribute("style", "float: right;width: 100px;height: 100px;");
+        deleteImg.setAttribute("name", "deleteImg");
+        deleteImg.setAttribute("id", id);
+        deleteImg.setAttribute("onclick", "clickDeleteOpinions(this,this.name,this.id);");
+        deleteImg.setAttribute("src", "res/images/shanchu.png");
+
+        parentDiv.appendChild(opinionValue);
+        parentDiv.appendChild(deleteImg);
+        commonOpinionsDiv.appendChild(parentDiv);
+    }
+
+    /*SQL语句并且给原生发消息 参数1：按钮的名称*/
+    function SQLStatement(content) {
+        var time = (new Date()).valueOf();
+        var ID = time + random3Code();
+        var str = "";
+        var strVResult = "";
+        var data = {"message": content};
+        switch (content) {
+            case "设为常用意见":
+                /*增加常用意见*/
+                str = "S_ID=" + ID + "&S_YH=" + user + "&S_CYYJ=" + opinions.value + "&S_BCSJ=" + time;
+                strVResult = sys_doComMandReturn("154", str);
+                if (strVResult) {
+                    createCommonOpinions(opinions.value, ID);
+                    alert("设置成功");
+                }
+                break;
+            case "保存":
+                if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+                    data = {"message": opinions.value};
+                    window.webkit.messageHandlers.checkTheAttachment.postMessage(data);
+                } else if (userAgent.indexOf("Android") >= 0) {
+                    window.callByJs.saveOpinion(opinions.value);
+                }
+                alert("保存成功");
+                break;
+            case "提交":
+                /*流程记录*/
+                str = "S_CZ=签署意见" + "&user=" + user + "&S_FSSJ=" + time + "&S_ID=" + ID + "&circleId=" + circleId + "&S_RWID=" + taskId + "&S_RYLX=" + transmittalMode + "&S_QSYJ=" + opinions.value;
+                strVResult = sys_doComMandReturn("150", str);
+                if (strVResult) {
+                    alert("提交成功");
+                    if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+                        window.webkit.messageHandlers.checkTheAttachment.postMessage(data);
+                    } else if (userAgent.indexOf("Android") >= 0) {
+                        window.callByJs.saveOpinion(content);
+                    }
+                }
+                break;
+        }
+    }
+</script>
+</html>

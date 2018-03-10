@@ -40,3 +40,17 @@ function ltrim(str){
 function rtrim(str){
     return str.replace(/(\s*$)/g,"");
 }
+
+/*生成一个随机数*/
+function randomCode() {
+    return Math.ceil(Math.random() * 10 - 1);
+}
+
+/*生成三个随机数*/
+function random3Code() {
+    var code = "";
+    for(var i = 0; i < 3; i++) {
+        code += randomCode();
+    }
+    return code;
+}

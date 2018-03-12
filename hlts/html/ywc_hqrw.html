@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>汇签类任务详情</title>
+    <title>已完成汇签类任务详情</title>
     <!--<meta name=viewport content="user-scalable=no">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
     <script type='text/javascript' src='js/checkform.js'></script>
@@ -118,10 +118,8 @@
     </div>
 
     <!--菜单区-->
-    <div id="menu_child" style="position: fixed;bottom: 50px;"></div>
     <div id="menu" style="position: fixed;bottom: 0;background: #ffffff;width: 100%;"></div>
     <div style="height: 50px;"></div>
-
 
     <!--数据区-->
     <div style="display: none;">
@@ -139,33 +137,14 @@
     /*菜单数据*/
     var navValue = [
         {
-            name: "签署意见"
+            name: "文件状态"
         },
         {
-            name: "传递",
-            child: [
-                {name: "传递领导"},
-                {name: "传递员工"}
-            ]
-        },
-        {
-            name: "终止"
-        },
-        {
-            name: "退还"
-        },
-        {
-            name: "更多",
-            child: [
-                {name: "文件状态"},
-                {name: "流程追踪"}
-            ]
+            name: "流程追踪"
         }
     ];
     /*一级菜单容器*/
     var menuDiv = document.getElementById("menu");
-    /*二级菜单容器*/
-    var menu_childDiv = document.getElementById("menu_child");
     /*是否可以点击*/
     var isClick = true;
     /*用户用什么浏览器访问*/
@@ -179,7 +158,7 @@
     /*用户*/
     var user = document.getElementById("user").innerText.replace(/(^\s*)|(\s*$)/g, "");
 
-    /*创建一级菜单和二级菜单*/
+    /*创建一级菜单*/
     function createItem() {
         /*计算每个span的宽*/
         var spanWidth = parseInt(document.body.offsetWidth / navValue.length);
@@ -198,23 +177,6 @@
             stair.setAttribute("onclick", "itemClick(this.innerText)");
             stair.innerText = navValue[i].name;
             menuDiv.appendChild(stair);
-
-            /*生成二级菜单*/
-            if (navValue[i].child != undefined) {
-                /*二级菜单外层*/
-                var secondDiv = document.createElement('span');
-                secondDiv.setAttribute("style", "background: #ffffff;display:none;position:relative;left:" + i * spanWidth + 'px;');
-                secondDiv.setAttribute("id", "secondDiv" + i);
-                for (var j = 0; j < navValue[i].child.length; j++) {
-                    /*二级菜单内容console.log(navValue[i].child[j].name);*/
-                    var second = document.createElement('div');
-                    second.setAttribute("style", "width:" + spanWidth + "px;text-align: center;height:50px;line-height: 50px;color:#029ae5;");
-                    second.setAttribute("onclick", "itemClick(this.innerText)");
-                    second.innerText = navValue[i].child[j].name;
-                    secondDiv.appendChild(second);
-                    menu_childDiv.appendChild(secondDiv);
-                }
-            }
         }
     }
 
@@ -222,64 +184,11 @@
 
     /*选项点击事件*/
     function itemClick(content) {
-        var secondDiv1 = document.getElementById("secondDiv1");
-        var secondDiv4 = document.getElementById("secondDiv4");
         switch (content) {
-            case "签署意见":
-                secondDiv4.style.display = "none";
-                secondDiv1.style.display = "none";
-                setMessage(content);
-                break;
-            case "传递":
-                if (secondDiv4.style.display = "inline-block") {
-                    secondDiv4.style.display = "none";
-                }
-                if (secondDiv1.style.display == "none") {
-                    secondDiv1.style.display = "inline-block";
-                } else {
-                    secondDiv1.style.display = "none";
-                }
-                break;
-            case "终止":
-                /*flowRecord(content);*/
-                setMessage(content);
-                secondDiv4.style.display = "none";
-                secondDiv1.style.display = "none";
-                break;
-            case "退还":
-                /*flowRecord(content);*/
-                setMessage(content);
-                secondDiv4.style.display = "none";
-                secondDiv1.style.display = "none";
-                break;
-            case "更多":
-                if (secondDiv1.style.display = "inline-block") {
-                    secondDiv1.style.display = "none";
-                }
-                if (secondDiv4.style.display == "none") {
-                    secondDiv4.style.display = "inline-block";
-                } else {
-                    secondDiv4.style.display = "none";
-                }
-                break;
-            case "传递领导":
-                secondDiv4.style.display = "none";
-                secondDiv1.style.display = "none";
-                setMessage(content);
-                break;
-            case "传递员工":
-                secondDiv4.style.display = "none";
-                secondDiv1.style.display = "none";
-                setMessage(content);
-                break;
             case "文件状态":
-                secondDiv4.style.display = "none";
-                secondDiv1.style.display = "none";
                 setMessage(content);
                 break;
             case "流程追踪":
-                secondDiv4.style.display = "none";
-                secondDiv1.style.display = "none";
                 setMessage(content);
                 break;
         }
@@ -330,22 +239,5 @@
         }
     }
 
-    /* 记录流程同时完成任务*/
-    function flowRecord(cz) {
-        var time = (new Date()).valueOf();
-        var ID = time + random3Code();
-        var RWID = getQueryString1('taskId');
-        /*流程记录*/
-        var str = "S_CZ=" + cz + "&user=" + user + "&S_FSSJ=" + time + "&S_ID=" + ID + "&circleId=" + circleID + "&S_RWID=" + RWID + "&S_RYLX=&S_QSYJ=&S_PH=";
-        var strVResult1 = sys_doComMandReturn("150", str);
-        /*
-        * 记录完成任务
-        **/
-        str = "S_ID=" + ID + "&S_RWID=" + RWID + "&user=" + user;
-        var strVResult = sys_doComMandReturn("073", str);
-        if(strVResult&&strVResult1){
-            setMessage("关闭");
-        }
-    }
 </script>
 </html>

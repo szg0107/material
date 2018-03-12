@@ -25,7 +25,7 @@
 <body style="background: #EFEEF4;">
 <div>
     <!--输入框区-->
-    <div style="background: #ffffff;overflow: auto;margin: 10px;">
+    <div style="background: #ffffff;overflow: auto;margin: 30px 10px 10px 10px;">
         <textarea style="width:100%;height:500px;border: 0px;resize:none;outline:none;background: #ffffff;" autofocus
                   id="opinion" oninput="setNumberWords();"
                   onfocus="commonOpinionsDiv.style.display='none';setNumberWords();"></textarea>
@@ -183,7 +183,7 @@
             case "保存":
                 if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
                     data = {"message": opinions.value};
-                    window.webkit.messageHandlers.checkTheAttachment.postMessage(data);
+                    window.webkit.messageHandlers.saveOpinion.postMessage(data);
                 } else if (userAgent.indexOf("Android") >= 0) {
                     window.callByJs.saveOpinion(opinions.value);
                 }
@@ -191,12 +191,12 @@
                 break;
             case "提交":
                 /*流程记录*/
-                str = "S_CZ=签署意见" + "&user=" + user + "&S_FSSJ=" + time + "&S_ID=" + ID + "&circleId=" + circleId + "&S_RWID=" + taskId + "&S_RYLX=" + transmittalMode + "&S_QSYJ=" + opinions.value;
+                str = "S_CZ=签署意见" + "&user=" + user + "&S_FSSJ=" + time + "&S_ID=" + ID + "&circleId=" + circleId + "&S_RWID=" + taskId + "&S_RYLX=" + transmittalMode + "&S_QSYJ=" + opinions.value + "&S_PH=";
                 strVResult = sys_doComMandReturn("150", str);
                 if (strVResult) {
                     alert("提交成功");
                     if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
-                        window.webkit.messageHandlers.checkTheAttachment.postMessage(data);
+                        window.webkit.messageHandlers.close.postMessage(null);
                     } else if (userAgent.indexOf("Android") >= 0) {
                         window.callByJs.saveOpinion(content);
                     }

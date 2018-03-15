@@ -43,17 +43,17 @@
 
         #hbg {
             width: 100%;
-            position: absolute;
+            position: fixed;
             background: #000;
             z-index: 998; /* 设置层级，主要是为了遮住页面内的其他内容 */
             top: 0;
             left: 0;
-            height: 150%; /* 随便填，超过整屏高度就行，后面由js控制 */
+            height: 100%; /* 随便填，超过整屏高度就行，后面由js控制 */
             opacity: 0.6 /* ie8及以下浏览器看不到效果，我也懒的给你写filter，换其他的现代浏览器吧 */
         }
 
         #alertM {
-            position: absolute; /* 绝对定位，为了以后控制方便 */
+            position: fixed; /* 绝对定位，为了以后控制方便 */
             top: 150px;
             background: #fff;
             z-index: 999; /* 层级，当然要比背景高1啦，要不你怎么看见 */
@@ -174,32 +174,37 @@
 </head>
 
 
-
 <body id="body1" style="margin: 0 auto;padding: 0;background:#efeef4;font-size: 15px;">
 
-<div id="timu" style="display:none;width: 100%;height: 45px;background: #029ae5;line-height: 45px;margin-top:0px;border-style: blue; border-width: 1px;"  ><!--微信公众号使用-->
-    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%" onclick="window.history.go(-1);">
+<div id="timu"
+     style="display:none;width: 100%;height: 45px;background: #029ae5;line-height: 45px;margin-top:0px;border: 1px solid blue;">
+    <!--微信公众号使用-->
+    <img src="res/images/arrow_left_d.png" style="width: 10%;height: 40%;margin-top:0%"
+         onclick="window.history.go(-1);">
     <span id="title" style="color: #FFFFFF;font-size: 20px;margin-left:30%;font-family: 微软雅黑;margin-top:10%">投票任务</span>
 </div>
 
 <div style="text-align: center;">
     <!--任务描述-->
     <ylt.for dataId="1504336874881">
-        <div  style="background: #FFFFFF; border-radius: 10px;margin: 15px;font-size: 20px;" id="descriptions">$value</div>
+        <div style="background: #FFFFFF; border-radius: 10px;margin: 15px;font-size: 20px;" id="descriptions">$value</div>
     </ylt.for>
 
     <!--任务选项-->
     <div style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;margin-left: 15px;margin-right: 15px;padding-bottom:10px;border-radius: 10px;">
         <ylt.for dataId="1499854541265">
-            <div onclick="selectOption(this)" style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;padding-left: 20px;margin-left: 15px;margin-right: 15px;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #efeef4;"name="options">
+            <div onclick="selectOption(this)"
+                 style="background: #FFFFFF;text-align: center;overflow:hidden;margin-top: 2px;padding-left: 20px;margin-left: 15px;margin-right: 15px;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #efeef4;"
+                 name="options">
 
-
-                <img width="20px" alt="0" height="20px" src="res/images/weixuanzhong.png" style="float: left;margin-right: 10px;" name="isSelected" id="$value"/>
+                <img width="20px" alt="0" height="20px" src="res/images/weixuanzhong.png"
+                     style="float: left;margin-right: 10px;" name="isSelected" id="$value"/>
 
                 <div style="float: left;text-align:left;">
-                    <span  name="theOption">$value</span><br/>
-                    <img width="150px" height="150px" src="upload/$value" name="option_pictures" style="display: block;"/>
-                    <span>$value</span>
+                    <span name="theOption">$value</span><br/>
+                    <img width="150px" height="150px" src="upload/$value" name="option_pictures"
+                         style="display: block;"/>
+                    <span style="word-wrap:break-word;word-break:break-all;">$value</span>
                 </div>
 
             </div>
@@ -209,9 +214,18 @@
 
     <div style="text-align: center;margin: 0 auto; width: 95%;clear: both;">
         <button onclick="completeTask()"
-                style="background-color: #029ae5;color: #FFFFFF;width: 225px;font-size:25px;border-radius:10px;height: 50px;margin-top: 50px;margin-bottom: 30px;" id="submitButton">
+                style="background-color: #029ae5;color: #FFFFFF;width: 225px;font-size:25px;border-radius:10px;height: 50px;margin-top: 50px;margin-bottom: 30px;"
+                id="submitButton">
             确认
         </button>
+    </div>
+
+
+    <div style="display: none;">
+        <ylt.v message="user">
+            $value
+            <div id="user">$value</div>
+        </ylt.v>
     </div>
 </div>
 
@@ -238,168 +252,186 @@
 </body>
 
 
-
 <script type="text/javascript">
+    /*最多选几项*/
+    var selectNumber = getQueryString('selectNumber');
+    /*当前选了几项*/
+    var selectCount = 0;
+    /*选择选项时调用的方法*/
+    function selectOption(div) {
+        var optionDivs = document.getElementsByName('options');
+        var isSelecteds = document.getElementsByName('isSelected');
+        var index;
+        for (var i = 0; i < optionDivs.length; i++) {
+            if (optionDivs[i] == div) index = i;
+        }
 
-  var selectNumber = getQueryString('selectNumber');
-  var selectCount = 0 ;
+        if (isSelecteds[index].alt == "0") {
+            if (selectCount >= selectNumber) {
+                alert('最多选择' + selectNumber + "项");
+                return;
+            }
+            isSelecteds[index].alt = "1";
+            isSelecteds[index].src = "res/images/xuanzhong.png";
+            selectCount++;
+        } else {
+            isSelecteds[index].alt = "0";
+            isSelecteds[index].src = "res/images/weixuanzhong.png";
+            selectCount--;
+        }
 
-  function selectOption(div) {
-
-
-    var optionDivs = document.getElementsByName('options');
-    var isSelecteds = document.getElementsByName('isSelected');
-
-    var index;
-    for(var i=0;i<optionDivs.length;i++){
-      if(optionDivs[i]==div)index = i;
     }
 
-    if(isSelecteds[index].alt == "0"){
-      if(selectCount>=selectNumber){
-        alert('最多选择'+selectNumber+"项");
-        return;
-      }
-      isSelecteds[index].alt = "1";
-      isSelecteds[index].src = "res/images/xuanzhong.png";
-      selectCount++;
-    }else{
-      isSelecteds[index].alt = "0";
-      isSelecteds[index].src = "res/images/weixuanzhong.png";
-      selectCount--;
+    /*得到地址栏的非中文的参数*/
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
     }
 
-  }
+    /*得到地址栏的中文的参数*/
+    function getQueryString1(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURI(window.location.href).substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
 
-
-  function getQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r =  window.location.search.substr(1).match(reg);
-    if (r != null) return unescape(r[2]); return null;
-  }
-
-
-
-  function getQueryString1(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r = decodeURI(window.location.href).substr(1).match(reg);
-    if (r != null) return unescape(r[2]); return null;
-  }
-  /*给任务描述赋值*/
-  document.getElementById("descriptions").innerHTML+="<br/><span style='font-size: 10px;color: gray;'>(最多选择"+selectNumber+"项)</span>";
-  /*得到所有图片地址为0时img隐藏*/
-  var option_pictures=document.getElementsByName("option_pictures");
-  for(var i=0;i<option_pictures.length;i++){
-    var img=option_pictures[i].src;
-    if(img.substring((img.indexOf("u")+7)).length==0){
-      option_pictures[i].style.display="none";
-    };
-  }
+    /*给任务描述赋值*/
+    document.getElementById("descriptions").innerHTML += "<br/><span style='font-size: 10px;color: gray;'>(最多选择" + selectNumber + "项)</span>";
+    /*得到所有图片地址为0时img隐藏*/
+    var option_pictures = document.getElementsByName("option_pictures");
+    for (var i = 0; i < option_pictures.length; i++) {
+        var img = option_pictures[i].src;
+        if (img.substring((img.indexOf("u") + 7)).length == 0) {
+            option_pictures[i].style.display = "none";
+        }
+        ;
+    }
 </script>
 
 <script type="text/javascript">
-  /*给时间戳后面加一位随机数*/
-  function randomCode() {
+    /*给时间戳后面加一位随机数*/
+    function randomCode() {
 
-    return Math.ceil(Math.random()*10-1);
+        return Math.ceil(Math.random() * 10 - 1);
 
-  }
-  /*给时间戳后面加三位随机数*/
-  function random3Code() {
-    var code = "";
-    for(var i = 0;i<3;i++){
-      code +=randomCode();
     }
-    return code;
-  }
-  var user="";
-  <ylt.v message="user">
-    $value
-  user="$value";
-  </ylt.v>
-  function completeTask(){
+
+    /*给时间戳后面加三位随机数*/
+    function random3Code() {
+        var code = "";
+        for (var i = 0; i < 3; i++) {
+            code += randomCode();
+        }
+        return code;
+    }
+
+    /*当前用户*/
+    var user = document.getElementById("user").innerText.replace(/(^\s*)|(\s*$)/g, "");
     /*完成任务*/
-    var timestamp = new Date().getTime();
-    /*得到所有选中图片数组*/
-    var isSelecteds = document.getElementsByName('isSelected');
-    /*得到所有选择项的数组*/
-    var theOption=document.getElementsByName('theOption');
-    /*得到所有选择次数的数组*/
-    var strResult=selectCountMethod(getQueryString('taskId')).replace(/\s/g,"").split(';');
-    /*得到显示的div*/
-    var csdiv=document.getElementById('alertP');
-    var count=0;
-    for(var i=0;i<isSelecteds.length;i++){
-      if(isSelecteds[i].alt=="1"){
-        count++;
-      }
-    }
-    /*根据选中图片数组的长度进行循环处理*/
-    if(count==0){
-      alert("请至少选择一项!!");
-    }else{
-      var Searchrecords = sys_doComMandReturn("073", "S_ID=" + timestamp+random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + user);
-      for(var i=0;i<isSelecteds.length;i++){
-        /*创建一个span标签*/
-        var spans=document.createElement("span");
-        /*给span添加样式*/
-        /*spans.setAttribute("class","gps_font");*/
-        /*初始化选择次数*/
-        if(strResult[i].length==32||strResult[i]==""||strResult[i]=="null"||strResult[i]==null||strResult[i]=="NaN"||strResult[i] == undefined||strResult[i]==NaN){
-          strResult[i]="0";
+    function completeTask() {
+        /*完成任务*/
+        var timestamp = new Date().getTime();
+        /*得到所有选中图片数组*/
+        var isSelecteds = document.getElementsByName('isSelected');
+        /*得到所有选择项的数组*/
+        var theOption = document.getElementsByName('theOption');
+        /*得到所有选择次数的数组*/
+        var strResult = selectCountMethod(getQueryString('taskId')).replace(/\s/g, "").split(';');
+        /*得到显示的div*/
+        var csdiv = document.getElementById('alertP');
+        var count = 0;
+        for (var i = 0; i < isSelecteds.length; i++) {
+            if (isSelecteds[i].alt == "1") {
+                count++;
+            }
         }
-        /*如果选中选中次数加一并记录，否则记录原始的选择次数*/
-        if(isSelecteds[i].alt=="1"){
+        /*根据选中图片数组的长度进行循环处理*/
+        if (count == 0) {
+            alert("请至少选择一项!!");
+        } else {
+            var Searchrecords = sys_doComMandReturn("073", "S_ID=" + timestamp + random3Code() + "&S_RWID=" + getQueryString('taskId') + "&user=" + user);
 
-          spans.innerHTML=theOption[i].innerHTML+":"+(parseInt(strResult[i])+1)+"次";
-          csdiv.appendChild(spans);
-          csdiv.appendChild(document.createElement("br"));
-          var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])+1));
-        }else{
-          spans.innerHTML=theOption[i].innerHTML+":"+(parseInt(strResult[i]))+"次";
-          csdiv.appendChild(spans);
-          csdiv.appendChild(document.createElement("br"));
-          var selectionTimes=sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" +(parseInt(strResult[i])));
+            for (var i = 0; i < isSelecteds.length; i++) {
+                /*创建一个span标签*/
+                var spans = document.createElement("span");
+                /*给span添加样式*/
+                /*spans.setAttribute("class","gps_font");*/
+                /*初始化选择次数*/
+                if (strResult[i].length == 32 || strResult[i] == "" || strResult[i] == "null" || strResult[i] == null || strResult[i] == "NaN" || strResult[i] == undefined || strResult[i] == NaN) {
+                    strResult[i] = "0";
+                }
+                /*如果选中选中次数加一并记录，否则记录原始的选择次数*/
+                if (isSelecteds[i].alt == "1") {
+
+                    spans.innerHTML = theOption[i].innerHTML + ":" + (parseInt(strResult[i]) + 1) + "次";
+                    csdiv.appendChild(spans);
+                    csdiv.appendChild(document.createElement("br"));
+                    var selectionTimes = sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" + (parseInt(strResult[i]) + 1));
+                } else {
+
+                    spans.innerHTML = theOption[i].innerHTML + ":" + (parseInt(strResult[i])) + "次";
+                    csdiv.appendChild(spans);
+                    csdiv.appendChild(document.createElement("br"));
+                    var selectionTimes = sys_doComMandReturn("074", "S_ID=" + isSelecteds[i].id + "&S_XZCS=" + (parseInt(strResult[i])));
+                }
+            }
+            /*让提交按钮不可用*/
+            document.getElementById("submitButton").disabled = true;
+            openDiv();
         }
-      }
-      /*让提交按钮不可用*/
-      document.getElementById("submitButton").disabled = true;
-      openDiv();
-    }
 
-  }
+    }
 </script>
 <script type="text/javascript">
-  function closeDivFun() {
-    document.getElementById('tanchuang2').style.display = 'none';
+    /*关闭弹窗*/
+    function closeDivFun() {
+        document.getElementById('tanchuang2').style.display = 'none';
 
-    if (getQueryString('kind') != null) {
-      var timestamp = Date.parse(new Date());
-      var cid = getQueryString('id');
-      this.location.href = "my_task.view?kind=wdrw&id="+cid+"&time="+timestamp;
+        if (getQueryString('kind') != null) {
+            var timestamp = Date.parse(new Date());
+            var cid = getQueryString('id');
+            this.location.href = "my_task.view?kind=wdrw&id=" + cid + "&time=" + timestamp;
+        }
+
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0) {
+            window.webkit.messageHandlers.closeTask.postMessage("task");
+        } else {
+            window.callByJs.setValue("关闭窗口");
+        }
     }
 
-    var userAgent = navigator.userAgent;
-    if (userAgent.indexOf("iPhone") >= 0||userAgent.indexOf("iPad") >= 0) {
-      window.webkit.messageHandlers.closeTask.postMessage("task");
-    } else {
-      window.callByJs.setValue("关闭窗口");
+    /*开启弹窗*/
+    function openDiv() {
+        document.getElementById('tanchuang2').style.display = 'inline';
     }
-  }
-  function openDiv() {
-    document.getElementById('tanchuang2').style.display = 'inline';
-  }
+
+    /*窗体滚动条滚动事件*/
+    window.onscroll=function (ev) {
+        var top1=document.documentElement.scrollTop;
+        if (top1>=150){
+            /*150为div初始位置，当滚动条距离顶部的距离大于300时，使div与滚动条保持相同高度*/
+            document.getElementById("alertM").setAttribute("position","absolute");
+            document.getElementById("alertM").setAttribute("top",top1+"px");
+        }else {
+            document.getElementById("alertM").setAttribute("position","absolute");
+            document.getElementById("alertM").setAttribute("top","150px");
+        }
+    }
 </script>
 <script>
-  if (getQueryString('kind') != null) {
-    var tm = getQueryString('kind');
-    if (tm == "xzrw") {
-      document.getElementById("timu").style.display = "block";
-      document.getElementById("body1").style.margin="0px";
-      document.getElementById("title").innerText = "任务详情";
-      /*document.title="北京互联探索有限公司";*/
+    if (getQueryString('kind') != null) {
+        var tm = getQueryString('kind');
+        if (tm == "xzrw") {
+            document.getElementById("timu").style.display = "block";
+            document.getElementById("body1").style.margin = "0px";
+            document.getElementById("title").innerText = "任务详情";
+            /*document.title="北京互联探索有限公司";*/
+        }
     }
-  }
 </script>
 
 

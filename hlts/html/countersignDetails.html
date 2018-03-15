@@ -20,6 +20,8 @@
             color: #029ae5;
             height: 50px;
             line-height: 50px;
+            margin-left: 10px;
+            font-size: 14px;
         }
 
         .leftDiv {
@@ -182,7 +184,7 @@
     /*创建一级菜单和二级菜单*/
     function createItem() {
         /*计算每个span的宽*/
-        var spanWidth = parseInt(document.body.offsetWidth / navValue.length);
+        var spanWidth = parseInt((document.body.offsetWidth-50) / navValue.length);
         /*console.log(document.body.clientWidth + "------网页可见区域宽");
         console.log(document.body.offsetWidth + "------网页可见区域宽(包括边线的宽)");
         console.log(document.body.scrollWidth + "------网页正文全文宽");
@@ -203,12 +205,16 @@
             if (navValue[i].child != undefined) {
                 /*二级菜单外层*/
                 var secondDiv = document.createElement('span');
-                secondDiv.setAttribute("style", "background: #ffffff;display:none;position:relative;left:" + i * spanWidth + 'px;');
+                if (i<4){
+                    secondDiv.setAttribute("style", "background: #ffffff;display:none;position:relative;left:" + (i * spanWidth +i*10)+ 'px;');
+                }else {
+                    secondDiv.setAttribute("style", "background: #ffffff;display:none;position:relative;left:" + (i * spanWidth +(i-1)*10)+ 'px;');
+                }
                 secondDiv.setAttribute("id", "secondDiv" + i);
                 for (var j = 0; j < navValue[i].child.length; j++) {
                     /*二级菜单内容console.log(navValue[i].child[j].name);*/
                     var second = document.createElement('div');
-                    second.setAttribute("style", "width:" + spanWidth + "px;text-align: center;height:50px;line-height: 50px;color:#029ae5;");
+                    second.setAttribute("style", "width:" + spanWidth + "px;text-align: center;height:40px;line-height: 40px;color:#029ae5;margin-left:10px;margin-right:10px;border-bottom:1px solid #ccc;font-size:14px;");
                     second.setAttribute("onclick", "itemClick(this.innerText)");
                     second.innerText = navValue[i].child[j].name;
                     secondDiv.appendChild(second);

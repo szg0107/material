@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自定义轮播图</title>
+    <style type="text/css">
+        #tab { overflow:hidden; width:100%; height:250px; position:relative; float:left;}
+        #tab>img:not(:first-child){ display:none; }
+        #buttons {
+            position: absolute;
+            left: 450px;
+            bottom: 20px;
+            z-index: 2;
+            height: 10px;
+        }
+        #buttons span {
+            float: left;
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+        #buttons .on {
+            background: orangered;
+        }
+        .arrow {
+            position: absolute;
+            top: 80px;
+            z-index: 2;
+            width: 100px;
+            height: 100px;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 100px;
+            text-align: center;
+            color: #fff;
+            background-color: RGBA(0, 0, 0, .2);
+            cursor: pointer;
+            text-decoration : none
+        }
+        /*.arrow:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }*/
+        #prev {
+            left: 20px;
+        }
+        #next {
+            right: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+<div id="tab">
+    <img src="../img/01.jpg" width="100%" height="250" name="banner"/>
+    <img src="../img/02.jpg" width="100%" height="250" name="banner"/>
+    <img src="../img/03.jpg" width="100%" height="250" name="banner"/>
+
+    <div id="buttons"></div>
+    <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+    <a href="javascript:;" id="next" class="arrow">&gt;</a>
+</div>
+
+</body>
+<script>
+    function lunBo(){
+        /*获取图片对象组*/
+        var images = document.getElementsByName('banner');
+        /*初始位置*/
+        var pos = 0;
+        /*图片数组的长度*/
+        var len = images.length;
+        /*定时任务变量*/
+        var timer;
+        /*所有圆点*/
+        var buttons = document.getElementById('buttons').getElementsByTagName('span');
+        /*上一张*/
+        var prev = document.getElementById('prev');
+        /*下一张*/
+        var next = document.getElementById('next');
+        /*获取最外层控件*/
+        var tab=document.getElementById("tab");
+        /*用什么方式访问页面的*/
+        var ua = navigator.userAgent.toLowerCase();
+        /*启动或者移除定时器*/
+        function play(isStop) {
+            /*true移除定时器false启动定时器*/
+            if (isStop){
+                /*移除定时器*/
+                clearInterval(timer);
+            }else {
+                /*启动定时器*/
+                timer = setInterval(function(){
+                    nextAndPrev("next");
+                },5000);
+            }
+        }
+        /*清除所有圆点样式并且设置当前圆点样式*/
+        function buttonsShow() {
+            /*将之前的小圆点的样式清除*/
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].className == "on") {
+                    buttons[i].className = "";
+                }
+            }
+            buttons[pos].className = "on";
+        }
+        /*用不同的浏览器访问绑定不同的方法*/
+        if (/iphone|ipad|ipod|android/.test(ua)) {
+            /*父容器按下事件*/
+            tab.addEventListener("touchstart", function (e) {
+                play(true);
+            });
+            /*父容器弹起事件*/
+            tab.addEventListener("touchend", function (e) {
+                play(false);
+            });
+        } else  {
+            tab.onmouseover = function (ev) { play(true) };
+            tab.onmouseout = function (ev) { play(false) };
+        }
+        play(false);
+        /*下一个点击事件*/
+        next.onclick = function () {
+            nextAndPrev("next");
+        };
+        /*上一个点击事件*/
+        prev.onclick = function () {
+            nextAndPrev("prev");
+        };
+        /*图片切换*/
+        function nextAndPrev(name) {
+            images[pos].style.display = 'none';
+            if (name=="prev"){
+                if (pos>0){
+                    pos = --pos == len ? 0 : pos;
+                }else {
+                    pos =len-1;
+                }
+            }else {
+                pos = ++pos == len ? 0 : pos;
+            }
+            images[pos].style.display = 'inline';
+            buttonsShow();
+        }
+        /*创建底部圆点*/
+        function createSpan() {
+            /*获取圆点的父控件*/
+            var buttonDiv=document.getElementById("buttons");
+            /*循环生成子控件*/
+            for (var i=0;i<len;i++){
+                var newSpan=document.createElement('span');
+                newSpan.setAttribute("name","banner_item");
+                buttonDiv.appendChild(newSpan);
+            }
+            /*得到所有子控件*/
+            var childSpan=document.getElementsByName("banner_item");
+            /*设置第一个子控件样式*/
+            childSpan[0].setAttribute("class","on");
+        }
+        createSpan();
+    }
+    lunBo();
+</script>
+</html>

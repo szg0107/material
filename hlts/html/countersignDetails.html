@@ -91,11 +91,11 @@
     <!--意见区-->
     <div style="background: #ffffff;margin-top: 10px;">
         <div style="margin-left: 10px;padding-top: 10px;margin-bottom: 10px;">
-            <span style="font-weight: bold;">领导意见区</span>
+            <span style="font-weight: bold;display: inline-block;margin-bottom: 10px;">领导意见区</span>
             <ylt.for dataId="1520475759162">
-                <div style="margin-top: 10px">
+                <div style="margin-bottom: 10px">
                     <div>$value</div>
-                    <div>$value $value</div>
+                    <div style="color: #c9c9c9;">$value $value</div>
                 </div>
             </ylt.for>
 
@@ -103,17 +103,17 @@
             <ylt.for dataId="1520476294609">
                 <div style="margin-top: 10px">
                     <div>$value</div>
-                    <div>$value $value</div>
+                    <div style="color: #c9c9c9;">$value $value</div>
                 </div>
             </ylt.for>
         </div>
         <!--<hr style="margin:10px;border: 1px solid #029ae5;"/>-->
         <div style="margin-left: 10px;border-top: 1px solid #029ae5;">
-            <span style="font-weight: bold;margin-top: 10px;display: inline-block;">部门/团队意见</span>
+            <span style="font-weight: bold;margin-top: 10px;display: inline-block;margin-bottom: 10px;">部门/团队意见</span>
             <ylt.for dataId="1520476467291">
-                <div style="margin-top: 10px">
+                <div style="margin-bottom: 10px">
                     <div>$value</div>
-                    <div>$value $value</div>
+                    <div style="color: #c9c9c9;">$value $value</div>
                 </div>
             </ylt.for>
         </div>
@@ -121,7 +121,7 @@
 
     <!--菜单区-->
     <div id="menu_child" style="position: fixed;bottom: 50px;"></div>
-    <div id="menu" style="position: fixed;bottom: 0;background: #ffffff;width: 100%;"></div>
+    <div id="menu" style="position: fixed;bottom: 0;background: #ffffff;width: 100%;border-top: 1px solid #EFEEF4;"></div>
     <div style="height: 50px;"></div>
 
 
@@ -154,13 +154,11 @@
             name: "终止"
         },
         {
-            name: "退还"
-        },
-        {
             name: "更多",
             child: [
                 {name: "文件状态"},
-                {name: "流程追踪"}
+                {name: "流程追踪"},
+                {name: "退还"}
             ]
         }
     ];
@@ -229,16 +227,16 @@
     /*选项点击事件*/
     function itemClick(content) {
         var secondDiv1 = document.getElementById("secondDiv1");
-        var secondDiv4 = document.getElementById("secondDiv4");
+        var secondDiv3 = document.getElementById("secondDiv3");
         switch (content) {
             case "签署意见":
-                secondDiv4.style.display = "none";
+                secondDiv3.style.display = "none";
                 secondDiv1.style.display = "none";
                 setMessage(content);
                 break;
             case "传递":
-                if (secondDiv4.style.display = "inline-block") {
-                    secondDiv4.style.display = "none";
+                if (secondDiv3.style.display = "inline-block") {
+                    secondDiv3.style.display = "none";
                 }
                 if (secondDiv1.style.display == "none") {
                     secondDiv1.style.display = "inline-block";
@@ -249,42 +247,42 @@
             case "终止":
                 /*flowRecord(content);*/
                 setMessage(content);
-                secondDiv4.style.display = "none";
+                secondDiv3.style.display = "none";
                 secondDiv1.style.display = "none";
                 break;
             case "退还":
                 /*flowRecord(content);*/
                 setMessage(content);
-                secondDiv4.style.display = "none";
+                secondDiv3.style.display = "none";
                 secondDiv1.style.display = "none";
                 break;
             case "更多":
                 if (secondDiv1.style.display = "inline-block") {
                     secondDiv1.style.display = "none";
                 }
-                if (secondDiv4.style.display == "none") {
-                    secondDiv4.style.display = "inline-block";
+                if (secondDiv3.style.display == "none") {
+                    secondDiv3.style.display = "inline-block";
                 } else {
-                    secondDiv4.style.display = "none";
+                    secondDiv3.style.display = "none";
                 }
                 break;
             case "传递领导":
-                secondDiv4.style.display = "none";
+                secondDiv3.style.display = "none";
                 secondDiv1.style.display = "none";
                 setMessage(content);
                 break;
             case "传递员工":
-                secondDiv4.style.display = "none";
+                secondDiv3.style.display = "none";
                 secondDiv1.style.display = "none";
                 setMessage(content);
                 break;
             case "文件状态":
-                secondDiv4.style.display = "none";
+                secondDiv3.style.display = "none";
                 secondDiv1.style.display = "none";
                 setMessage(content);
                 break;
             case "流程追踪":
-                secondDiv4.style.display = "none";
+                secondDiv3.style.display = "none";
                 secondDiv1.style.display = "none";
                 setMessage(content);
                 break;

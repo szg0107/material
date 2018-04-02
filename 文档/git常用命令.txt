@@ -1,0 +1,49 @@
+git clone git@192.168.1.5:gszl.git    //克隆git仓库
+
+git status  //查看当前状态 
+
+git add .  //将所有的文件提交到工作区
+
+git pull //拉取
+
+git commit -m "init" //提交到本地分支并且加注释 
+
+git push //推送到远端服务器
+
+git commit -m 'xxx'   //提交 
+ 
+ssh-keygen -t rsa -C 'lvdan@extop.cn' //生成指定名称的公钥
+
+git config --global user.name 'szg0107' 配置用户名
+
+git config --global user.email '576804093@163.com' 配置用户邮箱
+
+git config --global user.name 查看用户名
+
+git init 初始化git仓库
+
+ls -al 查看仓库中的所有文件、文件夹
+
+git diff 查看所有文件的更改内容
+
+git checkout 全路径+文件后缀 撤销未提交的修改
+
+git reset HEAD 全路径+文件后缀 取消添加
+
+git log 查看提交记录
+
+git log id -1 查看指定记录 -1表示只想看到一条记录
+
+git log id -1 -p 查看某条记录具体修改了什么内容
+
+git branch 查看当前版本库当中有哪些分支
+
+git branch 分支名 创建分支
+
+git checkout 分支名 切换分支
+
+git checkout master 切换到主分支
+
+git merge 分支名 将分支合并到master分支上
+
+git branch -D 分支名 删除分支

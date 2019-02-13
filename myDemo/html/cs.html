@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -64,5 +63,43 @@
         </table>
     </div>
 </table>
+
+<script type="text/javascript">
+    //判断数据类型
+    function myTypeOf(target) {
+        /** 1.分两类 原始值 引用值
+         * 2.区分引用值 数组或对象*/
+            //模板
+        let template = {
+                '[object Array]': 'Array',
+                '[object Object]': 'object',
+                '[object Number]': 'number - object',
+                '[object String]': 'string - object',
+                '[object Boolean]': 'boolean - object',
+            };
+        let ret = typeof(target);
+        if (target === null) {
+            return 'null';
+        } else if (ret === 'object') {
+            //数组、对象、包装类 Object.prototype.toString
+            let str = Object.prototype.toString.call(target);
+            return template[str];
+        } else {
+            return ret;
+        }
+    }
+    let arr=[1,1,1,2,1,1,1,2,2,3,3,3,];
+    //数组去重
+    Array.prototype.unique = function () {
+        let temp = {}, arr = [], len = this.length;
+        for (let i = 0; i < len; i++) {
+            if (!temp[this[i]]) {
+                temp[this[i]] = '数组值';
+                arr.push(this[i]);
+            }
+        }
+        return arr;
+    };
+</script>
 </body>
 </html>

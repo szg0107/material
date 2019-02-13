@@ -7,15 +7,16 @@
 <body>
 <!--限制多行文本域输入的字符个数-->
 <script type="text/javascript">
-    var LastCount = 0;
+    let LastCount = 0;
+
     //字节统计
     function CountStrByte(Message, Total, Used, Remain) {
-        var ByteCount = 0;
-        var StrValue = Message.value;
-        var StrLength = Message.value.length;
-        var MaxValue = Total.value;
-        if (LastCount != StrLength) {
-            for (var i = 0; i < StrLength; i++) {
+        let ByteCount = 0;
+        let StrValue = Message.value;
+        let StrLength = Message.value.length;
+        let MaxValue = Total.value;
+        if (LastCount !== StrLength) {
+            for (let i = 0; i < StrLength; i++) {
                 ByteCount = (StrValue.charCodeAt(i) <= 256) ? ByteCount + 1 : ByteCount + 2;
                 if (ByteCount > MaxValue) {
                     Message.value = StrValue.substring(0, i);
@@ -31,33 +32,33 @@
     }
 
     //在下拉列表中进行多选移除
-    function allsel(n1, n2) {
-        while (n1.selectedIndex != -1) {
-            var indx = n1.selectedIndex;
-            var t = n1.options[indx].text;
+    function allSel(n1, n2) {
+        while (n1.selectedIndex !== -1) {
+            let index = n1.selectedIndex;
+            let t = n1.options[index].text;
             n2.options.add(new Option(t));
-            n1.remove(indx)
+            n1.remove(index)
         }
     }
 
     //将option的值存入数组中然后再显示
-    function Myselect() {
-        var counts = 0;
-        arr = new Array("甘肃省", "辽宁省", "黑龙江省", "吉林省", "河北省");
-        counts = arr.length;
-        for (var i = 0; i < counts; i++) {
-            document.form.sel_place1.options[i] = new Option(arr[i], i);
+    function mySelect() {
+        let arr = ["甘肃省", "辽宁省", "黑龙江省", "吉林省", "河北省"];
+        let counts = arr.length;
+        for (let i = 0; i < counts; i++) {
+            document.form.sel_place1.options[i] = new Option(arr[i]);
         }
     }
 
     //随机生成指定位数的验证码
-    function checkCode(digit){
+    function checkCode(digit) {
         //自动生成验证码
-        var result="";
-        for(var i=0;i<parseInt(digit);i++){
-            result=result+(parseInt(Math.random()*10)).toString();
+        let result = "";
+        for (let i = 0; i < parseInt(digit); i++) {
+            result = result + (parseInt(Math.random() * 10)).toString();
         }
-        document.getElementById('result').innerHTML="&nbsp;&nbsp;产生的验证码："+result;
+        let authCodeDiv = document.getElementsByTagName('form')[0].getElementsByTagName('div')[0];
+        authCodeDiv.innerHTML = "&nbsp;&nbsp;产生的验证码：" + result;
     }
 </script>
 <!--如果只是想要除了第一个以外的其他元素。
@@ -66,18 +67,20 @@ arr.slice(1)即可
 slice方法不会去修改原数组-->
 <script type="text/javascript">
     //多级级联菜单
-    var arr2 = new Array(4);
-    arr2["数码设备"] = new Array("数码相机", "打印机");
-    arr2["家用电器"] = new Array("电视机", "电冰箱");
-    arr2["礼品工艺"] = new Array("鲜花", "彩带");
-    function removeinfo(classMenu) {
-        for (var i = 0; i < classMenu.options.length; i++) {
+    let arr2 = new Array(4);
+    arr2["数码设备"] = ["数码相机", "打印机"];
+    arr2["家用电器"] = ["电视机", "电冰箱"];
+    arr2["礼品工艺"] = ["鲜花", "彩带"];
+
+    function removeInfo(classMenu) {
+        for (let i = 0; i < classMenu.options.length; i++) {
             classMenu.options[i] = null;
         }
     }
+
     function changeMenu(classList, classMenu) {
-        removeinfo(classMenu);
-        for (var i = 0; i < classList.length; i++) {
+        removeInfo(classMenu);
+        for (let i = 0; i < classList.length; i++) {
             classMenu[i] = new Option(classList[i], classList[i]);
         }
     }
@@ -86,34 +89,35 @@ slice方法不会去修改原数组-->
     <form id="form" name="form">
         <!--多行文本控制输入字数展示
         1.disabled 属性规定禁用按钮。被禁用的按钮既不可用，也不可点击。可以设置 disabled 属性，直到满足某些条件（比如选择一个复选框），才恢复用户对该按钮的使用。然后，可以使用 JavaScript 来清除 disabled 属性，以使文本区变为可用状态。-->
-    <textarea name="评论内容" cols="45" rows="5" id="评论内容"
-              onkeydown="CountStrByte(this.form.评论内容,this.form.total,this.form.used,this.form.remain);"
-              onkeyup="CountStrByte(this.form.评论内容,this.form.total,this.form.used,this.form.remain)"
-              autofocus></textarea><br>
-        最多允许:<input name="total" type="text" disabled id="total" value="100" size="3"/>
-        个字节，已用字节：<input name="used" type="text" disabled id="used" value="0" size="3"/>
-        剩余字节：<input name="remain" type="text" disabled id="remain" value="100" size="3"/><br/><br/><br/><br/>
+        <textarea name="评论内容" cols="45" rows="5"
+                  onkeydown="CountStrByte(this.form.评论内容,this.form.total,this.form.used,this.form.remain);"
+                  onkeyup="CountStrByte(this.form.评论内容,this.form.total,this.form.used,this.form.remain)"
+                  autofocus title="评论内容"></textarea><br>
+        最多允许:<input title="total" name="total" type="text" disabled value="100" size="3"/>
+        个字节，已用字节：<input title="used" name="used" type="text" disabled value="0" size="3"/>
+        剩余字节：<input title="remain" name="remain" type="text" disabled value="100" size="3"/><br/><br/><br/><br/>
 
 
         <!--在下拉列表中进行多选移除
-          1.multiplemultiple 属性规定输入字段可选择多个值。如果使用该属性，则字段可接受多个值。
-          2.autofocus 属性是逻辑属性。当设置该属性后，它规定在页面加载后下拉列表应该自动获得焦点。-->
-        <select name="sel_place1" multiple id="sel_placel" style="width: 100px;height: 100px;"></select>
-        <input name="sure1" type="button" id="sure1" onclick="allsel(this.form.sel_place2,this.form.sel_place1);"
+          1.multiple 属性规定输入字段可选择多个值。如果使用该属性，则字段可接受多个值。
+          2.autoFocus 属性是逻辑属性。当设置该属性后，它规定在页面加载后下拉列表应该自动获得焦点。-->
+        <select name="sel_place1" multiple title="sel_place1" style="width: 100px;height: 100px;"></select>
+        <input name="sure1" type="button" onclick="allSel(this.form.sel_place2,this.form.sel_place1);"
                value="<<"/>
-        <input name="sure2" type="button" id="sure2" onclick="allsel(this.form.sel_place1,this.form.sel_place2);"
+        <input name="sure2" type="button" onclick="allSel(this.form.sel_place1,this.form.sel_place2);"
                value=">>"/>
-        <select name="sel_place2" multiple id="see_place2" style="width: 100px; height: 100px;"></select><br/><br/><br/><br/>
+        <select name="sel_place2" multiple title="see_place2"
+                style="width: 100px; height: 100px;"></select><br/><br/><br/><br/>
 
 
         <!--多级级联菜单-->
-        <select name="类别" id="类别"
+        <select name="类别" title="类别"
                 onchange="changeMenu(arr2[this.form.类别.options[this.form.类别.selectedIndex].text],this.form.分类);">
             <option selected>数码设备</option>
             <option>家用电器</option>
             <option>礼品工艺</option>
         </select>
-        <select name="分类" id="分类">
+        <select name="分类" title="分类">
             <option>数码相机</option>
             <option>打印机</option>
         </select><br/><br/><br/><br/>
@@ -121,7 +125,7 @@ slice方法不会去修改原数组-->
         <!--分级下拉列表
         主要应用<optgroup>标记，并设置其label属性。<optgroup>标记主要用于对select元素中的选项进行逻辑分组，在<optgroup>标记中指定的文本是非可选项，一般通过替换文本与可选项去分开。
         <optgroup>标记与</optgroup>应成对使用。-->
-        <select>
+        <select title="分级下拉列表">
             <optgroup label="Web设计">
                 <option>网站建设</option>
                 <option>网页设计</option>
@@ -134,13 +138,13 @@ slice方法不会去修改原数组-->
         </select><br/><br/><br/><br/>
 
         <!--自动生成验证码-->
-        <div id="result">&nbsp;&nbsp;产生的验证码：</div>
-        请输入要产生的验证码的位数：<input type="text" id="weishu"/>
-        <input name="Submit" type="button"value="生成" onclick="checkCode(document.getElementById('weishu').value)">
+        <div>&nbsp;&nbsp;产生的验证码：</div>
+        请输入要产生的验证码的位数：<input type="text" title="位数" name="位数"/>
+        <input name="Submit" type="button" value="生成" onclick="checkCode(document.getElementsByName('位数')[0].value)">
     </form>
 </div>
 </body>
 <script type="text/javascript">
-    window.onload = Myselect();
+    window.onload = mySelect;
 </script>
 </html>

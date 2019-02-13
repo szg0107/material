@@ -5,38 +5,29 @@
     <title>html 表格导出到</title>
     <script language="JavaScript" type="text/javascript">
         //第五种方法  
-        var idTmr;
-        function  getExplorer() {
-            var explorer = window.navigator.userAgent ;
-            //ie  
-            if (explorer.indexOf("MSIE") >= 0) {
-                return 'ie';
-            }
-            //firefox  
-            else if (explorer.indexOf("Firefox") >= 0) {
-                return 'Firefox';
-            }
-            //Chrome  
-            else if(explorer.indexOf("Chrome") >= 0){
-                return 'Chrome';
-            }
-            //Opera  
-            else if(explorer.indexOf("Opera") >= 0){
-                return 'Opera';
-            }
-            //Safari  
-            else if(explorer.indexOf("Safari") >= 0){
-                return 'Safari';
+        let idTmr;
+
+        function getExplorer() {
+            let explorer = window.navigator.userAgent;
+            let browserType = ['MSIE', 'Firefox', 'Chrome', 'Opera', 'Safari'];
+            for (let i = 0; i < browserType.length; i++) {
+                if (explorer.indexOf(browserType[i] >= 0)) {
+                    if (i = 0) {
+                        return 'IE';
+                    } else {
+                        return browserType[i];
+                    }
+                }
             }
         }
-        function method5(tableid) {
-            if(getExplorer()=='ie')
-            {
-                var curTbl = document.getElementById(tableid);
-                var oXL = new ActiveXObject("Excel.Application");
-                var oWB = oXL.Workbooks.Add();
-                var xlsheet = oWB.Worksheets(1);
-                var sel = document.body.createTextRange();
+
+        function method5(tableId) {
+            if (getExplorer() === 'ie') {
+                let curTbl = document.getElementById(tableId);
+                let oXL = new ActiveXObject("Excel.Application");
+                let oWB = oXL.Workbooks.Add();
+                let xlsheet = oWB.Worksheets(1);
+                let sel = document.body.createTextRange();
                 sel.moveToElementText(curTbl);
                 sel.select();
                 sel.execCommand("Copy");
@@ -44,7 +35,7 @@
                 oXL.Visible = true;
 
                 try {
-                    var fname = oXL.Application.GetSaveAsFilename("Excel", "Excel Spreadsheets , *.xls");
+                    let fname = oXL.Application.GetSaveAsFilename("Excel", "Excel Spreadsheets , *.xls");
                 } catch (e) {
                     print("Nested catch caught " + e);
                 } finally {
@@ -56,26 +47,32 @@
                 }
 
             }
-            else
-            {
-                tableToExcel(tableid)
+            else {
+                tableToExcel(tableId)
             }
         }
+
         function Cleanup() {
             window.clearInterval(idTmr);
             CollectGarbage();
         }
-        var tableToExcel = (function() {
-            var uri = 'data:application/vnd.ms-excel;base64,',
-                    template = '<html><head><meta charset="UTF-8"></head><body><table>{table}</table></body></html>',
-                    base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
-                    format = function(s, c) {
-                        return s.replace(/{(\w+)}/g,
-                                function(m, p) { return c[p]; }) }
-            return function(table, name) {
-                if (!table.nodeType) table = document.getElementById(table)
-                var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
-                window.location.href = uri + base64(format(template, ctx))
+
+        let tableToExcel = (function () {
+            let uri = 'data:application/vnd.ms-excel;base64,',
+                template = '<html><head><meta charset="UTF-8"></head><body><table>{table}</table></body></html>',
+                base64 = function (s) {
+                    return window.btoa(unescape(encodeURIComponent(s)))
+                },
+                format = function (s, c) {
+                    return s.replace(/{(\w+)}/g,
+                        function (m, p) {
+                            return c[p];
+                        })
+                };
+            return function (table, name) {
+                if (!table.nodeType) table = document.getElementById(table);
+                let ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
+                window.location.href = uri + base64(format(template, ctx));
             }
         })()
 
@@ -83,7 +80,7 @@
 </head>
 <body>
 
-<div >
+<div>
     <button type="button" onclick="method5('tableExcel')">导出Excel方法五</button>
 </div>
 <div id="myDiv">

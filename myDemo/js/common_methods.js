@@ -3,25 +3,19 @@
  * 公用方法JS
  */
 
-/*通过id获取对象*/
-function getObjectById(id) {
-    var obj = document.getElementById(id);
-    return obj;
-}
-
 /*获取地址参数*/
 function getQueryString1(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r = decodeURI(window.location.href).substr(1).match(reg);
+    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    let r = decodeURI(window.location.href).substr(1).match(reg);
     if (r != null) return unescape(r[2]);
     return null;
 }
 
 /*得到当前选中项是第几个*/
 function query_element_id(element, name) {
-    var elements = document.getElementsByName(name);
-    for (var i = 0; i < elements.length; i++) {
-        if (elements[i] == element) {
+    let elements = document.getElementsByName(name);
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i] === element) {
             return i;
         }
     }
@@ -57,7 +51,7 @@ function myTypeOf(target) {
     let ret = typeof(target);
     if (target === null) {
         return 'null';
-    }else if (ret === 'object') {
+    } else if (ret === 'object') {
         //数组、对象、包装类 Object.prototype.toString
         let str = Object.prototype.toString.call(target);
         return template[str];
@@ -66,6 +60,251 @@ function myTypeOf(target) {
     }
 }
 
+/*验证邮箱*/
+function isEmail(value) {
+    //验证邮箱
+    let reg = new RegExp('^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$'); //正则表达式
+    return reg.test(value);
+}
+
+/*验证数字*/
+function isNumber(value) {
+    let reg = new RegExp('^[0-9]*$'); //正则表达式
+    return reg.test(value);
+}
+
+/*验证手机号+固话*/
+function isPhone(value) {
+    let reg = new RegExp('((\\d{11})|^((\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1})|(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1}))$)'); //正则表达式
+    return reg.test(value);
+}
+
+//求滚动条滚动的尺寸
+function getScrollOffset() {
+    //w3c标准方法
+    if (window.pageXOffset) {
+        return {
+            x: window.pageXOffset,
+            y: window.pageYOffset
+        };
+    } else {
+        //IE8 及 IE8 以下使用的方法
+        /*document.body.scrollLeft+ document.documentElement.scrollLeft
+        其中一个有值，另外一个的值一定是 0。
+        这两个最好的用法是取两个值相加，因为不可能存在两个同时有值*/
+        return {
+            x: document.body.scrollLeft + document.documentElement.scrollLeft,
+            y: document.body.scrollTop + document.documentElement.scrollTop
+        };
+    }
+}
+
+//得到可视窗口的尺寸
+function getViewportOffset() {
+    /*注意渲染模式：
+    1 标准模式：<！DOCTYPE html>是 html5 的（在 emmet 插件下 html:5 就出来了）
+    2 怪异/混杂模式：试图去兼容之前的语法，去掉<！DOCTYPE html>这一行即可开启（向后兼容）
+    2、document.documentElement.clientWidth/clientHeight
+    标准模式下，任意浏览器都兼容 client 是客户端的意思
+    3、document.body.clientWidth/clientHeight
+    适用于怪异模式下的浏览器
+    4、封装兼容性方法，返回浏览器视口尺寸 getViewportOffset()
+    例 document.compatMode 是用于判断是怪异模式还是标准模式的*/
+    //w3c标准模式
+    if (window.innerWidth) {
+        return {
+            x: window.innerWidth,
+            y: window.innerHeight
+        };
+    } else {
+        //document.compatMode 是用于判断是怪异模式还是标准模式的
+        //怪异/混杂模式
+        if (document.compatMode === 'BackCompat') {
+            return {
+                x: document.body.clientWidth,
+                y: document.body.clientHeight
+            };
+        } else {
+            //IE8 及 IE8 以下兼容标准模式
+            return {
+                x: document.documentElement.clientWidth,
+                y: document.documentElement.clientHeight
+            }
+        }
+    }
+}
+
+//得到元素样式（元素，属性）
+function getStyle(elem, prop) {
+    if (window.getComputedStyle) {
+        return window.getComputedStyle(elem, null)[prop];
+    } else {
+        return elem.currentStyle[prop];
+    }
+}
+
+//数组去重
+Array.prototype.unique = function () {
+    let temp = {}, arr = [], len = this.length;
+    for (let i = 0; i < len; i++) {
+        if (!temp[this[i]]) {
+            temp[this[i]] = '数组值';
+            arr.push(this[i]);
+        }
+    }
+    return arr;
+};
+
+//自定义插入在某个元素之后插入元素(目标节点)
+Element.prototype.insertAfter = function (targetNode, afterNode) {
+    //得到元素的下一个兄弟节点
+    let beforeNode = afterNode.nextElementSibling;
+    //如果没有直接添加，有插入兄弟节点之前
+    if (beforeNode == null) {
+        this.appendChild(targetNode);
+    } else {
+        this.insertBefore(targetNode, beforeNode);
+    }
+};
+
+//字符串中字符出现最多次
+function maximumCharacter(str) {
+    // 对象存储所有出现的字符及次数
+    let stringObj = {},
+        //最多出现次数
+        max = 0,
+        //最多的字符
+        character = '';
+    //取出字符串的每一个字符，在对象属性中记录字符和次数
+    for (let i = 0; i < str.length; i++) {
+        let art = str.charAt(i);
+        if (!stringObj[art]) {
+            stringObj[art] = 1;
+        } else {
+            stringObj[art]++;
+        }
+    }
+    //找到字符出现最多的次数
+    for (let key in stringObj) {
+        if (max < stringObj[key]) {
+            max = stringObj[key];
+            character = key;
+        }
+    }
+    console.log(character + "出现最多" + max + "次");
+}
+
+//字符串中字符连续出现最多次
+function comeUpMostInARow(str) {
+    // 对象存储所有出现的字符及次数
+    let stringObj = {},
+        //最多出现次数
+        max = 0,
+        //最多的字符
+        character = '',
+        //前一个字符
+        priorArt = '',
+        //上一次出现次数
+        lastCount = {};
+    //取出字符串的每一个字符，在对象属性中记录字符和次数
+    for (let i = 0; i < str.length; i++) {
+        let art = str.charAt(i);
+        if (!stringObj[art]) {
+            lastCount[art] = 1;
+            stringObj[art] = 1;
+            priorArt = art;
+        } else {
+            if (art === priorArt) {
+                stringObj[art]++;
+            } else {
+                stringObj[art] = 1;
+                priorArt = art;
+            }
+            if (lastCount[art] < stringObj[art]) {
+                lastCount[art] = stringObj[art];
+            }
+        }
+    }
+    //判断对象是否为空对象
+    // console.log(JSON.stringify(lastCount) === "{}");
+    //找到字符出现最多的次数
+    let obj = {};
+    if (JSON.stringify(lastCount) === "{}") {
+        obj = stringObj;
+    } else {
+        obj = lastCount;
+    }
+    for (let key in obj) {
+        if (max <= obj[key]) {
+            max = obj[key];
+            character += key + ',';
+        }
+    }
+    console.log(character.substring(0, character.length - 1) + "连续出现最多" + max + "次");
+}
+
+//给一个DOM对象添加该事件类型的处理函数 元素 类型 处理函数
+function addEvent(elem, type, handle) {
+    if (elem.addEventListener) {
+        //IE9 以下不兼容，可以为一个事件绑定多个处理程序
+        elem.addEventListener(type, handle, false);
+    } else if (elem.attachEvent) {
+        //IE 独有，一个事件同样可以绑定多个处理程序，同一个函数绑定多次都可以
+        elem.attachEvent('on' + type, function () {
+            handle.call(elem);
+        });
+    } else {
+        elem['on' + type] = handle;
+    }
+}
+
+//阻止事件冒泡
+function stopBubble(event) {
+    if (event.stopPropagation) {
+        event.stopPropagation();
+    } else {
+        //是否阻止冒泡
+        event.cancelBubble = true;
+    }
+}
+
+//阻止默认事件
+function cancelHandler(event) {
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        event.returnValue = false;
+    }
+}
+
+//异步加载JS
+function loadScript(url, callback) {
+    let script = document.createElement('script');
+    script.type = 'text/javascript';
+    //先绑事件然后加载JS
+    if (script.readyState) {
+        //ie使用方法
+        script.onreadystatechange = function () {
+            if (script.readyState === 'complete' || script.readyState === 'loaded') {
+                callback();
+            }
+        }
+    } else {
+        //safari chrome firefox opera都支持
+        script.onload = function () {
+            callback();
+        }
+    }
+    script.src = url;
+    document.head.appendChild(script);
+}
+
+
+
+
+
+
+//=================================项目中具体用到的方面===================================
 //将对象中的id拼成字符串
 function jointString(objectArray) {
     let idList = '';
@@ -227,21 +466,3 @@ function newTagOpenPage(path) {
     window.open(window.location.origin + '/#/' + path)
 }
 
-/*验证邮箱*/
-function isEmail(value) {
-    //验证邮箱
-    let reg = new RegExp('^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$'); //正则表达式
-    return reg.test(value);
-}
-
-/*验证数字*/
-function isNumber(value) {
-    let reg = new RegExp('^[0-9]*$'); //正则表达式
-    return reg.test(value);
-}
-
-/*验证手机号+固话*/
-function isPhone(value) {
-    let reg = new RegExp('((\\d{11})|^((\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1})|(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1}))$)'); //正则表达式
-    return reg.test(value);
-}

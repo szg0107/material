@@ -1,70 +1,192 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>无标题文档</title>
-    <script type="text/javascript">
-        function Myopen(divID) {
-            divID.style.display = 'block';
-            divID.style.left(document.body.clientWidth - 240) / 2;
-            divID.style.top = (document.body.clientHeight - 139) / 2;
-        }
-    </script>
 </head>
 
 <body>
-<table border="1" align="center">
-    <tr>
-        <td>用户名：</td>
-        <td><input type="text"/></td>
-    </tr>
-    <!--通过控制密码域的oncopy、oncut、onpaste事件来实现密码域的内容禁止复制的功能，并通过改变其style样式属性来实现改变密码域中掩码的样式。
+<!--通过控制密码域的oncopy、oncut、onpaste事件来实现密码域的内容禁止复制的功能，并通过改变其style样式属性来实现改变密码域中掩码的样式。
     注意：在修改掩码的样式时一定要选择Windows系统自带的字体样式，如果设置的字体样式不存在，密码将会以原形显示。-->
-    <tr>
-        <td>密码：</td>
-        <td><input type="password" size="12" maxlength="50" oncopy="return False" oncut="return False"
-                   onpaste="return False"/></td>
-    </tr>
-    <tr>
-        <td><input type="button" value="确定"/></td>
-        <td><input type="button" value="取消" onclick="window.close()"/></td>
-    </tr>
-    <!--设计用户登录表单页面-->
-    <div id="User" style="position: absolute;width: 240px;height: 139px;">
-        <table height="139" width="240" border="0" align="center" cellpadding="2" cellspacing="2">
-            <tr>
-                <td height="139" align="center">
-                    <form name="form_U" method="post" action="#">
-                        <table width="220" height="115" bgcolor="#ffffff" border="0" align="center" cellspacing="-2"
-                               cellpadding="-2">
-                            <tr align="center" valign="midddle">
-                                <td height="24" colspan="2"><font color="#505875">===用户登录===</font></td>
-                            </tr>
-                            <tr>
-                                <td width="61" height="27" align="right" valign="middle">用户名：</td>
-                                <td width="157" valign="middle"><input name="UID" type="text" maxlength="20"/></td>
-                            </tr>
-                            <tr>
-                                <td height="27" align="right" valign="middle">密&nbsp;码：</td>
-                                <td valign="middle"><input name="PWD" type="password" maxlength="20"
-                                                           onkeydown="if(event.keyCode==13)mycheck(form_U,'用户名')"/></td>
-                            </tr>
-                            <tr align="center" valign="middle">
-                                <td height="27" colspan="2">
-                                    <input name="Submit" type="button" value="登录" onclick="mycheck(form_U,'用户名')"/>&nbsp;
-                                    <input name="Submit2" type="button" value="关闭"
-                                           onclick="javascript:User.style.display='none';window.close()"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
-</table>
 
+<div style="width: 100px;height: 100px;background: red;position: absolute;top: 0;left: 0;"></div>
 <script type="text/javascript">
+    let div = document.getElementsByTagName('div')[0];
+    let arr = [1, 1, 5, 2, 5, 4, 4, 2, 2, 3, 3, 3,];
+    let str = 'aaaabbaacb';
+
+    //随机移动
+    function randomWalk(elem) {
+        addEvent(elem, 'mousemove', function (e) {
+            let event = e || window.event;
+            elem.style.left = Math.floor(Math.random() * 300) + 'px';
+            elem.style.top = Math.floor(Math.random() * 300) + 'px';
+            stopBubble(event);
+            cancelHandler(event);
+        });
+    }
+
+    //异步加载JS
+    function loadScript(url, callback) {
+        let script = document.createElement('script');
+        script.type = 'text/javascript';
+        //先绑事件然后加载JS
+        if (script.readyState) {
+            //ie使用方法
+            script.onreadystatechange = function () {
+                if (script.readyState === 'complete' || script.readyState === 'loaded') {
+                    callback();
+                }
+            }
+        } else {
+            //safari chrome firefox opera都支持
+            script.onload = function () {
+                callback();
+            }
+        }
+        script.src = url;
+        document.head.appendChild(script);
+    }
+
+    // console.log(loadScript('../js/common_methods.js', function () {console.log(getViewportOffset());}));
+
+    //拖拽功能
+    function drag(elem) {
+        let disX, disY;
+        addEvent(elem, 'mousedown', function (e) {
+            let event = e || window.event;
+            //鼠标点击时距离上边和左边的距离
+            disX = event.pageX - parseInt(getStyle(elem, 'left'));
+            disY = event.pageY - parseInt(getStyle(elem, 'top'));
+            addEvent(document, 'mousemove', mouseMove);
+            addEvent(document, 'mouseup', mouseUp);
+            stopBubble(event);
+            cancelHandler(event);
+        });
+
+        function mouseMove(e) {
+            let event = e || window.event;
+            elem.style.left = event.pageX - disX + 'px';
+            elem.style.top = event.pageY - disY + 'px';
+        }
+
+        function mouseUp(e) {
+            let event = e || window.event;
+            removeEvent(document, 'mousemove', mouseMove);
+            removeEvent(document, 'mouseup', mouseUp);
+        }
+    }
+
+    //阻止事件冒泡
+    function stopBubble(event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            //是否阻止冒泡
+            event.cancelBubble = true;
+        }
+    }
+
+    //阻止默认事件
+    function cancelHandler(event) {
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    }
+
+    /**
+     * position的值，relative和absolute分别是相对于谁进行定位的?
+     *absolute:生成绝对定位的元素，相对于最近一级的定位不是static的父元素来进行定位。
+     * fixed:(老IE不支持)生成绝对定位的元素，通常相对于浏览器窗口或frame进行定位。
+     * relative:生成相对定位的元素，相对于其在普通流中的位置进行定位。
+     * static:默认值。没有定位，元素出现在正常的流中。
+     *sticky:生成粘性定位的元素，容器的位置根据正常文档流计算得出。*/
+
+    //给一个DOM对象添加该事件类型的处理函数 元素 类型 处理函数
+    function addEvent(elem, type, handle) {
+        if (elem.addEventListener) {
+            //IE9 以下不兼容，可以为一个事件绑定多个处理程序
+            elem.addEventListener(type, handle, false);
+        } else if (elem.attachEvent) {
+            //IE 独有，一个事件同样可以绑定多个处理程序，同一个函数绑定多次都可以
+            elem.attachEvent('on' + type, function () {
+                handle.call(elem);
+            });
+        } else {
+            elem['on' + type] = handle;
+        }
+    }
+
+    //清除绑定事件处理函数
+    function removeEvent(elem, type, handle) {
+        if (elem.removeEventListener) {
+            elem.removeEventListener(type, handle, false);
+        } else {
+            elem.detachEvent('on' + type, handle);
+        }
+    }
+
+    //求滚动条滚动的尺寸
+    function getScrollOffset() {
+        if (window.pageXOffset) {
+            return {
+                x: window.pageXOffset,
+                y: window.pageYOffset
+            };
+        } else {
+            return {
+                x: document.body.scrollLeft + document.documentElement.scrollLeft,
+                y: document.body.scrollTop + document.documentElement.scrollTop
+            };
+        }
+    }
+
+    //得到可视窗口的尺寸
+    function getViewportOffset() {
+        /*注意渲染模式：
+        1 标准模式：<！DOCTYPE html>是 html5 的（在 emmet 插件下 html:5 就出来了）
+        2 怪异/混杂模式：试图去兼容之前的语法，去掉<！DOCTYPE html>这一行即可开启（向后兼容）
+        2、document.documentElement.clientWidth/clientHeight
+        标准模式下，任意浏览器都兼容 client 是客户端的意思
+        3、document.body.clientWidth/clientHeight
+        适用于怪异模式下的浏览器
+        4、封装兼容性方法，返回浏览器视口尺寸 getViewportOffset()
+        例 document.compatMode 是用于判断是怪异模式还是标准模式的*/
+        //w3c标准模式
+        if (window.innerWidth) {
+            return {
+                x: window.innerWidth,
+                y: window.innerHeight
+            };
+        } else {
+            //document.compatMode 是用于判断是怪异模式还是标准模式的
+            //怪异/混杂模式
+            if (document.compatMode === 'BackCompat') {
+                return {
+                    x: document.body.clientWidth,
+                    y: document.body.clientHeight
+                };
+            } else {
+                //IE8 及 IE8 以下兼容标准模式
+                return {
+                    x: document.documentElement.clientWidth,
+                    y: document.documentElement.clientHeight
+                }
+            }
+        }
+    }
+
+    //得到元素样式（元素，属性）
+    function getStyle(elem, prop) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(elem, null)[prop];
+        } else {
+            return elem.currentStyle[prop];
+        }
+    }
+
     //判断数据类型
     function myTypeOf(target) {
         /** 1.分两类 原始值 引用值
@@ -88,7 +210,7 @@
             return ret;
         }
     }
-    let arr=[1,1,1,2,1,1,1,2,2,3,3,3,];
+
     //数组去重
     Array.prototype.unique = function () {
         let temp = {}, arr = [], len = this.length;
@@ -100,6 +222,97 @@
         }
         return arr;
     };
+
+    //数组快速排序
+    function quickArr(arr) {
+        let left = [], right = [];
+        //获取基准值角标 let<standardVale<right
+        if (arr.length <= 1) {
+            return arr;
+        }
+        let index = Math.floor(arr.length / 2);
+        //取出基准值并重原数组剔除
+        let standardVale = arr.splice(index, 1)[0];
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] < standardVale) {
+                left.push(arr[i]);
+            } else {
+                right.push(arr[i]);
+            }
+        }
+        return quickArr(left).concat(standardVale, quickArr(right));
+    }
+
+    //字符串中字符连续出现最多次
+    function maximumCharacter(str) {
+        // 对象存储所有出现的字符及次数
+        let stringObj = {},
+            //最多出现次数
+            max = 0,
+            //最多的字符
+            character = '',
+            //前一个字符
+            priorArt = '',
+            //上一次出现次数
+            lastCount = {};
+        //取出字符串的每一个字符，在对象属性中记录字符和次数
+        for (let i = 0; i < str.length; i++) {
+            let art = str.charAt(i);
+            if (!stringObj[art]) {
+                lastCount[art] = 1;
+                stringObj[art] = 1;
+                priorArt = art;
+            } else {
+                if (art === priorArt) {
+                    stringObj[art]++;
+                } else {
+                    stringObj[art] = 1;
+                    priorArt = art;
+                }
+                if (lastCount[art] < stringObj[art]) {
+                    lastCount[art] = stringObj[art];
+                }
+            }
+        }
+        //判断对象是否为空对象
+        // console.log(JSON.stringify(lastCount) === "{}");
+        //找到字符出现最多的次数
+        let obj = {};
+        if (JSON.stringify(lastCount) === "{}") {
+            obj = stringObj;
+        } else {
+            obj = lastCount;
+        }
+        for (let key in obj) {
+            if (max <= obj[key]) {
+                max = obj[key];
+                character += key + ',';
+            }
+        }
+        console.log(character.substring(0, character.length - 1) + "连续出现最多" + max + "次");
+    }
+
+    //自定义插入在某个元素之后插入元素(目标节点)
+    Element.prototype.insertAfter = function (targetNode, afterNode) {
+        //得到元素的下一个兄弟节点
+        let beforeNode = afterNode.nextElementSibling;
+        //如果没有直接添加，有插入兄弟节点之前
+        if (beforeNode == null) {
+            this.appendChild(targetNode);
+        } else {
+            this.insertBefore(targetNode, beforeNode);
+        }
+    };
+
+    //倒叙元素的子元素
+    Element.prototype.flashbackElements = function () {
+        let allElement = this.childNodes;
+        let childLength = allElement.length - 1;
+        for (childLength; childLength > 0; childLength--) {
+            this.appendChild(allElement[childLength]);
+        }
+    };
+
 </script>
 </body>
 </html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>自己手写轮播图</title>
+    <script type="text/javascript" src="../js/common_methods.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .warp {
+            position: relative;
+            width: 380px;
+            height: 150px;
+            margin: 0 auto;
+            top: 10px;
+            overflow: hidden;
+        }
+
+        .pic ul {
+            width: 1520px;
+            height: 150px;
+            position: absolute;
+            left: 0;
+        }
+
+        .pic ul li {
+            float: left;
+        }
+
+        .pic ul li img {
+            width: 380px;
+            height: 150px;
+        }
+
+        .cir {
+            height: 10px;
+            position: absolute;
+            bottom: 10px;
+            left: 40%;
+        }
+
+        .cir span {
+            float: left;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 5px 0 5px;
+            background-color: #ffffff;
+            display: inline-block;
+        }
+
+        .cir .cir-change {
+            background-color: #029ae5;
+        }
+
+        .btn-left:hover {
+            color: greenyellow;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .btn-right:hover {
+            color: greenyellow;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .btn-left {
+            position: absolute;
+            top: 40%;
+            left: 10px;
+            opacity: 0.5;
+            width: 50px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 40px;
+            background-color: black;
+            color: #ffffff;
+        }
+
+        .btn-right {
+            position: absolute;
+            top: 40%;
+            right: 10px;
+            opacity: 0.5;
+            width: 50px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 40px;
+            background-color: black;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <div class="pic">
+        <ul>
+            <li><img src="../img/01.jpg"/></li>
+            <li><img src="../img/02.jpg"/></li>
+            <li><img src="../img/04.jpg"/></li>
+            <li><img src="../img/01.jpg"/></li>
+        </ul>
+    </div>
+    <div class="cir">
+        <span class="cir-change"></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="btn-left"><</div>
+    <div class="btn-right">></div>
+</div>
+
+<script type="text/javascript">
+    let count = 0;
+    //图片ul
+    let oPicUL = document.getElementsByTagName('ul')[0],
+        //li的宽度
+        moveWidth = oPicUL.children[0].offsetWidth;
+    //图片的数量
+    let realPicNum = oPicUL.children.length - 1;
+    //定时器
+    let timer = window.setInterval(autoMove, 3000);
+    //圆点
+    let cirSpan = document.getElementsByClassName('cir')[0].getElementsByTagName('span');
+    //按钮
+    let btnLeft = document.getElementsByClassName('btn-left')[0],
+        btnRight = document.getElementsByClassName('btn-right')[0];
+    //锁
+    let lock = true;
+
+    addEvent(btnLeft, 'click', function (e) {
+        autoMove(-1);
+    });
+    addEvent(btnRight, 'click', function (e) {
+        autoMove(1);
+    });
+    addEvent(oPicUL, 'mouseover', function (e) {
+        clearInterval(timer);
+    });
+    addEvent(oPicUL, 'mouseout', function (e) {
+        timer = window.setInterval(autoMove, 3000);
+    });
+
+    /*循环给点绑定事件*/
+    for (let i = 0; i < realPicNum; i++) {
+        addEvent(cirSpan[i], 'click', function (e) {
+            lock = false;
+            count = i;
+            spanChange(count);
+            startMove(oPicUL, {left: -moveWidth * count}, function () {
+                lock = true;
+            });
+        });
+    }
+
+    /*轮播图自动移动
+    * direction方向
+    * 默认轮播方向/点击right按钮  从左向右 1/undefined
+    * 点击left按钮 从右向左 -1
+    * */
+
+    function autoMove(direction) {
+        if (lock) {
+            lock = false;
+            if (direction === 1 || !direction) {
+                count++;
+                if (count === realPicNum) {
+                    count = 0;
+                }
+                spanChange(count);
+                startMove(oPicUL, {left: oPicUL.offsetLeft - moveWidth}, function () {
+                    if (count === 0) {
+                        oPicUL.style.left = '0px';
+                    }
+                    lock = true;
+                });
+
+            } else if (direction === -1) {
+                if (oPicUL.offsetLeft === 0) {
+                    count = realPicNum;
+                    oPicUL.style.left = -moveWidth * count + 'px';
+                }
+                --count;
+                spanChange(count);
+                startMove(oPicUL, {left: oPicUL.offsetLeft + moveWidth}, function () {
+                    lock = true;
+                });
+            }
+        }
+    }
+
+    /*圆点选中事件*/
+    function spanChange(change) {
+        for (let i = 0; i < realPicNum; i++) {
+            cirSpan[i].className = '';
+        }
+        cirSpan[change].className = 'cir-change';
+    }
+
+    //原型链上创建轮播图 参数图片地址数组
+    HTMLDivElement.prototype.createTurnPage = function (imageArr) {
+        let turnObject = {
+            isStyle: function () {
+                if (document.getElementsByName('TurnCSS').length === 0) {
+                    let style = document.createElement('style');
+                    style.setAttribute('type', 'text/css');
+                    style.setAttribute('name', 'TurnCSS');
+                    style.innerText = '* {margin: 0;padding: 0;list-style: none;}  .warp {position: relative;width: 380px;height: 150px;margin: 0 auto;top: 10px;overflow: hidden;}  .pic ul {width: 1520px;height: 150px;position: absolute;left: 0;}  .pic ul li {float: left;}  .pic ul li img {width: 380px;height: 150px;}  .cir {height: 10px;position: absolute;bottom: 10px;left: 40%;}  .cir span {float: left;width: 10px;height: 10px;border-radius: 50%;margin: 0 5px 0 5px;background-color: #ffffff;display: inline-block;}  .cir .cir-change {background-color: #029ae5;}  .btn-left:hover {color: greenyellow;opacity: 1;cursor: pointer;}  .btn-right:hover {color: greenyellow;opacity: 1;cursor: pointer;}  .btn-left {position: absolute;top: 40%;left: 10px;opacity: 0.5;width: 50px;height: 40px;font-size: 20px;text-align: center;line-height: 40px;background-color: black;color: #ffffff;}  .btn-right {position: absolute;top: 40%;right: 10px;opacity: 0.5;width: 50px;height: 40px;font-size: 20px;text-align: center;line-height: 40px;background-color: black;color: #ffffff;}';
+                    document.head.appendChild(style);
+                }
+            },
+            getStyle: function (elem, prop) {
+                if (window.getComputedStyle) {
+                    return window.getComputedStyle(elem, null)[prop];
+                } else {
+                    return elem.currentStyle[prop];
+                }
+            },
+            count: 0,
+            //图片的数量
+            realPicNum: imageArr.length,
+            //锁
+            lock: true,
+            autoMove: function (direction) {
+                if (turnObject['lock']) {
+                    turnObject['lock'] = false;
+                    if (direction === 1 || !direction) {
+                        turnObject['count']++;
+                        if (turnObject['count'] === turnObject['realPicNum']) {
+                            turnObject['count'] = 0;
+                        }
+                        turnObject['spanChange'](turnObject['count']);
+                        turnObject['startMove'](turnObject['oPicUL'], {left: turnObject['oPicUL'].offsetLeft - turnObject['moveWidth']}, function () {
+                            if (turnObject['count'] === 0) {
+                                turnObject['oPicUL'].style.left = '0px';
+                            }
+                            turnObject['lock'] = true;
+                        });
+
+                    } else if (direction === -1) {
+                        if (turnObject['oPicUL'].offsetLeft === 0) {
+                            turnObject['count'] = turnObject['realPicNum'];
+                            turnObject['oPicUL'].style.left = -turnObject['moveWidth'] * turnObject['count'] + 'px';
+                        }
+                        --turnObject['count'];
+                        turnObject['spanChange'](turnObject['count']);
+                        turnObject['startMove'](turnObject['oPicUL'], {left: turnObject['oPicUL'].offsetLeft + turnObject['moveWidth']}, function () {
+                            turnObject['lock'] = true;
+                        });
+                    }
+                }
+            },
+            spanChange: function (change) {
+                // console.log(change);
+                for (let i = 0; i < turnObject['realPicNum']; i++) {
+                    turnObject['cirSpan'][i].className = '';
+                }
+                turnObject['cirSpan'][change].className = 'cir-change';
+            },
+            addEvent: function (elem, type, handle) {
+                if (elem.addEventListener) {
+                    //IE9 以下不兼容，可以为一个事件绑定多个处理程序
+                    elem.addEventListener(type, handle, false);
+                } else if (elem.attachEvent) {
+                    //IE 独有，一个事件同样可以绑定多个处理程序，同一个函数绑定多次都可以
+                    elem.attachEvent('on' + type, function () {
+                        handle.call(elem);
+                    });
+                } else {
+                    elem['on' + type] = handle;
+                }
+            },
+            startMove: function (dom, attrObj, callback) {
+                //保证只有一个定时器在运行
+                clearInterval(dom.timer);
+                //速度
+                let speed = null,
+                    //属性当前值
+                    iCur = null;
+                //给每一个对象分配一个定时器
+                dom.timer = setInterval(function () {
+                    //是否可以停止
+                    let bStop = true;
+                    for (let attr in attrObj) {
+                        //属性是否是opacity  opacity（透明度）的范围是0~1之间 可以将当前值、目标值都扩大一百倍，最后再缩小100倍
+                        iCur = attr === 'opacity' ? parseFloat(turnObject['getStyle'](dom, attr)) * 100 : parseInt(turnObject['getStyle'](dom, attr));
+                        //速度等于目标点减当前值 除以一个数 不让当前值一下等于目标值
+                        speed = (attrObj[attr] - iCur) / 8;
+                        //ceil向上取整 floor向下取整 小数不足以使像素发生改变 所以要取整
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        dom.style[attr] = attr === 'opacity' ? (iCur + speed) / 100 : iCur + speed + 'px';
+                        //如果对象里有一个属性没有到达目标值就不能停
+                        if (iCur !== attrObj[attr]) {
+                            bStop = false;
+                        }
+                    }
+                    //当所有属性到达目标值停止定时器
+                    if (bStop) {
+                        clearInterval(dom.timer);
+                        //callback是方法时就调用
+                        typeof callback === 'function' && callback();
+                    }
+                }, 20);
+            },
+            myCreateElement: function (dom, imageArr) {
+                let warp = document.createElement('div'),
+
+                    pic = document.createElement('div'),
+                    ul = document.createElement('ul'),
+
+                    cir = document.createElement('div'),
+                    btnLeft = document.createElement('div'),
+                    btnRight = document.createElement('div');
+
+                warp.className = 'warp';
+                pic.className = 'pic';
+                cir.className = 'cir';
+                btnLeft.innerText = '<';
+                btnLeft.className = 'btn-left';
+                btnRight.innerText = '>';
+                btnRight.className = 'btn-right';
+
+                for (let i = 0; i <= imageArr.length; i++) {
+                    let li = document.createElement('li'),
+                        img = document.createElement('img');
+                    if (i < imageArr.length) {
+                        img.src = imageArr[i];
+                        li.appendChild(img);
+                        let span = document.createElement('span');
+                        if (i === 0) {
+                            span.className = 'cir-change';
+                        }
+                        cir.appendChild(span);
+                    } else {
+                        img.src = imageArr[0];
+                        li.appendChild(img);
+                    }
+                    ul.appendChild(li);
+                }
+                pic.appendChild(ul);
+                warp.appendChild(pic);
+                warp.appendChild(cir);
+                warp.appendChild(btnLeft);
+                warp.appendChild(btnRight);
+                dom.appendChild(warp);
+
+                //图片ul
+                this.oPicUL = ul;
+                //li的宽度
+                this.moveWidth = this.oPicUL.children[0].offsetWidth;
+                //圆点
+                this.cirSpan = cir.children;
+                //按钮
+                this.btnLeft = btnLeft;
+                this.btnRight = btnRight;
+            },
+            setEvent: function () {
+                turnObject['addEvent'](turnObject['btnLeft'], 'click', function (e) {
+                    turnObject['autoMove'](-1);
+                });
+                turnObject['addEvent'](turnObject['btnRight'], 'click', function (e) {
+                    turnObject['autoMove'](1);
+                });
+                turnObject['addEvent'](turnObject['oPicUL'], 'mouseover', function (e) {
+                    clearInterval(turnObject['timer']);
+                });
+                turnObject['addEvent'](turnObject['oPicUL'], 'mouseout', function (e) {
+                    turnObject['timer'] = window.setInterval(turnObject['autoMove'], 1000);
+                });
+                for (let i = 0; i < turnObject['realPicNum']; i++) {
+                    turnObject['addEvent'](turnObject['cirSpan'][i], 'click', function (e) {
+                        turnObject['lock'] = false;
+                        turnObject['count'] = i;
+                        turnObject['spanChange'](turnObject['count']);
+                        turnObject['startMove'](turnObject['oPicUL'], {left: -turnObject['moveWidth'] * turnObject['count']}, function () {
+                            turnObject['lock'] = true;
+                        });
+                    });
+                }
+            },
+        };
+        turnObject['isStyle']();
+        turnObject['myCreateElement'](this, imageArr);
+        turnObject['setEvent']();
+        //定时器
+        turnObject['timer'] = window.setInterval(turnObject['autoMove'], 3000);
+    };
+</script>
+</body>
+</html>

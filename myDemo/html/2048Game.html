@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2048小游戏原生JS写</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    let my2048;
+    let rows = 4;
+    let cols = 4;
+    let spacing = 100;
+    let squareWdith = 100;
+    let boardSet = [];//初始化的默认小方块
+    let squareSet = [];//存放带数字的小方块的
+    let valueMap = [];//存放每个位置的数值
+    let colorMapping = {'0': '#ccc0b3', '2': '#eee4da', '4': '#ede0co', '8': '#', '16': '#f59563', '32': '',};
+    let directionEnum = {left: {key: 'left'}, right: {key: 'right'}, up: {key: 'up'}, down: {key: 'down'}};
+
+    function generateNullMap() {
+        let newValueMap = [];
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                newValueMap[i][j] = null;
+            }
+        }
+        return newValueMap;
+    }
+
+    function getNewLocation(arr) {
+        if (arr.length === 0) {
+            return [];
+        }
+        let temp = [];
+        temp.push(arr[0]);
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i].num === temp[temp.length - 1] && (!temp[temp.length - 1].nextSquare || temp[temp.length - 1].nextSquare === null)) {
+                temp[temp.length - 1] = arr[i];
+            } else {
+                temp.push(arr[i]);
+            }
+        }
+    }
+
+    function analysisActions(direction) {
+        let newSquareSet = generateNullMap();
+        if (direction === directionEnum.left) {
+            for (let i = 0; i < squareSet.length; i++) {
+                let temp = [];
+                for (let j = 0; j < squareSet[i].length; j++) {
+                    if (squareSet[i][j] !== null) {
+                        temp.push(squareSet[i][j]);
+                    }
+                }
+                temp = getNewLocation(temp);
+                for (let k = 0; k < newSquareSet[i].length; k++) {
+                    if (temp[k]) {
+                        newSquareSet[i][k] = temp[k];
+                    }
+                }
+            }
+        }
+        //动画
+        for (let i = 0; i < newSquareSet.length; i++) {
+            for (let j = 0; j < newSquareSet[i].length; j++) {
+                if (newSquareSet[i][j] === null) {
+                    continue;
+                }
+            }
+        }
+    }
+
+    function move(direction) {
+        //判断游戏是否结束
+        //计算移动位置
+        let newSquareSet = analysisActions(direction);
+        //重绘，刷新显示
+    }
+
+    function randSquareNum() {
+        return Math.random() > 0.5 ? 4 : 2;
+    }
+
+    function randGenerateSquare() {
+        for (; ;) {
+            let randRow = Math.floor(Math.random() * rows);
+            let randCol = Math.floor(Math.random() * cols);
+            if (valueMap[randRow][randCol] === 0) {
+                let temp = createSquare(randSquareNum(), rand * squareWdith + (randCol + 1) * spacing);
+
+            }
+        }
+    }
+
+    function careateSquare(value, left, top, row, col) {
+        let temp = document.createElement('div');
+        temp.style.width = squareWdith + 'px';
+        temp.style.height = squareWdith + 'px';
+        temp.style.left = left + 'px';
+        temp.style.top = top + 'px';
+        temp.style.background = colorMapping[value];
+        temp.style.lineHeight = squareWdith + 'px';
+        temp.style.textAlign = 'center';
+        temp.style.textAlign = 'center';
+        temp.style.textAlign = 'center';
+    }
+
+    function initBoard() {
+        my2048 = document.getElementById('my2048');
+    }
+
+    function init() {
+        //初始化棋盘
+        initBoard();
+        //生成默认小方块
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                valueMap[i][j] = 0;
+                squareSet[i][j] = null;
+                boardSet[i][j] = careateSquare(0,)
+            }
+        }
+    }
+</script>
+</body>
+</html>

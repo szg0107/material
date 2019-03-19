@@ -17,23 +17,6 @@
         }
 
     </style>
-    <script>
-        window.onload = function () {
-
-            let images = document.getElementsByTagName('img');
-            let pos = 0;
-            let len = images.length;
-            console.log(len);
-            setInterval(function () {
-
-                images[pos].style.display = 'none';
-                pos = ++pos == len ? 0 : pos;
-                images[pos].style.display = 'inline';
-
-            }, 3000);
-
-        };
-    </script>
 
 </head>
 
@@ -43,5 +26,19 @@
     <img src="../img/02.jpg" width="400" height="250"/>
     <img src="../img/03.jpg" width="400" height="250"/>
 </div>
+<script>
+    (function () {
+        let images = document.getElementsByTagName('img');
+        let pos = 0;
+        let len = images.length - 1;
+        console.log(len);
+        setInterval(function () {
+            images[pos].style.display = 'none';
+            pos = ++pos > len ? 0 : pos;
+            images[pos].style.display = 'inline';
+        }, 3000);
+
+    }());
+</script>
 </body>
 </html>

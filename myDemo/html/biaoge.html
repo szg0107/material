@@ -2,11 +2,64 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>表格JS</title>
+    <title>表格JS及HTML、CSS小练习</title>
     <!--引用JS-->
     <script type="text/javascript" src="../js/common_methods.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .plat{
+            position: absolute;
+            height: 190px;
+            width: 380px;
+            left: 50%;
+            top: 50%;
+            margin-left: -190px;
+            margin-top: -65px;
+        }
+        .circle1,
+        .circle2,
+        .circle3,
+        .circle4,
+        .circle5{
+            width: 100px;
+            height: 100px;
+            border-radius:50%;
+            border: 10px solid black;
+            position: absolute;
+        }
+        .circle1{
+            border-color: red;
+            top: 0;
+            left: 0;
+        }
+        .circle2{
+            border-color: green;
+            top: 0;
+            left: 130px;
+            z-index: 3;
+        }
+        .circle3{
+            border-color: blue;
+            top: 0;
+            left: 260px;
+        }
+        .circle4{
+            border-color: yellow;
+            left: 65px;
+            top: 70px;
+        }
+        .circle5{
+            border-color: purple;
+            left: 195px;
+            top: 70px;
+        }
+    </style>
 </head>
 <body>
+<!--表格透明 移入行变色-->
 <table border="5" align="center">
     <tr id="tr1" onmousemove="over(this.id)" onmouseout="out(this.id)">
         <td align="center">明日科技</td>
@@ -15,6 +68,20 @@
         <td align="center">明日科技图书</td>
     </tr>
 </table>
+
+<!--用div画三角  transparent 透明色-->
+<div style="width:0;height: 0;border: 100px solid black;border-top-color:red;border-left-color:greenyellow;border-right-color: transparent;margin: 0 auto;"></div>
+
+
+<!--用div画五环-->
+<div class="plat">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    <div class="circle5"></div>
+</div>
+
 <script type="text/javascript">
     /*选中行变色*/
     function over(trName) {

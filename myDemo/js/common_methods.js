@@ -36,6 +36,227 @@ function rtrim(str) {
     return str.replace(/(\s*$)/g, "");
 }
 
+/*验证邮箱*/
+function isEmail(value) {
+    //验证邮箱
+    let reg = new RegExp('^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$'); //正则表达式
+    return reg.test(value);
+}
+
+/*验证数字*/
+function isNumber(value) {
+    let reg = new RegExp('^[0-9]*$'); //正则表达式
+    return reg.test(value);
+}
+
+/*验证手机号+固话*/
+function isPhone(value) {
+    let reg = new RegExp('((\\d{11})|^((\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1})|(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1}))$)'); //正则表达式
+    return reg.test(value);
+}
+
+
+
+
+//得到Navigator对象信息
+function getNavigatorMessage() {
+    let nVer = navigator.appVersion,
+        nAgt = navigator.userAgent,
+        browser = navigator.appName,
+        version = '' + parseFloat(navigator.appVersion),
+        majorVersion, nameOffset, verOffset, ix, network = 'unknown';
+    // Opera
+    if ((verOffset = nAgt.indexOf('Opera')) !== -1) {
+        browser = 'Opera';
+        version = nAgt.substring(verOffset + 6);
+        if ((verOffset = nAgt.indexOf('Version')) !== -1) {
+            version = nAgt.substring(verOffset + 8);
+        }
+    }
+    // Opera Next
+    if ((verOffset = nAgt.indexOf('OPR')) !== -1) {
+        browser = 'Opera';
+        version = nAgt.substring(verOffset + 4);
+    }
+    // MSIE
+    else if ((verOffset = nAgt.indexOf('MSIE')) !== -1) {
+        browser = 'Microsoft Internet Explorer';
+        version = nAgt.substring(verOffset + 5);
+    }
+    // Chrome
+    else if ((verOffset = nAgt.indexOf('Chrome')) !== -1) {
+        browser = 'Chrome';
+        version = nAgt.substring(verOffset + 7);
+    }
+    // Safari
+    else if ((verOffset = nAgt.indexOf('Safari')) !== -1) {
+        browser = 'Safari';
+        version = nAgt.substring(verOffset + 7);
+        if ((verOffset = nAgt.indexOf('Version')) !== -1) {
+            version = nAgt.substring(verOffset + 8);
+        }
+    }
+    // Firefox
+    else if ((verOffset = nAgt.indexOf('Firefox')) !== -1) {
+        browser = 'Firefox';
+        version = nAgt.substring(verOffset + 8);
+    }
+    // MSIE 11+
+    else if (nAgt.indexOf('Trident/') !== -1) {
+        browser = 'Microsoft Internet Explorer';
+        version = nAgt.substring(nAgt.indexOf('rv:') + 3);
+    }
+    // WeiXin
+    else if (nAgt.indexOf('NetType/') !== -1) {
+        browser = 'WeiXin';
+        if (nAgt.indexOf('NetType/WIFI') !== -1) {
+            network = 'WIFI';
+        } else if (nAgt.indexOf('NetType/2G') !== -1) {
+            network = '2G';
+        } else if (nAgt.indexOf('NetType/3G+') !== -1) {
+            network = '3G+';
+        }
+        verOffset = nAgt.lastIndexOf('/');
+        version = nAgt.substring(verOffset + 1);
+        if (browser.toLowerCase() === browser.toUpperCase()) {
+            browser = navigator.appName;
+        }
+    }
+    // Other browsers
+    else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset = nAgt.lastIndexOf('/'))) {
+        browser = nAgt.substring(nameOffset, verOffset);
+        version = nAgt.substring(verOffset + 1);
+        if (browser.toLowerCase() === browser.toUpperCase()) {
+            browser = navigator.appName;
+        }
+    }
+
+    // trim the version string
+    if ((ix = version.indexOf(';')) !== -1) version = version.substring(0, ix);
+    if ((ix = version.indexOf(' ')) !== -1) version = version.substring(0, ix);
+    if ((ix = version.indexOf(')')) !== -1) version = version.substring(0, ix);
+    majorVersion = parseInt('' + version, 10);
+    if (isNaN(majorVersion)) {
+        version = '' + parseFloat(navigator.appVersion);
+        majorVersion = parseInt(navigator.appVersion, 10);
+    }
+
+    // mobile version
+    let mobile = /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(nVer);
+
+    // start system detect
+    let os = '';
+    let clientStrings = [
+        {s: 'Windows 10', r: /(Windows 10.0|Windows NT 10.0)/},
+        {s: 'Windows 8.1', r: /(Windows 8.1|Windows NT 6.3)/},
+        {s: 'Windows 8', r: /(Windows 8|Windows NT 6.2)/},
+        {s: 'Windows 7', r: /(Windows 7|Windows NT 6.1)/},
+        {s: 'Windows Vista', r: /Windows NT 6.0/},
+        {s: 'Windows Server 2003', r: /Windows NT 5.2/},
+        {s: 'Windows XP', r: /(Windows NT 5.1|Windows XP)/},
+        {s: 'Windows 2000', r: /(Windows NT 5.0|Windows 2000)/},
+        {s: 'Windows ME', r: /(Win 9x 4.90|Windows ME)/},
+        {s: 'Windows 98', r: /(Windows 98|Win98)/},
+        {s: 'Windows 95', r: /(Windows 95|Win95|Windows_95)/},
+        {s: 'Windows NT 4.0', r: /(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/},
+        {s: 'Windows CE', r: /Windows CE/},
+        {s: 'Windows 3.11', r: /Win16/},
+        {s: 'Android', r: /Android/},
+        {s: 'Open BSD', r: /OpenBSD/},
+        {s: 'Sun OS', r: /SunOS/},
+        {s: 'Linux', r: /(Linux|X11)/},
+        {s: 'iOS', r: /(iPhone|iPad|iPod)/},
+        {s: 'Mac OS X', r: /Mac OS X/},
+        {s: 'Mac OS', r: /(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/},
+        {s: 'QNX', r: /QNX/},
+        {s: 'UNIX', r: /UNIX/},
+        {s: 'BeOS', r: /BeOS/},
+        {s: 'OS/2', r: /OS\/2/},
+        {s: 'Search Bot', r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
+    ];
+    for (let id in clientStrings) {
+        let cs = clientStrings[id];
+        if (cs.r.test(nAgt)) {
+            os = cs.s;
+            break;
+        }
+    }
+    let osVersion = '';
+    if (/Windows/.test(os)) {
+        osVersion = /Windows (.*)/.exec(os)[1];
+        os = 'Windows';
+    }
+    switch (os) {
+        case 'Mac OS X':
+            osVersion = /Mac OS X (10[\.\_\d]+)/.exec(nAgt)[1];
+            break;
+        case 'Android':
+            osVersion = /Android ([\.\_\d]+)/.exec(nAgt)[1];
+            break;
+        case 'iOS':
+            osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
+            osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+            break;
+    }
+
+    //detect data
+    let params = {};
+    params.os = os;//操作系统
+    params.osVersion = osVersion ? osVersion : 'unknown';//操作系统版本
+    params.mobile = mobile;//是否移动端访问
+    params.browser = browser;//浏览器
+    params.browserVersion = version;//浏览器版本
+    params.browserMajorVersion = majorVersion;//浏览器major版本
+
+    //输出对象
+    console.log(params);
+}
+
+//异步加载JS
+function loadScript(url, callback) {
+    let script = document.createElement('script');
+    script.type = 'text/javascript';
+    //先绑事件然后加载JS
+    if (script.readyState) {
+        //ie使用方法
+        script.onreadystatechange = function () {
+            if (script.readyState === 'complete' || script.readyState === 'loaded') {
+                callback();
+            }
+        }
+    } else {
+        //safari chrome firefox opera都支持
+        script.onload = function () {
+            callback();
+        }
+    }
+    script.src = url;
+    document.head.appendChild(script);
+}
+
+//防抖 方法 延迟多少毫秒
+function debounce(handler,delay) {
+    return function () {
+        let serf=this,arg=arguments;
+        clearTimeout(handler.timer);
+        handler.timer=setTimeout(function () {
+            handler.apply(serf,arg);
+        },delay);
+    }
+}
+
+//节流 方法 等待多少毫秒
+function throttle(handler,wait) {
+    let lastTime=0;
+    return function (e) {
+        let nowTime=new Date().getTime();
+        if (nowTime-lastTime>wait) {
+            handler.apply(this,arguments);
+            lastTime=nowTime;
+        }
+    }
+}
+
 /*判断数据类型*/
 function myTypeOf(target) {
     /** 1.分两类 原始值 引用值
@@ -58,25 +279,6 @@ function myTypeOf(target) {
     } else {
         return ret;
     }
-}
-
-/*验证邮箱*/
-function isEmail(value) {
-    //验证邮箱
-    let reg = new RegExp('^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$'); //正则表达式
-    return reg.test(value);
-}
-
-/*验证数字*/
-function isNumber(value) {
-    let reg = new RegExp('^[0-9]*$'); //正则表达式
-    return reg.test(value);
-}
-
-/*验证手机号+固话*/
-function isPhone(value) {
-    let reg = new RegExp('((\\d{11})|^((\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1})|(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1}))$)'); //正则表达式
-    return reg.test(value);
 }
 
 //求滚动条滚动的尺寸
@@ -141,6 +343,67 @@ function getStyle(elem, prop) {
     } else {
         return elem.currentStyle[prop];
     }
+}
+
+//深度克隆
+function deepClone(origin, target) {
+    /*1、先把所有的值都遍历一遍（看是引用值和原始值）
+            用 for ( let prop in obj )，对象和数组都可以使用
+    2、判断是原始值，还是引用值？用 typeof 判断是不是 object
+         1）如果是原始值就直接拷贝
+         2）如果是引用值，判断是数组还是对象
+    3、判断是数组还是对象？（方法 instanceof【看 a 的原型链上有没有 b 的原型】、toString、constructor，建议用 toString,另外两个有个小 bug——跨父子域不行）
+        1）如果是数组，就新建一个空数组；
+        2）如果是对象，就新建一个空对象。
+    4、建立了数组以后，如果是挨个看原始对象里面是什么，都是原始值就可以直接考过来了；或者，建立了对象以后，挨个判断对象里面的每一个值，看是原始值还是引用值
+    5、递归*/
+    // 建立要拷贝的对象
+    let targets = target || {},
+        // 获得toString方法
+        toStr = Object.prototype.toString(),
+        //拿到字符串'[Object Array]'进行比较是否是数组
+        arrStr = '[Object Array]';
+
+    for (let prop in origin) {
+        //判断是否是原型链上的属性
+        if (origin.hasOwnProperty(prop)) {
+            //判断是引用值还是原始值
+            if (origin[prop] !== 'null' && typeof (origin[prop]) === 'object') {
+                //判断对象是不是数组
+                /*if (toStr.call(origin[prop]) === arrStr) {
+                     targets[prop] = [];
+                 } else {
+                     targets[prop] = {};
+                 }*/
+                targets[prop] = toStr.call(origin[prop]) === arrStr ? [] : {};
+                deepClone(origin[prop], targets[prop]);
+            } else {
+                targets[prop] = origin[prop];
+            }
+        }
+    }
+    return targets;
+
+}
+
+//数组快速排序
+function quickArr(arr) {
+    let left = [], right = [];
+    //获取基准值角标 let<standardVale<right
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let index = Math.floor(arr.length / 2);
+    //取出基准值并重原数组剔除
+    let standardVale = arr.splice(index, 1)[0];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < standardVale) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+    return quickArr(left).concat(standardVale, quickArr(right));
 }
 
 //数组去重
@@ -277,27 +540,109 @@ function cancelHandler(event) {
     }
 }
 
-//异步加载JS
-function loadScript(url, callback) {
-    let script = document.createElement('script');
-    script.type = 'text/javascript';
-    //先绑事件然后加载JS
-    if (script.readyState) {
-        //ie使用方法
-        script.onreadystatechange = function () {
-            if (script.readyState === 'complete' || script.readyState === 'loaded') {
-                callback();
+//清除绑定事件处理函数
+function removeEvent(elem, type, handle) {
+    if (elem.removeEventListener) {
+        elem.removeEventListener(type, handle, false);
+    } else {
+        elem.detachEvent('on' + type, handle);
+    }
+}
+
+//拖拽功能
+function drag(elem) {
+    let disX, disY;
+    addEvent(elem, 'mousedown', function (e) {
+        let event = e || window.event;
+        //鼠标点击时距离上边和左边的距离
+        disX = event.pageX - parseInt(getStyle(elem, 'left'));
+        disY = event.pageY - parseInt(getStyle(elem, 'top'));
+        addEvent(document, 'mousemove', mouseMove);
+        addEvent(document, 'mouseup', mouseUp);
+        stopBubble(event);
+        cancelHandler(event);
+    });
+
+    function mouseMove(e) {
+        let event = e || window.event;
+        elem.style.left = event.pageX - disX + 'px';
+        elem.style.top = event.pageY - disY + 'px';
+    }
+
+    function mouseUp(e) {
+        let event = e || window.event;
+        removeEvent(document, 'mousemove', mouseMove);
+        removeEvent(document, 'mouseup', mouseUp);
+    }
+}
+
+//多物体多值运动+回调机制（调用对象，属性对象，回调函数）
+function startMove(dom, attrObj, callback) {
+    //保证只有一个定时器在运行
+    clearInterval(dom.timer);
+    //速度
+    let speed = null,
+        //属性当前值
+        iCur = null;
+    //给每一个对象分配一个定时器
+    dom.timer = setInterval(function () {
+        //是否可以停止
+        let bStop = true;
+        for (let attr in attrObj) {
+            //属性是否是opacity  opacity（透明度）的范围是0~1之间 可以将当前值、目标值都扩大一百倍，最后再缩小100倍
+            iCur = attr === 'opacity' ? parseFloat(getStyle(dom, attr)) * 100 : parseInt(getStyle(dom, attr));
+            //速度等于目标点减当前值 除以一个数 不让当前值一下等于目标值
+            speed = (attrObj[attr] - iCur) / 8;
+            //ceil向上取整 floor向下取整 小数不足以使像素发生改变 所以要取整
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+            dom.style[attr] = attr === 'opacity' ? (iCur + speed) / 100 : iCur + speed + 'px';
+            //如果对象里有一个属性没有到达目标值就不能停
+            if (iCur !== attrObj[attr]) {
+                bStop = false;
             }
         }
-    } else {
-        //safari chrome firefox opera都支持
-        script.onload = function () {
-            callback();
+        //当所有属性到达目标值停止定时器
+        if (bStop) {
+            clearInterval(dom.timer);
+            //callback是方法时就调用
+            typeof callback === 'function' && callback();
         }
-    }
-    script.src = url;
-    document.head.appendChild(script);
+    }, 20);
 }
+
+//继承圣杯模式
+function inherit(Target, Origin) {
+    let F = function () {
+    };
+    F.prototype = Origin.prototype;
+    Target.prototype = new F();
+    Target.prototype.constructor = Target;
+    //我们希望我们构造出的对象，能找到自己的超类，超级父级（究竟继承自谁）应该起名为super 但这个是保留字，我们就以 uber
+    Target.prototype.uber = Origin.prototype;
+}
+
+//雅虎封装圣杯模式方法
+let inheritTwo = (function () {
+    let F = function () {
+    };
+    return function (Target, Origin) {
+        F.prototype = Origin.prototype;
+        Target.prototype = new F();
+        Target.prototype.constructor = Target;
+        //我们希望我们构造出的对象，能找到自己的超类，超级父级（究竟继承自谁）应该起名为super 但这个是保留字，我们就以 uber
+        Target.prototype.uber = Origin.prototype;
+    }
+}());
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件筛选练习</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .warp {
+            margin: 100px auto 0;
+            padding: 10px 15px;
+            width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .search {
+            margin-bottom: 20px;
+        }
+
+        .search input {
+            width: 220px;
+            height: 25px;
+            padding-left: 10px;
+            outline: none;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .search .btn {
+            cursor: pointer;
+            color: #029ae5;
+            padding: 0 5px;
+        }
+
+        .btn.active {
+            color: #fff;
+            background: #029ae5;
+            border-radius: 4px;
+        }
+
+        .content ul li {
+            border-bottom: 1px solid #999;
+            position: relative;
+            padding: 10px 0 10px 55px;
+            height: 45px;
+        }
+
+        .content ul li img {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .content ul li .name {
+            margin-bottom: 10px;
+        }
+
+        .content ul li .des {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="warp">
+    <div class="search">
+        <input type="text"/>
+        <span class="btn">Male</span>
+        <span class="btn">Female</span>
+        <span class="btn active">All</span>
+    </div>
+    <div class="content">
+        <ul>
+            <!--<li>-->
+            <!--<img src="../img/01.jpg"/>-->
+            <!--<p class="name">刘小华</p>-->
+            <!--<p class="des">漂亮的女孩子</p>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<img src="../img/02.jpg"/>-->
+            <!--<p class="name"></p>-->
+            <!--<p class="des"></p>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let personArray = [
+            {name: '刘小华', src: '../img/01.jpg', sex: 'Male', des: '帅气的男孩子'},
+            {name: '王花', src: '../img/02.jpg', sex: 'Male', des: '漂亮的程序猿'},
+            {name: '陈军', src: '../img/03.jpg', sex: 'Female', des: '我是一个学霸'},
+            {name: '王华', src: '../img/04.jpg', sex: 'Female', des: '我喜欢游泳'},
+            {name: '陈思思', src: '../img/05.jpg', sex: 'Male', des: '我喜欢看电影'},
+            {name: '陈学习', src: '../img/06.jpg', sex: 'Female', des: '我爸我妈爱学习'},
+            {name: '王美丽', src: '../img/07.jpg', sex: 'Male', des: '我妈是美丽得妈妈'}
+        ],
+        //获得ul
+        ul = document.getElementsByTagName('ul')[0],
+        //获得输入框
+        input = document.getElementsByTagName('input')[0],
+        //获得所有按钮将类数组变为数组
+        btnArray = [].slice.call(document.getElementsByClassName('btn'), 0),
+        //上一个点击按钮
+        lastBtn = btnArray[2],
+        store = createStore({name: '', sex: 'All'}),
+        lastFilterArr = combineFilter({name: filterArrayByText, sex: filterArrayBySex});
+        store.subscribe(function () {
+            //更新页面
+            renderPage(lastFilterArr(personArray));
+        });
+    btnArray.forEach(function (ele, index, self) {
+        ele.onclick = throttle(function () {
+            changeActive(this);
+            store.dispatch({type:'sex',value:this.innerText});
+        }, 1000);
+    });
+
+    input.oninput = debounce(function () {
+        store.dispatch({type:'name',value:this.value});
+    }, 1000);
+
+    //数据渲染
+    function renderPage(data) {
+        let htmlStr = '';
+        ul.innerHTML = '';
+        data.forEach(function (ele, index, self) {
+            htmlStr += '<li><img src="' + ele.src + '"><p class="name">' + ele.name + '</p><p class="des">' + ele.des + '</p></li>'
+        });
+        ul.innerHTML = htmlStr;
+    }
+
+    renderPage(personArray);
+
+    //防抖 方法 延迟多少毫秒
+    function debounce(handler, delay) {
+        return function () {
+            let serf = this, arg = arguments;
+            clearTimeout(handler.timer);
+            handler.timer = setTimeout(function () {
+                handler.apply(serf, arg);
+            }, delay);
+        }
+    }
+
+    //节流 方法 等待多少毫秒
+    function throttle(handler, wait) {
+        let lastTime = 0;
+        return function (e) {
+            let nowTime = new Date().getTime();
+            if (nowTime - lastTime > wait) {
+                handler.apply(this, arguments);
+                lastTime = nowTime;
+            }
+        }
+    }
+
+    //根据输入的文本过滤函数 纯函数
+    function filterArrayByText(data, text) {
+        if (!text) {
+            return data;
+        } else {
+            return data.filter(function (ele, index, serf) {
+                return ele.name.indexOf(text) !== -1;
+            });
+        }
+    }
+
+    //按钮选中事件
+    function changeActive(curBtn) {
+        curBtn.className = 'btn active';
+        lastBtn.className = 'btn';
+        lastBtn = curBtn;
+    }
+
+    //根据性别选择
+    function filterArrayBySex(data, sex) {
+        if (sex === 'All') {
+            return data;
+        } else {
+            return data.filter(function (ele, index, serf) {
+                return ele.sex === sex;
+            });
+        }
+    }
+
+    /**===========================================*/
+    function combineFilter(config) {
+        return function (data) {
+            for (let prop in config) {
+                // console.log(prop,config[prop]);
+                data = config[prop](data, store.getState(prop));
+            }
+            return data;
+        }
+    }
+
+    function createStore(initialState) {
+        let state = initialState || {};
+        let list = [];
+
+        function getState(type) {
+            return state[type];
+        }
+
+        function dispatch(action) {
+            state[action.type] = action.value;
+            list.forEach(function (ele) {
+                ele();
+            });
+        }
+
+        //订阅
+        function subscribe(fun) {
+            list.push(fun);
+        }
+
+        return {getState: getState, dispatch: dispatch, subscribe: subscribe};
+    }
+
+
+</script>
+</body>
+</html>

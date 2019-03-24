@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQ练习</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+
+<div>
+    <span></span>
+    <i></i>
+    <span></span>
+    <i></i>
+    <span></span>
+    <i></i>
+    <span></span>
+    <i></i>
+</div>
+
+
+<script type="text/javascript">
+    $('div').children().each(function (index, ele) {
+        ele.nodeName === 'I' ? $(ele).text('i-' + index) : $(ele).text('span-' + index);
+        $(ele).on('click',function (e) {
+            console.log($('div span').index($(e.target)));
+        });
+    });
+
+
+</script>
+</body>
+</html>

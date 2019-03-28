@@ -2,7 +2,7 @@
     function jQuery(selector) {
         return new jQuery.prototype.init(selector);
     }
-
+    //实例方法
     jQuery.prototype.init = function (selector) {
         //选出dom对象并包装成jQuery对象
         let dom = null;
@@ -114,7 +114,7 @@
         if (currFun === undefined) {
             return;
         }
-               let next = function () {
+        let next = function () {
             self.myDeQueue(queueName);
         };
         currFun(next);
@@ -195,6 +195,45 @@
             }, duration);
         });
         return this;
+    };
+    //工具方法
+    jQuery.myCallBacks = function (duration) {
+        // 'once' 'memory' 'once memory' null
+        //储存参数
+        let options = arguments[0] || '',
+            //通过add方法 来加入的方法
+            list = [],
+            //记录当前要执行的函数索引
+            fireIndex = 0,
+            //记录是否被fire过
+            fired = false,
+            //实际参数列表
+            args = [],
+            fire = function () {
+                for (; fireIndex < list.length; fireIndex++) {
+                    list[fireIndex].apply(window, args);
+                }
+                if (options.indexOf('once') !== -1) {
+                    list = [];
+                    fireIndex = 0;
+                }
+            };
+        return {
+            add: function (fun) {
+                //将传入的方法添加到数组中
+                list.push(fun);
+                if (options.indexOf('memory') !== -1 && fired) {
+                    fire();
+                }
+                return this;
+            },
+            fire: function () {
+                fireIndex = 0;
+                args = arguments;
+                fired = true;
+                fire();
+            }
+        };
     };
 
 

@@ -2,6 +2,7 @@
     function jQuery(selector) {
         return new jQuery.prototype.init(selector);
     }
+
     //实例方法
     jQuery.prototype.init = function (selector) {
         //选出dom对象并包装成jQuery对象
@@ -235,7 +236,28 @@
             }
         };
     };
-
+    jQuery.myDeferred = function () {
+        let arrCallbacks = [
+                [jQuery.myCallBacks('once memory'), 'done', 'resolve'],
+                [jQuery.myCallBacks('once memory'), 'fail', 'reject'],
+                [jQuery.myCallBacks('memory'), 'progress', 'notify'],
+            ],
+            pendding = true,
+            deferred = {};
+        arrCallbacks.forEach(function (ele, index) {
+            deferred[ele[1]] = function (fun) {
+                ele[0].add(fun);
+            };
+            deferred[ele[2]] = function (fun) {
+                let arg = arguments;
+                if (pendding) {
+                    ele[0].fire.apply(window, arg);
+                    pendding = !(ele[2] === 'resolve' || ele[2] === 'reject');
+                }
+            };
+        });
+        return deferred;
+    };
 
     jQuery.prototype.init.prototype = jQuery.prototype;
     window.$ = window.jQuery = jQuery;

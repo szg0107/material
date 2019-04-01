@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义JQfullPage插件</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+<!--    <style type="text/css">-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            height: 100%;-->
+<!--            width: 100%;-->
+<!--        }-->
+
+<!--        html, body {-->
+<!--            overflow: hidden;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .warp {-->
+<!--            width: 100%;-->
+<!--            height: 100%;-->
+<!--            background-color: #ff4400;-->
+<!--            position: absolute;-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--        }-->
+
+<!--        .warp .section {-->
+<!--            width: 100%;-->
+<!--            height: 100%;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+<div class="warp">
+    <div class="section">1</div>
+    <div class="section">
+        <div class="slide">2-1</div>
+        <div class="slide">2-2</div>
+        <div class="slide">2-3</div>
+    </div>
+    <div class="section">3</div>
+</div>
+</body>
+<script type="text/javascript">
+    //实例方法
+    $.fn.extend({
+        myFullPage: function (config) {
+            //初始化变量 颜色数组
+            let colorsArray = config.colorsArray,
+                $warp = $(this),
+                $section = $warp.find('.section'),
+                //共同样式
+                commonStyle = {
+                    width: '100%',
+                    height: '100%',
+                },
+                //客户端宽高
+                clientWidth = $(window).outerWidth(),
+                clientHeight = $(window).outerHeight(),
+                // 索引 0 =》 第一个
+                curIndex = 0,
+                lock = true;
+            //初始化样式
+            $('html').add('body')
+                .css({
+                    position: 'relative',
+                    overflow: 'hidden',
+                    margin: 0,
+                }).add($warp).add($section).css(commonStyle);
+            $warp.css({position: 'absolute', left: 0, top: 0})
+                .find('.section')
+                .each(function (index, ele) {
+                    $(ele).css({backgroundColor: colorsArray[index], position: 'relative'})
+                        .find('.slide').css({
+                        float: 'left',
+                        width: clientWidth,
+                        height: clientHeight,
+                        position: 'relative'
+                    })
+                        .wrapAll('<div class="sliderWrapper"></div>')
+                });
+            $section.find('.sliderWrapper').each(function (index, ele) {
+                $(ele).css({width: $(ele).find('.slide').size() * clientWidth, height: clientHeight});
+            });
+
+            //js控制移动 先给第一个section的class加上active 给每一个section下面的slide 加上innerActive
+            $section.eq(0).addClass('active')
+                .end().find('.sliderWrapper').css({position: 'absolute', left: 0, top: 0}).each(function (index, ele) {
+                $(ele).find('.slide').eq(0).addClass('innerActive');
+            });
+
+            $(document).on('keydown', function (e) {
+                //e.which left 37  top 38 right39 bottom 40
+                if (e.which === 38 || e.which === 40) {
+                    //垂直运动
+                    if (lock) {
+                        lock = false;
+                        let newTop = $warp.offset().top;
+                        if (e.which === 38 && curIndex !== 0) {
+                            curIndex--;
+                            newTop += clientHeight;
+                        } else if (e.which === 40 && curIndex !== $section.size() - 1) {
+                            curIndex++;
+                            newTop -= clientHeight;
+                        }
+                        $warp.animate({top:newTop},350,function () {
+                            lock=true;
+                        })
+                    }
+                }
+            });
+        },
+    });
+    $('.warp').myFullPage({colorsArray: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],});
+</script>
+</html>

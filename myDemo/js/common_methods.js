@@ -257,6 +257,21 @@ function throttle(handler,wait) {
     }
 }
 
+//根据分页展示数量分割数组
+function forPageSplitArray(arr, size) {
+    let length = arr.length,
+        newArr = [],
+        i = Math.ceil(length / size),
+        j = 0;
+    while (j < i) {
+        let spare = length - j * size >= size ? size : length - j * size,
+            temp = arr.slice(j * size, j * size + spare);
+        newArr.push(temp);
+        j++;
+    }
+    return newArr;
+}
+
 /*判断数据类型*/
 function myTypeOf(target) {
     /** 1.分两类 原始值 引用值

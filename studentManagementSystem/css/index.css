@@ -39,7 +39,7 @@ html, body, .warp {
     color: #b3bcc5;
     display: inline-block;
     position: relative;
-    z-index: 1;
+    /*z-index: 1;*/
 }
 
 .left-menu dl dt {
@@ -74,7 +74,7 @@ html, body, .warp {
     min-width: 500px;
     width: calc(100% - 200px);
     height: calc(100% - 70px);
-    padding-left: 200px;
+    margin-left: 200px;
     top: 70px;
     background-color: #eee;
 }
@@ -167,4 +167,43 @@ table tr td .btn.del:hover {
 
 .button {
     font-size: 0;
+}
+
+
+
+
+.dialog{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: none;
+}
+.dialog.show{
+    display: block;
+}
+.dialog .mask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.dialog .dialog-content{
+    width: 500px;
+    height: 450px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px;
+}
+.dialog .dialog-content form{
+    width: 400px;
+    margin: 0 auto;
 }

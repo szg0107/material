@@ -5,6 +5,9 @@
     <title>原生JS实现学生管理系统</title>
     <link rel="icon" href="../img/logo.png"/>
     <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../css/pageTurning.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/pagetTurning.js"></script>
 </head>
 <body>
 <div class="warp">
@@ -16,16 +19,15 @@
     </div>
 
     <div class="left-menu">
-        <dl>
+        <dl class="menu-list">
             <dt>学生管理</dt>
-            <dd class="active">学生列表</dd>
-            <dd>新增学生</dd>
+            <dd class="active list" data-id="student-list">学生列表</dd>
+            <dd data-id="add-student" class="add">新增学生</dd>
         </dl>
     </div>
 
-
     <div class="right-content">
-        <div class="student-list content ">
+        <div class="student-list content content-active" id="student-list">
             <table>
                 <thead>
                 <tr>
@@ -39,25 +41,71 @@
                     <th>操作</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>美琪</td>
-                    <td>女</td>
-                    <td>11@163.com</td>
-                    <td>18</td>
-                    <td>12346</td>
-                    <td>哈尔滨</td>
-                    <td>
-                        <button class="btn edit">编辑</button>
-                        <button class="btn del">删除</button>
-                    </td>
-                </tr>
+                <tbody id="tbody">
+<!--                    <tr>-->
+<!--                    <td>001</td>-->
+<!--                    <td>s</td>-->
+<!--                    <td>女</td>-->
+<!--                    <td>11@163.com</td>-->
+<!--                    <td>18</td>-->
+<!--                    <td>12346</td>-->
+<!--                    <td>哈尔滨</td>-->
+<!--                    <td>-->
+<!--                        <button class="btn edit">编辑</button>-->
+<!--                        <button class="btn del" sno="001">删除</button>-->
+<!--                    </td>-->
+<!--                </tr>-->
                 </tbody>
             </table>
+            <div class="dialog">
+                <div class="mask"></div>
+                <div class="dialog-content">
+                    <h2>编辑信息</h2>
+
+                    <form id="edit-student-form">
+                        <div>
+                            <label for="name">姓名</label>
+                            <input type="text" name="name"/>
+                        </div>
+                        <div>
+                            <label>性别</label>
+                            <input type="radio" name="sex" value="0" checked/>
+                            <label for="male" class="radio-label">男</label>
+                            <input type="radio" name="sex" value="1"/>
+                            <label for="female" class="radio-label">女</label>
+                        </div>
+                        <div>
+                            <label for="sNo">学号</label>
+                            <input type="text" name="sNo"/>
+                        </div>
+                        <div>
+                            <label for="email">邮箱</label>
+                            <input type="text" name="email"/>
+                        </div>
+                        <div>
+                            <label for="birth">出生年</label>
+                            <input type="text" name="birth"/>
+                        </div>
+                        <div>
+                            <label for="phone">手机号</label>
+                            <input type="text" name="phone"/>
+                        </div>
+                        <div>
+                            <label for="address">住址</label>
+                            <input type="text" name="address"/>
+                        </div>
+                        <div class="button">
+                            <label></label>
+                            <input type="submit" value="提交" class="btn" id="edit-student-btn"/>
+                            <input type="reset" value="重置" class="btn"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="page"></div>
         </div>
 
-        <div class="add-student content content-active">
+        <div class="add-student content " id="add-student">
             <form id="add-student-form">
                 <div>
                     <label for="name">姓名</label>
@@ -92,7 +140,7 @@
                 </div>
                 <div class="button">
                     <label></label>
-                    <input type="submit" value="提交" class="btn"/>
+                    <input type="submit" value="提交" class="btn" id="add-student-btn"/>
                     <input type="reset" value="重置" class="btn"/>
                 </div>
             </form>
@@ -100,4 +148,5 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="../js/index.js"></script>
 </html>

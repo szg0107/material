@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/paging.js"></script>
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .wrap {
+            height: 500px;
+            border: 1px solid #029ae5;
+            margin:0 auto;
+        }
+        .wrap ul li{
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap"></div>
+<script type="text/javascript">
+    $('.wrap').page({
+        allPageSize: 100,
+        pageSize: 10,
+        nowPage: 1,
+        changePageCB: function (page) {
+            // console.log('cb',page);
+        },
+    });
+</script>
+</body>
+</html>

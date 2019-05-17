@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片瀑布流</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 90%;
+            margin: 0 auto;
+            border: 1px solid #029ae5;
+            font-size: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+
+        .itemWrap {
+            width: 25%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .item {
+            width: 25%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #ff4400;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+        <div class="itemWrap"></div>
+
+        <div class="itemWrap"></div>
+
+        <div class="itemWrap"></div>
+
+        <div class="itemWrap">
+<!--                    <div>-->
+<!--                        <img src="../img/04.jpg" alt=""/>-->
+<!--                        <p>11111</p>-->
+<!--                    </div>-->
+        </div>
+
+<!--    <div class="item">-->
+<!--        <img src="../img/01.jpg" alt=""/>-->
+<!--        <p>11111</p>-->
+<!--    </div>-->
+</div>
+
+<script type="text/javascript">
+    // ajax函数  用来与后端交互  （请求类型POST GET DELETE PUT HEAD, 请求地址， callback请求的回调函数，参数， 是否异步）
+    function myAjax(method, url, callBack, data, flag) {
+        //数据对象
+        let result = null,
+            //当参数是对象时，需要遍历属性并接收
+            parameter = '',
+            //创建ajax对象 ajax是异步请求
+            xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+        //flag没值时默认为true
+        flag = flag ? flag : true;
+        //data不存在时,默认为对象.
+        data = data ? data : {};
+        //将请求方式转换为大写
+        method = method ? method.toUpperCase() : 'GET';
+
+
+        /**ajax状态改变触发事件
+         *对象状态（integer），状态值
+         *0 = 未初始化，未调用send()方法
+         *1 = 读取中，已调用send()，正在发送请求
+         *2 = 已读取，send方法执行完成，接收到全部响应内容
+         *3 = 交互中，正在解析响应内容
+         *4 = 完成，响应内容解析完成*/
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                //将返回数据(字符串类型)转为json对象
+                if (xhr.status === 200) {
+                    callBack(xhr.responseText);
+                } else {
+                    console.log(xhr.errorText);
+                }
+            }
+        };
+
+        if (typeof data === 'object') {
+            for (let prop in data) {
+                parameter += prop + '=' + data[prop] + '&';
+            }
+        } else {
+            data = data.toString();
+        }
+
+        data = parameter.length === 0 ? data : parameter;
+
+        if (method === 'GET') {
+            xhr.open(method, url + '?' + data, flag);
+            xhr.send();
+        } else if (method === 'POST') {
+            xhr.open(method, url, flag);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send(data);
+        }
+
+    }
+
+
+    function waterFall() {
+        // 请求数据页码
+        let page = 1,
+            // 存储页面上的div
+            itemWrap = document.getElementsByClassName('itemWrap'),
+            // 每张图片的宽度
+            oDivWidth = itemWrap[0].offsetWidth,
+            // 请求结束 （当获取数据为空的时候停止翻页）
+            flag = false;
+        console.log(oDivWidth);
+
+        function getData() {
+            myAjax('GET', '../other/data.json', function (res) {
+                // console.log(res);
+                let data = JSON.parse(res);
+                // 渲染页面
+                renderDom(data);
+                if (!data.length || page === 5) {
+                    flag = true;
+                }
+            }, 'page=' + page, true);
+        }
+
+        function renderDom(data) {
+            // 便利数据并插入到页面中那个
+            for (let i = 0; i < data.length; i++) {
+                let minIndex = getMinLi().minIndex;
+                let createDiv = document.createElement('div');
+                // createDiv.className = 'item';
+                let img = new Image();
+                img.src = data[i].image;
+                // 设置图片高度   img.height 是真实页面上图片的高度   oDivWIdth是真实页面上图片的宽度
+                // data[i].height/width   正常图片的高度/宽度
+                // 图片宽高比不变  a / b = c/ d ===> a = c / d * b  = c * b / d
+                img.height = oDivWidth * data[i].height / data[i].width;
+                let oP = document.createElement('p');
+                oP.innerText = data[i].title;
+                createDiv.appendChild(img);
+                createDiv.appendChild(oP);
+                itemWrap[minIndex].appendChild(createDiv);
+            }
+        }
+
+        // 查找最短的li 返回最短div的索引值以及其高度
+        function getMinLi() {
+            // 最短li的索引值
+            let minIndex = 0,
+                // 最短li的高度
+                minHeight = itemWrap[0].offsetHeight;
+            // 循环查找最短的li
+            for (let i = 0; i < itemWrap.length; i++) {
+                // 判断最短的li并赋值
+                if (minHeight > itemWrap[i].offsetHeight) {
+                    minHeight = itemWrap[i].offsetHeight;
+                    minIndex = i;
+                }
+            }
+            return {
+                minIndex: minIndex,
+                minHeight: minHeight,
+            }
+        }
+
+        getData();
+        // 滑轮滚动事件
+        window.onscroll = function (e) {
+            let scrollTop = document.documentElement.scrollTop;
+            let clientHeight = document.documentElement.clientHeight;
+            let minHeight = getMinLi().minHeight;
+            // 当滑轮滚动的距离+页面的高度比最短列大时获取数据
+            if (minHeight < scrollTop + clientHeight) {
+                if (!flag) {
+                    page++;
+                    getData();
+                }
+            }
+        }
+    }
+    waterFall();
+
+    function waterFall2() {
+        let page = 1,
+            // 每张图片的高
+            oDivWidth = document.getElementsByClassName('item')[0].offsetWidth,
+            wrapDiv=document.getElementsByClassName('wrap')[0],
+            // 请求结束 （当获取数据为空的时候停止翻页）
+            flag = false;
+        console.log(oDivWidth);
+        function getData() {
+            myAjax('GET', '../other/data.json', function (res) {
+                // console.log(res);
+                let data = JSON.parse(res);
+                // 渲染页面
+                renderDom(data);
+                if (!data.length || page === 5) {
+                    flag = true;
+                }
+            }, 'page=' + page, true);
+        }
+
+        function renderDom(data) {
+            // 便利数据并插入到页面中那个
+            for (let i = 0; i < data.length; i++) {
+                let createDiv = document.createElement('div');
+                createDiv.className = 'item';
+                let img = new Image();
+                img.src = data[i].image;
+                // 设置图片高度   img.height 是真实页面上图片的高度   oDivWIdth是真实页面上图片的宽度
+                // data[i].height/width   正常图片的高度/宽度
+                // 图片宽高比不变  a / b = c/ d ===> a = c / d * b  = c * b / d
+                // img.height = oDivWidth * data[i].height / data[i].width;
+                let oP = document.createElement('p');
+                oP.innerText = data[i].title;
+                createDiv.appendChild(img);
+                createDiv.appendChild(oP);
+                wrapDiv.appendChild(createDiv);
+            }
+        }
+        getData();
+        // 滑轮滚动事件
+        window.onscroll = function (e) {
+            let scrollTop = document.documentElement.scrollTop,
+            clientHeight = document.documentElement.clientHeight,
+            scrollHeight=document.documentElement.scrollHeight;
+            // 当滑轮滚动的距离+页面的高度比最短列大时获取数据
+            if (scrollTop + clientHeight===scrollHeight) {
+                if (!flag) {
+                    page++;
+                    getData();
+                }
+            }
+        }
+    }
+    // waterFall2();
+    function myJSONP(url) {
+        /*需要在参数加上cb=callBack，然后定义callBack方法callBack(res)中处理res*/
+        let oScript = document.createElement('script');
+        oScript.src = '' + url;
+        document.body.appendChild(oScript);
+        document.body.removeChild(oScript);
+    }
+
+</script>
+</body>
+</html>

@@ -2,18 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="baafc0e1-a381-4989-a1b5-249560ff828e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../myDemo/html/fullPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/pageTurning.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/pagetTurning.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/jdHomePage.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/html/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/mySlider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/dictionaries/Administrator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/BootstrapDemo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/chattingRobot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/css3Demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/html5Demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/lunbotu5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/waterfall.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/dog.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/dog1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/horse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/hour.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/minute.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/second.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/other/GokuRakuJoudo.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/other/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/text.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jqueryBan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/paging.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tools.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myDemo/html/JQDemo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/html/JQDemo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/html/cs.html" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/html/cs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/html/fullPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/html/fullPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/html/sendAnHTTPRequest.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../myDemo/js/common_methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/js/common_methods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myDemo/js/myJquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/js/myJquery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/pageTurning.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/pageTurning.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/studentManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/studentManagement.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/接口文档.docx" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,51 +73,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/studentManagement.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/paging.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
+            <state relative-caret-position="-1550">
+              <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/jqueryBan.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1900">
+              <caret line="180" column="1" selection-start-line="180" selection-start-column="1" selection-end-line="180" selection-end-column="1" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#dl#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#thead#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#!!block;n#init#0" />
+                <element signature="n#!!block;n#tbodyClick#0" />
+                <element signature="n#!!block;n#renderFrom#0" />
+                <element signature="n#!!block;n#changeStudentInfo#0" />
+                <element signature="n#!!block;n#delStudent#0" />
+                <element signature="n#!!block;n#transferData#0" />
+                <element signature="n#!!block;n#formatObj#0" />
+                <element signature="n#!!block;n#renderTableData#0" />
+                <element signature="n#!!block;n#createPage#0" />
+                <element signature="n#!!block;n#findByPage#0" />
+                <element signature="n#!!block;n#searchStudent#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/index.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/text.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="168" column="12" lean-forward="true" selection-start-line="168" selection-start-column="12" selection-end-line="168" selection-end-column="12" />
-              <folding>
-                <element signature="e#79#4034#0" />
-                <element signature="n#!!block;n#init#0" />
-                <element signature="n#!!block;n#forPageSplitArray#0" />
-                <element signature="n#!!block;n#isEmail#0" />
-                <element signature="n#!!block;n#isNumber#0" />
-                <element signature="n#!!block;n#isPhone#0" />
-                <element signature="n#!!block;n#bindEvent#0" />
-                <element signature="n#!!block;n#tbodyClick#0" />
-                <element signature="n#!!block;n#renderFrom#0" />
-                <element signature="n#!!block;n#changeStudentInfo#0" />
-                <element signature="n#!!block;n#delStudent#0" />
-                <element signature="n#!!block;n#saveData#0" />
-                <element signature="n#!!block;n#getFormDta#0" />
-                <element signature="n#!!block;n#changeMenu#0" />
-                <element signature="n#!!block;n#renderTableData#0" />
-                <element signature="n#!!block;n#createPage#0" />
-                <element signature="n#!!block;n#getStudentList#0" />
-                <element signature="n#!!block;n#findByPage#0" />
-                <element signature="n#!!block;n#initContentCss#0" />
-                <element signature="n#!!block;n#initMenuCss#0" />
-              </folding>
+            <state relative-caret-position="476">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -80,33 +118,43 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>button</find>
-      <find>add-student</find>
       <find>studentData</find>
       <find>changeStudentInfo</find>
       <find>allStudentData</find>
       <find>rend</find>
-      <find>mask</find>
-      <find>dialog</find>
       <find>var</find>
-      <find>transferData</find>
-      <find>forPageSplitArray</find>
       <find>size</find>
       <find>contentSize</find>
       <find>renderTableData</find>
       <find>forEach</find>
-      <find>renderFrom</find>
-      <find>con</find>
-      <find>maxPage</find>
       <find>currentPage</find>
+      <find>transferData</find>
+      <find>renderFrom</find>
+      <find>on</find>
+      <find>dialog</find>
+      <find>mask</find>
+      <find>cons</find>
+      <find>#add-student-form</find>
+      <find>getStudentList</find>
+      <find>con</find>
+      <find>console.log</find>
+      <find>maxPage</find>
+      <find>num</find>
+      <find>forPageSplitArray</find>
+      <find>throttle</find>
+      <find>prev-page</find>
+      <find>tab-number</find>
+      <find>createPage</find>
+      <find>searchStudent</find>
+      <find>val</find>
       <find>console</find>
     </findStrings>
     <replaceStrings>
@@ -126,16 +174,22 @@
         <option value="$PROJECT_DIR$/html/test.html" />
         <option value="$PROJECT_DIR$/html/index.html" />
         <option value="$PROJECT_DIR$/js/1.js" />
-        <option value="$PROJECT_DIR$/css/index.css" />
         <option value="$PROJECT_DIR$/js/pagetTurning.js" />
-        <option value="$PROJECT_DIR$/html/studentManagement.html" />
+        <option value="$PROJECT_DIR$/html/1.html" />
         <option value="$PROJECT_DIR$/js/index.js" />
+        <option value="$PROJECT_DIR$/css/pageTurning.css" />
+        <option value="$PROJECT_DIR$/js/tools.js" />
+        <option value="$PROJECT_DIR$/css/index.css" />
+        <option value="$PROJECT_DIR$/html/text.html" />
+        <option value="$PROJECT_DIR$/js/paging.js" />
+        <option value="$PROJECT_DIR$/js/jqueryBan.js" />
+        <option value="$PROJECT_DIR$/html/studentManagement.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="115" />
-    <option name="y" value="11" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="136" />
+    <option name="y" value="6" />
     <option name="width" value="1160" />
     <option name="height" value="708" />
   </component>
@@ -235,14 +289,54 @@
       <workItem from="1554012613999" duration="11216000" />
       <workItem from="1554047034900" duration="5635000" />
       <workItem from="1554093992334" duration="273000" />
+      <workItem from="1554097852989" duration="20000" />
+      <workItem from="1554106934457" duration="677000" />
+      <workItem from="1554107696544" duration="19000" />
+      <workItem from="1554109190637" duration="24000" />
+      <workItem from="1554128223782" duration="2754000" />
+      <workItem from="1554132863738" duration="91000" />
+      <workItem from="1554132975211" duration="30000" />
+      <workItem from="1554217906748" duration="1249000" />
+      <workItem from="1554262046687" duration="92000" />
+      <workItem from="1554262931901" duration="60000" />
+      <workItem from="1554263280987" duration="4488000" />
+      <workItem from="1554351902530" duration="107000" />
+      <workItem from="1554368796731" duration="47000" />
+      <workItem from="1554383675105" duration="27000" />
+      <workItem from="1554383953896" duration="66000" />
+      <workItem from="1554384617369" duration="157000" />
+      <workItem from="1554387928854" duration="41000" />
+      <workItem from="1554388695122" duration="532000" />
+      <workItem from="1554389760648" duration="3133000" />
+      <workItem from="1554396722513" duration="609000" />
+      <workItem from="1554438339507" duration="8423000" />
+      <workItem from="1554471606527" duration="39000" />
+      <workItem from="1554482882344" duration="92000" />
+      <workItem from="1554526324577" duration="6795000" />
+      <workItem from="1554728214455" duration="116000" />
+      <workItem from="1554806257131" duration="31000" />
+      <workItem from="1555334974776" duration="46000" />
+      <workItem from="1555645303167" duration="59000" />
+      <workItem from="1555676813648" duration="17549000" />
+      <workItem from="1555725398520" duration="11368000" />
+      <workItem from="1555738116822" duration="3339000" />
+      <workItem from="1555763693887" duration="2405000" />
+      <workItem from="1557059937376" duration="57000" />
+      <workItem from="1557161994448" duration="95000" />
+      <workItem from="1557162339696" duration="441000" />
+      <workItem from="1557162853700" duration="350000" />
+      <workItem from="1557903293983" duration="16857000" />
+      <workItem from="1557986969857" duration="65000" />
+      <workItem from="1557987121550" duration="55000" />
+      <workItem from="1558078612140" duration="638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69794000" />
+    <option name="totallyTimeSpent" value="152837000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="115" y="11" width="1160" height="708" extended-state="1" />
+    <frame x="136" y="6" width="1160" height="708" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49913043" visible="true" weight="0.20053476" />
@@ -281,18 +375,59 @@
     <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.179.714/HZ$D.179.716/class/index.js" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.179.714/HZ$D.179.715/原生js学生管理系统/index.js" />
     <entry file="file://$PROJECT_DIR$/js/1.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.371.2190/HZ$D.371.2191/原生js学生管理系统/index.js" />
+    <entry file="file://$PROJECT_DIR$/html/1.html" />
     <entry file="file://$PROJECT_DIR$/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7725" />
+        <state relative-caret-position="183">
+          <caret line="8489" column="18" selection-start-line="8489" selection-start-column="4" selection-end-line="8489" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.625.3364/HZ$D.625.3367/学生管理系统/class/index.css" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.625.3364/HZ$D.625.3365/学生管理系统/class/jqIndex.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.898.300/HZ$D.898.301/学生管理系统/class/index.css" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.898.300/HZ$D.898.302/学生管理系统/class/jqIndex.js" />
+    <entry file="file://$PROJECT_DIR$/js/pagetTurning.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+          <folding>
+            <element signature="e#370#2090#0" />
+            <element signature="e#1106#1440#0" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/pageTurning.css">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/tools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!block;n#isEmail#0" />
+            <element signature="e#194#202#0" />
+            <element signature="n#!!block;n#isNumber#0" />
+            <element signature="e#307#319#0" />
+            <element signature="n#!!block;n#isPhone#0" />
+            <element signature="n#!!block;n#randomName#0" />
+            <element signature="n#!!block;n#creatStudent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4633/jq学生管理/index.css" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4634/turnPage/turnPage/jquery-3.3.1.js" />
     <entry file="file://$PROJECT_DIR$/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2425">
-          <caret line="182" column="7" selection-start-line="182" selection-start-column="7" selection-end-line="182" selection-end-column="7" />
+        <state relative-caret-position="175">
+          <caret line="242" column="18" lean-forward="true" selection-start-line="242" selection-start-column="18" selection-end-line="242" selection-end-column="18" />
           <folding>
             <element signature="e#2#36#0" />
             <element signature="e#56#77#0" />
@@ -307,55 +442,21 @@
             <element signature="e#864#915#0" />
             <element signature="e#952#1017#0" />
             <element signature="e#1035#1213#0" />
-            <element signature="e#1239#1261#0" />
-            <element signature="e#1302#1325#0" />
-            <element signature="e#1348#1424#0" />
-            <element signature="e#1446#1541#0" />
-            <element signature="e#1575#1595#0" />
-            <element signature="e#1615#1638#0" />
-            <element signature="e#1681#1705#0" />
-            <element signature="e#1726#1811#0" />
-            <element signature="e#1828#1872#0" />
-            <element signature="e#1892#1957#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.371.2190/HZ$D.371.2191/原生js学生管理系统/index.js" />
-    <entry file="file://$PROJECT_DIR$/js/pagetTurning.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
-          <folding>
-            <element signature="e#370#2090#0" />
-            <element signature="e#1106#1440#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/studentManagement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#dl#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#thead#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#1239#1278#0" />
+            <element signature="e#1319#1342#0" />
+            <element signature="e#1495#1560#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="168" column="12" lean-forward="true" selection-start-line="168" selection-start-column="12" selection-end-line="168" selection-end-column="12" />
+        <state relative-caret-position="-14">
+          <caret line="480" column="9" lean-forward="true" selection-start-line="480" selection-start-column="9" selection-end-line="480" selection-end-column="9" />
           <folding>
             <element signature="e#79#4034#0" />
-            <element signature="n#!!block;n#init#0" />
+            <element signature="n#!!block;n#creatStudent#0" />
+            <element signature="e#6044#6315#0" />
             <element signature="n#!!block;n#forPageSplitArray#0" />
             <element signature="n#!!block;n#isEmail#0" />
             <element signature="n#!!block;n#isNumber#0" />
@@ -364,17 +465,71 @@
             <element signature="n#!!block;n#tbodyClick#0" />
             <element signature="n#!!block;n#renderFrom#0" />
             <element signature="n#!!block;n#changeStudentInfo#0" />
+            <element signature="e#9211#10057#0" />
             <element signature="n#!!block;n#delStudent#0" />
+            <element signature="n#!!block;n#transferData#0" />
             <element signature="n#!!block;n#saveData#0" />
             <element signature="n#!!block;n#getFormDta#0" />
             <element signature="n#!!block;n#changeMenu#0" />
-            <element signature="n#!!block;n#renderTableData#0" />
             <element signature="n#!!block;n#createPage#0" />
             <element signature="n#!!block;n#getStudentList#0" />
             <element signature="n#!!block;n#findByPage#0" />
             <element signature="n#!!block;n#initContentCss#0" />
             <element signature="n#!!block;n#initMenuCss#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4628/turnPage/turnPage/index.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4635/jq学生管理/index.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4630/jq学生管理/turnPage/index.js" />
+    <entry file="file://$PROJECT_DIR$/html/studentManagement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#thead#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jqueryBan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1900">
+          <caret line="180" column="1" selection-start-line="180" selection-start-column="1" selection-end-line="180" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#init#0" />
+            <element signature="n#!!block;n#tbodyClick#0" />
+            <element signature="n#!!block;n#renderFrom#0" />
+            <element signature="n#!!block;n#changeStudentInfo#0" />
+            <element signature="n#!!block;n#delStudent#0" />
+            <element signature="n#!!block;n#transferData#0" />
+            <element signature="n#!!block;n#formatObj#0" />
+            <element signature="n#!!block;n#renderTableData#0" />
+            <element signature="n#!!block;n#createPage#0" />
+            <element signature="n#!!block;n#findByPage#0" />
+            <element signature="n#!!block;n#searchStudent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/text.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/paging.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1550">
+          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
         </state>
       </provider>
     </entry>

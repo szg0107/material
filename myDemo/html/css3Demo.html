@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3练习</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            color: #333;
+        }
+
+        :root, body {
+            height: 100%;
+        }
+
+        .wrap {
+            position: relative;
+            perspective: 3000px;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes move {
+            100% {
+                transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        .test {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: calc(50%);
+            top: calc(50%);
+            transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            animation: move 8s infinite linear;
+        }
+
+        .test > div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+
+        .test > div:nth-of-type(1) {
+            background-color: #ff4400B0;
+            transform: translateX(100px) rotateY(90deg);
+        }
+
+        .test > div:nth-of-type(2) {
+            background-color: #029ae5B0;
+            transform: translateX(-100px) rotateY(-90deg);
+        }
+
+        .test > div:nth-of-type(3) {
+            background-color: #C71585B0;
+            transform: translateZ(-100px);
+        }
+
+        .test > div:nth-of-type(4) {
+            background-color: #FFC0CBB0;
+            transform: translateZ(100px);
+        }
+
+        .test > div:nth-of-type(5) {
+            background-color: #8A2BE2B0;
+            transform: translateY(-100px) rotateX(90deg);
+        }
+
+        .test > div:nth-of-type(6) {
+            background-color: #00008BB0;
+            transform: translateY(100px) rotateX(-90deg);
+        }
+
+        /*旋转照片*/
+        /*
+         @keyframes round {
+            100% {
+                transform: translate(-50%, -50%) rotateY(360deg);
+            }
+        }
+
+        .test {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: calc(50%);
+            top: calc(50%);
+            transform: translate(-50%, -50%) rotateY(0deg);
+            transform-style: preserve-3d;
+            animation: round 10s infinite;
+        }
+
+        img {
+            width: 200px;
+            position: absolute;
+        }
+
+        img:nth-of-type(1) {
+            transform: rotateY(45deg) translate3d(0px, 0px, 100px);
+        }
+
+        img:nth-of-type(2) {
+            transform: rotateY(90deg) translate3d(0px, 0px, 200px);
+        }
+
+        img:nth-of-type(3) {
+            transform: rotateY(135deg) translate3d(0px, 0px, 400px);
+        }
+
+        img:nth-of-type(4) {
+            transform: rotateY(180deg) translate3d(0px, 0px, 300px);
+        }
+
+        img:nth-of-type(5) {
+            transform: rotateY(225deg) translate3d(0px, 0px, 400px);
+        }
+
+        img:nth-of-type(6) {
+            transform: rotateY(270deg) translate3d(0px, 0px, 600px);
+        }
+
+        img:nth-of-type(7) {
+            transform: rotateY(315deg) translate3d(0px, 0px, 500px);
+        }
+
+        img:nth-of-type(8) {
+            transform: rotateY(360deg) translate3d(100px, 0px, 400px);
+        }*/
+
+        /*跑马效果*/
+        @keyframes run {
+            100% {
+                background-position: -2400px 0;
+            }
+        }
+
+        .horse {
+            width: 200px;
+            height: 100px;
+            background-image: url('../img/horse.png');
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            animation: run .5s steps(12, end) infinite;
+        }
+
+        /*时钟效果
+          font-family:monospace
+          秒:16-278px
+          分:32-218px
+          时:32-148px
+          表盘:512-512px
+        */
+        @keyframes secondRun {
+            100% {
+                transform: rotate(540deg);
+            }
+        }
+
+        .clock {
+            width: 512px;
+            height: 512px;
+            background-image: url("../img/clock.png");
+            /*用一张完整的图片填充容器*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            left: 0;
+            top: 0;
+            font-family: monospace;
+        }
+
+        .second {
+            width: 16px;
+            height: 278px;
+            background-image: url("../img/second.png");
+            /*用一张完整的图片填充容器*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 247px;
+            top: 180px;
+            z-index: 3;
+            /*设置旋转中心*/
+            transform-origin: center 76px;
+            /*设置旋转角度*/
+            transform: rotate(180deg);
+            animation: secondRun 60s steps(60, end) infinite;
+        }
+
+        .minute {
+            width: 32px;
+            height: 218px;
+            background-image: url("../img/minute.png");
+            /*用一张完整的图片填充容器*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 239px;
+            top: 240px;
+            z-index: 2;
+            transform-origin: center 16px;
+            /*设置旋转角度*/
+            transform: rotate(180deg);
+            animation: secondRun 3600s steps(60, end) infinite;
+        }
+
+        .hour {
+            width: 32px;
+            height: 148px;
+            background-image: url("../img/hour.png");
+            /*用一张完整的图片填充容器*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 240px;
+            top: 240px;
+            z-index: 1;
+            transform-origin: center 16px;
+        }
+
+        /*手风琴效果*/
+        .AccordionList p {
+            display: none;
+        }
+
+        .AccordionList p:target {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="test">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+
+    <!--照片旋转效果-->
+    <!--    <div class="test">-->
+    <!--        <img src="../img/01.jpg" alt=""/>-->
+    <!--        <img src="../img/02.jpg" alt=""/>-->
+    <!--        <img src="../img/03.jpg" alt=""/>-->
+    <!--        <img src="../img/04.jpg" alt=""/>-->
+    <!--        <img src="../img/05.jpg" alt=""/>-->
+    <!--        <img src="../img/06.jpg" alt=""/>-->
+    <!--        <img src="../img/07.jpg" alt=""/>-->
+    <!--        <img src="../img/clock.png" alt=""/>-->
+    <!--    </div>-->
+
+
+    <!--跑马效果-->
+    <!--    <div class="horse"></div>-->
+
+    <!-- 时钟效果 -->
+    <!--    <div class="clock">-->
+    <!--        <div class="second"></div>-->
+    <!--        <div class="minute"></div>-->
+    <!--        <div class="hour"></div>-->
+    <!--    </div>-->
+
+    <!--  手风琴效果  -->
+    <!--    <div class="AccordionList">-->
+    <!--        AccordionList-->
+    <!--        <a href="#p1">-->
+    <!--            <div>content1</div>-->
+    <!--        </a>-->
+    <!--        <p id="p1">1</p>-->
+    <!--        <a href="#p2">-->
+    <!--            <div>content2</div>-->
+    <!--        </a>-->
+    <!--        <p id="p2">2</p>-->
+    <!--        <a href="#p3">-->
+    <!--            <div>content3</div>-->
+    <!--        </a>-->
+    <!--        <p id="p3">3</p>-->
+    <!--    </div>-->
+</div>
+<script type="text/javascript">
+    // let wrap = document.getElementsByClassName('wrap')[0];
+    // document.body.onmousemove = function (e) {
+    //     wrap.style.perspectiveOrigin = "" + e.pageX + "px " + e.pageY + "px";
+    // }
+</script>
+</body>
+
+</html>

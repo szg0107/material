@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/*广告*/
+.ad {
+    position: relative;
+    background-color: #46aade;
+}
+
+.ad a {
+    display: block;
+    width: 100%;
+    height: 80px;
+    background: url(//img11.360buyimg.com/da/jfs/t1/31229/28/13043/49449/5cb94036E102ef9e3/10ce82497fb1c1da.jpg) no-repeat 50% 0;
+}
+
+/*京东字体*/
+@font-face {
+    font-family: iconfont;
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/iconfont.eot);
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/iconfont.eot?#iefix) format("embedded-opentype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/iconfont.woff) format("woff"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/iconfont.ttf) format("truetype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/iconfont.svg#iconfont) format("svg")
+}
+
+@font-face {
+    font-family: impact;
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.eot);
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.eot?#iefix) format("embedded-opentype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.woff) format("woff"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.ttf) format("truetype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/impact.svg) format("svg");
+    font-weight: 400;
+    font-style: normal
+
+}
+
+@font-face {
+    font-family: fzzzh;
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/fzzzh.eot);
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/fzzzh.eot?#iefix) format("embedded-opentype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/fzzzh.woff) format("woff"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/fzzzh.ttf) format("truetype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/fzzzh.svg) format("svg");
+    font-weight: 400;
+    font-style: normal
+
+}
+
+@font-face {
+    font-family: impact;
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.eot);
+    src: url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.eot?#iefix) format("embedded-opentype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.woff) format("woff"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/fonts/impact.ttf) format("truetype"), url(//misc.360buyimg.com/mtd/pc/index_2017/2.1.0/static/images/impact.svg) format("svg");
+    font-weight: 400;
+    font-style: normal
+
+}
+
+/*图标字体样式*/
+.iconfont {
+    font-family: iconfont, sans-serif;
+    font-style: normal;
+    -webkit-text-stroke-width: .2px;
+    -moz-osx-font-smoothing: grayscale
+}
+
+/*竖线*/
+.spacer {
+    overflow: hidden;
+    margin: 11px 5px 0;
+    width: 1px;
+    height: 10px;
+    background-color: #ccc;
+}
+
+#shortcut {
+    border-bottom: 1px solid #ddd;
+    background-color: #e3e4e5;
+}
+
+#shortcut .w {
+    height: 30px;
+    line-height: 30px;
+    color: #999;
+    margin: 0 auto;
+    width: 1190px;
+}
+
+.w .fr li{
+    float: left;
+}
+.fr li a{
+    color: #999;
+}
+.fr .dt{
+    padding: 0 7px;
+}
+
+.dropdown-layer {
+    display: inline-block;
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 2px 1px rgba(0,0,0,.1);
+    -moz-box-shadow: 1px 2px 1px rgba(0,0,0,.1);
+    box-shadow: 1px 2px 1px rgba(0,0,0,.1);
+}

@@ -58,6 +58,68 @@ function isPhone(value) {
 
 
 
+
+/**封装ajax
+ * 参数 method 请求方式 'GET' 'POST'
+ * url 地址
+ * callBack 回调函数
+ * data 参数
+ * flag 是否异步*/
+function myAjax(method, url, callBack, data, flag) {
+    //数据对象
+    let result = null,
+        //当参数是对象时，需要遍历属性并接收
+        parameter = '',
+        //创建ajax对象 ajax是异步请求
+        xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+    //flag每值时默认为true
+    flag = flag ? flag : true;
+    //data不存在时,默认为对象.
+    data = data ? data : {};
+    //将请求方式转换为大写
+    method = method ? method.toUpperCase() : 'GET';
+
+
+    /**ajax状态改变触发事件
+     *对象状态（integer），状态值
+     *0 = 未初始化，未调用send()方法
+     *1 = 读取中，已调用send()，正在发送请求
+     *2 = 已读取，send方法执行完成，接收到全部响应内容
+     *3 = 交互中，正在解析响应内容
+     *4 = 完成，响应内容解析完成*/
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            //将返回数据(字符串类型)转为json对象
+            result = JSON.parse(xhr.responseText);
+            if (result.status === 'success') {
+                callBack(result);
+            } else {
+                console.log(result.errorText);
+            }
+        }
+    };
+
+    if (typeof data === 'object') {
+        for (let prop in data) {
+            parameter += prop + '=' + data[prop] + '&';
+        }
+    } else {
+        data = data.toString();
+    }
+
+    data=parameter.length === 0 ? data : parameter;
+
+    if (method === 'GET') {
+        xhr.open(method, url + '?' + data , flag);
+        xhr.send();
+    } else if (method === 'POST') {
+        xhr.open(method, url, flag);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send(data);
+    }
+
+}
+
 //得到Navigator对象信息
 function getNavigatorMessage() {
     let nVer = navigator.appVersion,

@@ -4,34 +4,6 @@
     <meta charset="UTF-8">
     <title>自定义JQfullPage插件</title>
     <script type="text/javascript" src="../js/jquery.js"></script>
-<!--    <style type="text/css">-->
-<!--        * {-->
-<!--            margin: 0;-->
-<!--            padding: 0;-->
-<!--            height: 100%;-->
-<!--            width: 100%;-->
-<!--        }-->
-
-<!--        html, body {-->
-<!--            overflow: hidden;-->
-<!--            position: relative;-->
-<!--        }-->
-
-<!--        .warp {-->
-<!--            width: 100%;-->
-<!--            height: 100%;-->
-<!--            background-color: #ff4400;-->
-<!--            position: absolute;-->
-<!--            top: 0;-->
-<!--            left: 0;-->
-<!--        }-->
-
-<!--        .warp .section {-->
-<!--            width: 100%;-->
-<!--            height: 100%;-->
-<!--            text-align: center;-->
-<!--        }-->
-<!--    </style>-->
 </head>
 <body>
 <div class="warp">
@@ -98,22 +70,83 @@
                     //垂直运动
                     if (lock) {
                         lock = false;
-                        let newTop = $warp.offset().top;
+                        let newTop = $warp.offset().top,
+                            direction = '';
                         if (e.which === 38 && curIndex !== 0) {
+                            //top
+                            direction = 'top';
+                            config.onLeave(curIndex, direction);
                             curIndex--;
                             newTop += clientHeight;
                         } else if (e.which === 40 && curIndex !== $section.size() - 1) {
+                            direction = 'bottom';
+                            config.onLeave(curIndex, direction);
                             curIndex++;
                             newTop -= clientHeight;
                         }
-                        $warp.animate({top:newTop},350,function () {
-                            lock=true;
+                        $warp.animate({top: newTop}, 350, 'swing', function () {
+                            lock = true;
+                            $section.eq(curIndex).addClass('active');
+                            if (direction === 'top') {
+                                $section.eq(curIndex + 1).removeClass('active');
+                            } else {
+                                $section.eq(curIndex - 1).removeClass('active');
+                            }
+                            config.afterLoad(curIndex, direction);
+                        });
+                    }
+                }
+
+                if (e.which === 37 || e.which === 39) {
+                    //水平运动
+                    if (lock) {
+                        lock = false;
+                        let $sliderWrapper = $('.active').find('.sliderWrapper'),
+                            curShowDom = $sliderWrapper.find('.innerActive'),
+                            newLeft = '',
+                            direction = '';
+                        if ($sliderWrapper.length!==0) {
+                            newLeft = $sliderWrapper.offset().left;
+                        }
+                        if (e.which === 37 && curShowDom.index() !== 0) {
+                            //left
+                            newLeft += clientWidth;
+                            direction = 'left';
+                            config.onLeave(curShowDom.index(), direction);
+                        } else if (e.which === 39 && curShowDom.index() !== $sliderWrapper.find('.slide').size() - 1) {
+                            //right
+                            newLeft -= clientWidth;
+                            direction = 'right';
+                            config.onLeave(curShowDom.index(), direction);
+                        }
+                        $sliderWrapper.animate({left: newLeft}, 200, 'swing', function () {
+                            lock = true;
+                            direction !== '' ? curShowDom.removeClass('innerActive') : '';
+                            if (direction === 'left') {
+                                curShowDom.prev().addClass('innerActive');
+                            } else {
+                                curShowDom.next().addClass('innerActive');
+                            }
+                            config.afterLoad(curShowDom.index(), direction);
                         })
                     }
                 }
             });
         },
     });
-    $('.warp').myFullPage({colorsArray: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],});
+
+
+    //构建myFullPage
+    $('.warp').myFullPage({
+        colorsArray: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+        //离开
+        onLeave: function (index, direction) {
+            console.log(index, direction);
+        },
+        //进入
+        afterLoad: function (index, direction) {
+            console.log(index, direction);
+        }
+    });
 </script>
 </html>

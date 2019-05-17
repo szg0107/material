@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>h5练习</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            position: relative;
+        }
+
+        .Circle {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #ff4400;
+        }
+
+        .circle1 {
+            border-top-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+
+        .circle2 {
+            border-top-right-radius: 100px;
+            border-bottom-left-radius: 100px;
+        }
+
+        .clover {
+            position: absolute;
+            top: 0;
+            left: 120px;
+            margin: 20px;
+        }
+
+        .Circle2 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #ff4400;
+        }
+
+        .circle3 {
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
+
+        .circle4 {
+            left: 50px;
+            border-top-right-radius: 50px;
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .circle5 {
+            top: 50px;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .circle6 {
+            top: 50px;
+            left: 50px;
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .coin {
+            position: absolute;
+            top: 0;
+            left: 240px;
+            margin: 20px;
+            border: 1px solid #ff4400;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .circle7 {
+            border-top: 0;
+            border-left: 0;
+            border-bottom-right-radius: 50px;
+        }
+
+        .circle8 {
+            border-top: 0;
+            border-right: 0;
+            border-bottom-left-radius: 50px;
+            left: 50px;
+        }
+
+        .circle9 {
+            border-bottom: 0;
+            border-left: 0;
+            border-top-right-radius: 50px;
+            top: 50px;
+        }
+
+        .circle10 {
+            border-bottom: 0;
+            border-right: 0;
+            border-top-left-radius: 50px;
+            top: 50px;
+            left: 50px;
+        }
+
+        .love {
+            position: absolute;
+            top: 0;
+            left: 360px;
+            margin: 20px;
+            /*border: 1px solid #029ae5;*/
+            height: 100px;
+            width: 100px;
+        }
+
+        .circle11 {
+            left: 15px;
+            height: 100px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            transform: rotateZ(-45deg);
+            background-color: #ff4400;
+        }
+
+        .circle12 {
+            left: 50px;
+            height: 100px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            transform: rotateZ(45deg);
+            background-color: #ff4400;
+        }
+
+        .video_player {
+            width: 500px;
+            height: 280px;
+            position: absolute;
+            left: calc(50% - 250px);
+            top: calc(50% + 150px);
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+
+        .menu {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            bottom: 0;
+            display: none;
+
+        }
+
+        .play, .quick, .mute {
+            width: 60px;
+            height: 30px;
+            border: 1px solid #fff;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            border-radius: 10px;
+            margin-left: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .time {
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            border-radius: 10px;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .progress_bar {
+            height: 2px;
+            background-color: #666666;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        .progress_bar div {
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #ff4400;
+        }
+
+        .progress_bar i {
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: #cccccc;
+            position: absolute;
+            top: -2px;
+        }
+
+        .quick_list {
+            width: 80px;
+            height: 120px;
+            position: absolute;
+            top: -115px;
+            left: 190px;
+            z-index: 1;
+            display: none;
+        }
+
+        .quick_list li {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .quick_list li:hover {
+            color: #0f0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="Circle circle1"></div>
+    <div class="Circle circle2"></div>
+    <div class="clover">
+        <div class="Circle2 circle3"></div>
+        <div class="Circle2 circle4"></div>
+        <div class="Circle2 circle5"></div>
+        <div class="Circle2 circle6"></div>
+    </div>
+
+    <div class="coin">
+        <div class="Circle2 circle7"></div>
+        <div class="Circle2 circle8"></div>
+        <div class="Circle2 circle9"></div>
+        <div class="Circle2 circle10"></div>
+    </div>
+
+    <div class="love">
+        <div class="Circle2 circle11"></div>
+        <div class="Circle2 circle12"></div>
+    </div>
+
+
+    <!--        <canvas id="can" width="400px" height="300px"-->
+    <!--                style="position:absolute;top: calc(50% + 150px );border: 1px solid #029ae5;"></canvas>-->
+
+    <div class="video_player">
+        <video src="../other/GokuRakuJoudo.mp4"></video>
+        <div class="menu">
+            <div style="display:flex;">
+                <div class="play">播放</div>
+                <div class="time">0:00 / 0:00</div>
+                <div class="quick">倍速</div>
+                <div class="quick_list">
+                    <ul>
+                        <li value="0">正常</li>
+                        <li value="1">*1.25</li>
+                        <li value="2">*1.5</li>
+                        <li value="3">*2.0</li>
+                    </ul>
+                </div>
+                <div class="mute">静音</div>
+            </div>
+            <div class="progress_bar">
+                <div></div>
+                <i></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    //视频控件外层
+    let videoPlayer = document.getElementsByClassName('video_player')[0],
+        //菜单栏
+        menu = document.getElementsByClassName('menu')[0],
+        //video控件
+        video = videoPlayer.getElementsByTagName('video')[0],
+        //播放按钮
+        play = document.getElementsByClassName('play')[0],
+        //时间
+        time = document.getElementsByClassName('time')[0],
+        //进度条
+        progressBar = document.getElementsByClassName('progress_bar')[0],
+        //当前进度
+        currentProgress = progressBar.getElementsByTagName('div')[0],
+        //圆点
+        dot = progressBar.getElementsByTagName('i')[0],
+        //倍速
+        quick = document.getElementsByClassName('quick')[0],
+        quickList = document.getElementsByClassName('quick_list')[0],
+        //静音
+        mute = document.getElementsByClassName('mute')[0];
+
+    //鼠标悬浮显示菜单栏
+    videoPlayer.onmouseenter = function (e) {
+        menu.style.display = 'block';
+    };
+    videoPlayer.onmouseleave = function (e) {
+        menu.style.display = 'none';
+    };
+    //播放点击事件
+    play.onclick = function (e) {
+        if (video.paused) {
+            video.play();
+            play.innerText = '暂停';
+        } else {
+            video.pause();
+            play.innerText = '播放';
+        }
+
+    };
+    //进度条悬浮事件
+    progressBar.onmouseenter = function (e) {
+        progressBar.style.height = '14px';
+        progressBar.style.top = '-14px';
+        currentProgress.style.height = '14px';
+        dot.style.height = '18px';
+
+    };
+    progressBar.onmouseleave = function (e) {
+        progressBar.style.height = '2px';
+        progressBar.style.top = '-2px';
+        currentProgress.style.height = '2px';
+        dot.style.height = '6px';
+    };
+    progressBar.onclick = function (e) {
+        let location = e.layerX,
+            width = progressBar.clientWidth,
+            targetTime = location / width * video.duration;
+        video.currentTime = targetTime;
+    };
+    //倍速点击事件
+    quick.onclick = function (e) {
+        quickList.style.display = 'block';
+    };
+
+    //倍速列表点击事件
+    quickList.onclick = function (e) {
+        let target = e.target;
+        // console.log(target.innerText);
+        // console.log(target.value);
+        quick.innerText = target.innerText;
+        switch (target.value) {
+            case 0:
+                //正常
+                video.playbackRate = 1;
+                quick.innerText = '倍速';
+                break;
+            case 1:
+                video.playbackRate = 1.25;
+                break;
+            case 2:
+                video.playbackRate = 1.5;
+                break;
+            case 3:
+                video.playbackRate = 2.0;
+                break;
+        }
+    };
+    quickList.onmouseleave = function (e) {
+        quickList.style.display = 'none';
+    };
+
+    //静音点击事件
+    mute.onclick = function (e) {
+        video.volume = video.volume === 1 ? 0 : 1;
+    };
+
+
+    //更新播放时间
+    setInterval(function () {
+        let total = video.duration,
+            nowTime = video.currentTime,
+            second = parseInt(nowTime % 60 + ''),
+            width = nowTime / total * progressBar.clientWidth;
+        if (second < 10) {
+            second = '0' + second;
+        }
+        time.innerText = parseInt(nowTime / 60 + '') + ':' + second + ' / ' + parseInt(total / 60 + '') + ':' + parseInt(total % 60 + '');
+        currentProgress.style.width = width + 'px';
+        dot.style.left = width + 'px';
+    }, 1000);
+
+    /*let canvas=document.getElementById('can').getContext('2d');
+    canvas.beginPath();
+    canvas.save();
+
+    canvas.font='30px Georgia';
+    canvas.strokeText("panda",200,100);
+
+    canvas.fillStyle='#029ae5';
+    canvas.fillText('monkey',200,250);
+    canvas.fillRect(0,0,200,200);
+    canvas.stroke();*/
+
+</script>
+</body>
+</html>

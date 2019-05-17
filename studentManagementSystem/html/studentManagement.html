@@ -5,9 +5,14 @@
     <title>原生JS实现学生管理系统</title>
     <link rel="icon" href="../img/logo.png"/>
     <link rel="stylesheet" href="../css/index.css"/>
-    <link rel="stylesheet" href="../css/pageTurning.css"/>
+    <!--    小松老师分页插件样式-->
+    <!--    <link rel="stylesheet" href="../css/pageTurning.css"/>-->
     <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/pagetTurning.js"></script>
+    <!--    小松老师分页插件js-->
+    <!--    <script type="text/javascript" src="../js/pagetTurning.js"></script>-->
+    <!--    自定义分页插件-->
+    <script type="text/javascript" src="../js/paging.js"></script>
+    <script type="text/javascript" src="../js/tools.js"></script>
 </head>
 <body>
 <div class="warp">
@@ -28,6 +33,11 @@
 
     <div class="right-content">
         <div class="student-list content content-active" id="student-list">
+            <div class="search">
+                <label for="search-word">关键字搜索:</label>
+                <input type="text" id="search-word"/>
+                <input type="button" value="搜索" id="search-submit"/>
+            </div>
             <table>
                 <thead>
                 <tr>
@@ -42,19 +52,19 @@
                 </tr>
                 </thead>
                 <tbody id="tbody">
-<!--                    <tr>-->
-<!--                    <td>001</td>-->
-<!--                    <td>s</td>-->
-<!--                    <td>女</td>-->
-<!--                    <td>11@163.com</td>-->
-<!--                    <td>18</td>-->
-<!--                    <td>12346</td>-->
-<!--                    <td>哈尔滨</td>-->
-<!--                    <td>-->
-<!--                        <button class="btn edit">编辑</button>-->
-<!--                        <button class="btn del" sno="001">删除</button>-->
-<!--                    </td>-->
-<!--                </tr>-->
+                <!--                    <tr>-->
+                <!--                    <td>001</td>-->
+                <!--                    <td>s</td>-->
+                <!--                    <td>女</td>-->
+                <!--                    <td>11@163.com</td>-->
+                <!--                    <td>18</td>-->
+                <!--                    <td>12346</td>-->
+                <!--                    <td>哈尔滨</td>-->
+                <!--                    <td>-->
+                <!--                        <button class="btn edit">编辑</button>-->
+                <!--                        <button class="btn del" sno="001">删除</button>-->
+                <!--                    </td>-->
+                <!--                </tr>-->
                 </tbody>
             </table>
             <div class="dialog">
@@ -148,5 +158,6 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../js/index.js"></script>
+<!--<script type="text/javascript" src="../js/index.js"></script>-->
+<script type="text/javascript" src="../js/jqueryBan.js"></script>
 </html>

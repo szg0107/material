@@ -81,6 +81,7 @@ html, body, .warp {
 
 .right-content .content {
     display: none;
+    width: 100%;
 }
 
 .right-content .content.content-active {
@@ -90,7 +91,44 @@ html, body, .warp {
 .content.add-student {
     margin: 50px auto;
     width: 400px;
-    /*border: 1px solid #000;*/
+}
+
+.content.student-list {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.search {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+}
+
+.search label {
+    font-size: 16px;
+    color: #646987;
+    font-weight: 800;
+}
+
+.search #search-word {
+    font-size: 16px;
+    width: 200px;
+    height: 30px;
+    border: none;
+}
+
+.search #search-submit {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    outline: none;
+    display: inline-block;
+    border: none;
+    background-color: #354457;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .content form label {
@@ -170,9 +208,7 @@ table tr td .btn.del:hover {
 }
 
 
-
-
-.dialog{
+.dialog {
     position: fixed;
     left: 0;
     right: 0;
@@ -180,18 +216,21 @@ table tr td .btn.del:hover {
     top: 0;
     display: none;
 }
-.dialog.show{
+
+.dialog.show {
     display: block;
 }
-.dialog .mask{
+
+.dialog .mask {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
-.dialog .dialog-content{
+
+.dialog .dialog-content {
     width: 500px;
     height: 450px;
     background-color: #fff;
@@ -203,7 +242,15 @@ table tr td .btn.del:hover {
     margin: auto;
     padding: 10px;
 }
-.dialog .dialog-content form{
+
+.dialog .dialog-content form {
     width: 400px;
     margin: 0 auto;
+}
+
+.my-turn-page li{
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    margin: 0 5px;
 }

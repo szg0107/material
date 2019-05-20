@@ -2,65 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b196beae-d527-4817-99f8-9c45c150ab7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/jdHomePage.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/html/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/html/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/mySlider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/BootstrapDemo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/chattingRobot.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/css3Demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/html5Demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/lunbotu5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/waterfall.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/clock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/dog.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/dog1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/horse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/hour.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/minute.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/second.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/other/GokuRakuJoudo.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/other/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/html/text.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/js/jqueryBan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/js/paging.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/js/tools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/.idea/html5Music.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/gulpfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/source/song_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/source/song_1.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/source/song_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/source/song_2.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/source/song_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/source/song_3.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/css/index.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-like-solid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-like.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-list.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-pause.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-playlist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/icon-prev.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/image/jakob-owens-208991.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/js/audioControl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/js/gaussBlur.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/js/indexControl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/js/playList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/js/render.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/src/js/zepto.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/css3AxisPhotos.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/es6Demo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/cs.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/cs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/fullPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/fullPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/sendAnHTTPRequest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/common_methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/common_methods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/css/pageTurning.css" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/css/pageTurning.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/html/studentManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/html/studentManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../文档/接口文档.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/02.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/03.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/04.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/05.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/06.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/07.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/07.jpg" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -73,27 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/html5Demo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6250">
-              <caret line="255" column="10" selection-start-line="255" selection-start-column="10" selection-end-line="255" selection-end-column="10" />
-              <folding>
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/html/BootstrapDemo.html">
+        <entry file="file://$PROJECT_DIR$/html/es6Demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="300">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -111,8 +78,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>oI</find>
-      <find>addEvent</find>
       <find>oBtnleft</find>
       <find>boolen</find>
       <find>oPicUL.style.left</find>
@@ -141,6 +106,8 @@
       <find>container</find>
       <find>col-md-3</find>
       <find>.col-</find>
+      <find>h2</find>
+      <find>bg</find>
     </findStrings>
     <replaceStrings>
       <replace>lock</replace>
@@ -200,6 +167,8 @@
         <option value="$PROJECT_DIR$/html/html5Demo.html" />
         <option value="$PROJECT_DIR$/html/1.html" />
         <option value="$PROJECT_DIR$/html/BootstrapDemo.html" />
+        <option value="$PROJECT_DIR$/html/css3AxisPhotos.html" />
+        <option value="$PROJECT_DIR$/html/es6Demo.html" />
       </list>
     </option>
   </component>
@@ -210,8 +179,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="145" />
-    <option name="y" value="2" />
+    <option name="x" value="139" />
+    <option name="y" value="5" />
     <option name="width" value="1159" />
     <option name="height" value="728" />
   </component>
@@ -223,6 +192,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,7 +209,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -247,7 +216,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Administrator/AppData/Local/Temp/HZ$D.203.4829/HZ$D.203.4838/js完美收官课程资料/JS完美收官/01-03Js完美收官/01javascript完美收官-课前预热/轮播图/move.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -259,14 +228,14 @@
     <property name="settings.editor.selected.configurable" value="liveEdit" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\git仓库\material\myDemo\other" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\git仓库\material\myDemo" />
       <recent name="E:\git仓库\material\myDemo\img" />
+      <recent name="E:\git仓库\material\myDemo" />
       <recent name="E:\git仓库\material\myDemo\html" />
       <recent name="E:\git仓库\material\myDemo\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\git仓库\material\myDemo\other" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -445,17 +414,26 @@
       <workItem from="1557821317968" duration="1823000" />
       <workItem from="1557889398654" duration="1527000" />
       <workItem from="1557903458319" duration="12000" />
+      <workItem from="1558083167902" duration="1127000" />
+      <workItem from="1558084530246" duration="607000" />
+      <workItem from="1558085312584" duration="792000" />
+      <workItem from="1558086370067" duration="1201000" />
+      <workItem from="1558151555731" duration="1211000" />
+      <workItem from="1558191793625" duration="11218000" />
+      <workItem from="1558232750248" duration="4182000" />
+      <workItem from="1558241730867" duration="113000" />
+      <workItem from="1558326842915" duration="769000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="832947000" />
+    <option name="totallyTimeSpent" value="854167000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="145" y="2" width="1159" height="728" extended-state="0" />
+    <frame x="139" y="5" width="1159" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21944693" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21944693" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -485,26 +463,6 @@
     <SUITE FILE_PATH="coverage/myDemo$BootstrapDemo_html.dat" NAME="BootstrapDemo.html Coverage Results" MODIFIED="1557818262528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.718.1971/HZ$D.718.1973/课程源码及资料/lesson6-4-source/lesson6-4.css" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.435.587/HZ$D.435.588/课程源码及资料/lesson6-4-source/lesson6-4.css" />
-    <entry file="file://D:/游戏下载/html实训/web/inedex.html" />
-    <entry file="file://D:/游戏下载/js实训/html/index.html" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.506.432/HZ$D.506.435/课程源码及资料/lesson6-5_6/lesson6-5.css" />
-    <entry file="file://$USER_HOME$/Desktop/index.html" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.506.432/HZ$D.506.437/课程源码及资料/lesson6-4-source/lesson6-4.css" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.344.1351/HZ$D.344.1353/课程源码及资料/lesson6-5_6/lesson6-5.css" />
-    <entry file="file://$PROJECT_DIR$/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="7894" column="55" selection-start-line="7894" selection-start-column="51" selection-end-line="7894" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/conditionScreening.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2625" />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/waterfall/css/index.css" />
     <entry file="file://$USER_HOME$/Desktop/waterfall/js/ajax.js" />
     <entry file="file://$PROJECT_DIR$/html/index.css" />
@@ -787,9 +745,6 @@
     <entry file="file://$PROJECT_DIR$/img/clock.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/07.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/down.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -853,18 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/css3Demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="38" selection-start-line="38" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="e#304#422#0" />
-            <element signature="e#444#481#0" />
-            <element signature="e#497#641#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/1111.html" />
     <entry file="file://$PROJECT_DIR$/html/1.html" />
     <entry file="file://$PROJECT_DIR$/bootstrap-3.3.7-dist/js/npm.js">
@@ -883,9 +826,6 @@
           <caret line="184" column="11" selection-start-line="184" selection-start-column="11" selection-end-line="184" selection-end-column="11" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/JQtHotSpotRankings.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/html/JQDemo.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -929,9 +869,16 @@
     <entry file="file://$PROJECT_DIR$/html/2048Game.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/html/BootstrapDemo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html/html5Demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6250">
+        <state relative-caret-position="1096">
           <caret line="255" column="10" selection-start-line="255" selection-start-column="10" selection-end-line="255" selection-end-column="10" />
           <folding>
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -943,10 +890,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/BootstrapDemo.html">
+    <entry file="file://$PROJECT_DIR$/img/07.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/01.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/lunbotu5.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        <state relative-caret-position="-225">
+          <folding>
+            <element signature="e#22#26#1" expanded="true" />
+            <element signature="e#23#27#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.151.4312/HZ$D.151.4315/css3纵向 照片展示/demo.css" />
+    <entry file="file://$PROJECT_DIR$/html/lunbotu4.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/JQtHotSpotRankings.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/lunbotu.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/lunbotu2.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/lunbotu3.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.157.726/HZ$D.157.728/css3纵向 照片展示/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="39" column="16" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/css3AxisPhotos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="687">
+          <caret line="236" column="49" lean-forward="true" selection-start-line="236" selection-start-column="49" selection-end-line="236" selection-end-column="49" />
+          <folding>
+            <element signature="e#312#400#0" />
+            <element signature="e#428#490#0" />
+            <element signature="e#506#650#0" />
+            <element signature="e#1232#1331#0" />
+            <element signature="e#1362#1461#0" />
+            <element signature="e#1492#1591#0" />
+            <element signature="e#1622#1721#0" />
+            <element signature="e#1752#1851#0" />
+            <element signature="e#2823#2964#0" />
+            <element signature="e#3001#3084#0" />
+            <element signature="e#3129#3313#0" />
+            <element signature="e#3364#3596#0" />
+            <element signature="e#3698#3903#0" />
+            <element signature="e#3955#4005#0" />
+            <element signature="e#4056#4107#0" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/css3Demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="38" selection-start-line="38" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#304#422#0" />
+            <element signature="e#444#481#0" />
+            <element signature="e#497#641#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/es6Demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,5 @@
+npm 推荐使用postcss-preset-env，postcss-cssnext已被弃用 都有添加前缀功能 压缩代码功能都不好使
+postcss-preset-env 解析cssnext语法跟没解析一样 但是页面可以使用 
+postcss-cssnext正常解析cssnext语法
+
+用optimize-css-assets-webpack-plugin插件代替cssnano压缩css

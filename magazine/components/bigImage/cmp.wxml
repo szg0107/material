@@ -1,0 +1,7 @@
+<!-- 大图与主标题组件 -->
+<view class='container'>
+    <image class='image'
+    mode='widthFix'
+    src='{{imgSrc}}'></image>
+    <text class='text'>{{mainTitle}}</text>
+</view>

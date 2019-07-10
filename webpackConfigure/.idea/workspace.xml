@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0903b978-ab59-4a69-ae9c-e96afb776df8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../html5Music/dist/mock/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/default.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/geo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/nav.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/searchBar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/topBar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/vagrant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/cavasCircle.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/cavasScratchers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/cavasSnow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/css3whirligig.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/echartDemo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/js/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pizza-app/src/store/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pizza-app/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pizza-app/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webpackConfigure.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcss问题.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css/demo.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/js/sum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.dev.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/src/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/src/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/html/es6Demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/html/es6Demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/js/tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/js/tools.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="725">
+              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack.dev.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="45" />
+              <folding>
+                <element signature="e#979#1959#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/demo.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="XSLT Stylesheet" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>sum</find>
+      <find>h1</find>
+      <find>lodash-es</find>
+      <find>webpack-deep-scope-plugin</find>
+      <find>purifycss-webpack</find>
+      <find>vendor</find>
+      <find>WebPack</find>
+      <find>CleanWebpackPlugin</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/confige.js" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/src/css/test.css" />
+        <option value="$PROJECT_DIR$/dist/index359ef.css" />
+        <option value="$PROJECT_DIR$/src/js/sum.js" />
+        <option value="$PROJECT_DIR$/src/webpack.dev.config.js" />
+        <option value="$PROJECT_DIR$/src/index.html" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/css/demo.less" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/webpack.dev.config.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="139" />
+    <option name="y" value="5" />
+    <option name="width" value="1159" />
+    <option name="height" value="728" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="webpackConfigure" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webpackConfigure" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webpackConfigure" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webpackConfigure" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\git仓库\material\webpackConfigure" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\git仓库\material\webpackConfigure\src\image" />
+      <recent name="E:\git仓库\material\webpackConfigure" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0903b978-ab59-4a69-ae9c-e96afb776df8" name="Default Changelist" comment="" />
+      <created>1558840728290</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558840728290</updated>
+      <workItem from="1558840730952" duration="25221000" />
+      <workItem from="1558877529004" duration="9489000" />
+      <workItem from="1558930320087" duration="200000" />
+      <workItem from="1558931260968" duration="13750000" />
+      <workItem from="1559651465291" duration="333000" />
+      <workItem from="1560416271115" duration="31000" />
+      <workItem from="1561465966478" duration="5361000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="54385000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="139" y="5" width="1159" height="728" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23193577" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986619" visible="true" weight="0.45714286" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50133806" side_tool="true" weight="0.45882353" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/css/test.less" />
+    <entry file="file://$PROJECT_DIR$/src/css/1.xsl" />
+    <entry file="file://$PROJECT_DIR$/src/css/1.less" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.114.2835/HZ$D.114.2836/jiuye-class13-webpack/css/package.json" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.114.2835/HZ$D.114.2837/jiuye-class13-webpack/css/webpack.config.js" />
+    <entry file="file://$PROJECT_DIR$/dist/indexe5284.css" />
+    <entry file="file://$PROJECT_DIR$/dist/index.css" />
+    <entry file="file://$PROJECT_DIR$/dist/index359ef.css" />
+    <entry file="file://$PROJECT_DIR$/dist/indexfc5dc.css" />
+    <entry file="file://$PROJECT_DIR$/dist/index6fb21.css" />
+    <entry file="file://E:/csstest/dist/index30e34.css" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.114.2835/HZ$D.114.2839/jiuye-class13-webpack/treeShaking/webpack.config.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.114.2835/HZ$D.114.2840/jiuye-class13-webpack/webpack-common-js/package.json" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.114.2835/HZ$D.114.2841/jiuye-class13-webpack/webpack-common-js/webpack.config.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.530.4343/HZ$D.530.4344/jiuye-class13-webpack/css/webpack.config.js" />
+    <entry file="file://$PROJECT_DIR$/dist/indexf861e.css" />
+    <entry file="file://$PROJECT_DIR$/dist/indexa3d41.css" />
+    <entry file="file://$PROJECT_DIR$/dist/indexc9e0b.css" />
+    <entry file="file://$PROJECT_DIR$/dist/index75f08.css" />
+    <entry file="file://$PROJECT_DIR$/dist/common202d1.css" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.191.280/HZ$D.191.281/jiuye-class13-webpack/css/webpack.config.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.191.280/HZ$D.191.282/jiuye-class13-webpack/webpack-common-js/package.json" />
+    <entry file="file://$PROJECT_DIR$/dist/common.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.191.280/HZ$D.191.283/jiuye-class13-webpack/webpack-common-js/webpack.config.js" />
+    <entry file="file://$PROJECT_DIR$/dist/common.chunk.js" />
+    <entry file="file://$PROJECT_DIR$/src/image/04.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/image/04.jpg" />
+    <entry file="file://$PROJECT_DIR$/dist/vendor.chunk.js" />
+    <entry file="file://$PROJECT_DIR$/dist/main.js" />
+    <entry file="file://$PROJECT_DIR$/dist/index.html" />
+    <entry file="file://$PROJECT_DIR$/dist/index8cda7.css" />
+    <entry file="file://$PROJECT_DIR$/dist/index93efd.css" />
+    <entry file="file://$PROJECT_DIR$/dist/index998c0.css" />
+    <entry file="file://$PROJECT_DIR$/src/css/demo.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postcss问题.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/sum.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.dev.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="45" />
+          <folding>
+            <element signature="e#979#1959#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

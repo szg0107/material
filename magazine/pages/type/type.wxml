@@ -1,0 +1,61 @@
+<!--pages/type/type.wxml-->
+<!-- 类型文章页 -->
+<view>
+    <!-- 推荐 -->
+    <view class='markType'>
+
+        <image mode='widthFix' class='markImage' src='{{mark.imgSrc}}'></image>
+
+
+        <view class='mark-box'>
+            <text>{{mark.title}}</text>
+
+            <view class='article-handle'>
+                <!-- catch 和 bind都可以绑定事件 catch可以阻止冒泡  设置行间属性传递数据-->
+                <image mode='widthFix' catch:tap='showActionSheet' data-articleType='{{item.articleType}}' src='../../image/list/article/icon/Icon_more.png'></image>
+                <button open-type='share'>
+                    <image mode='widthFix' src='../../image/list/article/icon/Icon_relay.png'></image>
+                </button>
+            </view>
+
+        </view>
+
+    </view>
+
+
+    <!-- 列表 -->
+    <view class='list'>
+
+        <view class='list-item' wx:for='{{articleTypeList}}' wx:key='id'>
+            <view class='article-head'>
+                <image src='{{item.markPeopleAvatar}}'></image>
+                <text>{{item.markPeople}}等{{item.markCount}}人马克了</text>
+            </view>
+
+            <view catch:tap='articleDetails' data-articleId="{{item.id}}">
+                <image mode='widthFix' src='{{item.articleImgSrc}}' class='article-cover'></image>
+
+                <view class='article-title'>{{item.articleTitle}}</view>
+            </view>
+
+
+            <view class='article-box'>
+                <text class='article-type'>{{item.publishTime}}</text>
+                <view class='article-handle'>
+                    <!-- catch 和 bind都可以绑定事件 catch可以阻止冒泡  设置行间属性传递数据-->
+
+                    <image wx:if='{{likeList[index]}}' mode='widthFix' src='../../image/list/article/icon/Icon_circle_fill.png' catch:tap='likeClick' data-articleIndex='{{index}}'></image>
+                    <image wx:else mode='widthFix' src='../../image/list/article/icon/Icon_circle.png' catch:tap='likeClick' data-articleIndex='{{index}}'></image>
+                    <button open-type='share'>
+                        <image mode='widthFix' src='../../image/list/article/icon/Icon_relay.png'></image>
+                    </button>
+                    <image mode='widthFix' catch:tap='showActionSheet' data-articleType='{{item.articleType}}' src='../../image/list/article/icon/Icon_more.png'></image>
+
+                </view>
+            </view>
+
+        </view>
+
+    </view>
+
+</view>

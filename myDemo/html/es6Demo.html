@@ -9,8 +9,41 @@
     <title>es6练习</title>
 </head>
 <body>
+<div></div>
+<div></div>
+<div></div>
 <script type="text/javascript">
-    
+    /**执行方法是同步操作
+     * resolve 成功回调函数
+     * reject 失败回调函数
+     * Promise主要关注成功或失败,Promise本身就是一个等待状态
+     * then 注册回调函数 是异步执行的 是微任务 setTimeout、事件处理函数、ajax都是宏任务
+     * 宏任务优先放在任务队列中;微任务有优先执行权
+     * 当Promise.then链式调用时，上一个不抛出错误,那么下一个then执行成功的函数
+     * 返回值作为下一then执行成功函数的参数
+     * 返回是Promise对象，下一个then执行哪个回调,取决于Promise对象回调执行哪个方法
+     * 当第一个then抛出new Error对象时,第二个then就会执行reject方法
+     * */
+    /*let myPromise = new Promise((resolve, reject) => {
+        //异步操作
+        setTimeout(function () {
+            Math.random() * 100 > 60 ? resolve('ok') : reject('no');
+        }, 1000);
+    });
+
+    myPromise.then((value) => {
+        console.log(value);
+        return 20;
+    }, (reason) => {
+        console.log(reason);
+        return 30;
+    }).then((value) => {
+        console.log('ok then2 ' + value);
+    }, (reason) => {
+        console.log('ok then2 ' + reason);
+    });*/
+
+
 </script>
 </body>
 </html>

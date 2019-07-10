@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3旋转木马</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #000 radial-gradient(circle, rgba(244, 23, 234, 0.2), rgb(0, 0, 0));
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .box {
+            position: relative;
+            border: 1px solid #f40;
+            width: 150px;
+            height: 200px;
+            transform-style: preserve-3d;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            -webkit-box-reflect: below 10px -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5)));
+        }
+    </style>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="box">
+        <img src="../img/01.jpg" alt=""/>
+        <img src="../img/02.jpg" alt=""/>
+        <img src="../img/03.jpg" alt=""/>
+        <img src="../img/04.jpg" alt=""/>
+        <img src="../img/05.jpg" alt=""/>
+        <img src="../img/06.jpg" alt=""/>
+        <img src="../img/01.jpg" alt=""/>
+        <img src="../img/02.jpg" alt=""/>
+        <img src="../img/03.jpg" alt=""/>
+        <img src="../img/04.jpg" alt=""/>
+        <img src="../img/05.jpg" alt=""/>
+        <img src="../img/06.jpg" alt=""/>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        let img = $('img'),
+            len = img.length,
+            deg = 360 / len;
+        for (let i = 0; i < len; i++) {
+            img.eq(i).css({
+                transform: 'rotateY(' + i * deg + 'deg) translateZ(300px)',
+                transition: 'transform 0.5s linear ' + (len - i - 1) * 0.1 + 's',
+            })
+        }
+        bindEvent();
+    };
+
+    function bindEvent() {
+        let box = $('.box'),
+            body = $('body'),
+            //鼠标按下坐标点
+            lastX = 0,
+            lastY = 0,
+            //鼠标移动的坐标点
+            nowX = 0,
+            nowY = 0,
+            // 鼠标移动距离
+            disX = 0,
+            disY = 0,
+            //绕着x轴旋转的角度
+            roX = 0,
+            //绕着Y轴旋转的角度
+            roY = 0,
+            timer = 0;
+
+        body.on('mousedown', function (e) {
+            //移动  水平移动在Y轴旋转roy 竖直移动在x轴旋转rox
+            //阻止默认事件
+            e.preventDefault();
+            clearInterval(timer);
+            lastX = e.clientX;
+            lastY = e.clientY;
+            body.on('mousemove', function (e) {
+                //旋转
+                nowX = e.clientX;
+                nowY = e.clientY;
+                // 计算出鼠标移动距离
+                disX = nowX - lastX;
+                disY = nowY - lastY;
+                // 确定box旋转角度与方向 水平拖拽绕着y轴旋转   竖直拖拽绕着x轴运动
+                roX -= disY * 0.2;
+                roY += disX * 0.2;
+                //保证旋转角度在0~360度范围
+                roX = roX % 360;
+                roY = roY % 360;
+                box.css({
+                    transform: 'rotateX(' + roX + 'deg) rotateY(' + roY + 'deg)',
+                });
+                // 下次进行移动时  此刻的点做为下一次运动的上一点
+                lastX = nowX;
+                lastY = nowY;
+            })
+        }).on('mouseup', function (e) {
+            //缓冲
+            body.off('mousemove');
+            // 鼠标抬起后  box继续运动且 动作越来越小
+            // 鼠标移动距离决定旋转大小  所以将disx  disy越来越小  变化角度就越来越小
+            timer = setInterval(function () {
+                // 将disX disY变小
+                disX *= 0.95;
+                disY *= 0.95;
+                // 角度同时也变小
+                roX -= disY * 0.2;
+                roY += disX * 0.2;
+
+                roX = roX % 360;
+                roY = roY % 360;
+                box.css({
+                    transform: 'rotateX(' + roX + 'deg) rotateY(' + roY + 'deg)',
+                });
+                // 当变化小于一定值的时候   清除定时器
+                if (Math.abs(disX) < 0.01 && Math.abs(disY) < 0.01) {
+                    clearInterval(timer);
+                }
+            }, 20);
+        })
+    }
+</script>
+</body>
+</html>

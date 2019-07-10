@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画布实现刮刮乐效果</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+<script type="text/javascript">
+    let myCanvas=document.getElementById('myCanvas'),
+        ctx=myCanvas.getContext('2d'),
+        lastX=0,
+        lastY=0,
+        nowX=0,
+        nowY=0;
+    function init() {
+        ctx.fillStyle = '#ccc';
+        // 填充画布  灰色正方形
+        ctx.fillRect(0, 0, 500, 500);
+        let oImg = new Image();
+        Math.random()< 0.5 ? oImg.src = '../img/01.jpg' : oImg.src = '../img/02.jpg';
+        oImg.onload = function () {
+            // 填充背景图片
+            myCanvas.style.backgroundImage = 'url(' + oImg.src + ')';
+            // 规定新旧像素合成后最终展示的形式
+            ctx.globalCompositeOperation = "destination-out";
+            myCanvas.addEventListener('mousedown', downFn, false);
+        }
+    }
+    function downFn(e) {
+        lastX = e.clientX - myCanvas.offsetLeft;
+        lastY = e.clientY - myCanvas.offsetTop;
+        document.addEventListener('mousemove', moveFn, false);
+        document.addEventListener('mouseup', upFn, false);
+    }
+    function moveFn(e) {
+        // 刮开的轨迹根据鼠标移动轨迹决定
+        nowX = e.clientX - myCanvas.offsetLeft;
+        nowY = e.clientY - myCanvas.offsetTop;
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+
+        ctx.lineWidth = 40;
+        ctx.moveTo(lastX,lastY);
+        ctx.lineTo(nowX,nowY);
+        ctx.stroke();
+
+        ctx.arc(nowX, nowY, 20, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+
+        lastX = nowX;
+        lastY = nowY;
+
+    }
+    function upFn() {
+        document.removeEventListener('mousemove',moveFn,false);
+        document.removeEventListener('mouseup',upFn,false);
+    }
+    init();
+</script>
+</body>
+</html>

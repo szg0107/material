@@ -2,65 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="baafc0e1-a381-4989-a1b5-249560ff828e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/jdHomePage.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/html/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/html/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jdHomePage/js/mySlider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/dictionaries/Administrator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/html/BootstrapDemo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/html/chattingRobot.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/html/css3Demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/html/html5Demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/html/lunbotu5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/html/waterfall.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/img/clock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/img/dog.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/img/dog1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/img/horse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/img/hour.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/img/minute.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/img/second.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/other/GokuRakuJoudo.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myDemo/other/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/text.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jqueryBan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/paging.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/tools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../html5Music/dist/mock/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/axios/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/category.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/hot.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/province.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/select.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/default.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/footer/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/geo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/myNav.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/searchBar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/topBar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/container.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/life.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/menu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/slider.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/category.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/crumbs.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/item.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/list.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/select.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/changeCity.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/goodsList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mt-app/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/.idea/vagrant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/cavasCircle.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/cavasScratchers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/cavasSnow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/css3whirligig.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/html/echartDemo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/img/09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myDemo/js/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pizza-app/src/store/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pizza-app/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pizza-app/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/webpackConfigure.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/postcss问题.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/css/demo.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/image/04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/js/sum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webpackConfigure/webpack.dev.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/src/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/src/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myDemo/html/cs.html" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/html/cs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myDemo/html/fullPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/html/fullPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myDemo/html/sendAnHTTPRequest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myDemo/js/common_methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/js/common_methods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myDemo/html/es6Demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/html/es6Demo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/pageTurning.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/pageTurning.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/studentManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/studentManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../文档/接口文档.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/tools.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -73,27 +76,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/paging.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/studentManagement.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1550">
-              <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+            <state relative-caret-position="375">
+              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#thead#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/jqueryBan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1900">
-              <caret line="180" column="1" selection-start-line="180" selection-start-column="1" selection-end-line="180" selection-end-column="1" />
+            <state relative-caret-position="300">
+              <caret line="144" column="49" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="49" />
               <folding>
                 <element signature="n#!!block;n#init#0" />
+                <element signature="n#!!block;n#bindEvent#0" />
                 <element signature="n#!!block;n#tbodyClick#0" />
                 <element signature="n#!!block;n#renderFrom#0" />
                 <element signature="n#!!block;n#changeStudentInfo#0" />
+                <element signature="e#2456#2896#0" />
                 <element signature="n#!!block;n#delStudent#0" />
-                <element signature="n#!!block;n#transferData#0" />
                 <element signature="n#!!block;n#formatObj#0" />
                 <element signature="n#!!block;n#renderTableData#0" />
                 <element signature="n#!!block;n#createPage#0" />
@@ -105,10 +118,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/text.html">
+        <entry file="file://$PROJECT_DIR$/js/tools.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="375">
+              <caret line="48" column="21" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="21" />
+              <folding>
+                <element signature="n#!!block;n#isEmail#0" />
+                <element signature="e#194#202#0" />
+                <element signature="n#!!block;n#isNumber#0" />
+                <element signature="e#307#319#0" />
+                <element signature="n#!!block;n#isPhone#0" />
+                <element signature="n#!!block;n#randomName#0" />
+                <element signature="n#!!block;n#creatStudent#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,12 +200,12 @@
         <option value="$PROJECT_DIR$/html/1.html" />
         <option value="$PROJECT_DIR$/js/index.js" />
         <option value="$PROJECT_DIR$/css/pageTurning.css" />
-        <option value="$PROJECT_DIR$/js/tools.js" />
         <option value="$PROJECT_DIR$/css/index.css" />
         <option value="$PROJECT_DIR$/html/text.html" />
         <option value="$PROJECT_DIR$/js/paging.js" />
-        <option value="$PROJECT_DIR$/js/jqueryBan.js" />
         <option value="$PROJECT_DIR$/html/studentManagement.html" />
+        <option value="$PROJECT_DIR$/js/jqueryBan.js" />
+        <option value="$PROJECT_DIR$/js/tools.js" />
       </list>
     </option>
   </component>
@@ -234,7 +256,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -329,11 +351,21 @@
       <workItem from="1557986969857" duration="65000" />
       <workItem from="1557987121550" duration="55000" />
       <workItem from="1558078612140" duration="638000" />
+      <workItem from="1559321252390" duration="181000" />
+      <workItem from="1559364900299" duration="306000" />
+      <workItem from="1559367787802" duration="209000" />
+      <workItem from="1559369939279" duration="933000" />
+      <workItem from="1559371206771" duration="1236000" />
+      <workItem from="1559459062804" duration="103000" />
+      <workItem from="1559483976924" duration="19000" />
+      <workItem from="1561877986364" duration="58000" />
+      <workItem from="1561878185065" duration="90000" />
+      <workItem from="1561879346843" duration="268000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152837000" />
+    <option name="totallyTimeSpent" value="156240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="136" y="6" width="1160" height="708" extended-state="0" />
@@ -406,27 +438,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/tools.js">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4633/jq学生管理/index.css" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4634/turnPage/turnPage/jquery-3.3.1.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4628/turnPage/turnPage/index.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4635/jq学生管理/index.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4630/jq学生管理/turnPage/index.js" />
+    <entry file="file://$PROJECT_DIR$/html/text.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="21" />
-          <folding>
-            <element signature="n#!!block;n#isEmail#0" />
-            <element signature="e#194#202#0" />
-            <element signature="n#!!block;n#isNumber#0" />
-            <element signature="e#307#319#0" />
-            <element signature="n#!!block;n#isPhone#0" />
-            <element signature="n#!!block;n#randomName#0" />
-            <element signature="n#!!block;n#creatStudent#0" />
-          </folding>
+        <state relative-caret-position="675">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4633/jq学生管理/index.css" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4634/turnPage/turnPage/jquery-3.3.1.js" />
     <entry file="file://$PROJECT_DIR$/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
+        <state relative-caret-position="4475">
           <caret line="242" column="18" lean-forward="true" selection-start-line="242" selection-start-column="18" selection-end-line="242" selection-end-column="18" />
           <folding>
             <element signature="e#2#36#0" />
@@ -449,13 +475,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/paging.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
+        <state relative-caret-position="1308">
           <caret line="480" column="9" lean-forward="true" selection-start-line="480" selection-start-column="9" selection-end-line="480" selection-end-column="9" />
           <folding>
             <element signature="e#79#4034#0" />
             <element signature="n#!!block;n#creatStudent#0" />
+            <element signature="n#!!block;n#init#0" />
             <element signature="e#6044#6315#0" />
             <element signature="n#!!block;n#forPageSplitArray#0" />
             <element signature="n#!!block;n#isEmail#0" />
@@ -471,6 +505,7 @@
             <element signature="n#!!block;n#saveData#0" />
             <element signature="n#!!block;n#getFormDta#0" />
             <element signature="n#!!block;n#changeMenu#0" />
+            <element signature="n#!!block;n#renderTableData#0" />
             <element signature="n#!!block;n#createPage#0" />
             <element signature="n#!!block;n#getStudentList#0" />
             <element signature="n#!!block;n#findByPage#0" />
@@ -480,13 +515,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4628/turnPage/turnPage/index.js" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4635/jq学生管理/index.js" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.803.4627/HZ$D.803.4630/jq学生管理/turnPage/index.js" />
     <entry file="file://$PROJECT_DIR$/html/studentManagement.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+        <state relative-caret-position="375">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -499,37 +531,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/tools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!block;n#isEmail#0" />
+            <element signature="e#194#202#0" />
+            <element signature="n#!!block;n#isNumber#0" />
+            <element signature="e#307#319#0" />
+            <element signature="n#!!block;n#isPhone#0" />
+            <element signature="n#!!block;n#randomName#0" />
+            <element signature="n#!!block;n#creatStudent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/jqueryBan.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1900">
-          <caret line="180" column="1" selection-start-line="180" selection-start-column="1" selection-end-line="180" selection-end-column="1" />
+        <state relative-caret-position="300">
+          <caret line="144" column="49" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="49" />
           <folding>
             <element signature="n#!!block;n#init#0" />
+            <element signature="n#!!block;n#bindEvent#0" />
             <element signature="n#!!block;n#tbodyClick#0" />
             <element signature="n#!!block;n#renderFrom#0" />
             <element signature="n#!!block;n#changeStudentInfo#0" />
+            <element signature="e#2456#2896#0" />
             <element signature="n#!!block;n#delStudent#0" />
-            <element signature="n#!!block;n#transferData#0" />
             <element signature="n#!!block;n#formatObj#0" />
             <element signature="n#!!block;n#renderTableData#0" />
             <element signature="n#!!block;n#createPage#0" />
             <element signature="n#!!block;n#findByPage#0" />
             <element signature="n#!!block;n#searchStudent#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/text.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/paging.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1550">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
         </state>
       </provider>
     </entry>

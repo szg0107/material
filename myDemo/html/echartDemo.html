@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>eChart练习</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/echarts.js"></script>
+    <style type="text/css">
+        .area, .sex {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #029ae5;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="area"></div>
+<div class="sex"></div>
+<script type="text/javascript">
+    (function () {
+        let obj = {
+            init: function () {
+                this.getData();
+                this.option = {
+                    title: {
+                        text: '',
+                        subtext: '纯属虚构',
+                        x: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                        // 地区/性别
+                        data: []
+                    },
+                    series: [
+                        {
+                            name: '访问来源',
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            // 数据
+                            data: [],
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                this.myAreaChart=echarts.init($('.area')[0]);
+                this.mySexChart=echarts.init($('.sex')[0]);
+            },
+            getData: function () {
+                let self = this;
+                $.ajax({
+                    url: 'http://api.duyiedu.com/api/student/findAll?appkey=szg0107_1553776746206',
+                    success: function (data) {
+                        self.disposalData(JSON.parse(data).data,  '渡一教育学生地区分布统计', 'address');
+                        self.disposalData(JSON.parse(data).data,  '渡一教育学生性别统计', 'sex');
+                    }
+                })
+            },
+            disposalData: function (data, title, attribute) {
+                // console.log(data, dom, title, attribute);
+                //数据具体出现次数及名称数组
+                let seriesData = [],
+                    attrObj = {},
+                    self=this,
+                    set = new Set();
+                //判断第一条数据对象是否包含性别属性
+                if (!data[0][attribute]) {
+                    set.add('男');
+                    set.add('女');
+                    seriesData=data;
+                }else {
+                    data.forEach((ele) => {
+                        attribute === 'sex' ? set.add(ele[attribute] === 0 ? '男' : '女') : set.add(ele[attribute]);
+                        if (attribute === 'sex') {
+                            if (!attrObj[ele[attribute]]) {
+                                attrObj[ele[attribute]] = {
+                                    name: ele[attribute]===0?'男':'女',
+                                    value: 1,
+                                };
+                            }else {
+                                attrObj[ele[attribute]]['value']++;
+                            }
+                        }else {
+                            if (!attrObj[ele[attribute]]) {
+                                attrObj[ele[attribute]] = {
+                                    name: ele[attribute],
+                                    value: 1,
+                                    sex: [{name: '男', value: 0}, {name: '女', value: 0}]
+                                };
+                                ele['sex'] === 0 ? attrObj[ele[attribute]]['sex'][0]['value']++ : attrObj[ele[attribute]]['sex'][1]['value']++;
+                            }else {
+                                attrObj[ele[attribute]]['value']++;
+                                ele['sex'] === 0 ? attrObj[ele[attribute]]['sex'][0]['value']++ : attrObj[ele[attribute]]['sex'][1]['value']++;
+                            }
+                        }
+                    });
+                    // console.log(attrObj);
+                    for (let objKey in attrObj) {
+                        seriesData.push(attrObj[objKey]);
+                    }
+                }
+
+                this.option.title.text = title;
+                //Array.from(set)es6 数组方法将类数组及迭代接口的数据转换为数组
+                this.option.legend.data = Array.from(set);
+                this.option.series[0].data = seriesData;
+
+                attribute==='sex'?this.mySexChart.setOption(this.option):this.myAreaChart.setOption(this.option);
+
+                //城市饼状图点击事件
+                this.myAreaChart.on('click', function (e) {
+                    // console.log(e);
+                    self.disposalData(e.data.sex, '渡一教育'+e.name+'学生性别统计', 'sex');
+                })
+            },
+        };
+        obj.init();
+    })();
+</script>
+</body>
+</html>

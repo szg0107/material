@@ -1,0 +1,23 @@
+body {
+  /*测试注释是否被压缩*/
+}
+body div {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #029ae5;
+  transform: rotateZ(0deg);
+  background: url('../image/04.jpg') 100% 100% no-repeat;
+}
+body a {
+  color: #029ae5;
+}
+body h1 {
+  color: #ff4400;
+}
+:root {
+  --color: #ffffff;
+}
+:root a {
+  color: var(--color);
+}
+/*# sourceMappingURL=demo.css.map */

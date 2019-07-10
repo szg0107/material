@@ -1,0 +1,5 @@
+<!-- 主标题与副标题组件 -->
+<view class='container'>
+    <view class='main-title'>{{mainTitle}}</view>
+    <view class='sub-head'>{{subHead}}</view>
+</view>

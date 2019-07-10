@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画布实现鼠标移动画圆效果</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        canvas {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script type="text/javascript">
+    let myCanvas = document.getElementById('myCanvas'),
+        ctx = myCanvas.getContext('2d'),
+        circleArray = [],
+        //生成min ~ max之间的随机数
+        random = (min, max) => Math.floor((max - min) * Math.random() + min);
+    //设置画布的宽、高
+    myCanvas.width = window.innerWidth;
+    myCanvas.height = window.innerHeight;
+    //保存当前环境状态
+    ctx.save();
+    //监听窗口变化
+    window.onresize = function () {
+        myCanvas.width = window.innerWidth;
+        myCanvas.height = window.innerHeight;
+    };
+
+    /**参数: x圆心初始x位置
+     *y圆心初始y位置
+     *scale 缩放比例
+     *speedX X轴平移的速度
+     *speedY Y轴平移的速度
+     *speedRotate 旋转的速度 */
+    function Circle(x, y) {
+        this.x = x;
+        this.y = y;
+        this.scale = 0.5 + Math.random();
+        this.speedX = (Math.random() - 0.5) * 3;
+        this.speedY = (Math.random() - 0.5) * 3;
+        this.r = random(0, 256);
+        this.g = random(0, 256);
+        this.b = random(0, 256);
+        this.a = 1;
+        this.render = function () {
+            //保存当前环境状态
+            ctx.save();
+            //起始一条路径，或重置当前路径
+            ctx.beginPath();
+            //设置画笔颜色
+            ctx.fillStyle = 'rgb(' + this.r + ',' + this.g + ',' + this.b + ')';
+            // 图像覆盖  显示方式 lighter 会将覆盖部分的颜色重叠显示出来
+            ctx.globalCompositeOperation = 'lighter';
+            //设置画笔透明度
+            ctx.globalAlpha = this.a;
+            //画圆
+            ctx.arc(this.x, this.y, 20 * this.scale, 0, Math.PI * 2);
+            //闭合路径
+            ctx.closePath();
+            //填充
+            ctx.fill();
+        }
+    }
+
+    function render() {
+        ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        circleArray.forEach(function (ele, index) {
+            ele.render();
+            ele.x += ele.speedX;
+            ele.Y += ele.speedY;
+            ele.a *= 0.95;
+            ele.a < 0.05 ? circleArray.splice(index, 1) : '';
+        });
+        requestAnimationFrame(render);
+    }
+
+    render();
+    document.addEventListener('mousemove', function (e) {
+        circleArray.push(new Circle(e.offsetX, e.offsetY));
+    }, false);
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画布画雪花</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        canvas {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script type="text/javascript">
+    let myCanvas = document.getElementById('myCanvas'),
+        ctx = myCanvas.getContext('2d'),
+        snowArray = [];
+    //设置画布的宽、高
+    myCanvas.width = window.innerWidth;
+    myCanvas.height = window.innerHeight;
+    //保存当前环境状态
+    ctx.save();
+    //监听窗口变化
+    window.onresize = function () {
+        myCanvas.width = window.innerWidth;
+        myCanvas.height = window.innerHeight;
+    };
+
+    /**参数: x雪花初始x位置
+     * scale 缩放比例
+     * rotate 旋转角度
+     *speedX X轴平移的速度
+     *speedY Y轴平移的速度
+     *speedRotate 旋转的速度 */
+    function Snow(x, scale, rotate, speedX, speedY, speedRotate) {
+        this.x = x;
+        this.y = 0;
+        this.scale = scale;
+        this.rotate = rotate;
+        this.speedX = speedX;
+        this.speedY = speedY;
+        this.speedRotate = speedRotate;
+        this.render = function () {
+            //保存当前环境状态
+            ctx.save();
+            //起始一条路径，或重置当前路径
+            ctx.beginPath();
+            //重新映射画布上的 (0,0)原点 位置
+            ctx.translate(this.x, this.y);
+            //旋转当前绘图
+            ctx.rotate(this.rotate / 180 * Math.PI);
+            //缩放当前绘图
+            ctx.scale(this.scale, this.scale);
+            //设置画笔颜色
+            ctx.strokeStyle = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+            ctx.moveTo(-20, 0);
+            ctx.lineTo(20, 0);
+            //将角度转换为弧度degrees * Math.PI / 180
+            let disY = Math.sin(60 * Math.PI / 180) * 20,
+                disX = Math.cos(60 * Math.PI / 180) * 20;
+            ctx.moveTo(-disX, -disY);
+            ctx.lineTo(disX, disY);
+
+            ctx.moveTo(disX, -disY);
+            ctx.lineTo(-disX, disY);
+            ctx.lineCap = 'round';
+            //设置线条宽度
+            ctx.lineWidth = 10;
+            //绘制路径
+            ctx.stroke();
+            //返回之前保存过的路径状态和属性
+            ctx.restore();
+        }
+    }
+
+    function init(snowQuantity) {
+        // 雪花个数 snowQuantity
+        for (let i = 0; i < snowQuantity; i++) {
+            let x = Math.random() * myCanvas.width,
+                // 生成随机数参数  缩放  旋转角度   水平速度  竖直速度  旋转速度
+                scale = 0.5 + Math.random(),
+                rotate = Math.random() * 60,
+                speedX = 1 + Math.random(),
+                speedY = 2 + Math.random() * 4,
+                speedRotate = 2 + Math.random() * 4;
+            setTimeout(function () {
+                // 每一个雪花实例一个雪花对象 将随机参数传入  并且将雪花push到数组中
+                let snow = new Snow(x, scale, rotate, speedX, speedY, speedRotate);
+                snow.render();
+                snowArray.push(snow);
+                // 随机延迟生成雪花
+            }, Math.random() * 4000)
+        }
+
+        function render() {
+            ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+            for (let i = 0; i < snowArray.length; i++) {
+                snowArray[i].x = (snowArray[i].x + snowArray[i].speedX) % myCanvas.width;
+                snowArray[i].y = (snowArray[i].y + snowArray[i].speedY) % myCanvas.height;
+                snowArray[i].rotate = (snowArray[i].rotate + snowArray[i].speedRotate) % 60;
+                snowArray[i].render();
+            }
+            requestAnimationFrame(render);
+        }
+
+        render();
+    }
+
+    init(100);
+
+
+</script>
+</body>
+</html>

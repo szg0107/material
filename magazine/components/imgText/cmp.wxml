@@ -1,0 +1,8 @@
+<!-- 主标题+副标题+图片组件 -->
+<view class='container'>
+    <view class='text-container'>
+        <view class='main-title'>{{mainTitle}}</view>
+        <view class='sub-head'>{{subHead}}</view>
+    </view>
+    <image class='image' src='{{imgSrc}}'></image>
+</view>

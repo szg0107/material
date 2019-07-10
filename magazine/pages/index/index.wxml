@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+    <!-- 导航插件 -->
+    <d-nav class="nav" catch:nav="onNav" />
+    <!-- 标题+图片 -->
+    <d-recommend recommend="{{recommendInfo}}" magazine-id="{{magazineId}}" class="recommend" catch:tap="onNav" />
+    <!-- 标签列表 -->
+    <d-tagList mark-list="{{markTypeList}}">
+        <!-- <view slot="before">+</view> -->
+        <d-add slot="before" class="add" wx:if="{{magazineId == 0}}" />
+        <view slot="after" class="to-catalog" catch:tap="onCatalog" wx:if="{{magazineId === 0}}">•••</view>
+    </d-tagList>
+    <!-- 文章列表 -->
+    <d-articleList article-list="{{articleList}}" more='{{getMore}}' magazineId='{{magazineId}}' />
+    <!-- 遮罩 -->
+    <view class="loading-container" wx:if="{{loading}}">
+        <d-loading class="loading" />
+    </view>
+</view>

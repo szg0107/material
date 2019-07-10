@@ -43,7 +43,8 @@ function randomName() {
 
 }
 
-
+//生成min ~ max之间的随机数
+function random (min, max) {  return Math.floor((max - min) * Math.random() + min)}
 //创建学生
 function creatStudent(sNo) {
     //单字 主要功能随机生成姓名
@@ -54,6 +55,7 @@ function creatStudent(sNo) {
         surName = [],
         //名
         lastName = '',
+        ctiy=['北京','河北','哈尔滨'],
         sex = Math.ceil((Math.random() * 10) )% 2;
     surName = str.split('');
     for (let i = 0; i < str2.length; i++) {
@@ -73,7 +75,7 @@ function creatStudent(sNo) {
         sex: sex,
         phone: '138' + Math.ceil(Math.random() * 100000000),
         email: Math.ceil(Math.random() * 1000000)+ '@163.com',
-        address: '北京',
+        address: ctiy[random(0,2)],
     }
 }
 

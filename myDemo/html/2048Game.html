@@ -3,57 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <title>2048小游戏原生JS写</title>
+    <style type="text/css">
+        body, div, span, a {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        #my2048 {
+            margin: 0 auto;
+            position: relative;
+            background: #bbada0;
+        }
+
+        #my2048 div {
+            position: absolute;
+            display: inline-block;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-
+<div id="my2048"></div>
 <script type="text/javascript">
     let my2048;
-    let rows = 4;
-    let cols = 4;
-    let spacing = 100;
-    let squareWdith = 100;
-    let boardSet = [];//初始化的默认小方块
-    let squareSet = [];//存放带数字的小方块的
-    let valueMap = [];//存放每个位置的数值
-    let colorMapping = {'0': '#ccc0b3', '2': '#eee4da', '4': '#ede0co', '8': '#', '16': '#f59563', '32': '',};
-    let directionEnum = {left: {key: 'left'}, right: {key: 'right'}, up: {key: 'up'}, down: {key: 'down'}};
+    //配置对象
+    const configObj = {
+        //行数
+        rows: 4,
+        //列数
+        cols: 4,
+        // 缝隙/间隙
+        spacing: 12,
+        //小方块宽度
+        squareWidth: 100,
+        //初始化的默认小方块，没什么用
+        boardSet: [],
+        //存放带数字的小方块的
+        squareSet: [],
+        //存放每个位置的数值
+        valueMap: [],
+        //小方块背景颜色
+        colorMapping: {
+            "0": "#ccc0b3",
+            "2": "#eee4da",
+            "4": "#ede0c8",
+            "8": "#f2b179",
+            "16": "#f59563",
+            "32": "#f67e5f",
+            "64": "#f65e3b",
+            "128": "#edcf72",
+            "256": "#edcc61",
+            "512": "#9c0",
+            "1024": "#33b5e5",
+            "2048": "#09c",
+            "4096": "#5b67ff"
+        },
+        //方向
+        directionEnum: {
+            left: {x: -1, y: 0, key: "left"},
+            right: {x: 1, y: 0, key: "left"},
+            top: {x: 0, y: -1, key: "top"},
+            down: {x: 0, y: 1, key: "top"}
+        },
+        //是否可以发生变化
+        isChang: false,
+        lock: true,
+    };
 
+    //是否结束
+    function isOver() {
+        for (let i = 0; i < configObj.squareSet.length; i++) {
+            for (let j = 0; j < configObj.squareSet[i].length; j++) {
+                if (configObj.squareSet[i][j] === null) {
+                    return false;
+                }
+                //看右边和下面是否和自己相同
+                if (configObj.squareSet[i][j + 1] && configObj.squareSet[i][j].num === configObj.squareSet[i][j + 1].num || configObj.squareSet[i + 1] && configObj.squareSet[i + 1][j] && configObj.squareSet[i][j].num === configObj.squareSet[i + 1][j].num) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    //更新视图
+    function refresh(newSquareSet) {
+        configObj.squareSet = generateNullMap();
+        const newValueMap = generateNullMap();
+        for (let i = 0; i < configObj.rows; i++) {
+            for (let j = 0; j < configObj.cols; j++) {
+                if (newSquareSet[i][j]) {
+                    if (newSquareSet[i][j].nextSquare) {
+                        //存在重叠
+                        const temp = createSquare(newSquareSet[i][j].num * 2, newSquareSet[i][j].offsetLeft, newSquareSet[i][j].offsetTop, i, j);
+                        configObj.squareSet[i][j] = temp;
+                        //添加新块的位置
+                        my2048.appendChild(temp);
+                        //移除旧块的重叠的位置和旧块的位置
+                        my2048.removeChild(newSquareSet[i][j].nextSquare);
+                        my2048.removeChild(newSquareSet[i][j]);
+                    } else {
+                        //不存在重叠
+                        const temp = createSquare(newSquareSet[i][j].num, newSquareSet[i][j].offsetLeft, newSquareSet[i][j].offsetTop, i, j);
+                        configObj.squareSet[i][j] = temp;
+                        //添加新块的位置
+                        my2048.appendChild(temp);
+                        //移除旧块的位置
+                        my2048.removeChild(newSquareSet[i][j]);
+                    }
+                    if (configObj.valueMap[i][j] !== configObj.squareSet[i][j].num) {
+                        configObj.isChang = true;
+                    }
+                    newValueMap[i][j] = configObj.squareSet[i][j].num;
+                } else {
+                    newValueMap[i][j] = 0;
+                }
+            }
+        }
+        configObj.valueMap = newValueMap;
+    }
+
+    //获得新的位置
+    function getNewLocation(arr) {
+
+        if (arr.length === 0) {
+            return [];
+        }
+        const temp = [];
+        temp.push(arr[0]);
+        for (let i = 1; i < arr.length; i++) {
+            //判断arr第二值和temp第一个值是否相等并且（没有重叠或者下一个重叠为空）nextSquare记录是否重叠一个元素
+            if (arr[i].num === temp[temp.length - 1].num && (!temp[temp.length - 1].nextSquare || temp[temp.length - 1].nextSquare === null)) {
+                temp[temp.length - 1].nextSquare = arr[i];
+            } else {
+                temp.push(arr[i]);
+            }
+        }
+        return temp;
+    }
+
+    //生成空Map
     function generateNullMap() {
         let newValueMap = [];
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < cols; j++) {
+        for (let i = 0; i < configObj.rows; i++) {
+            newValueMap[i] = [];
+            for (let j = 0; j < configObj.cols; j++) {
                 newValueMap[i][j] = null;
             }
         }
         return newValueMap;
     }
 
-    function getNewLocation(arr) {
-        if (arr.length === 0) {
-            return [];
-        }
-        let temp = [];
-        temp.push(arr[0]);
-        for (let i = 1; i < arr.length; i++) {
-            if (arr[i].num === temp[temp.length - 1] && (!temp[temp.length - 1].nextSquare || temp[temp.length - 1].nextSquare === null)) {
-                temp[temp.length - 1] = arr[i];
-            } else {
-                temp.push(arr[i]);
-            }
-        }
-    }
-
+    //计算移动位置
     function analysisActions(direction) {
-        let newSquareSet = generateNullMap();
-        if (direction === directionEnum.left) {
-            for (let i = 0; i < squareSet.length; i++) {
+        const newSquareSet = generateNullMap();
+
+        if (direction === configObj['directionEnum']['top']) {//向上
+            // console.log('向上');
+            //i是行 j是列
+            for (let j = 0; j < configObj.squareSet[0].length; j++) {
                 let temp = [];
-                for (let j = 0; j < squareSet[i].length; j++) {
-                    if (squareSet[i][j] !== null) {
-                        temp.push(squareSet[i][j]);
+                //将每一行变为一个数组
+                for (let i = 0; i < configObj.squareSet.length; i++) {
+                    if (configObj.squareSet[i][j] !== null) {
+                        temp.push(configObj.squareSet[i][j]);
                     }
                 }
                 temp = getNewLocation(temp);
+                //将小块新的位置放在新newSquareSet中
+                for (let k = 0; k < newSquareSet.length; k++) {
+                    //从右往左数第几位 依次赋值
+                    if (temp[k]) {
+                        newSquareSet[k][j] = temp[k];
+                    }
+                }
+            }
+
+        } else if (direction === configObj['directionEnum']['right']) {//向右
+            // console.log('向右');
+            for (let i = 0; i < configObj.squareSet.length; i++) {
+                let temp = [];
+                //将每一行变为一个数组
+                for (let j = configObj.squareSet[i].length - 1; j >= 0; j--) {
+                    if (configObj.squareSet[i][j] !== null) {
+                        temp.push(configObj.squareSet[i][j]);
+                    }
+                }
+                temp = getNewLocation(temp);
+                //将小块新的位置放在新newSquareSet中
+                for (let k = newSquareSet[i].length - 1; k >= 0; k--) {
+                    //从右往左数第几位 依次赋值
+                    if (temp[newSquareSet[i].length - 1 - k]) {
+                        newSquareSet[i][k] = temp[newSquareSet[i].length - 1 - k];
+                    }
+                }
+            }
+
+        } else if (direction === configObj['directionEnum']['down']) {//向下
+            // console.log('向下');
+            for (let j = 0; j < configObj.squareSet[0].length; j++) {
+                let temp = [];
+                //将每一行变为一个数组
+                for (let i = configObj.squareSet.length - 1; i >= 0; i--) {
+                    if (configObj.squareSet[i][j] !== null) {
+                        temp.push(configObj.squareSet[i][j]);
+                    }
+                }
+                temp = getNewLocation(temp);
+                //将小块新的位置放在新newSquareSet中
+                for (let k = newSquareSet.length - 1; k >= 0; k--) {
+                    //从右往左数第几位 依次赋值
+                    if (temp[newSquareSet.length - 1 - k]) {
+                        newSquareSet[k][j] = temp[newSquareSet.length - 1 - k];
+                    }
+                }
+            }
+
+        } else if (direction === configObj['directionEnum']['left']) {//向左
+            // console.log('向左');
+            //将小方块分为四行
+            for (let i = 0; i < configObj.squareSet.length; i++) {
+                let temp = [];
+                //将每一行变为一个数组
+                for (let j = 0; j < configObj.squareSet[i].length; j++) {
+                    if (configObj.squareSet[i][j] !== null) {
+                        temp.push(configObj.squareSet[i][j]);
+                    }
+                }
+                temp = getNewLocation(temp);
+                //将小块新的位置放在新newSquareSet中
                 for (let k = 0; k < newSquareSet[i].length; k++) {
                     if (temp[k]) {
                         newSquareSet[i][k] = temp[k];
@@ -61,67 +247,154 @@
                 }
             }
         }
-        //动画
+
+        //动画  遍历所有的块进行移动
         for (let i = 0; i < newSquareSet.length; i++) {
             for (let j = 0; j < newSquareSet[i].length; j++) {
                 if (newSquareSet[i][j] === null) {
                     continue;
                 }
+                newSquareSet[i][j].style.transition = `${direction.key} 0.3s`;
+                newSquareSet[i][j].style.left = `${(j + 1) * configObj.spacing + j * configObj.squareWidth}px`;
+                newSquareSet[i][j].style.top = `${(i + 1) * configObj.spacing + i * configObj.squareWidth}px`;
+                //是否存在重叠
+                if (newSquareSet[i][j].nextSquare) {
+                    newSquareSet[i][j].nextSquare.style.transition = `${direction.key} 0.3s`;
+                    newSquareSet[i][j].nextSquare.style.left = `${(j + 1) * configObj.spacing + j * configObj.squareWidth}px`;
+                    newSquareSet[i][j].nextSquare.style.top = `${(i + 1) * configObj.spacing + i * configObj.squareWidth}px`;
+                }
             }
         }
+
+        return newSquareSet;
     }
 
+    //方块移动
     function move(direction) {
         //判断游戏是否结束
+        if (isOver()) {
+            alert('游戏结束');
+            return;
+        }
         //计算移动位置
-        let newSquareSet = analysisActions(direction);
+        const newSquareSet = analysisActions(direction);
         //重绘，刷新显示
+        setTimeout(() => {
+            refresh(newSquareSet);
+            //是否发生变化
+            if (configObj.isChang) {
+                randGenerateSquare();
+            }
+            configObj.lock = true;
+            configObj.isChang = false;
+        }, 300);
     }
 
+    //随机生成小方块数字
     function randSquareNum() {
         return Math.random() > 0.5 ? 4 : 2;
     }
 
+    //随机生成小方块
     function randGenerateSquare() {
+        //无限循环===while(true)
         for (; ;) {
-            let randRow = Math.floor(Math.random() * rows);
-            let randCol = Math.floor(Math.random() * cols);
-            if (valueMap[randRow][randCol] === 0) {
-                let temp = createSquare(randSquareNum(), rand * squareWdith + (randCol + 1) * spacing);
-
+            //小方块随机生成行和列
+            const randRow = Math.floor(Math.random() * configObj.rows),
+                randCol = Math.floor(Math.random() * configObj.cols);
+            if (configObj.valueMap[randRow][randCol] === 0) {
+                const temp = createSquare(randSquareNum(), randCol * configObj.squareWidth + (randCol + 1) * configObj.spacing, randRow * configObj.squareWidth + (randRow + 1) * configObj.spacing, randRow, randCol);
+                configObj.valueMap[temp.row][temp.col] = temp.num;
+                configObj.squareSet[temp.row][temp.col] = temp;
+                my2048.appendChild(temp);
+                return true;
             }
         }
     }
 
-    function careateSquare(value, left, top, row, col) {
-        let temp = document.createElement('div');
-        temp.style.width = squareWdith + 'px';
-        temp.style.height = squareWdith + 'px';
-        temp.style.left = left + 'px';
-        temp.style.top = top + 'px';
-        temp.style.background = colorMapping[value];
-        temp.style.lineHeight = squareWdith + 'px';
-        temp.style.textAlign = 'center';
-        temp.style.textAlign = 'center';
-        temp.style.textAlign = 'center';
+    //创建小方块
+    function createSquare(value, left, top, row, col) {
+        const temp = document.createElement('div');
+        temp.setAttribute('style', `width:${configObj.squareWidth}px;
+                                    height:${configObj.squareWidth}px;
+                                    left:${left}px;
+                                    top:${top}px;
+                                    background:${configObj.colorMapping[value]};
+                                    line-height:${configObj.squareWidth}px;
+                                    text-align:center;
+                                    font-size:${0.4 * configObj.squareWidth}px;`);
+        temp.num = value;
+        temp.row = row;
+        temp.col = col;
+        if (value > 0) {
+            temp.innerText = `${value}`;
+        }
+        return temp;
     }
 
+    //初始化棋盘
     function initBoard() {
+        //获取外层对象
         my2048 = document.getElementById('my2048');
+        //对象的高=行数*宽度+(行数+1）*间隙
+        const height = configObj.rows * configObj.squareWidth + (configObj.rows + 1) * configObj.spacing + 'px',
+            //对象的宽=列数*宽度+(列数+1）*间隙
+            width = configObj.cols * configObj.squareWidth + (configObj.cols + 1) * configObj.spacing + 'px';
+        my2048.setAttribute('style', `height:${height};width:${width}`);
     }
 
+    //初始化
     function init() {
         //初始化棋盘
         initBoard();
+
         //生成默认小方块
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < cols; j++) {
-                valueMap[i][j] = 0;
-                squareSet[i][j] = null;
-                boardSet[i][j] = careateSquare(0,)
+        for (let i = 0; i < configObj.rows; i++) {
+            configObj.valueMap[i] = [];
+            configObj.squareSet[i] = [];
+            configObj.boardSet[i] = [];
+            for (let j = 0; j < configObj.cols; j++) {
+                configObj.valueMap[i][j] = 0;
+                configObj.squareSet[i][j] = null;
+                //创建背景小方块的left=列数*小方块宽度+（列数+1）*间隙
+                configObj.boardSet[i][j] = createSquare(0, j * configObj.squareWidth + (j + 1) * configObj.spacing,
+                    i * configObj.squareWidth + (i + 1) * configObj.spacing, i, j);
+                //将背景小方块添加到父容器中
+                my2048.appendChild(configObj.boardSet[i][j]);
             }
         }
+
+        //随机生成两个带数字的方块
+        randGenerateSquare();
+        randGenerateSquare();
+        //添加键盘事件
+        document.addEventListener('keydown', (e) => {
+            if (!configObj.lock) {
+                return;
+            }
+            configObj.lock = false;
+            // console.log(e);
+            switch (e.key) {
+                case 'ArrowUp':
+                    move(configObj.directionEnum.top);
+                    break;
+                case 'ArrowRight':
+                    move(configObj.directionEnum.right);
+                    break;
+                case 'ArrowDown':
+                    move(configObj.directionEnum.down);
+                    break;
+                case 'ArrowLeft':
+                    move(configObj.directionEnum.left);
+                    break;
+                default:
+                    configObj.lock = true;
+                    break;
+            }
+        });
     }
+
+    init();
 </script>
 </body>
 </html>

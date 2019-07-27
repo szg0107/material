@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公式导出鼠标位置判断+几何六面翻转</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            border: 1px solid #029ae5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 500px;
+        }
+
+        .box,.show,.hide {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+
+        .box {
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50% -100px;
+            animation: 200ms linear forwards;
+        }
+
+        .show {
+            background-image: url("../img/08.jpg");
+            background-size: 100% 100%;
+        }
+
+        .hide {
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            transform: translate3d(0, 0, -1px);
+        }
+
+
+
+
+        .in-top .hide, .out-top .hide {
+            transform-origin: 0 100%;
+            transform: translate3d(0, -100%, 0) rotate3d(1, 0, 0, 90deg);
+        }
+
+        .in-top .box {
+            animation-name: in-top;
+        }
+
+        .out-top .box {
+            animation-name: out-top;
+        }
+
+        @keyframes in-top {
+            from {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+            to {
+                transform: rotate3d(-1, 0, 0, 90deg)
+            }
+        }
+
+        @keyframes out-top {
+            from {
+                transform: rotate3d(-1, 0, 0, 90deg)
+            }
+            to {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+        }
+
+
+
+        .in-right .hide, .out-right .hide {
+            transform-origin: 0 100%;
+            transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
+        }
+
+        .in-right .box {
+            animation-name: in-right;
+        }
+
+        .out-right .box {
+            animation-name: out-right;
+        }
+
+        @keyframes in-right {
+            from {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+            to {
+                transform: rotate3d(0, -1, 0, 90deg)
+            }
+        }
+
+        @keyframes out-right {
+            from {
+                transform: rotate3d(0, -1, 0, 90deg)
+            }
+            to {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+        }
+
+
+
+        .in-bottom .hide, .out-bottom .hide {
+            transform-origin: 0 0;
+            transform: translate3d(0, 100%, 0) rotate3d(-1, 0, 0, 90deg);
+        }
+
+        .in-bottom .box {
+            animation-name: in-bottom;
+        }
+
+        .out-bottom .box {
+            animation-name: out-bottom;
+        }
+
+        @keyframes in-bottom {
+            from {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+            to {
+                transform: rotate3d(1, 0, 0, 90deg)
+            }
+        }
+
+        @keyframes out-bottom {
+            from {
+                transform: rotate3d(1, 0, 0, 90deg)
+            }
+            to {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+        }
+
+
+
+        .in-left .hide, .out-left .hide {
+            transform-origin: 100% 0;
+            transform: translate3d(-100%, 0, 0) rotate3d(0, -1, 0, 90deg);
+        }
+
+        .in-left .box {
+            animation-name: in-left;
+        }
+
+        .out-left .box {
+            animation-name: out-left;
+        }
+
+        @keyframes in-left {
+            from {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+            to {
+                transform: rotate3d(0, 1, 0, 90deg)
+            }
+        }
+
+        @keyframes out-left {
+            from {
+                transform: rotate3d(0, 1, 0, 90deg)
+            }
+            to {
+                transform: rotate3d(0, 0, 0, 0deg)
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div class="wrap">
+    <div id="test" style="width: 200px;height: 200px;perspective: 1000px;">
+        <div class="box">
+            <div class="show"></div>
+            <div class="hide">这是一行文字</div>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    let wrap = document.getElementById('test');
+    //判断鼠标在元素上移入移出的方向（上下左右）
+    //mouseenter 鼠标移入 mouseleave鼠标移出+direction方向
+    function bindEvent() {
+        //鼠标移入事件
+        wrap.onmouseenter = function (e) {
+            //获取方向
+            get(e, 'in-');
+        };
+        //鼠标移出事件
+        wrap.onmouseleave = function (e) {
+            get(e, 'out-');
+        };
+    }
+
+    function get(even, str) {
+        let direction = getDirection(even);
+        switch (direction) {
+            case 0:
+                console.log('上', str);
+                wrap.setAttribute('class', '');
+                wrap.setAttribute('class', str + 'top');
+                break;
+            case 1:
+                console.log('右', str);
+                wrap.setAttribute('class', '');
+                wrap.setAttribute('class', str + 'right');
+                break;
+            case 2:
+                console.log('下', str);
+                wrap.setAttribute('class', '');
+                wrap.setAttribute('class', str + 'bottom');
+                break;
+            case 3:
+                console.log('左', str);
+                wrap.setAttribute('class', '');
+                wrap.setAttribute('class', str + 'left');
+                break;
+        }
+    }
+
+    function getDirection(event) {
+        //获取当前元素的宽度、高度、距离上边距离、距离左边距离
+        const currentWidth = wrap.offsetWidth,
+            currentHeight = wrap.offsetHeight,
+            currentTop = wrap.offsetTop,
+            currentLeft = wrap.offsetLeft,
+            //当前x坐标等于 浏览器坐标-当前元素距离左边距离-当前元素宽度的一半  如果是长方形将长方形缩放成成正方形
+            x = (event.clientX - currentLeft - currentWidth / 2) * (currentWidth > currentHeight ? (currentHeight / currentWidth) : 1),
+            y = (event.clientY - currentTop - currentHeight / 2) * (currentHeight > currentWidth ? (currentWidth / currentHeight) : 1),
+            direction = (Math.round((Math.atan2(y, x) * (180 / Math.PI) + 180) / 90) + 3) % 4;
+        /**
+         *Math.atan2(y, x) * (180 / Math.PI) 范围(-180~180)
+         *Math.atan2(y, x) * (180 / Math.PI)+180 范围（0~360）
+         *     原取值范围           取值范围+180后的范围   除以90四舍五入后的值  所有的值+3  所有值取余4
+         *top -135~-45              45~135                  1                    4            0
+         *right -45~45              135~225                 2                    5            1
+         *bottom 45~135             225~315                 3                    6            2
+         *left 135~180 -180~-135    315~360 0~45            4/0                  7/3          3*/
+        console.log((Math.round(((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4);
+        console.log(x, y);
+        return direction;
+    }
+
+    bindEvent();
+</script>
+</body>
+</html>

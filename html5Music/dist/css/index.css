@@ -94,7 +94,8 @@ body .wrap .pro .pro-wrap .pro-bottom {
 }
 body .wrap .pro .pro-wrap .pro-top {
   background-color: #fff;
-  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
   position: relative;
 }
 body .wrap .pro .pro-wrap .pro-top .slider {
@@ -156,11 +157,15 @@ body .play-list {
   bottom: 0;
   background-color: #fff;
   width: 100%;
-  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  transition: -webkit-transform 200ms ease-out;
   transition: transform 200ms ease-out;
+  transition: transform 200ms ease-out, -webkit-transform 200ms ease-out;
 }
 body .play-list.show {
-  transform: translateY(0);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 body .play-list .play-header,
 body .play-list .close-btn {
@@ -190,4 +195,3 @@ body .play-list .list-wrapper li.sign h3 {
 body .play-list .list-wrapper li.sign h3 span {
   color: red;
 }
-/*# sourceMappingURL=index.css.map */

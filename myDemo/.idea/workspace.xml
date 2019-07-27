@@ -2,106 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b196beae-d527-4817-99f8-9c45c150ab7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../html5Music/dist/mock/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/axios/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/axios/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/blank.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/category.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/hot.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/province.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/changeCity/select.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/default.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/footer/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/geo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/myNav.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/searchBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/header/topBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/container.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/life.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/menu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/index/slider.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/category.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/crumbs.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/item.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/list.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/components/products/select.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/changeCity.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/goodsList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/page/register.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mt-app/src/store/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vagrant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/cavasCircle.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/cavasScratchers.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/cavasSnow.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/css3whirligig.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/echartDemo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/08.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/09.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/echarts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pizza-app/src/store/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pizza-app/src/store/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pizza-app/vue.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/webpackConfigure.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/postcss问题.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/css/demo.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/image/04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/src/js/sum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webpackConfigure/webpack.dev.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/mousePositionDetermination.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/src/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/src/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html5Music/dist/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/dist/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/es6Demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/es6Demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/js/tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/js/tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/2048Game.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/2048Game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/cs.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/cs.html" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/es6Demo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="845">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/html/cavasSnow.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -113,105 +26,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>timer</find>
-      <find>realPicNum</find>
-      <find>console</find>
-      <find>colorsArray</find>
-      <find>jQuery.fn.init</find>
-      <find>ajax</find>
-      <find>isAuto</find>
-      <find>flag</find>
-      <find>nowIndex</find>
-      <find>autoChange</find>
-      <find>autoMove</find>
-      <find>showImgWidth</find>
-      <find>imgWidth</find>
-      <find>parameter</find>
-      <find>http://www.wookmark.com/images/original/662881_wookmark.jpg</find>
-      <find>item</find>
-      <find>container</find>
-      <find>col-md-3</find>
-      <find>.col-</find>
-      <find>h2</find>
-      <find>bg</find>
-      <find>random</find>
-      <find>w</find>
-      <find>init</find>
-      <find>test</find>
-      <find>myPromise</find>
-      <find>requestAnimationFrame</find>
-      <find>titles</find>
-      <find>title</find>
-      <find>console.log</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>lock</replace>
-      <replace>oPicUL.style.left</replace>
-      <replace>wrap</replace>
-      <replace>let</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/html/lunbotu2.html" />
-        <option value="$PROJECT_DIR$/html/lunbotu3.html" />
-        <option value="$PROJECT_DIR$/html/sendAnHTTPRequest.html" />
-        <option value="$PROJECT_DIR$/html/tanchuang.html" />
-        <option value="$PROJECT_DIR$/html/biaoge.html" />
-        <option value="$PROJECT_DIR$/js/2048.js" />
-        <option value="$USER_HOME$/Desktop/js轮播图/css/lbt.css" />
-        <option value="$PROJECT_DIR$/html/lunbotu.html" />
-        <option value="D:/渡一学习资料/PDF/笔记/1-快速掌握BOM对象核心技能/index.html" />
-        <option value="$PROJECT_DIR$/html/lunbotu4.html" />
-        <option value="$PROJECT_DIR$/html/2048Game.html" />
-        <option value="$PROJECT_DIR$/html/11.html" />
-        <option value="$PROJECT_DIR$/html/conditionScreening.html" />
-        <option value="D:/我的文档/Documents/WeChat Files/szg0107/FileStorage/File/2019-03/yundong.html" />
-        <option value="$PROJECT_DIR$/html/JQtest.html" />
-        <option value="$PROJECT_DIR$/html/JQtHotSpotRankings.html" />
-        <option value="$PROJECT_DIR$/html/ArrayDemo.html" />
-        <option value="$PROJECT_DIR$/html/studentManagement.html" />
-        <option value="$PROJECT_DIR$/js/myJquery.js" />
-        <option value="D:/渡一学习资料/PDF/index.js" />
-        <option value="$PROJECT_DIR$/html/JQDemo.html" />
-        <option value="D:/我的文档/Documents/WeChat Files/szg0107/FileStorage/File/2019-03/模拟重力场.html" />
-        <option value="$PROJECT_DIR$/html/fullPage.html" />
-        <option value="D:/我的文档/Documents/WeChat Files/szg0107/FileStorage/File/2019-04/1.html" />
-        <option value="$USER_HOME$/Desktop/jd/jd/swiper/swiper.js" />
-        <option value="$USER_HOME$/Desktop/jd/jd/swiper/swiper.html" />
-        <option value="$PROJECT_DIR$/html/lunbotu5.html" />
-        <option value="D:/游戏下载/html实训/web/inedex.html" />
-        <option value="$USER_HOME$/Desktop/index.html" />
-        <option value="$PROJECT_DIR$/html/css3Demo.html" />
-        <option value="$PROJECT_DIR$/html/cs.html" />
-        <option value="$PROJECT_DIR$/js/common_methods.js" />
-        <option value="$PROJECT_DIR$/html/test.html" />
-        <option value="$PROJECT_DIR$/html/test.php" />
-        <option value="$PROJECT_DIR$/html/tsconfig.json" />
-        <option value="$USER_HOME$/Desktop/waterfall/js/index.js" />
-        <option value="$PROJECT_DIR$/html/waterfall.html" />
-        <option value="$PROJECT_DIR$/html/chattingRobot.html" />
-        <option value="$PROJECT_DIR$/html/1111.html" />
-        <option value="$PROJECT_DIR$/html/html5Demo.html" />
-        <option value="$PROJECT_DIR$/html/1.html" />
-        <option value="$PROJECT_DIR$/html/BootstrapDemo.html" />
-        <option value="$PROJECT_DIR$/html/css3AxisPhotos.html" />
-        <option value="$PROJECT_DIR$/html/css3whirligig.html" />
-        <option value="$PROJECT_DIR$/html/cavasScratchers.html" />
-        <option value="$PROJECT_DIR$/html/cavasCircle.html" />
-        <option value="$PROJECT_DIR$/js/server.js" />
-        <option value="$USER_HOME$/AppData/Local/Temp/HZ$D.947.1751/HZ$D.947.1757/ES6课程资料/lesson7/MyPromise.js" />
-        <option value="$PROJECT_DIR$/html/echartDemo.html" />
-        <option value="$PROJECT_DIR$/html/cavasSnow.html" />
-        <option value="$PROJECT_DIR$/html/es6Demo.html" />
-      </list>
-    </option>
   </component>
   <component name="JsBowerSettings">
     <node-interpreter value="project" />
@@ -224,48 +40,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="113" />
-    <option name="y" value="3" />
-    <option name="width" value="1159" />
-    <option name="height" value="728" />
-  </component>
+  <component name="ProjectId" id="1OWur4IifgmfvIvWwSSWQBFq5sp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="myDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myDemo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -273,7 +50,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Administrator/AppData/Local/Temp/HZ$D.203.4829/HZ$D.203.4838/js完美收官课程资料/JS完美收官/01-03Js完美收官/01javascript完美收官-课前预热/轮播图/move.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/node/http" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -292,7 +69,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -532,41 +309,44 @@
       <workItem from="1561630971473" duration="106000" />
       <workItem from="1561638036539" duration="9000" />
       <workItem from="1561948179562" duration="96000" />
+      <workItem from="1562734773598" duration="815000" />
+      <workItem from="1562761988590" duration="62000" />
+      <workItem from="1562765286129" duration="620000" />
+      <workItem from="1562849623665" duration="21000" />
+      <workItem from="1562850510885" duration="565000" />
+      <workItem from="1562916718063" duration="1881000" />
+      <workItem from="1562928108923" duration="60000" />
+      <workItem from="1563624509930" duration="56000" />
+      <workItem from="1563780871283" duration="939000" />
+      <workItem from="1563853867351" duration="25793000" />
+      <workItem from="1563950210497" duration="138000" />
+      <workItem from="1564105424418" duration="143000" />
+      <workItem from="1564105888423" duration="4906000" />
+      <workItem from="1564116073590" duration="397000" />
+      <workItem from="1564117610831" duration="21874000" />
+      <workItem from="1564243438219" duration="114000" />
+      <workItem from="1564244141213" duration="4602000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="972389000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="113" y="3" width="1159" height="728" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21944693" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3277311" />
-      <window_info anchor="bottom" id="Debug" order="3" show_stripe_button="false" weight="0.3989455" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3277311" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32864675" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="3" side_tool="true" weight="0.32939035" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.php" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
@@ -579,293 +359,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/myDemo$BootstrapDemo_html.dat" NAME="BootstrapDemo.html Coverage Results" MODIFIED="1557818262528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/JQDemo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="66" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-            <element signature="e#345#383#0" />
-            <element signature="e#402#540#0" />
-            <element signature="e#564#680#0" />
-            <element signature="e#708#800#0" />
-            <element signature="e#827#864#0" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap-3.3.7-dist/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46819">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16330">
-          <caret line="1614" column="38" selection-start-line="1614" selection-start-column="33" selection-end-line="1614" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/渡一学习资料/PDF/index.js" />
-    <entry file="file://$PROJECT_DIR$/html/ArrayDemo.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.728.2634/HZ$D.728.2635/My2048/index.js" />
-    <entry file="file://$PROJECT_DIR$/html/2048Game.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/07.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/01.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/lunbotu5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <folding>
-            <element signature="e#22#26#1" expanded="true" />
-            <element signature="e#23#27#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.151.4312/HZ$D.151.4315/css3纵向 照片展示/demo.css" />
-    <entry file="file://$PROJECT_DIR$/html/lunbotu4.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/JQtHotSpotRankings.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/lunbotu.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/lunbotu2.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/lunbotu3.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.157.726/HZ$D.157.728/css3纵向 照片展示/demo.css" />
-    <entry file="file://$PROJECT_DIR$/html/css3AxisPhotos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4119">
-          <caret line="236" column="49" selection-start-line="236" selection-start-column="49" selection-end-line="236" selection-end-column="49" />
-          <folding>
-            <element signature="e#312#400#0" />
-            <element signature="e#428#490#0" />
-            <element signature="e#506#650#0" />
-            <element signature="e#1232#1331#0" />
-            <element signature="e#1362#1461#0" />
-            <element signature="e#1492#1591#0" />
-            <element signature="e#1622#1721#0" />
-            <element signature="e#1752#1851#0" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.231.4470/HZ$D.231.4475/20190520/旋转木马鼠标拖拽图片展示/index.css" />
-    <entry file="file://$PROJECT_DIR$/html/css3Demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6105">
-          <caret line="38" selection-start-line="38" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="e#304#422#0" />
-            <element signature="e#444#481#0" />
-            <element signature="e#497#641#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/06.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.231.4470/HZ$D.231.4478/20190520/旋转木马鼠标拖拽图片展示/index.js" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.231.4470/HZ$D.231.4477/20190520/旋转木马鼠标拖拽图片展示/demo.js" />
-    <entry file="file://$PROJECT_DIR$/html/html5Demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="255" column="10" selection-start-line="255" selection-start-column="10" selection-end-line="255" selection-end-column="10" />
-          <folding>
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/20190527h5提升/snow.html" />
-    <entry file="file://$PROJECT_DIR$/html/chattingRobot.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="226" column="11" selection-start-line="226" selection-start-column="11" selection-end-line="226" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cans.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/BootstrapDemo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/20190527h5提升/demo.html" />
-    <entry file="file://$USER_HOME$/Desktop/20190527h5提升/刮刮乐.html" />
-    <entry file="file://$PROJECT_DIR$/html/cavasScratchers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="66" />
-          <folding>
-            <element signature="e#1551#1777#0" />
-            <element signature="e#2265#2396#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/h5技术提升2/canvas炫动鼠标跟随效果/canvas.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-650">
-          <caret line="58" column="47" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="47" />
-          <folding>
-            <element signature="e#1186#1288#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#html#0;n#!!top" />
-            <element signature="e#179#251#0" />
-            <element signature="e#262#450#0" />
-            <element signature="e#467#613#0" />
-            <element signature="n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#1;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#2;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#3;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#4;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#5;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#6;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#7;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#8;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#td#0;n#tr#8;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#ul#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#2552#2781#0" />
-            <element signature="e#2656#2746#0" />
-            <element signature="e#2825#3065#0" />
-            <element signature="e#2944#3034#0" />
-            <element signature="e#3107#3152#0" />
-            <element signature="e#3219#3518#0" />
-            <element signature="e#3338#3488#0" />
-            <element signature="e#3586#3800#0" />
-            <element signature="e#3690#3794#0" />
-            <element signature="e#3808#5951#0" />
-            <element signature="e#5957#6070#0" />
-            <element signature="e#6574#6777#0" />
-            <element signature="e#6823#7187#0" />
-            <element signature="e#7228#7350#0" />
-            <element signature="e#7356#7403#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json" />
-    <entry file="file://$PROJECT_DIR$/js/server.js" />
-    <entry file="file://$PROJECT_DIR$/package.json" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.947.1751/HZ$D.947.1756/ES6课程资料/lesson5/2-Map.js" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.947.1751/HZ$D.947.1757/ES6课程资料/lesson7/MyPromise.js" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.947.1751/HZ$D.947.1758/ES6课程资料/lesson8/Generator.js" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.947.1751/HZ$D.947.1759/ES6课程资料/lesson9/async+await.js" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.198.1877/HZ$D.198.1878/incubator-echarts-4.2.1/index.js" />
-    <entry file="file://$PROJECT_DIR$/js/qrcode.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.198.1877/HZ$D.198.1880/incubator-echarts-4.2.1/dist/echarts.js" />
-    <entry file="file://$PROJECT_DIR$/js/echarts.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.690.2110/HZ$D.690.2112/20190531class/pie.js" />
-    <entry file="file://$PROJECT_DIR$/html/css3whirligig.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="113" column="16" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cavasCircle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="30" selection-start-line="30" selection-end-line="31" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/echartDemo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="68" column="97" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="97" />
-          <folding>
-            <element signature="e#825#2045#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/es6Demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="845">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cavasSnow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

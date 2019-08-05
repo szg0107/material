@@ -1,0 +1,231 @@
+/*基础样式 初始化样式*/
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+/*导入字体*/
+@font-face {
+    font-family: 'MyIcon';
+    src: url("../font/glyphicons-halflings-regular.woff2");
+}
+
+body {
+    background-image: url("../img/bg.jpg");
+    position: relative;
+}
+
+/*头部样式*/
+.header {
+    width: 100%;
+    height: 50px;
+    background: #191818;
+    position: fixed;
+    top: 0;
+}
+
+.container {
+    position: relative;
+    width: 1170px;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.title {
+    display: inline-block;
+    float: left;
+    color: #eee;
+    line-height: 50px;
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+.menu {
+    float: left;
+}
+
+.menu > li {
+    display: inline-block;
+    color: #eee;
+    float: left;
+    width: 58px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.menu > li > a {
+    color: #eee;
+}
+
+.search_bar {
+    float: right;
+    padding-top: 8px;
+}
+
+.search_bar > input {
+    display: inline-block;
+    height: 22px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid;
+}
+
+.search_bar > button {
+    display: inline-block;
+    width: 54px;
+    height: 32px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    outline: none;
+    color: #555;
+    background-color: #fff;
+}
+
+/*内容样式*/
+.content {
+    display: flex;
+    width: 1170px;
+    margin: 80px auto 0 auto;
+}
+
+/*内容左侧*/
+.content_left {
+    width: 66%;
+    box-sizing: border-box;
+    padding: 0 20px 0 0;
+}
+
+/*分页样式*/
+.page_tool {
+    margin-top: 20px;
+}
+
+.page_tool > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.page_tool > ul > li {
+    min-width: 40px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #000;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.page_tool > ul > li:hover {
+    background-color: #dcdcdc;
+}
+
+.now_page{
+    background-color: #333 !important;
+    color: #fff;
+}
+
+/*内容右侧*/
+.content_right {
+    width: 34%;
+    padding: 0 0 0 0;
+}
+
+/*右侧模块*/
+.right_module {
+    background-color: #1f1f1f;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0 15px 25px 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+/*标题样式*/
+.right_module > div {
+    padding: 15px 15px 15px 0;
+}
+
+/*标签样式*/
+.right_module > a {
+    margin-right: 5px;
+}
+
+/*热门列表样式*/
+.right_module > ul > li {
+    padding: 8px 0;
+    border-bottom: 1px solid #292929;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.right_module > ul > li:last-of-type {
+    border-bottom: 0;
+}
+
+.right_module > ul > li > a {
+    color: #fff;
+}
+
+/*最新评论用户名外层*/
+.right_module > ul > li > div {
+    color: #fff;
+    padding: 5px 0;
+}
+
+/*用户评论时间*/
+.pull_right {
+    float: right;
+}
+
+.right_module > ul > li > p > a {
+    color: #777;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+/*友情链接*/
+.friendly_link {
+    display: inline-block;
+    width: 48%;
+}
+
+.friendly_link > a {
+    color: #fff;
+}
+
+.footer {
+    height: 60px;
+    background-color: #191818;
+    text-align: center;
+    padding: 20px;
+    color: #a2a2a2;
+}
+
+.footer > ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.footer > ul > li {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer > p {
+    margin-top: 10px;
+}

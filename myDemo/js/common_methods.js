@@ -5,10 +5,32 @@
 
 /*获取地址参数*/
 function getQueryString1(name) {
-    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    let r = decodeURI(window.location.href).substr(1).match(reg);
-    if (r != null) return unescape(r[2]);
+    const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"),
+        r = window.location.search.slice(1).match(reg);
+    if (r != null) return decodeURI(r[2]);
     return null;
+    /**
+     * 首先是获取URL
+     * decodeURI() 函数可对 encodeURI() 函数编码过的 URI 进行解码。
+     *window.location.search.slice(1)可以获取URL？后面的字符串例如：http://www.test.com?a=123&b=231得到的会是：a=123&b=231
+     *然后再用正则获取各个参数下的值
+     *var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+     *1.这里的(^|&)会匹配开头为空或&的字符
+     *2.+ name + 这里是匹配你要找的参数名
+     *3.([^&]*)这里是匹配“参数=”后面非&的字符
+     *4.(&|$)这里匹配以空或&结束的字符
+     *这里4个条件就把a=123&b=231里的a=123&或&b=231找出来了
+     *r = r.match(reg);
+     *这里match方法可以把符合正则的字符找出来，是以数组形式给出，例如我们要找的是a的话：
+     [
+     'a=123&',                   这里是整个正则匹配出来的
+     '',                         这里是(^|&)匹配出来的
+     '123',                      这里是([^&]*)匹配的
+     '&'                         这里是(&|$)匹配的
+     ]
+
+     *我们需要的就是第三个([^&]*)匹配的字符
+     *decodeURIComponent(r[2])  这里拿到数组的第三个值再用decodeURIComponent转码*/
 }
 
 /*得到当前选中项是第几个*/
@@ -54,9 +76,6 @@ function isPhone(value) {
     let reg = new RegExp('((\\d{11})|^((\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1})|(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1}))$)'); //正则表达式
     return reg.test(value);
 }
-
-
-
 
 
 /**封装ajax
@@ -107,10 +126,10 @@ function myAjax(method, url, callBack, data, flag) {
         data = data.toString();
     }
 
-    data=parameter.length === 0 ? data : parameter;
+    data = parameter.length === 0 ? data : parameter;
 
     if (method === 'GET') {
-        xhr.open(method, url + '?' + data , flag);
+        xhr.open(method, url + '?' + data, flag);
         xhr.send();
     } else if (method === 'POST') {
         xhr.open(method, url, flag);
@@ -297,24 +316,24 @@ function loadScript(url, callback) {
 }
 
 //防抖 方法 延迟多少毫秒
-function debounce(handler,delay) {
+function debounce(handler, delay) {
     return function () {
-        let serf=this,arg=arguments;
+        let serf = this, arg = arguments;
         clearTimeout(handler.timer);
-        handler.timer=setTimeout(function () {
-            handler.apply(serf,arg);
-        },delay);
+        handler.timer = setTimeout(function () {
+            handler.apply(serf, arg);
+        }, delay);
     }
 }
 
 //节流 方法 等待多少毫秒
-function throttle(handler,wait) {
-    let lastTime=0;
+function throttle(handler, wait) {
+    let lastTime = 0;
     return function (e) {
-        let nowTime=new Date().getTime();
-        if (nowTime-lastTime>wait) {
-            handler.apply(this,arguments);
-            lastTime=nowTime;
+        let nowTime = new Date().getTime();
+        if (nowTime - lastTime > wait) {
+            handler.apply(this, arguments);
+            lastTime = nowTime;
         }
     }
 }
@@ -346,7 +365,7 @@ function myTypeOf(target) {
             '[object String]': 'string - object',
             '[object Boolean]': 'boolean - object',
         };
-    let ret = typeof(target);
+    let ret = typeof (target);
     if (target === null) {
         return 'null';
     } else if (ret === 'object') {
@@ -710,20 +729,6 @@ let inheritTwo = (function () {
         Target.prototype.uber = Origin.prototype;
     }
 }());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //=================================项目中具体用到的方面===================================

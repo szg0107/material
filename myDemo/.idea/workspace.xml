@@ -1,14 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b196beae-d527-4817-99f8-9c45c150ab7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/html/mousePositionDetermination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/.idea/watcherTasks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/dist/css/index.css" afterDir="false" />
+    <list default="true" id="b0b10800-04b5-4481-961c-02f4e9a2b0dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/.idea/PersonalBlog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/dao/blogDao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/dao/commentDao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/dao/dbUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/dao/everyDayDao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/dao/tagBlogMappingDao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/dao/tagDao.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/loader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/application.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/express.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/middleware/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/middleware/query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/router/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/router/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/lib/view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/express/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/Connection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/ConnectionConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/Pool.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/PoolCluster.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/PoolConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/PoolConnection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/PoolNamespace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/PoolSelector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/Auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/BufferList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/PacketHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/PacketWriter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/Parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/Protocol.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/ResultSet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/SqlString.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/Timer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/constants/charsets.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/constants/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/constants/errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/constants/field_flags.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/constants/server_status.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/constants/types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/AuthSwitchRequestPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/AuthSwitchResponsePacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ClientAuthenticationPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ComChangeUserPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ComPingPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ComQueryPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ComQuitPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ComStatisticsPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/EofPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ErrorPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/Field.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/FieldPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/HandshakeInitializationPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/LocalDataFilePacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/OkPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/OldPasswordPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/RowDataPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/SSLRequestPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/StatisticsPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/UseOldPasswordPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/packets/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/ChangeUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/Handshake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/Ping.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/Query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/Quit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/Sequence.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/Statistics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/lib/protocol/sequences/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/mysql/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/svg-captcha/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/svg-captcha/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/vue/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/vue/types/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/vue/types/options.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/vue/types/plugin.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/vue/types/vnode.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/node_modules/vue/types/vue.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/blog_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/bootstrap-wysiwyg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-apollo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-basic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-clj.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-css.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-dart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-erlang.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-go.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-hs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-lisp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-llvm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-lua.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-matlab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-ml.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-mumps.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-pascal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-proto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-r.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-rd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-scala.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-sql.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-tcl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-tex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-vb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-vhdl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-wiki.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-xq.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/lang-yaml.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/prettify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/prettify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/google-code-prettify/run_prettify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/external/jquery.hotkeys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/promo-868x350.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/bootstrap-wysiwyg-master/republish.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/css/about.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/css/blog_detail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/css/guestBook.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/css/siteMap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/edit_blog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/edit_every_day.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/font/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/guestBook.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/img/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/js/about.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/js/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/js/base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/js/blog_detail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/js/guestBook.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/js/siteMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/page/siteMap.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/server.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/util/respUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/util/timeUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/web/blogController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/web/commentController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PersonalBlog/web/everyDayController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vagrant.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/2048Game.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/2048Game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/cs.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/cs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/common_methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/common_methods.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,71 +178,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="tsconfig.json" />
-        <option value="JavaScript File" />
-        <option value="package.json" />
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="JsBowerSettings">
-    <node-interpreter value="project" />
-    <bower-package value="" />
-    <bower.json value="" />
-  </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectId" id="1OWur4IifgmfvIvWwSSWQBFq5sp" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1OcnPCFHybaoeyoe4ACTTQvu9dT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Administrator/AppData/Local/Temp/HZ$D.203.4829/HZ$D.203.4838/js完美收官课程资料/JS完美收官/01-03Js完美收官/01javascript完美收官-课前预热/轮播图/move.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="last_opened_file_path" value="E:/node/http" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.jscs" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.detected.package.stylelint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.jscs" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.path.for.package.stylelint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.jscs" value="" />
-    <property name="node.js.selected.package.standard" value="" />
-    <property name="node.js.selected.package.stylelint" value="" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\git仓库\material\myDemo\img" />
-      <recent name="E:\git仓库\material\myDemo\js" />
-      <recent name="E:\git仓库\material\myDemo" />
-      <recent name="E:\git仓库\material\myDemo\html" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\git仓库\material\myDemo\other" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -94,246 +201,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.server.js">
-    <configuration name="BootstrapDemo.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/myDemo/html/BootstrapDemo.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="chattingRobot.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/myDemo/html/chattingRobot.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="cs.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/myDemo/html/cs.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="es6Demo.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/myDemo/html/es6Demo.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="common_methods.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="common_methods.js" working-dir="$PROJECT_DIR$/js">
-      <method v="2" />
-    </configuration>
-    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/js">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Node.js.server.js" />
-        <item itemvalue="JavaScript Debug.chattingRobot.html" />
-        <item itemvalue="Node.js.common_methods.js" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b196beae-d527-4817-99f8-9c45c150ab7f" name="Default Changelist" comment="" />
-      <created>1544759530670</created>
+      <changelist id="b0b10800-04b5-4481-961c-02f4e9a2b0dd" name="Default Changelist" comment="" />
+      <created>1564285725713</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1544759530670</updated>
-      <workItem from="1544759533546" duration="821000" />
-      <workItem from="1545320785983" duration="99000" />
-      <workItem from="1545550934031" duration="2133000" />
-      <workItem from="1545558052099" duration="920000" />
-      <workItem from="1545570466228" duration="3323000" />
-      <workItem from="1545716270063" duration="6787000" />
-      <workItem from="1549779240944" duration="1129000" />
-      <workItem from="1550067728397" duration="17836000" />
-      <workItem from="1550126384250" duration="13623000" />
-      <workItem from="1550197048272" duration="22109000" />
-      <workItem from="1550232888777" duration="75000" />
-      <workItem from="1550233005638" duration="16865000" />
-      <workItem from="1550286828615" duration="26308000" />
-      <workItem from="1550371747579" duration="6104000" />
-      <workItem from="1550418105109" duration="68000" />
-      <workItem from="1550461195739" duration="1011000" />
-      <workItem from="1550501355580" duration="391000" />
-      <workItem from="1550556260430" duration="982000" />
-      <workItem from="1550928622091" duration="60000" />
-      <workItem from="1550929066073" duration="7904000" />
-      <workItem from="1550977012003" duration="10949000" />
-      <workItem from="1551009931409" duration="613000" />
-      <workItem from="1551010847399" duration="126000" />
-      <workItem from="1551011362569" duration="322000" />
-      <workItem from="1551095161369" duration="1194000" />
-      <workItem from="1551339508013" duration="535000" />
-      <workItem from="1551604907318" duration="202000" />
-      <workItem from="1551708508725" duration="76000" />
-      <workItem from="1551933737424" duration="359000" />
-      <workItem from="1551937019642" duration="9298000" />
-      <workItem from="1552024461639" duration="898000" />
-      <workItem from="1552031806488" duration="2215000" />
-      <workItem from="1552052152373" duration="813000" />
-      <workItem from="1552145658539" duration="466000" />
-      <workItem from="1552281727653" duration="4168000" />
-      <workItem from="1552323351725" duration="438000" />
-      <workItem from="1552365923889" duration="8824000" />
-      <workItem from="1552445352717" duration="5082000" />
-      <workItem from="1552454013516" duration="22884000" />
-      <workItem from="1552541081355" duration="797000" />
-      <workItem from="1552546059268" duration="6620000" />
-      <workItem from="1552612016291" duration="587000" />
-      <workItem from="1552612637391" duration="27250000" />
-      <workItem from="1552702548132" duration="43805000" />
-      <workItem from="1552791739753" duration="19893000" />
-      <workItem from="1552883950403" duration="14906000" />
-      <workItem from="1552967014900" duration="21997000" />
-      <workItem from="1553051955420" duration="20345000" />
-      <workItem from="1553142503599" duration="10400000" />
-      <workItem from="1553223094252" duration="13751000" />
-      <workItem from="1553310243667" duration="18862000" />
-      <workItem from="1553428490404" duration="13340000" />
-      <workItem from="1553479269030" duration="12836000" />
-      <workItem from="1553569027165" duration="4327000" />
-      <workItem from="1553656807642" duration="13439000" />
-      <workItem from="1553754543716" duration="8518000" />
-      <workItem from="1553794032337" duration="1484000" />
-      <workItem from="1553843994142" duration="6800000" />
-      <workItem from="1553877971071" duration="3568000" />
-      <workItem from="1553915816720" duration="9396000" />
-      <workItem from="1553935111181" duration="789000" />
-      <workItem from="1553937955848" duration="2178000" />
-      <workItem from="1553945129801" duration="2350000" />
-      <workItem from="1553961578030" duration="170000" />
-      <workItem from="1553964072348" duration="222000" />
-      <workItem from="1553968004465" duration="1130000" />
-      <workItem from="1554006465325" duration="41000" />
-      <workItem from="1554017076518" duration="261000" />
-      <workItem from="1554018836165" duration="162000" />
-      <workItem from="1554024200870" duration="7067000" />
-      <workItem from="1554093321662" duration="9322000" />
-      <workItem from="1554107615426" duration="3881000" />
-      <workItem from="1554169096968" duration="668000" />
-      <workItem from="1554223177852" duration="625000" />
-      <workItem from="1554260244554" duration="9599000" />
-      <workItem from="1554349085281" duration="4582000" />
-      <workItem from="1554389679990" duration="668000" />
-      <workItem from="1554471649581" duration="211000" />
-      <workItem from="1554474519493" duration="2771000" />
-      <workItem from="1554566383321" duration="277000" />
-      <workItem from="1554604653693" duration="15645000" />
-      <workItem from="1554728176901" duration="26000" />
-      <workItem from="1554806291886" duration="599000" />
-      <workItem from="1554869578947" duration="3695000" />
-      <workItem from="1554953352725" duration="592000" />
-      <workItem from="1555051810365" duration="11650000" />
-      <workItem from="1555126445973" duration="8054000" />
-      <workItem from="1555220358600" duration="2426000" />
-      <workItem from="1555225767223" duration="4588000" />
-      <workItem from="1555297221859" duration="15073000" />
-      <workItem from="1555407059054" duration="590000" />
-      <workItem from="1555473658524" duration="24284000" />
-      <workItem from="1555559651213" duration="3666000" />
-      <workItem from="1555640354968" duration="5889000" />
-      <workItem from="1555685383592" duration="34000" />
-      <workItem from="1555737568631" duration="1080000" />
-      <workItem from="1555739076743" duration="1343000" />
-      <workItem from="1555740650262" duration="7344000" />
-      <workItem from="1555771295525" duration="2234000" />
-      <workItem from="1555817711833" duration="977000" />
-      <workItem from="1555941694581" duration="76000" />
-      <workItem from="1555942498233" duration="1275000" />
-      <workItem from="1555983667860" duration="11540000" />
-      <workItem from="1556085323086" duration="5088000" />
-      <workItem from="1556162835972" duration="1183000" />
-      <workItem from="1556247074864" duration="9271000" />
-      <workItem from="1556337250355" duration="1893000" />
-      <workItem from="1556416292033" duration="28779000" />
-      <workItem from="1556508977212" duration="6797000" />
-      <workItem from="1556592928948" duration="6212000" />
-      <workItem from="1556770981004" duration="5493000" />
-      <workItem from="1556853895170" duration="7871000" />
-      <workItem from="1556942779429" duration="592000" />
-      <workItem from="1557031066858" duration="3963000" />
-      <workItem from="1557062308179" duration="185000" />
-      <workItem from="1557062528068" duration="296000" />
-      <workItem from="1557062855051" duration="85000" />
-      <workItem from="1557062968122" duration="317000" />
-      <workItem from="1557063312079" duration="1049000" />
-      <workItem from="1557069175851" duration="402000" />
-      <workItem from="1557069609508" duration="10799000" />
-      <workItem from="1557114016444" duration="28446000" />
-      <workItem from="1557194557188" duration="4673000" />
-      <workItem from="1557295034621" duration="1985000" />
-      <workItem from="1557373444095" duration="18801000" />
-      <workItem from="1557453830686" duration="20855000" />
-      <workItem from="1557535556462" duration="13900000" />
-      <workItem from="1557633074102" duration="5441000" />
-      <workItem from="1557717375031" duration="1193000" />
-      <workItem from="1557809542252" duration="3431000" />
-      <workItem from="1557821317968" duration="1823000" />
-      <workItem from="1557889398654" duration="1527000" />
-      <workItem from="1557903458319" duration="12000" />
-      <workItem from="1558083167902" duration="1127000" />
-      <workItem from="1558084530246" duration="607000" />
-      <workItem from="1558085312584" duration="792000" />
-      <workItem from="1558086370067" duration="1201000" />
-      <workItem from="1558151555731" duration="1211000" />
-      <workItem from="1558191793625" duration="11218000" />
-      <workItem from="1558232750248" duration="4182000" />
-      <workItem from="1558241730867" duration="113000" />
-      <workItem from="1558326842915" duration="769000" />
-      <workItem from="1558348870743" duration="607000" />
-      <workItem from="1558412169547" duration="16715000" />
-      <workItem from="1558581365501" duration="1254000" />
-      <workItem from="1558840523592" duration="198000" />
-      <workItem from="1558947886740" duration="630000" />
-      <workItem from="1558960961686" duration="13418000" />
-      <workItem from="1558978613466" duration="8240000" />
-      <workItem from="1559016421730" duration="20536000" />
-      <workItem from="1559112196976" duration="605000" />
-      <workItem from="1559116643597" duration="443000" />
-      <workItem from="1559117113514" duration="5582000" />
-      <workItem from="1559122732096" duration="136000" />
-      <workItem from="1559122896775" duration="2322000" />
-      <workItem from="1559125252458" duration="230000" />
-      <workItem from="1559125511003" duration="205000" />
-      <workItem from="1559125742512" duration="62000" />
-      <workItem from="1559125832550" duration="777000" />
-      <workItem from="1559126637273" duration="164000" />
-      <workItem from="1559126825688" duration="8436000" />
-      <workItem from="1559179163699" duration="7195000" />
-      <workItem from="1559274895075" duration="31000" />
-      <workItem from="1559306938362" duration="1462000" />
-      <workItem from="1559314996572" duration="8921000" />
-      <workItem from="1559362506708" duration="13828000" />
-      <workItem from="1559386805060" duration="486000" />
-      <workItem from="1559401703339" duration="1002000" />
-      <workItem from="1559459022155" duration="28000" />
-      <workItem from="1559489641689" duration="387000" />
-      <workItem from="1559651429325" duration="20000" />
-      <workItem from="1560416348812" duration="110000" />
-      <workItem from="1560955021681" duration="27000" />
-      <workItem from="1561102632820" duration="42000" />
-      <workItem from="1561541705570" duration="3912000" />
-      <workItem from="1561630971473" duration="106000" />
-      <workItem from="1561638036539" duration="9000" />
-      <workItem from="1561948179562" duration="96000" />
-      <workItem from="1562734773598" duration="815000" />
-      <workItem from="1562761988590" duration="62000" />
-      <workItem from="1562765286129" duration="620000" />
-      <workItem from="1562849623665" duration="21000" />
-      <workItem from="1562850510885" duration="565000" />
-      <workItem from="1562916718063" duration="1881000" />
-      <workItem from="1562928108923" duration="60000" />
-      <workItem from="1563624509930" duration="56000" />
-      <workItem from="1563780871283" duration="939000" />
-      <workItem from="1563853867351" duration="25793000" />
-      <workItem from="1563950210497" duration="138000" />
-      <workItem from="1564105424418" duration="143000" />
-      <workItem from="1564105888423" duration="4906000" />
-      <workItem from="1564116073590" duration="397000" />
-      <workItem from="1564117610831" duration="21874000" />
-      <workItem from="1564243438219" duration="114000" />
-      <workItem from="1564244141213" duration="4602000" />
+      <updated>1564285725713</updated>
+      <workItem from="1564285731030" duration="20000" />
+      <workItem from="1564286107371" duration="11000" />
+      <workItem from="1564911028488" duration="189000" />
+      <workItem from="1564913940432" duration="1112000" />
+      <workItem from="1565022799433" duration="588000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.php" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -347,32 +234,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand>
-      <path>
-        <item name="myDemo" type="b2602c69:ProjectViewProjectNode" />
-        <item name="myDemo" type="462c0819:PsiDirectoryNode" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/myDemo$BootstrapDemo_html.dat" NAME="BootstrapDemo.html Coverage Results" MODIFIED="1557818262528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

@@ -1,5 +1,5 @@
 //一个Dao对应一个表的操作
-const dbUtil = require('./dbutil');
+const dbUtil = require('./dbUtil');
 
 //根据博客id查询查询留言
 function queryCommentsByBlogId(blog_id, success) {

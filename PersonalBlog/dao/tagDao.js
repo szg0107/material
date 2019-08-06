@@ -1,5 +1,5 @@
 //一个Dao对应一个表的操作
-const dbUtil = require('./dbutil');
+const dbUtil = require('./dbUtil');
 
 //根据标签名查询标签
 function queryTag(tag, success) {

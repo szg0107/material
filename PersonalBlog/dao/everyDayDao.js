@@ -1,5 +1,5 @@
 //一个Dao对应一个表的操作
-const dbUtil = require('./dbutil');
+const dbUtil = require('./dbUtil');
 
 //查询每日一句
 function queryEveryDay(success) {

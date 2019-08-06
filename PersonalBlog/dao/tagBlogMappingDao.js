@@ -1,5 +1,5 @@
 //一个Dao对应一个表的操作
-const dbUtil = require('./dbutil');
+const dbUtil = require('./dbUtil');
 
 //通过标签id查询博客id
 function queryBlogIdByTagId(tagId, page, pageSize, success) {

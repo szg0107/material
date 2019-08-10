@@ -1,6 +1,7 @@
-//引入React必须是首字母大写的
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+//引入React必须是首字母大写的 jsx中的js和html
+import React from 'react';
+import ReactDOM from 'react-dom';
+import UnControl from "./components/UnControl";
 
 
 /**利用jsx 语法生成dom元素
@@ -9,47 +10,76 @@
  * React.createElement(type,props,children...)
  * jsx=>React.createElement(type,props,children...)=>vNode对象(描述当前元素)=>渲染在页面上*/
 
-// const div = <div>杉杉</div>;
+/*const topList = [
+    {
+        id: 0,
+        title: '老年人才用9键',
+        new: true,
+        hot: '46万'
+    },
+    {
+        id: 1,
+        title: '人贩子张维平死刑',
+        new: true,
+        hot: '44万'
+    },
+    {
+        id: 2,
+        title: '全国冻哭预警地图',
+        new: false,
+        hot: '35万'
+    },
+    {
+        id: 3,
+        title: '沈梦辰晒婚纱照',
+        new: false,
+        hot: '33万'
+    },
+    {
+        id: 4,
+        title: '恋爱4个月胖50近',
+        new: true,
+        hot: '32万'
+    },
+    {
+        id: 5,
+        title: '郭麒麟初中早恋',
+        new: false,
+        hot: '25万'
+    },
+    {
+        id: 6,
+        title: '男孩滑雪遭遇雪崩',
+        new: true,
+        hot: '24万'
+    },
+    {
+        id: 7,
+        title: '大熊猫玩菜刀',
+        new: false,
+        hot: '24万'
+    },
+    {
+        id: 8,
+        title: '姿态宣布退役',
+        new: false,
+        hot: '22万'
+    },
+    {
+        id: 9,
+        title: '卫龙辣条吃出虫子',
+        new: false,
+        hot: '20万'
+    },
+    {
+        id: 10,
+        title: '女生被罚抱头蹲',
+        new: true,
+        hot: '20万'
+    }
+];*/
+
+
 //将元素放到页面中进行渲染   参数1虚拟dom,  参数2容器
-// ReactDOM.render(div, document.getElementById('root'));
+ReactDOM.render(<UnControl/>, document.getElementById('root'));
 
-
-const React = {
-    createElement(type, props, ...children) {
-        return {
-            type,
-            props,
-            children
-        }
-    }
-};
-
-const div = <div id='demo'>杉杉<span id='desc'>最美</span></div>;
-console.log(div);
-
-const render = (vNode, container) => {
-    //如果虚拟dom是字符串 直接创建文本节点并添加到容器
-    if (typeof vNode === 'string') {
-        const text = document.createTextNode(vNode);
-        return container.appendChild(text);
-    }
-    //解构虚拟dom对象
-    const {type, props, children} = vNode,
-        //创建一个标签
-        ele = document.createElement(type);
-    //给标签设置属性
-    for (const key in props) {
-        if (key.startsWith('__')) {
-            break;
-        }
-        ele.setAttribute(key, props[key]);
-    }
-    //遍历children并给children属性赋值
-    children.forEach(temp => {
-        render(temp, ele);
-    });
-    //将标签添加到容器中
-    container.appendChild(ele);
-};
-
-render(div, window.root);

@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/Home' //主页
 //二级路由
-import Contact from '../components/about/Contact'//联系我们
-import Delivery from '../components/about/Delivery'//快递信息
-import History from '../components/about/History'//历史订单
-import OrderingGuide from '../components/about/OrderingGuide'//点餐文档
+import Contact from '../components/about/Contact' //联系我们
+import Delivery from '../components/about/Delivery' //快递信息
+import History from '../components/about/History' //历史订单
+import OrderingGuide from '../components/about/OrderingGuide' //点餐文档
 
 Vue.use(Router);
 
@@ -42,7 +42,7 @@ export default new Router({
       //管理
       path: '/Admin',
       name: 'Admin',
-      component: ()=>import('../components/Admin'),
+      component: () => import('../components/Admin'),
 
       //路由独享的守卫
       /*beforeEnter:(to,from,next)=>{
@@ -61,12 +61,12 @@ export default new Router({
       //关于我们
       path: '/About',
       name: 'About',
-      component: ()=>import('../components/about/About'),
+      component: () => import('../components/about/About'),
       //二级路由默认展示那个页面(重定向)
       redirect: '/About/Contact',
       //路由元信息
-      meta:{
-        login:true,
+      meta: {
+        login: true,
       },
       children: [
         {
@@ -99,7 +99,7 @@ export default new Router({
       //登录
       path: '/Login',
       name: 'Login',
-      component: ()=>import('../components/Login'),
+      component: () => import('../components/Login'),
     },
     {
       //注册
@@ -109,7 +109,6 @@ export default new Router({
       //懒加载写法
       component: () => import('../components/Register')
     },
-
   ],
   //路由滚动行为
   /*scrollBehavior(to, from, savedPosition) {

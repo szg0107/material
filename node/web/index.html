@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+    <input type="text" id="stuNum" placeholder="学号"/>
+    <input type="password" id="password" placeholder="密码"/>
+    <input type="submit" value="提交" onclick="login()"/>
+
+    <!--form表单请求接口    -->
+<!--    <form method="post" action="login">-->
+<!--        <input type="text" id="stuNum" name='stuNum' placeholder="学号"/>-->
+<!--        <input type="password" id="password" name="password" placeholder="密码"/>-->
+<!--        <input type="submit" value="提交" />-->
+<!--    </form>-->
+<script type="text/javascript">
+    window.onload=()=>{
+        const xmlHttp=new XMLHttpRequest();
+        xmlHttp.open('get','getData',true);
+        xmlHttp.send(null);
+        xmlHttp.onreadystatechange=()=>{
+            if (xmlHttp.readyState===4&&xmlHttp.status===200){
+                console.log(xmlHttp.responseText);
+                console.log(typeof xmlHttp.responseText);
+            }
+        };
+    };
+    function login() {
+        const stuNum=document.getElementById('stuNum').value,
+            password=document.getElementById('password').value,
+            params=`stuNum=${stuNum}&password=${password}`;
+        const xmlHttp=new XMLHttpRequest();
+        //发送get请求
+        // xmlHttp.open('get',`login?${params}`,true);
+        // xmlHttp.send(null);
+        //发送post请求
+        xmlHttp.open('post',`login`,true);
+        xmlHttp.send(params);
+        xmlHttp.onreadystatechange=()=>{
+            if (xmlHttp.readyState===4&&xmlHttp.status===200){
+                console.log(xmlHttp.responseText);
+                console.log(typeof xmlHttp.responseText);
+                if (xmlHttp.responseText==='ok'){
+                    alert('成功');
+                    //跳转方式：1.ajax跳转 form表单跳转
+                    location.href='./main.html';
+                }else {
+                    alert('失败');
+                }
+            }
+        };
+    }
+</script>
+</body>
+</html>

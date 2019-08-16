@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66afc406-e3a2-4711-a3a4-4528bff6a368" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/css/index.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/css/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-like-solid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-like.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-list.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-playlist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/icon-prev.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/image/jakob-owens-208991.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/audioControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/audioControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/gaussBlur.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/indexControl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/playList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/progress.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/render.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/zepto.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/mock/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,10 +76,12 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -65,7 +93,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -117,6 +145,7 @@
       <workItem from="1563290356606" duration="1036000" />
       <workItem from="1563293972200" duration="99000" />
       <workItem from="1565062391440" duration="947000" />
+      <workItem from="1565504737533" duration="451000" />
     </task>
     <servers />
   </component>
@@ -158,5 +187,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
     alert('还没有登录，请先登录!');
     next('/Login');
   }*/
-  //判断页面是否需要登录
+  //判断页面是否需要登录  判断父级是否有meta并且是login
   const needLogin=to.matched.some(item=>item.meta&&item.meta.login);
   if (needLogin){
     const isLogin=document.cookie.includes('login=true');

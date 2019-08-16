@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+main页面
+<input type="file" id="file"/>
+<input type="button" onclick="submitFile()" value="上传"/>
+
+<script type="text/javascript">
+    function submitFile() {
+        const file = document.getElementById('file').files[0],
+            form = new FormData(),
+            xhr = new XMLHttpRequest();
+        form.append('file', file);
+        xhr.open('post', '/testFileUpload', true);
+        xhr.onload = () => {
+            alert('上传成功');
+        };
+        xhr.send(file);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="name" placeholder="请输入名字"/>
+<input type="file" id="file"/>
+<button onclick="submitFile()">提交</button>
+<img src="#" id="pic"/>
+<a href="/getPic?path=file\33f71fed4136f8074b1c55190716f0ad" download="1.png">点击此处下载</a>
+<script type="text/javascript">
+    function submitFile() {
+        let file = document.getElementById('file').files[0],
+            name = document.getElementById('name').value,
+            form = new FormData(),
+            xhr = new XMLHttpRequest();
+        form.append('file', file);
+        form.append('name', name);
+        xhr.open('post', '/upload', true);
+        xhr.onload = () => {
+            console.log('上传成功！');
+        };
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const result = xhr.responseText,
+                    pic = document.getElementById('pic');
+                console.log(result);
+                pic.src = `/getPic?path=${JSON.parse(result).path}`;
+
+            }
+        };
+        xhr.send(form);
+
+    }
+
+</script>
+</body>
+</html>

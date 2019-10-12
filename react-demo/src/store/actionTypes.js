@@ -1,0 +1,9 @@
+//定义action类型预防类型拼写错误
+const CHANGE_INPUT_VAL = 'CHANGE_INPUT_VAL',
+    ADD_TODO_ITEM = 'ADD_TODO_ITEM',
+    DELETE_TODO_ITEM = 'DELETE_TODO_ITEM';
+export {
+    CHANGE_INPUT_VAL,
+    ADD_TODO_ITEM,
+    DELETE_TODO_ITEM
+}

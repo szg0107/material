@@ -1,4 +1,4 @@
-//引入React必须是首字母大写的
+//引入React必须是首字母大写的  React渲染过程练习
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 

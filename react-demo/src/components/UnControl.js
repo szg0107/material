@@ -1,6 +1,6 @@
 import React from 'react';
 
-/*受控组件*/
+/*非受控组件*/
 class UnControl extends React.Component {
     state = {
         list: []
@@ -14,7 +14,8 @@ class UnControl extends React.Component {
                     {/**相当于在UnControl里定义taskA=<input>
                     *或者taskA=React.createRef();16.3之后才有的方法
                      *组件中直接ref={this.taskA}
-                     * 方法中通过this.taskA.current获取dom对象*/}
+                     *方法中通过this.taskA.current获取dom对象
+                     *以前React版本中还可以ref='taskA'，不过后来React认为这种方式不合理就废弃了 */}
                     <input type="text" ref={dom => {
                         this.taskA = dom
                     }}/>

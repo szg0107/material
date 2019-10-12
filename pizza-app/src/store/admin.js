@@ -8,6 +8,7 @@ export default {
    * mapState({newXXX:state=>state.xxx})*/
   state: {
     name: '测试',
+    num:1
   },
 
   /**相当于组件内的计算属性
@@ -30,6 +31,9 @@ export default {
   mutations: {
     changeName(state, {name}) {
       state.name = name;
+    },
+    changeNum(state,num){
+      state.num=num;
     }
   },
 
@@ -44,6 +48,9 @@ export default {
       setTimeout(() => {
         commit('changeName', name);
       }, 100);
+    },
+    changeNum({commit}, num) {
+      commit('changeNum', num);
     }
   },
 }

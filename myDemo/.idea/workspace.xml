@@ -2,38 +2,76 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0b10800-04b5-4481-961c-02f4e9a2b0dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../html5Music/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/dist/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/css/index.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/css/index.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/dist/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-like-solid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-like.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-list.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-next.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-pause.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-play.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-playlist.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/icon-prev.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/image/jakob-owens-208991.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/audioControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/dist/js/audioControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/gaussBlur.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/indexControl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/playList.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/progress.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/render.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/js/zepto.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/dist/mock/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html5Music/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../html5Music/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/body.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/closeBtn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/pause.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/start.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/startGame.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/startP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/game.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/ground.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/initVar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/snake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/squareFactory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/GluttonousSnake.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pizza-app/src/components/son.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/ActivitiesNav/ActivitiesNav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/ActivitiesNav/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/AnotherChild.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/ChildLifeCycle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/LifeCycle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/MenuLink.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/Nav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/Person.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/PrivateRoute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoWrapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/context.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/index1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/index3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/Activities.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/all/All.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/all/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/articles/Articles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/articles/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/pins/Pins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/pins/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/recommended/Recommended.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/recommended/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/article/Article.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/article/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/home/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/home/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/login/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/login/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/noMatch/NoMatch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/noMatch/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/topics/Topics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/topics/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/actionCreators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/styles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/styles/reset.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pizza-app/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pizza-app/src/components/Admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pizza-app/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pizza-app/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pizza-app/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pizza-app/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pizza-app/src/store/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pizza-app/src/store/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/TagList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/TagList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/ToDoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/ToDoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/UnControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/UnControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/index2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/index2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webpackConfigure/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,16 +79,33 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1OcnPCFHybaoeyoe4ACTTQvu9dT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../studentManagementSystem/webServer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../studentManagementSystem/JQVersion" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,7 +115,12 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\git仓库\material\myDemo" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -91,6 +151,25 @@
       <workItem from="1565022799433" duration="588000" />
       <workItem from="1565153525870" duration="93000" />
       <workItem from="1565578167877" duration="1613000" />
+      <workItem from="1566715397807" duration="2852000" />
+      <workItem from="1567056008083" duration="93000" />
+      <workItem from="1567962827340" duration="117000" />
+      <workItem from="1568173098022" duration="35000" />
+      <workItem from="1568532526749" duration="95000" />
+      <workItem from="1568532802565" duration="651000" />
+      <workItem from="1568613283285" duration="23000" />
+      <workItem from="1568702590670" duration="21077000" />
+      <workItem from="1568730438975" duration="144000" />
+      <workItem from="1568789993225" duration="18540000" />
+      <workItem from="1568884079057" duration="4545000" />
+      <workItem from="1568897258484" duration="16772000" />
+      <workItem from="1568963580663" duration="14728000" />
+      <workItem from="1569034590261" duration="818000" />
+      <workItem from="1569042789305" duration="208000" />
+      <workItem from="1569116219390" duration="570000" />
+      <workItem from="1569211114793" duration="112000" />
+      <workItem from="1570845586567" duration="1702000" />
+      <workItem from="1570883741279" duration="55000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,4 @@
+//函数组件
 import React from "react";
 import '../index.css';
 

@@ -3,14 +3,17 @@
     Admin
     姓名:<input type="text" v-model="name"/>
     <button @click="handleClick">确定</button>
+
+    <Son :num="this.$store.state.admin.num" :fun="updateNum"/>
   </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-
+    import {mapState} from 'vuex';
+    import Son from "./son";
     export default {
         name: 'Admin',
+        components: {Son},
         data() {
             return {
                 name: 'henry',
@@ -25,6 +28,10 @@
             handleClick() {
                 this.$store.commit('admin/changeName', {name:this.name});
                 console.log(this.$store.state.admin.name);
+            },
+            updateNum(data){
+                console.log(data);
+                this.$store.dispatch('admin/changeNum',data);
             }
         },
         //组件内的守卫(进入组件之前) 无法使用this用next的vm参数代替

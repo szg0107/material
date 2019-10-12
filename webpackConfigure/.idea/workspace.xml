@@ -2,16 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0903b978-ab59-4a69-ae9c-e96afb776df8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/Control.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/TagList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/ToDoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/UnControl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/index2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/ActivitiesNav/ActivitiesNav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/ActivitiesNav/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/AnotherChild.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/ChildLifeCycle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/LifeCycle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/Nav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/Person.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoWrapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/context.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/index3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/Activities.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/all/All.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/all/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/articles/Articles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/articles/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/pins/Pins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/pins/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/recommended/Recommended.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/recommended/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/article/Article.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/article/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/home/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/home/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/login/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/login/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/topics/Topics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/topics/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/styles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../react-demo/src/styles/reset.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../myDemo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pizza-app/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pizza-app/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/TagList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/TagList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/ToDoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/ToDoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/UnControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/UnControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react-demo/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-demo/src/index2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/index2.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +143,7 @@
       <workItem from="1561465966478" duration="5361000" />
       <workItem from="1565254279056" duration="137000" />
       <workItem from="1565362917730" duration="38000" />
+      <workItem from="1567320380571" duration="27000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贪吃蛇</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            background-image: url("../GluttonousSnakeIMG/bg.jpg");
+            background-size: 100% 100%;
+            position: relative;
+        }
+
+        .startBtn {
+            background-image: url("../GluttonousSnakeIMG/startGame.png");
+            height: 170px;
+            width: 200px;
+            background-size: 100% 100%;
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            /*display: none;*/
+            z-index: 1;
+        }
+        .main{
+            display: flex;
+            height: 100%;
+        }
+
+        .left-side{
+            width: 24%;
+            height: 100%;
+        }
+        .left-side img{
+            display: none;
+            margin: 50px 0 0 50px;
+            cursor:pointer;
+        }
+
+        .content{
+            width: 50%;
+            height: 100%;
+            position: relative;
+        }
+        .header{
+            height: 80px;
+            line-height:80px;
+            text-align: center;
+            color:#ddd;
+            font-size: 20px;
+            font-weight:bolder;
+        }
+
+        .game{
+            width: 85%;
+            height: 38%;
+            /*border: 1px solid #f00;*/
+            position: absolute;
+            left: 10%;
+            top: 28%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .snakeHead{
+            background-image: url("../GluttonousSnakeIMG/head.png");
+            background-size: 100% 100%;
+        }
+        .snakeBody{
+            background-image: url("../GluttonousSnakeIMG/body.png");
+            background-size: 100% 100%;
+        }
+        .food{
+            background-image: url("../GluttonousSnakeIMG/apple.png");
+            background-size: 100% 100%;
+        }
+
+        .closer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background-image: url("../GluttonousSnakeIMG/startP.jpg");
+            background-size: 100% 100%;
+            height: 300px;
+            width: 400px;
+            border-radius:20px;
+            display: none;
+        }
+        .close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background-image: url("../GluttonousSnakeIMG/closeBtn.png");
+            background-size: 100% 100%;
+            cursor:pointer;
+        }
+        .loserScore{
+            height: 30px;
+            width: 40px;
+            position: absolute;
+            top: 42%;
+            left: 40%;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <!--开始按钮-->
+    <div class="startBtn"></div>
+
+    <!--内容区-->
+    <div class="main">
+        <!--坐边开始/暂停按钮-->
+        <div class='left-side'><img class='playAndPause'src="../GluttonousSnakeIMG/pause.png"/></div>
+        <!--中间内容区-->
+        <div class="content">
+            <div class="header">分数:<span class="score">0</span></div>
+            <div class="game"></div>
+        </div>
+    </div>
+
+    <!--游戏结束区-->
+    <div class="closer">
+        <div class="close"></div>
+        <div class="loserScore">0</div>
+    </div>
+
+</div>
+<!--基础JS-->
+<script type="text/javascript" src="../GluttonousSnakeJS/base.js"></script>
+<!--全局属性JS-->
+<script type="text/javascript" src="../GluttonousSnakeJS/initVar.js"></script>
+<!--方块工厂-->
+<script type="text/javascript" src="../GluttonousSnakeJS/squareFactory.js"></script>
+<!--渲染页面JS-->
+<script type="text/javascript" src="../GluttonousSnakeJS/ground.js"></script>
+<!--蛇操作js-->
+<script type="text/javascript" src="../GluttonousSnakeJS/snake.js"></script>
+<!--游戏整体逻辑js-->
+<script type="text/javascript" src="../GluttonousSnakeJS/game.js"></script>
+</body>
+</html>

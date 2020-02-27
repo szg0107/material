@@ -108,7 +108,7 @@
                 return {
                     name: surName[Math.ceil(Math.random() * 504)] + lastName,
                     sNo: parseInt(sNo),
-                    birth: 1970 + Math.round(55 * Math.random()),
+                    birth: 1970 + Math.round(50 * Math.random()),
                     sex: sex,
                     phone: '1' + Math.ceil(Math.random() * 10000000000),
                     email: Math.ceil(Math.random() * 1000000) + '@163.com',

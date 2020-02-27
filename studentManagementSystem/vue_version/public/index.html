@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--适配移动端     宽度等于设备的实际宽度，初始缩放值为1，最小缩放比例为1，最大缩放比例为1，禁止用户缩放-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <title>学生管理系统vue版</title>
 </head>
 <body>
@@ -13,8 +14,25 @@
 </noscript>
 <div id="app"></div>
 <style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    /*input,button{
+        background: none;
+        outline: none;
+        border: none;
+    }*/
     html, body, #app {
         height: 100%;
+        font-size: 14px;
+        color: #333;
     }
 </style>
 </body>

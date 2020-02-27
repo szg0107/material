@@ -3,7 +3,7 @@ const mySql = require('mysql');
 function createConnection() {
     const connection = mySql.createConnection({
         //地址
-        host: '192.168.1.3',
+        host: '192.168.1.104',
         //端口
         port: '3306',
         //用户

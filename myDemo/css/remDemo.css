@@ -1,0 +1,297 @@
+body {
+    margin: 0 auto;
+    /* max-width: 750px; */
+}
+
+/*设置屏幕最大宽*/
+@media screen and (min-width: 750px) {
+    body {
+        width: 750px;
+    }
+}
+
+body * {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: 100%;
+}
+
+a, button, input {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button, input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+    vertical-align: middle;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+h3, h4, p {
+    margin: 0;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clearFix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*header*/
+#header {
+    height: 50px;
+    line-height: 50px;
+    background: #d22147;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+
+}
+
+#header a:nth-of-type(1) {
+    color: #fff;
+    text-align: center;
+    /*第一参数扩展比例 第二参数收缩比例 第三个参数元素大小*/
+    flex: 0 0 80px;
+}
+
+#header a:nth-of-type(1)::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 7px;
+    background: url("../remDemoImg/ico_01.png") no-repeat center;
+    background-size: cover;
+    margin-left: 4px;
+}
+
+#header div {
+    flex: 1;
+}
+
+#header div input {
+    width: 100%;
+    height: 32px;
+    border: none;
+    border-radius: 8px;
+    color: #e2c2c9;
+    text-indent: 34px;
+    background: #ae3e56 url("../remDemoImg/ico_02.png") 8px 5px no-repeat;
+    background-size: 21px 22px;
+}
+
+#header a:nth-of-type(2) {
+    color: #fff;
+    text-align: center;
+    /*第一参数扩展比例 第二参数收缩比例 第三个参数元素大小*/
+    flex: 0 0 69px;
+}
+
+#header a:nth-of-type(2)::before {
+    content: '';
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background: url("../remDemoImg/ico_03.png") no-repeat center;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+/*banner*/
+#banner {
+    text-align: center;
+}
+
+#banner a img {
+    width: 7.5rem;
+}
+
+
+/*nav*/
+#nav ul {
+    /*避免li之间的缝隙*/
+    font-size: 0;
+    padding: .2rem 0;
+    background: #f2f0f0;
+}
+
+#nav ul li {
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+    margin: .2rem 0;
+}
+
+#nav ul li a {
+    font-size: 0.28rem;
+    color: #525252;
+}
+
+#nav ul li a img {
+    display: block;
+    margin: 0 auto 0.1rem auto;
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+/*ad1*/
+#ad1 a {
+    float: left;
+}
+
+#ad1 a img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/*ad2*/
+#ad2 {
+    background: #f2f0f0;
+    padding: .3rem 0;
+}
+
+#ad2 a img {
+    width: 100%;
+}
+
+/*list*/
+#list h3 {
+    font-size: .32rem;
+    line-height: .8rem;
+    color: #131313;
+    font-weight: normal;
+    padding-left: 0.2rem;
+    border-bottom: 1px solid #d2d1d4;
+    /*position: relative;*/
+}
+
+#list h3::before {
+    content: '';
+    display: inline-block;
+    width: .08rem;
+    height: .32rem;
+    background: #cc0530;
+    border-radius: .05rem;
+    margin-right: .2rem;
+    vertical-align: middle;
+}
+
+#list h3 span {
+    vertical-align: middle;
+}
+
+/* 解决1px的问题 */
+/*@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    #list h3:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px solid #c1c0c5;
+        color: #c1c0c5;
+        transform-origin: 0 0;
+        transform: scaleY(0.5);
+    }
+}*/
+
+#list article {
+    border-bottom: 1px solid #d2d1d4;
+}
+
+#list article a {
+    padding: .2rem;
+    display: flex;
+}
+
+#list article a .img {
+    flex: 0 0 auto;
+    padding-right: .3rem;
+}
+
+#list article a .img img {
+    width: 2.14rem;
+    height: 1.94rem;
+}
+
+#list article a .text {
+    flex: 2 2 auto;
+}
+
+#list article a .text h4 {
+    font-size: .28rem;
+    color: #181818;
+    line-height: .6rem;
+    margin-bottom: .05rem;
+}
+
+#list article a .text p {
+    font-size: .24rem;
+    color: #979797;
+    line-height: .36rem;
+    margin-bottom: .19rem;
+    /*移动文本截取*/
+    display:-webkit-box;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+    /*移动端设置文本显示行数*/
+    -webkit-line-clamp:2;
+}
+
+#list article a .text div{
+    height: .34rem;
+    font-size: .24rem;
+    line-height: .34rem;
+    color: #525252;
+}
+
+.text div strong{
+    color:#cc0530;
+    margin: 0 .09rem;
+}
+
+.text div .discount{
+    display: inline-block;
+    width:.84rem;
+    height:.33rem;
+    color: #fff;
+    padding: 0 .15rem;
+    box-sizing: border-box;
+    background: url("../remDemoImg/ico_04.gif") no-repeat;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.text div .red{
+    float:right;
+    background: url("../remDemoImg/ico_05.png") no-repeat left .03rem;
+    background-size: .24rem .22rem;
+    padding-left: .28rem;
+}

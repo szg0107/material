@@ -2,88 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0b10800-04b5-4481-961c-02f4e9a2b0dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/apple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/body.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/closeBtn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/head.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/pause.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/start.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/startGame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeIMG/startP.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/base.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/game.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/ground.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/initVar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/snake.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GluttonousSnakeJS/squareFactory.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/GluttonousSnake.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pizza-app/src/components/son.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/ActivitiesNav/ActivitiesNav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/ActivitiesNav/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/AnotherChild.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/ChildLifeCycle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/LifeCycle/LifeCycle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/MenuLink.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/Nav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/Person.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/PrivateRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/TodoWrapper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/components/interaction/context.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/index1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/index3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/Activities.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/all/All.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/all/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/articles/Articles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/articles/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/pins/Pins.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/pins/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/recommended/Recommended.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/recommended/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/activities/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/article/Article.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/article/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/home/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/home/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/login/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/login/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/noMatch/NoMatch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/noMatch/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/topics/Topics.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/pages/topics/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/actionCreators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/actionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/store/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/styles/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react-demo/src/styles/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/remDemo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/remDemo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_04.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/img_01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/img_02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/img_03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/img_04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remDemoImg/img_05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/img/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/img/bg2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PersonalBlog/dao/dbUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalBlog/dao/dbUtil.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pizza-app/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../pizza-app/src/components/Admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pizza-app/src/store/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pizza-app/src/store/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-demo/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-demo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/TagList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/TagList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/ToDoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/ToDoList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-demo/src/components/UnControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/components/UnControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-demo/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-demo/src/index2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-demo/src/index2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webpackConfigure/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webpackConfigure/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/npm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/BootstrapDemo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/plugins/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/AddStudent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/AddStudent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/webServer/dao/dbUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/webServer/dao/dbUtil.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="myDemo" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -100,12 +86,19 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../studentManagementSystem/JQVersion" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -115,22 +108,22 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\git仓库\material\myDemo" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -170,6 +163,76 @@
       <workItem from="1569211114793" duration="112000" />
       <workItem from="1570845586567" duration="1702000" />
       <workItem from="1570883741279" duration="55000" />
+      <workItem from="1572240941525" duration="3623000" />
+      <workItem from="1572313281374" duration="1224000" />
+      <workItem from="1572486157307" duration="631000" />
+      <workItem from="1572578612476" duration="49000" />
+      <workItem from="1574470735494" duration="4301000" />
+      <workItem from="1576461908275" duration="787000" />
+      <workItem from="1577105413154" duration="426000" />
+      <workItem from="1577106151073" duration="700000" />
+      <workItem from="1577106975884" duration="86000" />
+      <workItem from="1577413535275" duration="460000" />
+      <workItem from="1577414018515" duration="481000" />
+      <workItem from="1577501801479" duration="630000" />
+      <workItem from="1577939020526" duration="722000" />
+      <workItem from="1578024891209" duration="589000" />
+      <workItem from="1578116810964" duration="508000" />
+      <workItem from="1578117629964" duration="2001000" />
+      <workItem from="1578121210934" duration="1469000" />
+      <workItem from="1578122705798" duration="763000" />
+      <workItem from="1578275232956" duration="465000" />
+      <workItem from="1578275724857" duration="1175000" />
+      <workItem from="1578447129988" duration="1048000" />
+      <workItem from="1578464431034" duration="1252000" />
+      <workItem from="1578559164506" duration="63000" />
+      <workItem from="1578559263502" duration="622000" />
+      <workItem from="1578644262418" duration="7703000" />
+      <workItem from="1578889065766" duration="116000" />
+      <workItem from="1578976127793" duration="148000" />
+      <workItem from="1578976306638" duration="660000" />
+      <workItem from="1579316349613" duration="617000" />
+      <workItem from="1579326906374" duration="3324000" />
+      <workItem from="1579486023113" duration="335000" />
+      <workItem from="1579506763772" duration="1064000" />
+      <workItem from="1579532512007" duration="1999000" />
+      <workItem from="1579582165043" duration="18000" />
+      <workItem from="1579582224314" duration="501000" />
+      <workItem from="1579665637956" duration="2517000" />
+      <workItem from="1579670293225" duration="291000" />
+      <workItem from="1579670736801" duration="26000" />
+      <workItem from="1579675817218" duration="1339000" />
+      <workItem from="1579691922334" duration="2367000" />
+      <workItem from="1579748967025" duration="589000" />
+      <workItem from="1579835037573" duration="1237000" />
+      <workItem from="1579841818230" duration="1116000" />
+      <workItem from="1579925260219" duration="921000" />
+      <workItem from="1580019593760" duration="575000" />
+      <workItem from="1580021139426" duration="602000" />
+      <workItem from="1580094203741" duration="26000" />
+      <workItem from="1580116558418" duration="589000" />
+      <workItem from="1580375161481" duration="792000" />
+      <workItem from="1580695892010" duration="162000" />
+      <workItem from="1580696085072" duration="943000" />
+      <workItem from="1581042468598" duration="584000" />
+      <workItem from="1581249454931" duration="577000" />
+      <workItem from="1581407222286" duration="628000" />
+      <workItem from="1581484627097" duration="567000" />
+      <workItem from="1581567536420" duration="159000" />
+      <workItem from="1581655416008" duration="195000" />
+      <workItem from="1581656075404" duration="598000" />
+      <workItem from="1581731637305" duration="428000" />
+      <workItem from="1582209792933" duration="69000" />
+      <workItem from="1582250933751" duration="66000" />
+      <workItem from="1582277262921" duration="668000" />
+      <workItem from="1582345896816" duration="62000" />
+      <workItem from="1582432447580" duration="586000" />
+      <workItem from="1582473291320" duration="81000" />
+      <workItem from="1582518559169" duration="27000" />
+      <workItem from="1582597188098" duration="222000" />
+      <workItem from="1582597455295" duration="37000" />
+      <workItem from="1582626614758" duration="39000" />
+      <workItem from="1582784921024" duration="247000" />
     </task>
     <servers />
   </component>
@@ -188,5 +251,26 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="363" y="89" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582597216706">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="89" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1582597216706" />
+    <state x="184" y="0" key="SettingsEditor" timestamp="1577106954737">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577106954737" />
+    <state x="363" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1582626622785">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1582626622785" />
+    <state x="339" y="157" key="run.anything.popup" timestamp="1578889179217">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1578889179217" />
   </component>
 </project>

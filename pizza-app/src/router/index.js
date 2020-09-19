@@ -33,10 +33,10 @@ export default new Router({
       }
     },
     {
-      //菜单
-      path: '/Menu',
-      name: 'Menu',
-      component: () => import('../components/Menu'),
+      // 自定义日历
+      path: '/myCalendar',
+      name: 'myCalendar',
+      component: () => import('../components/myCalendar'),
     },
     {
       //管理

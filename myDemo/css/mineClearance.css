@@ -1,0 +1,90 @@
+.main {
+    margin: 50px auto;
+}
+
+.level {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.level button {
+    padding: 5px 15px;
+    background: #029ae5;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.level button.active {
+    background: #00abff;
+}
+
+table {
+    border-spacing: 1px;
+    background: #929196;
+    margin: 0 auto;
+}
+
+table tr td {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    background: #ccc;
+    border: 2px solid;
+    border-color: #fff #a1a1a1 #a1a1a1 #fff;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.zero, .one, .two, .three, .four, .five, .six, .seven, .eight {
+    border-color: #d9d9d9;
+    background: #d9d9d9;
+}
+.one {
+    color: #0332fe;
+}
+
+.two {
+    color: #019f02;
+}
+
+.three {
+    color: #ff2600;
+}
+
+.four {
+    color: #93208f;
+}
+
+.five {
+    color: #ff7f29;
+}
+
+.six {
+    color: #ff3fff;
+}
+
+.seven {
+    color: #3fffbf;
+}
+
+.eight {
+    color: #22ee0f;
+}
+
+.info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.mine {
+    border-color: #d9d9d9;
+    background: #d9d9d9 url("../img/mine.png") center/cover no-repeat;
+}
+
+.flag {
+    background: #ccc url("../img/flag.png") center/cover no-repeat;
+}

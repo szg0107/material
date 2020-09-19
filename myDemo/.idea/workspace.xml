@@ -1,68 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:html5Music" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:mt-app" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:pizza-app" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:react-demo" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:webpackConfigure" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b0b10800-04b5-4481-961c-02f4e9a2b0dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/css/remDemo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/remDemo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/banner.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/circle_08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_04.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/ico_05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/img_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/img_02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/img_03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/img_04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remDemoImg/img_05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/img/bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/img/bg2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PersonalBlog/dao/dbUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalBlog/dao/dbUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/mineClearance.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/mineClearance.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/flag.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/mine.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../magazine/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../magazine/project.config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap-3.3.7-dist/js/npm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/BootstrapDemo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/plugins/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/AddStudent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/AddStudent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/vue_version/src/views/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../studentManagementSystem/webServer/dao/dbUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/../studentManagementSystem/webServer/dao/dbUtil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/biaodan.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/biaodan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/common_methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/common_methods.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="myDemo" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -76,6 +100,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -88,16 +115,18 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.16.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../studentManagementSystem/JQVersion" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../xining/wisdom-park" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -109,24 +138,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\git仓库\material\myDemo\img" />
       <recent name="E:\git仓库\material\myDemo" />
     </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -232,45 +252,168 @@
       <workItem from="1582597188098" duration="222000" />
       <workItem from="1582597455295" duration="37000" />
       <workItem from="1582626614758" duration="39000" />
-      <workItem from="1582784921024" duration="247000" />
+      <workItem from="1582784921024" duration="1364000" />
+      <workItem from="1582861226774" duration="1188000" />
+      <workItem from="1582863972328" duration="603000" />
+      <workItem from="1582943547917" duration="578000" />
+      <workItem from="1583029859688" duration="574000" />
+      <workItem from="1583294195509" duration="423000" />
+      <workItem from="1583294665765" duration="289000" />
+      <workItem from="1583295000425" duration="54000" />
+      <workItem from="1583381248486" duration="1544000" />
+      <workItem from="1583383553492" duration="604000" />
+      <workItem from="1583393583819" duration="73000" />
+      <workItem from="1583554692534" duration="606000" />
+      <workItem from="1584427587815" duration="608000" />
+      <workItem from="1584760942579" duration="477000" />
+      <workItem from="1584761568047" duration="673000" />
+      <workItem from="1585646027811" duration="58000" />
+      <workItem from="1585646132862" duration="186000" />
+      <workItem from="1585823667236" duration="111000" />
+      <workItem from="1586313332613" duration="154000" />
+      <workItem from="1586313840515" duration="46000" />
+      <workItem from="1588305317335" duration="128000" />
+      <workItem from="1588305527188" duration="42000" />
+      <workItem from="1588305604935" duration="58000" />
+      <workItem from="1588306260901" duration="30000" />
+      <workItem from="1589899367460" duration="638000" />
+      <workItem from="1589954638343" duration="287000" />
+      <workItem from="1590124157788" duration="4988000" />
+      <workItem from="1590163321803" duration="436000" />
+      <workItem from="1590224162457" duration="585000" />
+      <workItem from="1590302510517" duration="577000" />
+      <workItem from="1590640281172" duration="621000" />
+      <workItem from="1591193655472" duration="163000" />
+      <workItem from="1591193894009" duration="80000" />
+      <workItem from="1591253925909" duration="40000" />
+      <workItem from="1591896821246" duration="1548000" />
+      <workItem from="1591982905979" duration="201000" />
+      <workItem from="1591983867490" duration="1200000" />
+      <workItem from="1591985370632" duration="1086000" />
+      <workItem from="1592819725284" duration="55000" />
+      <workItem from="1592894770827" duration="561000" />
+      <workItem from="1593087122345" duration="71000" />
+      <workItem from="1593411764555" duration="171000" />
+      <workItem from="1593411984865" duration="26000" />
+      <workItem from="1593596853382" duration="38000" />
+      <workItem from="1593670145268" duration="45000" />
+      <workItem from="1593753664478" duration="82000" />
+      <workItem from="1593763567238" duration="75000" />
+      <workItem from="1593764697798" duration="9391000" />
+      <workItem from="1593842481658" duration="32000" />
+      <workItem from="1593842594456" duration="4770000" />
+      <workItem from="1593874412938" duration="579000" />
+      <workItem from="1593877941560" duration="2657000" />
+      <workItem from="1593883593294" duration="2327000" />
+      <workItem from="1593888864611" duration="1008000" />
+      <workItem from="1593926949541" duration="754000" />
+      <workItem from="1594014910744" duration="219000" />
+      <workItem from="1594130222993" duration="9827000" />
+      <workItem from="1594185020776" duration="157000" />
+      <workItem from="1594446171362" duration="392000" />
+      <workItem from="1594446683121" duration="594000" />
+      <workItem from="1594458301212" duration="32000" />
+      <workItem from="1594531901961" duration="606000" />
+      <workItem from="1594542754935" duration="105000" />
+      <workItem from="1594610669822" duration="260000" />
+      <workItem from="1594628037073" duration="266000" />
+      <workItem from="1594726323659" duration="2879000" />
+      <workItem from="1595100553645" duration="297000" />
+      <workItem from="1595100906812" duration="30000" />
+      <workItem from="1595170271659" duration="163000" />
+      <workItem from="1595211925256" duration="144000" />
+      <workItem from="1595390696566" duration="90000" />
+      <workItem from="1595390933221" duration="287000" />
+      <workItem from="1595394416569" duration="427000" />
+      <workItem from="1595663704031" duration="82000" />
+      <workItem from="1595744994784" duration="581000" />
+      <workItem from="1596700442819" duration="457000" />
+      <workItem from="1596701098470" duration="1174000" />
+      <workItem from="1596790849490" duration="125000" />
+      <workItem from="1596870875611" duration="79000" />
+      <workItem from="1596965746909" duration="219000" />
+      <workItem from="1596967908987" duration="102000" />
+      <workItem from="1596970353107" duration="1190000" />
+      <workItem from="1597341573546" duration="295000" />
+      <workItem from="1597379585153" duration="163000" />
+      <workItem from="1597399954754" duration="79000" />
+      <workItem from="1597465014337" duration="598000" />
+      <workItem from="1597547399080" duration="659000" />
+      <workItem from="1597568566071" duration="582000" />
+      <workItem from="1597569185763" duration="54000" />
+      <workItem from="1597627635370" duration="562000" />
+      <workItem from="1597725594384" duration="637000" />
+      <workItem from="1597752598915" duration="3753000" />
+      <workItem from="1597812638395" duration="584000" />
+      <workItem from="1597828911591" duration="63000" />
+      <workItem from="1597833646040" duration="1325000" />
+      <workItem from="1597894017373" duration="694000" />
+      <workItem from="1597895444278" duration="207000" />
+      <workItem from="1597895764033" duration="48000" />
+      <workItem from="1597980763480" duration="1218000" />
+      <workItem from="1597982434078" duration="608000" />
+      <workItem from="1598050050155" duration="234000" />
+      <workItem from="1598153922760" duration="577000" />
+      <workItem from="1598239272210" duration="1391000" />
+      <workItem from="1598330747586" duration="568000" />
+      <workItem from="1598410525274" duration="950000" />
+      <workItem from="1598424772429" duration="700000" />
+      <workItem from="1598439664620" duration="37000" />
+      <workItem from="1598496253286" duration="598000" />
+      <workItem from="1598511262790" duration="17000" />
+      <workItem from="1598511459689" duration="14000" />
+      <workItem from="1598580044173" duration="389000" />
+      <workItem from="1598665219898" duration="171000" />
+      <workItem from="1598670114068" duration="51000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="363" y="89" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582597216706">
+    <state x="309" y="41" key="#Inspections" timestamp="1596701778509">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="363" y="89" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1582597216706" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1577106954737">
+    <state x="309" y="41" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1596701778509" />
+    <state x="275" y="4" key="#Plugins" timestamp="1596701209553">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577106954737" />
-    <state x="363" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1582626622785">
+    <state x="275" y="4" key="#Plugins/0.0.1366.728@0.0.1366.728" timestamp="1596701209553" />
+    <state x="363" y="98" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596700772839">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="363" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1582626622785" />
-    <state x="339" y="157" key="run.anything.popup" timestamp="1578889179217">
+    <state x="363" y="98" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1596700772839" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1597828972815">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1578889179217" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597828972815" />
+    <state x="184" y="0" key="SettingsEditor" timestamp="1597982410564">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1597982410564" />
+    <state x="339" y="157" key="run.anything.popup" timestamp="1598239484896">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598239484896" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593885142523">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593885142523" />
   </component>
 </project>

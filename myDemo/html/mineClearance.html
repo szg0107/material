@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端     宽度等于设备的实际宽度，初始缩放值为1，最小缩放比例为1，最大缩放比例为1，禁止用户缩放-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <!--ie按照最新版渲染页面-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扫雷游戏</title>
+    <link rel="stylesheet" href="../css/mineClearance.css"/>
+</head>
+<body>
+<div class="main">
+    <div class="level">
+        <button class="active">初级</button>
+        <button>中级</button>
+        <button>高级</button>
+        <button>重新开始</button>
+    </div>
+    <div class="gameBox"></div>
+    <div class="info">剩余雷数 : <span class="mineNum"></span></div>
+</div>
+<script type="text/javascript">
+
+    function Mine(tr, td, mineNum) {
+        this.tr = tr; //行数
+        this.td = td; //列数
+        this.mineNum = mineNum; //雷数
+
+        this.squares = []; //存储所有方块的信息，它是一个二维数组，按行与列的顺序排放。存取都使用行列的形式
+        this.tds = []; //存储所有的单元格的DOM(二维数组)
+        this.surplusMine = mineNum; //剩余雷的数量
+        this.allRight = false; //右击标的小红旗是否全是雷。用来判断用户是否游戏成功
+
+        this.parent = document.getElementsByClassName('gameBox')[0];
+
+    }
+
+    //生成n个不重复的数字
+    Mine.prototype.randomNum = function () {
+        //生成一个长度为格子总数的数组
+        const square = new Array(this.tr * this.td);
+
+        for (let i = 0; i < square.length; i++) {
+            square[i] = i;
+        }
+
+        //数组乱序
+        square.sort(() => 0.5 - Math.random());
+
+        //截取雷数
+        return square.slice(0, this.mineNum);
+    };
+
+    //初始化
+    Mine.prototype.init = function () {
+        //雷在格子里的位置
+        const rn = this.randomNum();
+        //用来找到格子对应的索引
+        let n = 0;
+        for (let i = 0; i < this.tr; i++) {
+            this.squares[i] = [];
+            for (let j = 0; j < this.td; j++) {
+                //取一个方块在数组里的数据要使用行与列的形式去取。
+                //找方块周围的方块的时候要用坐标的形式去取;行与列的形式跟坐标的形式x,y是刚好相反的
+                this.squares[i][j] = rn.indexOf(++n) !== -1 ? {type: 'mine', x: j, y: i} : {
+                    type: 'number',
+                    x: j,
+                    y: i,
+                    value: 0
+                };
+            }
+        }
+        // console.log(this.squares);
+
+        this.updateNum();
+
+        this.createDom();
+
+        //阻止鼠标右键默认事件
+        this.parent.oncontextmenu = () => false;
+
+        //剩余雷数
+        this.mineNumDom = document.getElementsByClassName('mineNum')[0];
+        this.mineNumDom.innerText = this.surplusMine;
+    };
+
+    //创建表格
+    Mine.prototype.createDom = function () {
+        let table = document.createElement('table'),
+            This = this;
+        for (let i = 0; i < This.tr; i++) {
+            let domTr = document.createElement('tr');
+            This.tds[i] = [];
+            for (let j = 0; j < This.td; j++) {
+                let domTd = document.createElement('td');
+
+                //把格子对应的行与列存到格子身上，为了下面通过这个值去数组里取到对应的数据
+                domTd.pos = [i, j];
+
+                //给单元格添加事件
+                domTd.onmousedown = function (event) {
+                    //This指实例对象，this指点击的单元格
+                    This.play(event, this);
+                };
+
+                //把所有单元格添加到单元格数组中
+                This.tds[i][j] = domTd;
+
+                // This.squares[i][j].type === 'mine' ? domTd.className = 'mine' : domTd.innerText = This.squares[i][j].value;
+                domTr.appendChild(domTd);
+            }
+            table.appendChild(domTr);
+        }
+        //避免多次点击创建多个
+        this.parent.innerHTML = '';
+        this.parent.appendChild(table);
+    };
+
+    //获取某个格子周围的格子
+    Mine.prototype.getAround = function (square) {
+        let x = square.x, y = square.y;
+        const result = [];//把找到的格子的坐标返回出去（二维数组）
+        /*  x-1,y-1		x,y-1	x+1,y-1
+            x-1,y		x,y		x+1,y
+            x-1,y+1		x,y+1	x+1,y+1 */
+
+        //通过坐标去循环九宫格
+        for (let i = x - 1; i <= x + 1; i++) {
+            for (let j = y - 1; j <= y + 1; j++) {
+                if (i < 0 ||	//格子超出了左边的范围
+                    j < 0 ||	//格子超出了上边的范围
+                    i > this.td - 1 ||	//格子超出了右边的范围
+                    j > this.tr - 1 ||	//格子超出了下边的范围
+                    (i === x && j === y) ||	//当前循环到的格子是自己
+                    this.squares[j][i].type === 'mine'	//周围的格子是个雷)
+                ) {
+                    continue;
+                }
+                result.push([j, i]);//要以行与列的形式返回出去。因为到时候需要用它去取数组里的数据
+            }
+        }
+        return result;
+    };
+
+    //更新累周围的数字
+    Mine.prototype.updateNum = function () {
+        for (let i = 0; i < this.tr; i++) {
+            for (let j = 0; j < this.td; j++) {
+                if (this.squares[i][j].type === 'number') {
+                    continue
+                }
+                //获取雷周围的数字
+                let num = this.getAround(this.squares[i][j]);
+
+                for (let k = 0; k < num.length; k++) {
+                    //num[k]===[0,1] num[k][0]===0
+                    this.squares[num[k][0]][num[k][1]].value += 1;
+                }
+            }
+        }
+    };
+
+
+    Mine.prototype.play = function (ev, obj) {
+        const This = this;
+        //鼠标左键点击 限制用户标完小红旗在左键点击
+        if (ev.which === 1 && obj.className !== 'flag') {
+            const curSquare = this.squares[obj.pos[0]][obj.pos[1]],
+                cl = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+
+            if (curSquare.type === 'number') {
+                //用户点到的是数字
+                obj.innerText = curSquare.value;
+                obj.className = cl[curSquare.value];
+
+                if (curSquare.value === 0) {
+                    /*用户点到了零
+                        1.显示自己，找四周
+                            （如果四周不为零，就不需要找了，为零继续显示自己找四周）
+                    */
+                    obj.innerText = '';
+
+                    //找到零周围所有零的格子
+                    function getAllZero(square) {
+                        //找到周围n个格子
+                        const around = This.getAround(square);
+                        for (let i = 0; i < around.length; i++) {
+                            //around[0]=[0,0]
+                            let x = around[i][0],//行
+                                y = around[i][1];//列
+                            This.tds[x][y].className = cl[This.squares[x][y].value];
+                            if (This.squares[x][y].value === 0) {
+                                //避免重复调用 如果以某个格子为中心找到的格子值为0，那就需要接着调用函数（递归）
+                                if (!This.squares[x][y].check) {
+                                    //给td身上加check属性，用于判断格子有没有被找过
+                                    This.squares[x][y].check = true;
+                                    getAllZero(This.squares[x][y]);
+                                }
+                            } else {
+                                This.tds[x][y].innerText = This.squares[x][y].value;
+                            }
+                        }
+                    }
+
+                    getAllZero(curSquare)
+                }
+            } else {
+                This.gameOver(obj);
+            }
+        } else if (ev.which === 3) {
+            //鼠标点击的是右键
+            if (obj.className && obj.className !== 'flag') {
+                //如果右击的是数字，就不点击
+                return;
+            }
+            //切换标雷
+            obj.className = obj.className === 'flag' ? '' : 'flag';
+            //判断标的是否都是雷
+            this.allRight = this.squares[obj.pos[0]][obj.pos[1]].type === 'mine';
+            //更新剩余雷数
+            this.mineNumDom.innerText = obj.className === 'flag' ? --this.surplusMine : ++this.surplusMine;
+            //剩余雷数为零时，表示用户已标完雷
+            if (this.surplusMine === 0) {
+                //用户全标对了
+                if (this.allRight) {
+                    alert('游戏结束');
+                } else {
+                    this.gameOver();
+                }
+            }
+
+        }
+    };
+
+    Mine.prototype.gameOver = function (clickTd) {
+        /* 1、显示所有的雷
+		   2、取消所有格子的点击事件
+		   3、给点中的那个雷标上一个红*/
+        for (let i = 0; i < this.tr; i++) {
+            for (let j = 0; j < this.td; j++) {
+                if (this.squares[i][j].type === 'mine') {
+                    this.tds[i][j].className = 'mine';
+                }
+                this.tds[i][j].onmousedown = null;
+            }
+        }
+        if (clickTd) {
+            clickTd.style.backgroundColor = '#f00';
+        }
+        console.log('游戏结束');
+
+    };
+
+
+    class MineClass {
+        constructor(tr, td, mineNum) {
+            this.tr = tr; //行数
+            this.td = td; //列数
+            this.mineNum = mineNum; //雷数
+
+            this.squares = []; //存储所有方块的信息，它是一个二维数组，按行与列的顺序排放。存取都使用行列的形式
+            this.tds = []; //存储所有的单元格的DOM(二维数组)
+            this.surplusMine = mineNum; //剩余雷的数量
+            this.allRight = false; //右击标的小红旗是否全是雷。用来判断用户是否游戏成功
+
+            this.parent = document.getElementsByClassName('gameBox')[0];
+        };
+
+        randomNum() {
+            //生成一个长度为格子总数的数组
+            const square = new Array(this.tr * this.td);
+
+            for (let i = 0; i < square.length; i++) {
+                square[i] = i;
+            }
+
+            //数组乱序
+            square.sort(() => 0.5 - Math.random());
+
+            //截取雷数
+            return square.slice(0, this.mineNum);
+        };
+
+        init() {
+            //雷在格子里的位置
+            const rn = this.randomNum();
+            //用来找到格子对应的索引
+            let n = 0;
+            for (let i = 0; i < this.tr; i++) {
+                this.squares[i] = [];
+                for (let j = 0; j < this.td; j++) {
+                    //取一个方块在数组里的数据要使用行与列的形式去取。
+                    //找方块周围的方块的时候要用坐标的形式去取;行与列的形式跟坐标的形式x,y是刚好相反的
+                    this.squares[i][j] = rn.indexOf(++n) !== -1 ? {type: 'mine', x: j, y: i} : {
+                        type: 'number',
+                        x: j,
+                        y: i,
+                        value: 0
+                    };
+                }
+            }
+            // console.log(this.squares);
+
+            this.updateNum();
+
+            this.createDom();
+
+            //阻止鼠标右键默认事件
+            this.parent.oncontextmenu = () => false;
+
+            //剩余雷数
+            this.mineNumDom = document.getElementsByClassName('mineNum')[0];
+            this.mineNumDom.innerText = this.surplusMine;
+        };
+
+        createDom() {
+            let table = document.createElement('table'),
+                This = this;
+            for (let i = 0; i < This.tr; i++) {
+                let domTr = document.createElement('tr');
+                This.tds[i] = [];
+                for (let j = 0; j < This.td; j++) {
+                    let domTd = document.createElement('td');
+
+                    //把格子对应的行与列存到格子身上，为了下面通过这个值去数组里取到对应的数据
+                    domTd.pos = [i, j];
+
+                    //给单元格添加事件
+                    domTd.onmousedown = function (event) {
+                        //This指实例对象，this指点击的单元格
+                        This.play(event, this);
+                    };
+
+                    //把所有单元格添加到单元格数组中
+                    This.tds[i][j] = domTd;
+
+                    // This.squares[i][j].type === 'mine' ? domTd.className = 'mine' : domTd.innerText = This.squares[i][j].value;
+                    domTr.appendChild(domTd);
+                }
+                table.appendChild(domTr);
+            }
+            //避免多次点击创建多个
+            this.parent.innerHTML = '';
+            this.parent.appendChild(table);
+        };
+
+        getAround(square) {
+            let x = square.x, y = square.y;
+            const result = [];//把找到的格子的坐标返回出去（二维数组）
+            /*  x-1,y-1		x,y-1	x+1,y-1
+                x-1,y		x,y		x+1,y
+                x-1,y+1		x,y+1	x+1,y+1 */
+
+            //通过坐标去循环九宫格
+            for (let i = x - 1; i <= x + 1; i++) {
+                for (let j = y - 1; j <= y + 1; j++) {
+                    if (i < 0 ||	//格子超出了左边的范围
+                        j < 0 ||	//格子超出了上边的范围
+                        i > this.td - 1 ||	//格子超出了右边的范围
+                        j > this.tr - 1 ||	//格子超出了下边的范围
+                        (i === x && j === y) ||	//当前循环到的格子是自己
+                        this.squares[j][i].type === 'mine'	//周围的格子是个雷)
+                    ) {
+                        continue;
+                    }
+                    result.push([j, i]);//要以行与列的形式返回出去。因为到时候需要用它去取数组里的数据
+                }
+            }
+            return result;
+        };
+
+        //更新累周围的数字
+        updateNum() {
+            for (let i = 0; i < this.tr; i++) {
+                for (let j = 0; j < this.td; j++) {
+                    if (this.squares[i][j].type === 'number') {
+                        continue
+                    }
+                    //获取雷周围的数字
+                    let num = this.getAround(this.squares[i][j]);
+
+                    for (let k = 0; k < num.length; k++) {
+                        //num[k]===[0,1] num[k][0]===0
+                        this.squares[num[k][0]][num[k][1]].value += 1;
+                    }
+                }
+            }
+        };
+
+
+        play(ev, obj) {
+            const This = this;
+            //鼠标左键点击 限制用户标完小红旗在左键点击
+            if (ev.which === 1 && obj.className !== 'flag') {
+                const curSquare = this.squares[obj.pos[0]][obj.pos[1]],
+                    cl = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+
+                if (curSquare.type === 'number') {
+                    //用户点到的是数字
+                    obj.innerText = curSquare.value;
+                    obj.className = cl[curSquare.value];
+
+                    if (curSquare.value === 0) {
+                        /*用户点到了零
+                            1.显示自己，找四周
+                                （如果四周不为零，就不需要找了，为零继续显示自己找四周）
+                        */
+                        obj.innerText = '';
+
+                        //找到零周围所有零的格子
+                        function getAllZero(square) {
+                            //找到周围n个格子
+                            const around = This.getAround(square);
+                            for (let i = 0; i < around.length; i++) {
+                                //around[0]=[0,0]
+                                let x = around[i][0],//行
+                                    y = around[i][1];//列
+                                This.tds[x][y].className = cl[This.squares[x][y].value];
+                                if (This.squares[x][y].value === 0) {
+                                    //避免重复调用 如果以某个格子为中心找到的格子值为0，那就需要接着调用函数（递归）
+                                    if (!This.squares[x][y].check) {
+                                        //给td身上加check属性，用于判断格子有没有被找过
+                                        This.squares[x][y].check = true;
+                                        getAllZero(This.squares[x][y]);
+                                    }
+                                } else {
+                                    This.tds[x][y].innerText = This.squares[x][y].value;
+                                }
+                            }
+                        }
+
+                        getAllZero(curSquare)
+                    }
+                } else {
+                    This.gameOver(obj);
+                }
+            } else if (ev.which === 3) {
+                //鼠标点击的是右键
+                if (obj.className && obj.className !== 'flag') {
+                    //如果右击的是数字，就不点击
+                    return;
+                }
+                //切换标雷
+                obj.className = obj.className === 'flag' ? '' : 'flag';
+                //判断标的是否都是雷
+                this.allRight = this.squares[obj.pos[0]][obj.pos[1]].type === 'mine';
+                //更新剩余雷数
+                this.mineNumDom.innerText = obj.className === 'flag' ? --this.surplusMine : ++this.surplusMine;
+                //剩余雷数为零时，表示用户已标完雷
+                if (this.surplusMine === 0) {
+                    //用户全标对了
+                    if (this.allRight) {
+                        alert('游戏结束');
+                    } else {
+                        this.gameOver();
+                    }
+                }
+
+            }
+        };
+
+        gameOver(clickTd) {
+            /* 1、显示所有的雷
+               2、取消所有格子的点击事件
+               3、给点中的那个雷标上一个红*/
+            for (let i = 0; i < this.tr; i++) {
+                for (let j = 0; j < this.td; j++) {
+                    if (this.squares[i][j].type === 'mine') {
+                        this.tds[i][j].className = 'mine';
+                    }
+                    this.tds[i][j].onmousedown = null;
+                }
+            }
+            if (clickTd) {
+                clickTd.style.backgroundColor = '#f00';
+            }
+            console.log('游戏结束');
+
+        };
+    }
+
+    /*let mine = new Mine(9, 9, 10);
+    mine.init();*/
+    let btnArray = document.getElementsByTagName('button'),
+        mine = null,//用来存储生成的实例
+        ln = 0;//用来处理当前选中的状态
+    const arr = [[9, 9, 10], [16, 16, 40], [16, 30, 99]];//不同级别的行数列数雷数
+    for (let i = 0; i < btnArray.length - 1; i++) {
+        btnArray[i].onclick = function () {
+            btnArray[ln].className = '';
+            this.className = 'active';
+            mine = new MineClass(...arr[i]);
+            mine.init();
+            ln = i;
+        }
+    }
+    btnArray[0].click();
+    btnArray[3].onclick = () => mine.init();
+</script>
+</body>
+</html>

@@ -5,86 +5,7 @@
     <title></title>
 </head>
 <body>
-<!--限制多行文本域输入的字符个数-->
-<script type="text/javascript">
-    let LastCount = 0;
 
-    //字节统计
-    function CountStrByte(Message, Total, Used, Remain) {
-        let ByteCount = 0;
-        let StrValue = Message.value;
-        let StrLength = Message.value.length;
-        let MaxValue = Total.value;
-        if (LastCount !== StrLength) {
-            for (let i = 0; i < StrLength; i++) {
-                ByteCount = (StrValue.charCodeAt(i) <= 256) ? ByteCount + 1 : ByteCount + 2;
-                if (ByteCount > MaxValue) {
-                    Message.value = StrValue.substring(0, i);
-                    alert('评价内容最多不能超过' + MaxValue + '个字节！\n注意：一个汉字为两字节。');
-                    ByteCount = MaxValue;
-                    break;
-                }
-            }
-            Used.value = ByteCount;
-            Remain.value = MaxValue - ByteCount;
-            LastCount = StrLength;
-        }
-    }
-
-    //在下拉列表中进行多选移除
-    function allSel(n1, n2) {
-        while (n1.selectedIndex !== -1) {
-            let index = n1.selectedIndex;
-            let t = n1.options[index].text;
-            n2.options.add(new Option(t));
-            n1.remove(index)
-        }
-    }
-
-    //将option的值存入数组中然后再显示
-    function mySelect() {
-        let arr = ["甘肃省", "辽宁省", "黑龙江省", "吉林省", "河北省"];
-        let counts = arr.length;
-        for (let i = 0; i < counts; i++) {
-            document.form.sel_place1.options[i] = new Option(arr[i]);
-        }
-    }
-
-    //随机生成指定位数的验证码
-    function checkCode(digit) {
-        //自动生成验证码
-        let result = "";
-        for (let i = 0; i < parseInt(digit); i++) {
-            result = result + (parseInt(Math.random() * 10)).toString();
-        }
-        let authCodeDiv = document.getElementsByTagName('form')[0].getElementsByTagName('div')[0];
-        authCodeDiv.innerHTML = "&nbsp;&nbsp;产生的验证码：" + result;
-    }
-</script>
-<!--如果只是想要除了第一个以外的其他元素。
-直接使用
-arr.slice(1)即可
-slice方法不会去修改原数组-->
-<script type="text/javascript">
-    //多级级联菜单
-    let arr2 = new Array(4);
-    arr2["数码设备"] = ["数码相机", "打印机"];
-    arr2["家用电器"] = ["电视机", "电冰箱"];
-    arr2["礼品工艺"] = ["鲜花", "彩带"];
-
-    function removeInfo(classMenu) {
-        for (let i = 0; i < classMenu.options.length; i++) {
-            classMenu.options[i] = null;
-        }
-    }
-
-    function changeMenu(classList, classMenu) {
-        removeInfo(classMenu);
-        for (let i = 0; i < classList.length; i++) {
-            classMenu[i] = new Option(classList[i], classList[i]);
-        }
-    }
-</script>
 <div align="center">
     <form id="form" name="form">
         <!--多行文本控制输入字数展示
@@ -145,6 +66,83 @@ slice方法不会去修改原数组-->
 </div>
 </body>
 <script type="text/javascript">
-    window.onload = mySelect;
+   // 限制多行文本域输入的字符个数
+    let LastCount = 0;
+
+    //字节统计
+    function CountStrByte(Message, Total, Used, Remain) {
+        let ByteCount = 0,
+            StrValue = Message.value,
+            StrLength = StrValue.length,
+            MaxValue = Total.value;
+        if (LastCount !== StrLength) {
+            for (let i = 0; i < StrLength; i++) {
+                ByteCount = (StrValue.charCodeAt(i) <= 256) ? ByteCount + 1 : ByteCount + 2;
+                if (ByteCount > MaxValue) {
+                    Message.value = StrValue.substring(0, i);
+                    alert(`评价内容最多不能超过  ${MaxValue}  个字节！\n注意：一个汉字为两字节。`);
+                    ByteCount = MaxValue;
+                    break;
+                }
+            }
+            Used.value = ByteCount;
+            Remain.value = MaxValue - ByteCount;
+            LastCount = StrLength;
+        }
+    }
+
+    //在下拉列表中进行多选移除
+    function allSel(n1, n2) {
+        while (n1.selectedIndex !== -1) {
+            let index = n1.selectedIndex,
+                t = n1.options[index].text;
+            n2.options.add(new Option(t));
+            n1.remove(index)
+        }
+    }
+
+    //将option的值存入数组中然后再显示
+    function mySelect() {
+        const arr = ["甘肃省", "辽宁省", "黑龙江省", "吉林省", "河北省"],
+            counts = arr.length;
+        for (let i = 0; i < counts; i++) {
+            document.form.sel_place1.options[i] = new Option(arr[i]);
+        }
+    }
+
+    //随机生成指定位数的验证码
+    function checkCode(digit) {
+        //自动生成验证码
+        let result = Math.floor(Math.random() * Math.pow(10, digit));
+
+        const authCodeDiv = document.getElementsByTagName('form')[0].getElementsByTagName('div')[0];
+        authCodeDiv.innerHTML = `&nbsp;&nbsp;产生的验证码： ${result}`;
+    }
+
+
+   /*如果只是想要除了第一个以外的其他元素。
+   直接使用
+   arr.slice(1)即可
+   slice方法不会去修改原数组*/
+   //多级级联菜单
+   let arr2 = new Array(4);
+   arr2["数码设备"] = ["数码相机", "打印机"];
+   arr2["家用电器"] = ["电视机", "电冰箱"];
+   arr2["礼品工艺"] = ["鲜花", "彩带"];
+
+   function removeInfo(classMenu) {
+       for (let i = 0; i < classMenu.options.length; i++) {
+           classMenu.options[i] = null;
+       }
+   }
+
+   function changeMenu(classList, classMenu) {
+       removeInfo(classMenu);
+       for (let i = 0; i < classList.length; i++) {
+           classMenu[i] = new Option(classList[i], classList[i]);
+       }
+   }
+
+   mySelect();
 </script>
 </html>

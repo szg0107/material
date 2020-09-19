@@ -148,7 +148,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -365,6 +365,7 @@
       <workItem from="1598580044173" duration="389000" />
       <workItem from="1598665219898" duration="171000" />
       <workItem from="1598670114068" duration="51000" />
+      <workItem from="1600520118479" duration="59000" />
     </task>
     <servers />
   </component>

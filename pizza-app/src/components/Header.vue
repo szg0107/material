@@ -20,14 +20,8 @@
         <li>
           <router-link :to="{name:'Home'}" class="nav-link">主页</router-link>
         </li>
-        <li>
-          <router-link to="/myCalendar" class="nav-link">日历</router-link>
-        </li>
-        <li>
-          <router-link to="/Admin" class="nav-link">管理</router-link>
-        </li>
-        <li>
-          <router-link to="/About" class="nav-link">关于我们</router-link>
+        <li v-for="item in linkList">
+          <router-link :to="item.path" class="nav-link">{{item.name}}</router-link>
         </li>
       </ul>
       <!--ml-auto内容居右-->
@@ -49,7 +43,11 @@ export default {
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
-      linkList: [{ path: '/myCalendar', name: '日历' }]
+      linkList: [
+        { path: '/myCalendar', name: '日历' },
+        { path: '/Admin', name: '管理' },
+        { path: '/About', name: '关于我们' }
+      ]
     }
   }
 }

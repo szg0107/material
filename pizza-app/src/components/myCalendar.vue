@@ -36,74 +36,74 @@
 
 <script>
 export default {
-  name: 'myCalendar', //自定义日历控件
+  name: 'myCalendar', // 自定义日历控件
   data() {
     return {
       year: null,
       month: null,
       day: null,
-      curDate: null,
+      curDate: null
     }
   },
   created() {
-    this.getInitTime();
+    this.getInitTime()
   },
   methods: {
     // 获取当前年月日
     getInitTime() {
-      const date = new Date();
-      this.year = date.getFullYear();
-      this.month = date.getMonth() + 1;
-      this.day = date.getDate();
-      this.curDate = `${this.year}-${this.month}-${this.day}`;
+      const date = new Date()
+      this.year = date.getFullYear()
+      this.month = date.getMonth() + 1
+      this.day = date.getDate()
+      this.curDate = `${this.year}-${this.month}-${this.day}`
     },
     // 点击日期中的某一天
     handleChooseDay(e) {
       // 拿到绑定数据data中的值
-      this.day = e.target.dataset.day;
+      this.day = e.target.dataset.day
     },
     // 上一个月
     handlePrev() {
       if (this.month === 1) {
-        this.month = 12;
-        this.year--;
+        this.month = 12
+        this.year--
       } else {
-        this.month--;
+        this.month--
       }
-      this.computedDay();
+      this.computedDay()
     },
     // 上一个月
     handleNext() {
       if (this.month === 12) {
-        this.month = 1;
-        this.year++;
+        this.month = 1
+        this.year++
       } else {
-        this.month++;
+        this.month++
       }
-      this.computedDay();
+      this.computedDay()
     },
-    //判断选中日期是否大于当前月总天数
+    // 判断选中日期是否大于当前月总天数
     computedDay() {
       // 获取当月总天数
-      const allDay = new Date(this.year, this.month, 0).getDate();
+      const allDay = new Date(this.year, this.month, 0).getDate()
       if (this.day > allDay) {
-        this.day = allDay;
+        this.day = allDay
       }
     }
   },
-  //计算属性
+  // 计算属性
   computed: {
-    //当前月1号从星期几开始0~6
+    // 当前月1号从星期几开始0~6
     beginDay() {
-      return new Date(this.year, this.month - 1, 1).getDay();
+      return new Date(this.year, this.month - 1, 1).getDay()
     },
-    //当前月有多少天
+    // 当前月有多少天
     curDays() {
-      return new Date(this.year, this.month, 0).getDate();
+      return new Date(this.year, this.month, 0).getDate()
     },
-    //上个月有多少天
+    // 上个月有多少天
     prevDays() {
-      return new Date(this.year, this.month - 1, 0).getDate();
+      return new Date(this.year, this.month - 1, 0).getDate()
     }
   }
 }

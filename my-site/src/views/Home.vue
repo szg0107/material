@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <Avatar url="USS"/>
+    <SiteAside />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Avatar from '@/components/Avatar/index';
+import SiteAside from '@/components/SiteAside/index.vue';
 
 export default {
   name: 'Home',
   components: {
-    Avatar,
+    SiteAside,
   },
 };
 </script>

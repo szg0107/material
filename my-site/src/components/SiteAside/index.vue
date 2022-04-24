@@ -1,6 +1,8 @@
 <template>
   <div class="site-aside-container">
-    <el-avatar src="http://mdrs.yuanjin.tech/FgMwAPYq17So9nwVH44ltDHo7u3c" :size="150"/>
+    <div class="avatar-container">
+      <el-avatar  src="http://mdrs.yuanjin.tech/FgMwAPYq17So9nwVH44ltDHo7u3c" :size="150"/>
+    </div>
     <h1 class="title">龙傲天的小窝</h1>
     <Menu/>
     <Contact/>
@@ -41,11 +43,13 @@ export default {
 
 .avatar-container {
   margin: 0 auto;
+  text-align: center;
 }
 
 .footer {
   text-align: center;
   font-size: 12px;
+  margin-top: 25px;
 }
 
 .title {

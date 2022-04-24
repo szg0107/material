@@ -13,7 +13,7 @@ import Icon, { types } from '.';
 export default {
   name: 'IconTest',
   components: {
-    Icon, /** npm install -g @vue/cli-service-global 单独编译组件工具 vue serve ./src/views/Home.vue 命令 */
+    Icon, /** npm install -g @vue/cli-service-global 单独编译组件工具 vue serve ./src/views/index.vue 命令 */
   },
   data() {
     return {

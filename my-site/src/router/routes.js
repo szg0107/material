@@ -13,6 +13,11 @@ export default [
     component: () => import(/* webpackChunkName: "about" */ '@/views/Blog/index.vue'),
   },
   {
+    path: '/blog/cate/:categoryId', // 动态路由
+    name: 'CategoryBlog',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/Blog/index.vue'),
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '@/views/About/index.vue'),

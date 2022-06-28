@@ -1,5 +1,5 @@
 <template>
-<!-- wheel鼠标滚动效果  transitionend 过渡效果结束-->
+<!-- wheel鼠标滚动效果  transitionend 过渡效果结束 自定义指令 v-loading="isLoading"-->
   <div class="home-container"
        ref="container"
        @wheel="handleWheel"
@@ -23,9 +23,6 @@
           :key="item.id"
           @click="switchTo(i)"/>
     </ul>
-<!--    <img :src="item.midImg" alt=""/>-->
-<!--    <h2>{{item.title}}</h2>-->
-<!--    <h3>{{item.description}}</h3>-->
   </div>
 </template>
 

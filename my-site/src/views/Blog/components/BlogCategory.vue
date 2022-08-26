@@ -67,21 +67,6 @@ export default {
       }
     },
   },
-  watch: {
-    list: {
-      handler(n, o) {
-        if (n.length !== o.length) {
-          const query = {
-            page: 1,
-            limit: this.limit,
-            total: n[0].articleCount,
-          };
-          this.$router.push({ name: 'Blog', query });
-        }
-      },
-      deep: true, // 开启深度侦听
-    },
-  },
 };
 </script>
 

@@ -18,6 +18,11 @@ export default [
     component: () => import(/* webpackChunkName: "about" */ '@/views/Blog/index.vue'),
   },
   {
+    path: '/blog/:id', // 文章详情
+    name: 'BlogDetail',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/Blog/Detail.vue'),
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '@/views/About/index.vue'),

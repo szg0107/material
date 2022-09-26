@@ -33,3 +33,4 @@ export default {
 // 另一种事件总线写法
 // import Vue from 'vue';
 // export default new Vue({});
+// Vue.prototype.$bus = new Vue({});

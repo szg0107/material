@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="main-container" v-loading="isLoading">
+    <div ref="mainContainer" class="main-container" v-loading="isLoading">
       <BlogDetail :blog="data" v-if="data" />
       <BlogComment v-if="!isLoading" />
     </div>
@@ -15,10 +15,11 @@
 <script>
 import fetchData from '@/mixins/fetchData';
 import { getBlog } from '@/api/blog';
+import mainScroll from '@/mixins/mainScroll';
 
 export default {
   name: 'Detail', // 文章详情
-  mixins: [fetchData(null)],
+  mixins: [fetchData(null), mainScroll('mainContainer')],
   components: {
     Layout: () => import('@/components/Layout/index.vue'),
     BlogDetail: () => import('./components/BlogDetail.vue'),
@@ -26,9 +27,21 @@ export default {
     BlogComment: () => import('./components/BlogComment.vue'),
   },
   methods: {
+    // 获取文章详情数据
     async fetchData() {
       return getBlog(this.$route.params.id);
     },
+  },
+  updated() {
+    // 更新地址栏信息
+    // eslint-disable-next-line no-restricted-globals,prefer-destructuring
+    const hash = location.hash;
+    // eslint-disable-next-line no-restricted-globals
+    location.hash = '';
+    setTimeout(() => {
+      // eslint-disable-next-line no-restricted-globals
+      location.hash = hash;
+    }, 50);
   },
 };
 </script>

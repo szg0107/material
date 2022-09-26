@@ -44,10 +44,11 @@
 import fetchData from '@/mixins/fetchData';
 import { getBlogs } from '@/api/blog';
 import { formatDate } from '@/utils';
+import mainScroll from '@/mixins/mainScroll';
 
 export default {
   name: 'BlogList', // 文章列表
-  mixins: [fetchData({})],
+  mixins: [fetchData({}), mainScroll('container')],
   computed: {
     // 获取路由信息
     routeInfo() {

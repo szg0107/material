@@ -1,7 +1,7 @@
 <template>
   <ul class="contact-container">
     <li v-for="(item,index) in dataList" :key="item.type+index">
-      <a :href='item.hrefText'>
+      <a target="_blank" :href='item.hrefText'>
         <div class="icon">
           <Icon :type="item.type"/>
         </div>
@@ -27,7 +27,7 @@ export default {
       // 数据集合
       dataList: [
         {
-          hrefText: '',
+          hrefText: 'https://github.com/DuYi-Edu',
           type: 'github',
           content: 'DuYi-Edu',
           showPop: false,

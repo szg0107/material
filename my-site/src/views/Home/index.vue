@@ -1,7 +1,8 @@
 <template>
-<!-- wheel鼠标滚动效果  transitionend 过渡效果结束 自定义指令 v-loading="isLoading"-->
+  <!-- wheel鼠标滚动效果  transitionend 过渡效果结束 自定义指令 v-loading="isLoading"-->
   <div class="home-container"
        ref="container"
+       v-loading="loading"
        @wheel="handleWheel"
        @transitionend="handleTransitionEnd">
     <ul class="carousel-container" :style="{marginTop}">
@@ -28,7 +29,8 @@
 
 <script>
 // @ is an alias to /src
-import getBanners from '@/mock/banner';
+// import getBanners from '@/mock/banner';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Home', // 首页
@@ -38,11 +40,15 @@ export default {
   },
   data() {
     return {
-      banners: getBanners.data, // 轮播图数据
+      // banners: getBanners.data, // 轮播图数据
       index: 0, // 当前显示的是第几张轮播图
       containerHeight: 0, // 整个容器的高度
       switching: false, // 是否正在切换
     };
+  },
+  created() {
+    // 触发获取banner方法
+    this.$store.dispatch('banner/fetchBanner');
   },
   mounted() {
     // 获取整个容器的高度
@@ -58,6 +64,7 @@ export default {
     marginTop() {
       return `${-this.index * this.containerHeight}px`;
     },
+    ...mapState('banner', ['loading', 'banners']),
   },
   methods: {
     // 切换轮播图
@@ -93,43 +100,50 @@ export default {
 <style scoped lang="less">
 @import "~@/styles/mixin.less";
 @import "~@/styles/var.less";
+
 .home-container {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
-  ul{
+
+  ul {
     margin: 0;
     list-style: none;
     padding: 0;
   }
+
   .carousel-container {
     width: 100%;
     height: 100%;
     transition: 500ms;
+
     li {
       width: 100%;
       height: 100%;
     }
   }
-  .icon{
+
+  .icon {
     .self-center(); //调用居中方法
     font-size: 30px;
     color: @gray;
     cursor: pointer;
     transform: translateX(-50%);
-    @gap:15px; // 定义变量
-    &.icon-up{
+    @gap: 15px; // 定义变量
+    &.icon-up {
       top: @gap;
       animation: jump-up 2s infinite;
     }
-    &.icon-down{
+
+    &.icon-down {
       top: auto;
       bottom: @gap;
       animation: jump-down 2s infinite;
     }
+
     @jump: 5px;
-    @keyframes jump-up{
+    @keyframes jump-up {
       0% {
         transform: translate(-50%, @jump);
       }
@@ -152,11 +166,13 @@ export default {
       }
     }
   }
-  .indicator{
+
+  .indicator {
     .self-center();
     transform: translateY(-50%);
     left: auto;
     right: 20px;
+
     li {
       width: 7px;
       height: 7px;
@@ -166,6 +182,7 @@ export default {
       margin-bottom: 10px;
       border: 1px solid #fff;
       box-sizing: border-box;
+
       &.active {
         background: #fff;
       }

@@ -10,6 +10,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store'; // 使用vue插件
 
+// 获取全局设置
+store.dispatch('settings/fetchSetting');
 // 注册全局指令
 Vue.directive('loading', vLoading);
 Vue.directive('lazy', vLazy);

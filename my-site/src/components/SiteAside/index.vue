@@ -1,13 +1,15 @@
 <template>
   <div class="site-aside-container">
-    <div class="avatar-container">
-      <el-avatar  src="http://mdrs.yuanjin.tech/FgMwAPYq17So9nwVH44ltDHo7u3c" :size="150"/>
-    </div>
-    <h1 class="title">龙傲天的小窝</h1>
+    <template v-if="data">
+      <div class="avatar-container">
+        <el-avatar  :src="data.avatar" :size="150"/>
+      </div>
+      <h1 class="title">{{data.siteTitle}}</h1>
+    </template>
     <Menu/>
     <Contact/>
-    <p class="footer">
-      黑ICP备17001719号
+    <p v-if="data" class="footer">
+      {{data.icp}}
     </p>
   </div>
 </template>
@@ -15,6 +17,7 @@
 <script>
 import Menu from '@/components/SiteAside/Menu/index.vue';
 import Contact from '@/components/SiteAside/Contact/index.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'SiteAside', // 左侧导航栏
@@ -25,6 +28,7 @@ export default {
   data() {
     return {};
   },
+  computed: mapState('settings', ['data']),
 };
 </script>
 

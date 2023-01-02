@@ -5,7 +5,7 @@ Mock.mock('/api/setting', 'get', {
   msg: '',
   data: {
     avatar: 'http://mdrs.yuanjin.tech/FgMwAPYq17So9nwVH44ltDHo7u3c',
-    siteTitle: '龙傲天的小窝',
+    siteTitle: '个人空间',
     github: 'https://github.com/DuYi-Edu',
     qq: '3263023350',
     qqQrCode:

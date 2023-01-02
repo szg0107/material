@@ -1,4 +1,5 @@
 import { getSetting } from '@/api/setting';
+import { titleController } from '@/utils';
 
 export default {
   namespaced: true,
@@ -37,7 +38,12 @@ export default {
         // 设置图标地址
         link.href = resp.favicon;
         // 将link元素增加到head中
-        document.querySelector('head').appendChild(link);
+        document.querySelector('head')
+          .appendChild(link);
+      }
+      // 设置网站标题
+      if (resp.siteTitle) {
+        titleController.setSiteTitle(resp.siteTitle);
       }
     },
   },

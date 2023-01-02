@@ -1,8 +1,8 @@
 <template>
   <Layout>
     <div ref="mainContainer" class="main-container" v-loading="isLoading">
-      <BlogDetail :blog="data" v-if="data" />
-      <BlogComment v-if="!isLoading" />
+      <BlogDetail :blog="data" v-if="data"/>
+      <BlogComment v-if="!isLoading"/>
     </div>
     <template #right>
       <div class="right-container" v-loading="isLoading">
@@ -16,6 +16,7 @@
 import fetchData from '@/mixins/fetchData';
 import { getBlog } from '@/api/blog';
 import mainScroll from '@/mixins/mainScroll';
+import { titleController } from '@/utils';
 
 export default {
   name: 'Detail', // 文章详情
@@ -29,7 +30,9 @@ export default {
   methods: {
     // 获取文章详情数据
     async fetchData() {
-      return getBlog(this.$route.params.id);
+      const resp = await getBlog(this.$route.params.id);
+      titleController.setRouteTitle(resp.title);
+      return resp;
     },
   },
   updated() {
@@ -57,6 +60,7 @@ export default {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+
 .right-container {
   width: 300px;
   height: 100%;

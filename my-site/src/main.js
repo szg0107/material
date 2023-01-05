@@ -4,6 +4,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '@/styles/global.less';
 import { showMessage } from '@/utils';
 import './mock';
+import './eventBusTwo';
 import vLoading from '@/directives/loading';
 import vLazy from '@/directives/lazy';
 import App from './App.vue';

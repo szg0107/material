@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import eventBus from '@/eventBus';
+// import eventBus from '@/eventBus';
 
 export default {
   name: 'ToTop', // 回到顶部组件
@@ -16,10 +16,10 @@ export default {
   },
   created() {
     // 主区域滚动条位置变化后触发
-    eventBus.$on('mainScroll', this.handleScroll);
+    this.$bus.$on('mainScroll', this.handleScroll);
   },
   destroyed() {
-    eventBus.$off('mainScroll', this.handleScroll);
+    this.$bus.$off('mainScroll', this.handleScroll);
   },
   methods: {
     // 滚动条滚动事件
@@ -32,7 +32,7 @@ export default {
     },
     handleClick() {
       // 回到顶部 设置主区域滚动条位置
-      eventBus.$emit('setMainScroll', 0);
+      this.$bus.$emit('setMainScroll', 0);
     },
   },
 };

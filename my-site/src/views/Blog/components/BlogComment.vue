@@ -13,7 +13,6 @@
 <script>
 import fetchData from '@/mixins/fetchData';
 import { getComments, postComment } from '@/api/blog';
-import eventBus from '@/eventBus';
 
 export default {
   name: 'BlogComment', // 文章-留言
@@ -33,10 +32,10 @@ export default {
     },
   },
   created() {
-    eventBus.$on('mainScroll', this.handleScroll);
+    this.$bus.$on('mainScroll', this.handleScroll);
   },
   destroyed() {
-    eventBus.$off('mainScroll', this.handleScroll);
+    this.$bus.$off('mainScroll', this.handleScroll);
   },
   methods: {
     // 组件滚动到哪
